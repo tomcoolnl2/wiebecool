@@ -27,11 +27,6 @@ const detailData = [
 				link: 'https://twitter.com/',
 			},
 			{
-				id: 3,
-				iconName: 'icon-behance-squared',
-				link: 'https://www.behance.net/',
-			},
-			{
 				id: 4,
 				iconName: 'icon-linkedin-squared',
 				link: 'https://www.linkedin.com/',
@@ -108,7 +103,7 @@ export const Portfolio = () => {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/portfolio/5.jpg"
+												data-img-url="assets/img/_new/portfolio/wiebe_1.jpg"
 											/>
 										</a>
 									</div>
@@ -129,7 +124,7 @@ export const Portfolio = () => {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/portfolio/6.jpg"
+												data-img-url="assets/img/_new/portfolio/wiebe_2.jpg"
 											/>
 										</a>
 									</div>
@@ -153,7 +148,7 @@ export const Portfolio = () => {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/portfolio/4.jpg"
+												data-img-url="assets/img/_new/portfolio/wiebe_3.jpg"
 											/>
 										</a>
 									</div>
@@ -174,7 +169,7 @@ export const Portfolio = () => {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/portfolio/3.jpg"
+												data-img-url="assets/img/_new/portfolio/wiebe_4.jpg"
 											/>
 										</a>
 									</div>
@@ -202,7 +197,7 @@ export const Portfolio = () => {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/portfolio/7.jpg"
+												data-img-url="assets/img/_new/portfolio/wiebe_5.jpg"
 											/>
 										</a>
 									</div>
@@ -230,7 +225,147 @@ export const Portfolio = () => {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/portfolio/8.jpg"
+												data-img-url="assets/img/_new/portfolio/wiebe_6.jpg"
+											/>
+										</a>
+									</div>
+								</div>
+							</li>
+							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
+								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
+									<div
+										className="entry tokyo_tm_portfolio_animation_wrap"
+										data-title="Selena Gomez"
+										data-category="Detail"
+									>
+										<a
+											className="popup_info"
+											href="#"
+											onClick={() => {
+												setPortfolioDetailsModal(detailData[0]);
+												modalToggle(true);
+											}}
+										>
+											<img
+												className="opacity-0 min-w-full"
+												src="assets/img/thumbs/1-1.jpg"
+												alt="image"
+											/>
+											<div
+												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
+												data-img-url="assets/img/_new/portfolio/blanca.jpg"
+											/>
+										</a>
+									</div>
+								</div>
+							</li>
+							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
+								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
+									<div
+										className="entry tokyo_tm_portfolio_animation_wrap"
+										data-title="Selena Gomez"
+										data-category="Detail"
+									>
+										<a
+											className="popup_info"
+											href="#"
+											onClick={() => {
+												setPortfolioDetailsModal(detailData[0]);
+												modalToggle(true);
+											}}
+										>
+											<img
+												className="opacity-0 min-w-full"
+												src="assets/img/thumbs/1-1.jpg"
+												alt="image"
+											/>
+											<div
+												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
+												data-img-url="assets/img/_new/portfolio/blauwe_janus.jpg"
+											/>
+										</a>
+									</div>
+								</div>
+							</li>
+							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
+								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
+									<div
+										className="entry tokyo_tm_portfolio_animation_wrap"
+										data-title="Selena Gomez"
+										data-category="Detail"
+									>
+										<a
+											className="popup_info"
+											href="#"
+											onClick={() => {
+												setPortfolioDetailsModal(detailData[0]);
+												modalToggle(true);
+											}}
+										>
+											<img
+												className="opacity-0 min-w-full"
+												src="assets/img/thumbs/1-1.jpg"
+												alt="image"
+											/>
+											<div
+												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
+												data-img-url="assets/img/_new/portfolio/demeter.jpg"
+											/>
+										</a>
+									</div>
+								</div>
+							</li>
+							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
+								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
+									<div
+										className="entry tokyo_tm_portfolio_animation_wrap"
+										data-title="Selena Gomez"
+										data-category="Detail"
+									>
+										<a
+											className="popup_info"
+											href="#"
+											onClick={() => {
+												setPortfolioDetailsModal(detailData[0]);
+												modalToggle(true);
+											}}
+										>
+											<img
+												className="opacity-0 min-w-full"
+												src="assets/img/thumbs/1-1.jpg"
+												alt="image"
+											/>
+											<div
+												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
+												data-img-url="assets/img/_new/portfolio/sanne.jpg"
+											/>
+										</a>
+									</div>
+								</div>
+							</li>
+							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
+								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
+									<div
+										className="entry tokyo_tm_portfolio_animation_wrap"
+										data-title="Selena Gomez"
+										data-category="Detail"
+									>
+										<a
+											className="popup_info"
+											href="#"
+											onClick={() => {
+												setPortfolioDetailsModal(detailData[0]);
+												modalToggle(true);
+											}}
+										>
+											<img
+												className="opacity-0 min-w-full"
+												src="assets/img/thumbs/1-1.jpg"
+												alt="image"
+											/>
+											<div
+												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
+												data-img-url="assets/img/_new/portfolio/maria_magdalena.jpg"
 											/>
 										</a>
 									</div>
