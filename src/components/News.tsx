@@ -21,17 +21,19 @@ const products: Product[] = [
 	},
 	{
 		id: 3,
-		title: 'Why every photographer should shoot film, even in 2022',
-		subtitle: 'Paola Atkins',
-		image: 'assets/img/news/3.jpg',
-		alt: 'Notenhout  €400,-',
+		title: 'DE ORKNEY FAMILY',
+		subtitle:
+			'Een prachtig compact stuk zwarte limestone gevonden op het strand van een van de Orkney eilanden, Schotland. Na noeste arbeid ontstond de  Orkney familie; Vader, moeder, kind. Gestileerd , abstract. De voet is een afgebroken, middeleeuwse  kerktegel uit de omgeving van Kampen, vol sporen uit het verleden. € 475,-',
+		image: 'assets/img/_new/products/orkney-familie-wiebe-cool-beeldhouwer.jpeg',
+		alt: 'DE ORKNEY FAMILY - Wiebe Cool Beeldhouwer',
 	},
 	{
 		id: 4,
-		title: 'Stay creative in lockdown with these fun photo projects',
-		subtitle: 'Kevin Stone',
-		image: 'assets/img/news/4.jpg',
-		alt: 'Notenhout  €400,-',
+		title: 'PIM',
+		subtitle:
+			'Dagelijks ontvangt deze Pim, zelf gegoten in brons, het daglicht en de zonneschijn in grote dankbaarheid! ',
+		image: 'assets/img/_new/products/pim-wiebe-cool-beeldhouwer.jpeg',
+		alt: 'PIM - Wiebe Cool Beeldhouwer',
 	},
 ];
 
