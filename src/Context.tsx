@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ActionType, NewsModal, PortfolioItem, ServiceModal, State, StateAction } from './model';
+import { ActionType, NewsModal, PortfolioItem, Product, ServiceModal, State, StateAction } from './model';
 
 // Initial Value
 const initialState: State = {
@@ -7,21 +7,21 @@ const initialState: State = {
 	animation: 'fadeInLeft',
 	modal: false,
 	serviceModal: null,
-	newsModal: null,
+	productModal: null,
 	portfolioDetailsModal: null,
 	menus: [
 		{ id: 1, name: 'Home', href: 'home' },
-		{ id: 2, name: 'missie', href: 'about' },
+		{ id: 2, name: 'Missie', href: 'about' },
 		// { id: 3, name: 'service', href: 'service' },
-		{ id: 4, name: 'werk', href: 'portfolio' },
-		{ id: 5, name: 'news', href: 'news' },
-		{ id: 6, name: 'contact', href: 'contact' },
+		{ id: 4, name: 'Werk', href: 'portfolio' },
+		// { id: 5, name: 'News', href: 'news' },
+		{ id: 6, name: 'Contact', href: 'contact' },
 	],
 	navChange: () => void 0,
 	animationChange: () => void 0,
 	setServiceModal: () => void 0,
 	modalToggle: () => void 0,
-	setNewsModal: () => void 0,
+	setProductModal: () => void 0,
 	setPortfolioDetailsModal: () => void 0,
 };
 
@@ -54,7 +54,7 @@ const reducer = (state: State, action: StateAction): State => {
 		case ActionType.NEWSMODAL:
 			return {
 				...state,
-				newsModal: payload,
+				productModal: payload,
 			};
 		case ActionType.PORTFOLIODETAILSMODAL:
 			return {
@@ -98,7 +98,7 @@ export const AppProvider = ({ children }) => {
 		});
 	}, []);
 
-	const setNewsModal = React.useCallback((value: NewsModal | null) => {
+	const setProductModal = React.useCallback((value: Product | null) => {
 		dispatch({
 			type: ActionType.NEWSMODAL,
 			payload: value,
@@ -112,7 +112,7 @@ export const AppProvider = ({ children }) => {
 		});
 	}, []);
 
-	const { nav, animation, modal, serviceModal, newsModal, portfolioDetailsModal, menus } = React.useMemo(
+	const { nav, animation, modal, serviceModal, productModal, portfolioDetailsModal, menus } = React.useMemo(
 		() => ({ ...state }),
 		[state]
 	);
@@ -129,8 +129,8 @@ export const AppProvider = ({ children }) => {
 				modalToggle,
 				serviceModal,
 				setServiceModal,
-				newsModal,
-				setNewsModal,
+				productModal,
+				setProductModal,
 				portfolioDetailsModal,
 				setPortfolioDetailsModal,
 			}}

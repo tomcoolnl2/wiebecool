@@ -3,14 +3,14 @@ export interface State {
 	animation: string;
 	modal: boolean;
 	serviceModal: ServiceModal | null;
-	newsModal: NewsModal | null;
+	productModal: Product | null;
 	portfolioDetailsModal: PortfolioItem | null;
 	menus: MenuItem[];
 	navChange: (value: string) => void;
 	animationChange: (value: string) => void;
 	setServiceModal: (value: ServiceModal | null) => void;
 	modalToggle: (value: boolean) => void;
-	setNewsModal: (value: NewsModal | null) => void;
+	setProductModal: (value: Product | null) => void;
 	setPortfolioDetailsModal: (value: PortfolioItem | null) => void;
 }
 
@@ -28,7 +28,7 @@ export type StateAction =
 	| { type: ActionType.ANIMATION; payload: string }
 	| { type: ActionType.MODAL; payload: boolean }
 	| { type: ActionType.SERVICEMODAL; payload: ServiceModal | null }
-	| { type: ActionType.NEWSMODAL; payload: NewsModal | null }
+	| { type: ActionType.NEWSMODAL; payload: Product | null }
 	| { type: ActionType.PORTFOLIODETAILSMODAL; payload: PortfolioItem | null };
 
 export interface MenuItem {
@@ -68,4 +68,12 @@ export interface ShareItem {
 	id: number;
 	iconName: string;
 	link: string;
+}
+
+export interface Product {
+	id: number;
+	title: string;
+	subtitle: string;
+	image: string;
+	alt: string;
 }

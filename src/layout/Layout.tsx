@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic';
 import * as React from 'react';
 import { tokyo } from '../utils';
 import { AppContext } from '../Context';
@@ -7,7 +6,7 @@ import { Mobile } from '../layout/Mobile';
 import { Sidebar } from '../layout/Sidebar';
 import { ImageView } from '../components/popup/ImageView';
 import { MediaPopup } from '../components/popup/MediaPopup';
-import { NewsModalComponent } from '../components/popup/NewsModal';
+import { ProductDetailComponent } from '../components/popup/ProductDetailModal';
 import { ServiceModalComponent } from '../components/popup/ServiceModal';
 import { DetailsModalComponent } from '../components/popup/DetailsModal';
 
@@ -19,14 +18,14 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 		tokyo.customCursor();
 	}, []);
 
-	const { modal, serviceModal, newsModal, portfolioDetailsModal } = React.useContext(AppContext);
+	const { modal, serviceModal, productModal, portfolioDetailsModal } = React.useContext(AppContext);
 
 	return (
 		<>
 			<MediaPopup />
 			<ImageView />
 			{modal && serviceModal && <ServiceModalComponent />}
-			{modal && newsModal && <NewsModalComponent />}
+			{modal && productModal && <ProductDetailComponent />}
 			{modal && portfolioDetailsModal && <DetailsModalComponent />}
 			{/* WRAPPER ALL */}
 			<div className="tokyo_tm_all_wrap">

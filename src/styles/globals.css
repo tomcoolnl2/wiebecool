@@ -20,6 +20,23 @@ a > *[class^="icon-"] {
 	color: white;
 }
 
+q, blockquote {
+    font-style: italic;
+    text-align: center;
+    max-width: 800px;
+    display: grid;
+    margin: auto;
+} 
+
+/* .author-image > img {
+	filter: grayscale(80%);
+	transition: filter .3s;
+}
+.author-image > img:hover {
+	filter: grayscale(0%);
+} */
+
+
 /* image popup */
 img.mfp-img {
 	box-shadow: 0 0 8px rgb(0 0 0 / 60%);

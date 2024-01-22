@@ -90,7 +90,7 @@ export const ServiceItems = () => {
 								</a>
 							</div>
 							<a
-								className="tokyo_tm_full_link"
+								className="product-cards-full-link"
 								href="#"
 								onClick={() => {
 									modalToggle(true);

@@ -735,7 +735,7 @@ h6 {
 	margin-top: 7px;
 }
 
-.tokyo_tm_full_link {
+.product-cards-full-link {
 	position: absolute;
 	top: 0px;
 	right: 0px;
@@ -1027,7 +1027,7 @@ h6 {
 	width: 100%;
 }
 
-.tokyo_tm_news ul li .extra:before {
+.product-cards li .extra:before {
 	position: absolute;
 	bottom: -7px;
 	height: 1px;
@@ -1055,7 +1055,7 @@ h6 {
 	content: var(--tw-content);
 }
 
-.tokyo_tm_news ul li .details .date span:before {
+.product-cards li .details .date span:before {
 	position: relative;
 	padding-top: 0px;
 	padding-bottom: 0px;
@@ -1373,16 +1373,16 @@ h6 {
 		padding-left: 0px;
 	}
 
-	.tokyo_tm_news ul {
+	.product-cards {
 		margin: 0px;
 	}
 
-	.tokyo_tm_news ul li {
+	.product-cards li {
 		width: 100%;
 		padding-left: 0px;
 	}
 
-	.tokyo_tm_news ul li .details {
+	.product-cards li .details {
 		padding-left: 30px;
 		padding-right: 30px;
 	}
@@ -1714,22 +1714,22 @@ body.dark .tokyo_tm_portfolio .portfolio_filter ul li a:hover {
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_news ul li .details .title a {
+body.dark .product-cards li .details .title a {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_news ul li .details .date {
+body.dark .product-cards li .details .date {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_news ul li .details .date a {
+body.dark .product-cards li .details .date a {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_news ul li .details .date a:hover {
+body.dark .product-cards li .details .date a:hover {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
@@ -1783,12 +1783,13 @@ body.dark .tokyo_tm_contact .fields .\!last textarea:focus {
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_news ul li .details {
+body.dark .product-cards li .details {
 	--tw-bg-opacity: 1;
 	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
+	min-height: 220px;
 }
 
-body.dark .tokyo_tm_news ul li .extra:before {
+body.dark .product-cards li .extra:before {
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -1807,7 +1808,7 @@ body.dark .tokyo_tm_read_more a:before {
 	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-body.dark .tokyo_tm_news ul li .list_inner {
+body.dark .product-cards li .list_inner {
 	--tw-shadow: 0 0 #0000;
 	--tw-shadow-colored: 0 0 #0000;
 	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);

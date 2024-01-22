@@ -375,22 +375,22 @@
 	opacity: 1;
 	visibility: visible;
 }
-.tokyo_tm_news ul li .list_inner {
+.product-cards li .list_inner {
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.07);
 }
-.tokyo_tm_news ul li .list_inner .image:hover .main {
+.product-cards li .list_inner .image:hover .main {
 	transform: scale(1.1) translateZ(0);
 }
-.tokyo_tm_news ul li .list_inner:hover .details {
+.product-cards li .list_inner:hover .details {
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.12);
 }
-.tokyo_tm_news ul li .list_inner:hover .tokyo_tm_read_more a:before {
+.product-cards li .list_inner:hover .tokyo_tm_read_more a:before {
 	animation: read-more-anim-2;
 	animation-fill-mode: forwards;
 	animation-duration: 0.4s;
 	animation-timing-function: cubic-bezier(0.6, 0.01, 0, 1);
 }
-.tokyo_tm_news ul li .list_inner:hover .tokyo_tm_read_more a span {
+.product-cards li .list_inner:hover .tokyo_tm_read_more a span {
 	transform: translateX(0%);
 }
 .tokyo_tm_modalbox .tokyo_tm_read_more {

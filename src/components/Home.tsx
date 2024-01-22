@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { SectionContainer } from './SectionContainer';
+import { ContactDetails } from './ContactDetails';
 
 const socialIcon = [
 	// {
@@ -48,23 +49,7 @@ export const Home = () => {
 								Wiebe <span className="text-slate-300">Cool</span>
 							</h1>
 							<h2 className="subtitle">Welkom op mijn site!</h2>
-							<p className="job font-montserrat font-medium max-w-[450px] mb-[25px]">
-								Wanneer je meer wilt weten:
-								<br />
-								<a href="tel:0031628979316" target="_blank">
-									0031628979316
-								</a>
-								<br />
-								<br />
-								Bezoekadres:
-								<br />
-								<a
-									href="https://www.google.com/maps/place/Venkel+25,+8252+CH+Dronten,+Netherlands/"
-									target="_blank"
-								>
-									Venkel 25, 8252 CH Dronten
-								</a>
-							</p>
+							<ContactDetails />
 							<nav className="social w-full float-left  mb-[25px]">
 								<ul className="m-0 list-none">
 									{socialIcon.map((item) => (

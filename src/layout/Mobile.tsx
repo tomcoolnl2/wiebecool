@@ -10,13 +10,14 @@ export const Mobile = () => {
 		<>
 			<div className="tokyo_tm_topbar bg-white fixed top-0 left-0 right-0 h-[50px] z-[14] hidden">
 				<div className="topbar_inner w-full h-full clear-both flex items-center justify-between py-0 px-[20px]">
-					<div className="logo" data-type="text">
+					<div className="logo" data-type="image">
 						{' '}
 						<a href="#">
 							<h3 className="font-black font-poppins text-[22px] tracking-[4px]">BEELDHOUWER</h3>
 							<i className="icon-home-1" />
 						</a>
 					</div>
+
 					<div className="trigger relative top-[5px]">
 						<div
 							className={`hamburger hamburger--slider ${toggle ? 'is-active' : ''}`}
