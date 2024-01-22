@@ -166,14 +166,14 @@
 .tokyo_tm_all_wrap .leftpart .menu ul li.active a {
 	color: #000;
 }
-.tokyo_tm_home .avatar[data-type='square'] .image {
+.home_page .avatar[data-type='square'] .image {
 	animation: none;
 }
-.tokyo_tm_home .avatar[data-type='circle'] .image {
+.home_page .avatar[data-type='circle'] .image {
 	animation: none;
 	border-radius: 100%;
 }
-.tokyo_tm_home .avatar .image {
+.home_page .avatar .image {
 	animation: morph 8s ease-in-out infinite 1s;
 	background-blend-mode: multiply;
 	-webkit-box-shadow: inset 0px 0px 0px 9px rgba(255, 255, 255, 0.3);

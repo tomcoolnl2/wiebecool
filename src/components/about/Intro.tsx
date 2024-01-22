@@ -7,8 +7,10 @@ export const Intro = () => {
 				<img className="min-w-full" src="assets/img/slider/1.jpg" alt="image" />
 			</div>
 			<div className="about_title w-full h-auto clear-both float-left border-solid border-[#DFDFDF] border-b pb-[20px] mb-[30px]">
-				<h3 className="text-[22px] font-bold">Adriano Smith</h3>
-				<span>Web Developer</span>
+				<h3 className="text-[22px] font-bold">
+					Wiebe Cool <span>(1950)</span>
+				</h3>
+				<span>Beeldhouwer</span>
 			</div>
 			<div className="about_text w-full h-auto clear-both float-left border-solid border-[#DFDFDF] border-b pb-[31px] mb-[30px]">
 				<p className="mb-[11px]">

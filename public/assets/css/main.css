@@ -1177,22 +1177,27 @@ h6 {
 		padding-left: 350px;
 	}
 
-	.tokyo_tm_home .avatar {
+	.home_page .avatar {
 		min-height: 250px;
 		min-width: 250px;
 	}
 
-	.tokyo_tm_home .details .name {
+	.home_page .details .name {
 		margin-bottom: 10px;
 		font-size: 48px;
 	}
 
-	.tokyo_tm_home .details .\!name {
+	.home_page .details .subtitle {
+		margin-bottom: 10px;
+		font-size: 22px;
+	}
+
+	.home_page .details .\!name {
 		margin-bottom: 10px;
 		font-size: 48px;
 	}
 
-	.tokyo_tm_home .details .job {
+	.home_page .details .job {
 		margin-bottom: 22px;
 	}
 
@@ -1288,16 +1293,17 @@ h6 {
 		display: none;
 	}
 
-	.tokyo_tm_home .home_content {
+	.home_page .home_content {
 		flex-direction: column;
 		text-align: center;
+		margin: 70px 0 30px;
 	}
 
-	.tokyo_tm_home .avatar {
+	.home_page .avatar {
 		margin-bottom: 30px;
 	}
 
-	.tokyo_tm_home .details {
+	.home_page .details {
 		margin-left: 0px;
 	}
 
@@ -1345,15 +1351,15 @@ h6 {
 /******** Small Screens *********/
 
 @media (max-width: 768px) {
-	.tokyo_tm_home .details .name {
+	.home_page .details .name {
 		font-size: 30px;
 	}
 
-	.tokyo_tm_home .details .\!name {
+	.home_page .details .\!name {
 		font-size: 30px;
 	}
 
-	.tokyo_tm_home .avatar {
+	.home_page .avatar {
 		min-height: 200px;
 		min-width: 200px;
 	}
@@ -1607,7 +1613,7 @@ body.dark .tokyo_tm_all_wrap .rightpart_in {
 	border-left-width: 0px;
 }
 
-body.dark .tokyo_tm_home .social ul li a {
+body.dark .home_page .social ul li a {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }

@@ -10,12 +10,11 @@ export const Mobile = () => {
 		<>
 			<div className="tokyo_tm_topbar bg-white fixed top-0 left-0 right-0 h-[50px] z-[14] hidden">
 				<div className="topbar_inner w-full h-full clear-both flex items-center justify-between py-0 px-[20px]">
-					<div className="logo" data-type="image">
+					<div className="logo" data-type="text">
 						{' '}
-						{/* You can use image or text as logo. data-type values are "image" and "text" */}
 						<a href="#">
-							<img className="max-w-[100px] max-h-[40px]" src="assets/img/logo/dark.png" alt="image" />
-							<h3 className="font-black font-poppins text-[25px] tracking-[4px]">TOKYO</h3>
+							<h3 className="font-black font-poppins text-[22px] tracking-[4px]">BEELDHOUWER</h3>
+							<i className="icon-home-1" />
 						</a>
 					</div>
 					<div className="trigger relative top-[5px]">

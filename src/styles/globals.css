@@ -3,6 +3,23 @@
 @import 'swiper/css/pagination';
 @import 'swiper/css/scrollbar';
 
+a {
+	color: #B7950B;
+	transition: color .3s;
+}
+
+a:hover {
+	color: #D4AC0D;
+}
+
+a[href^="tel:"] {
+	color: #3498DB;
+}
+
+a > *[class^="icon-"] {
+	color: white;
+}
+
 /* image popup */
 img.mfp-img {
 	box-shadow: 0 0 8px rgb(0 0 0 / 60%);

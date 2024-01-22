@@ -11,9 +11,9 @@ const initialState: State = {
 	portfolioDetailsModal: null,
 	menus: [
 		{ id: 1, name: 'Home', href: 'home' },
-		{ id: 2, name: 'about', href: 'about' },
-		{ id: 3, name: 'service', href: 'service' },
-		{ id: 4, name: 'portfolio', href: 'portfolio' },
+		{ id: 2, name: 'missie', href: 'about' },
+		// { id: 3, name: 'service', href: 'service' },
+		{ id: 4, name: 'werk', href: 'portfolio' },
 		{ id: 5, name: 'news', href: 'news' },
 		{ id: 6, name: 'contact', href: 'contact' },
 	],
