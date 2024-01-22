@@ -2,17 +2,15 @@ import * as React from 'react';
 import { AppContext } from '../Context';
 import { tokyo } from '../utils';
 import { SectionContainer } from './SectionContainer';
+import { SectionTitle } from './SectionTitle';
 
 const detailData = [
 	{
 		id: 1,
 		thumbnail: 'assets/img/portfolio/7.jpg',
 		title: 'Selena Gomez',
-		text: [
-			'We live in a world where we need to move quickly and iterate on our ideas as flexibly as possible. Building mockups strikes the ideal balance between true-life representation of the end product and ease of modification.',
-			"Mockups are useful both for the creative phase of the project - for instance when you're trying to figure out your user flows or the proper visual hierarchy - and the production phase when they will represent the target product. Making mockups a part of your creative and development process allows you to quickly and easily ideate.",
-		],
-		client: 'Alvaro Morata',
+		text: ['Lipsum dolr et si amet.'],
+		client: 'Wiebe Cool',
 		date: 'October 22, 2022',
 		category: 'Detail',
 		share: [
@@ -43,7 +41,7 @@ const detailData = [
 			'We live in a world where we need to move quickly and iterate on our ideas as flexibly as possible. Building mockups strikes the ideal balance between true-life representation of the end product and ease of modification.',
 			"Mockups are useful both for the creative phase of the project - for instance when you're trying to figure out your user flows or the proper visual hierarchy - and the production phase when they will represent the target product. Making mockups a part of your creative and development process allows you to quickly and easily ideate.",
 		],
-		client: 'Alvaro Morata',
+		client: 'Wiebe Cool',
 		date: 'October 22, 2022',
 		category: 'Detail',
 		share: [
@@ -86,7 +84,25 @@ export const Portfolio = () => {
 		<SectionContainer name={'portfolio'}>
 			<div className="container">
 				<div className="tokyo_tm_portfolio w-full h-auto clear-both float-left px-0 pt-[100px] pb-[40px]">
+					<div className="tokyo_tm_title w-full h-auto clear-both float-left mb-[62px]">
+						<div className="title_flex w-full h-auto clear-both flex justify-between items-end">
+							<SectionTitle pageName={'Portfolio'} title={'Mijn Werk'} />
+						</div>
+					</div>
 					<div className="list_wrapper w-full h-auto clear-both float-left">
+						<p className="mb-[22px]">
+							Jaren geleden heb ik mijzelf het beeldhouwen aangeleerd, in een vakantie, midden tussen de
+							fascinerende stenen van Bretagne. Naast megalithische, Griekse en Keltische kunst vind ik
+							ook veel inspiratie in oude kathedralen en middeleeuwse beelden. <br />
+							<br />
+							Overal vandaan neem ik stenen mee terug uit de streken die ik bezoek en dan leg ik er thuis
+							de opgedane impressies in vast. Ook meer eigentijdse meesters zoals Rodin, Barbara Hebworth
+							of Henry Moore vind ik ongelooflijk mooi en inspirerend. In musea kijk ik vooral naar de
+							beeldende kunst en loop ik er het liefst een paar keer omheen, op zoek naar de schoonheid in
+							het stuk steen of hout.
+							<br />
+							<br />
+						</p>
 						<ul className="portfolio_list gallery_zoom ml-[-40px] list-none">
 							<li className="vimeo mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
