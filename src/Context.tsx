@@ -18,6 +18,7 @@ const initialState: State = {
 		{ id: 6, name: 'contact', href: 'contact' },
 	],
 	navChange: () => void 0,
+	animationChange: () => void 0,
 	setServiceModal: () => void 0,
 	modalToggle: () => void 0,
 	setNewsModal: () => void 0,
@@ -76,7 +77,7 @@ export const AppProvider = ({ children }) => {
 		});
 	}, []);
 
-	const animationChange = React.useCallback((value) => {
+	const animationChange = React.useCallback((value: string) => {
 		dispatch({
 			type: ActionType.ANIMATION,
 			payload: value,
@@ -123,6 +124,7 @@ export const AppProvider = ({ children }) => {
 				nav,
 				navChange,
 				animation,
+				animationChange,
 				modal,
 				modalToggle,
 				serviceModal,
