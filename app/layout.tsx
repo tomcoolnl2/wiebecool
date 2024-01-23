@@ -1,5 +1,6 @@
 'use client';
 import Head from 'next/head';
+import { Metadata } from 'next';
 // import { Head, Html, Main, NextScript } from 'next/document';
 import * as React from 'react';
 import { tokyo } from '../src/utils';
@@ -7,14 +8,19 @@ import { AppContext, AppProvider } from '../src/Context';
 import { Cursor } from '../src/layout/Cursor';
 import { Mobile } from '../src/layout/Mobile';
 import { Sidebar } from '../src/layout/Sidebar';
-import { ImageView } from 'components/popup/ImageView';
-import { MediaPopup } from 'components/popup/MediaPopup';
-import { ProductDetailComponent } from 'components/popup/ProductDetailModal';
-import { ServiceModalComponent } from 'components/popup/ServiceModal';
-import { DetailsModalComponent } from 'components/popup/DetailsModal';
-import { PreLoader } from '@/src/layout/PreLoader';
+import { ImageView } from '../src/components/popup/ImageView';
+import { MediaPopup } from '../src/components/popup/MediaPopup';
+import { ProductDetailComponent } from '../src/components/popup/ProductDetailModal';
+import { ServiceModalComponent } from '../src/components/popup/ServiceModal';
+import { DetailsModalComponent } from '../src/components/popup/DetailsModal';
+import { PreLoader } from '../src/layout/PreLoader';
 
-import '../src/styles/global.css';
+import '../src/styles/globals.css';
+
+// export const metadata: Metadata = {
+// 	title: 'Wiebe Cool | Beeldhouwer',
+// 	description: 'Wiebe Cool | Beeldhouwer',
+// };
 
 export default function RootLayout({ children }) {
 	//
@@ -49,13 +55,7 @@ export default function RootLayout({ children }) {
 					<link rel="stylesheet" href="../assets/css/custom.css" />
 					<link rel="stylesheet" href="../assets/css/main.css" />
 
-					<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
-					<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
-					<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
-					<link rel="manifest" href="assets/favicon/site.webmanifest" />
-					<link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico"></link>
-
-					<title>Wiebe Cool - Beeldhouwer</title>
+					<title>Wiebe Cool | Beeldhouwer</title>
 				</Head>
 				<body>
 					<MediaPopup />

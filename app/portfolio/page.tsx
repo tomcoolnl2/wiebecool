@@ -2,8 +2,8 @@
 import * as React from 'react';
 import { AppContext } from '../../src/Context';
 import { tokyo } from '../../src/utils';
-import { SectionContainer } from 'components/SectionContainer';
-import { SectionTitle } from 'components/SectionTitle';
+import { SectionContainer } from '../../src/components/SectionContainer';
+import { SectionTitle } from '../../src/components/SectionTitle';
 
 const detailData = [
 	{

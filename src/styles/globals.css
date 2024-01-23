@@ -4,29 +4,30 @@
 @import 'swiper/css/scrollbar';
 
 a {
-	color: #B7950B;
-	transition: color .3s;
+	color: #b7950b;
+	transition: color 0.3s;
 }
 
 a:hover {
-	color: #D4AC0D;
+	color: #d4ac0d;
 }
 
-a[href^="tel:"] {
-	color: #3498DB;
+a[href^='tel:'] {
+	color: #3498db;
 }
 
-a > *[class^="icon-"] {
+a > *[class^='icon-'] {
 	color: white;
 }
 
-q, blockquote {
-    font-style: italic;
-    text-align: center;
-    max-width: 800px;
-    display: grid;
-    margin: auto;
-} 
+q,
+blockquote {
+	font-style: italic;
+	text-align: center;
+	max-width: 800px;
+	display: grid;
+	margin: auto;
+}
 
 /* .author-image > img {
 	filter: grayscale(80%);
@@ -35,7 +36,6 @@ q, blockquote {
 .author-image > img:hover {
 	filter: grayscale(0%);
 } */
-
 
 /* image popup */
 img.mfp-img {

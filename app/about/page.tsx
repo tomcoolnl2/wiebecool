@@ -1,10 +1,10 @@
 'use client';
 import * as React from 'react';
-import { SectionContainer } from 'components/SectionContainer';
-import { SectionTitle } from 'components/SectionTitle';
-import { ProductCards } from 'components/ProductCards';
-import { ContactDetails } from 'components/ContactDetails';
-import { Product } from '@/src/model';
+import { SectionContainer } from '../../src/components/SectionContainer';
+import { SectionTitle } from '../../src/components/SectionTitle';
+import { ProductCards } from '../../src/components/ProductCards';
+import { ContactDetails } from '../../src/components/ContactDetails';
+import { Product } from '../../src/model';
 
 const products1: Product[] = [
 	{
