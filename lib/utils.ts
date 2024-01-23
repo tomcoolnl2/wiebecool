@@ -1,3 +1,7 @@
+export function detectMobile(): boolean {
+	return /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+}
+
 export const tokyo = {
 	dataImage() {
 		let d = document.querySelectorAll('[data-img-url]') as NodeListOf<HTMLElement>;
@@ -107,10 +111,13 @@ export const tokyo = {
 			if (!isMobile) {
 				setTimeout(function () {
 					console.log('800', preloader);
+					preloader.style.border = '10px solid teal';
 					preloader.classList.add('preloaded');
 				}, 800);
 				setTimeout(function () {
+					console.log("time's up", preloader);
 					preloader.remove();
+					console.log('800', preloader);
 				}, 2000);
 			} else {
 				preloader.remove();
