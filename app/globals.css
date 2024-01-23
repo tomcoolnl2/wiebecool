@@ -40,6 +40,11 @@ blockquote {
 	filter: grayscale(0%);
 } */
 
+.inner-border {
+	outline: 5px solid rgba(255,255,255,.1);
+    outline-offset: 0px;
+}
+
 /* image popup */
 img.mfp-img {
 	box-shadow: 0 0 8px rgb(0 0 0 / 60%);
