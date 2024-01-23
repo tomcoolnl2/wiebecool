@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { AppContext } from '../../Context';
-import { ServiceModal } from '../../model';
+import { AppContext } from '../../../Context';
+import { ServiceModal } from '../../../model';
 
 const services: ServiceModal[] = [
 	{

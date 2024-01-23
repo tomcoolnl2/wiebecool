@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const Map = () => {
+export const GoogleMaps = () => {
 	return (
 		<div className="map_wrap w-full float-left clear-both h-auto mb-[50px]">
 			<div className="mapouter">

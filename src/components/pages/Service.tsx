@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { SectionContainer } from './SectionContainer';
-import { SectionTitle } from './SectionTitle';
+import { SectionContainer } from '../SectionContainer';
+import { SectionTitle } from '../SectionTitle';
 import { FunFact } from './service/FunFact';
 import { Partners } from './service/Partners';
 import { Pricing } from './service/Pricing';

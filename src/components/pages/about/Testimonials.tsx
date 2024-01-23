@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { sliderProps } from '../../sliderProps';
+import { sliderProps } from '../../../sliderProps';
 
 const testimonialData = [
 	{

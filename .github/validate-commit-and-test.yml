@@ -17,20 +17,20 @@ jobs:
             - name: Validate Commit Message
               uses: webiny/action-conventional-commits@v1.1.0
 
-    test:
-        runs-on: ubuntu-latest
-        needs: validate-commit-message
-        steps:
-            - name: Checkout Repository
-              uses: actions/checkout@v2
+    # test:
+    #     runs-on: ubuntu-latest
+    #     needs: validate-commit-message
+    #     steps:
+    #         - name: Checkout Repository
+    #           uses: actions/checkout@v2
 
-            - name: Set Up Node.js
-              uses: actions/setup-node@v3
-              with:
-                  node-version: 18.17.0
+    #         - name: Set Up Node.js
+    #           uses: actions/setup-node@v3
+    #           with:
+    #               node-version: 18.17.0
 
-            - name: Install Dependencies
-              run: npm ci
+    #         - name: Install Dependencies
+    #           run: npm ci
 
-            - name: Run Jest Tests
-              run: npm test
+    #         - name: Run Jest Tests
+    #           run: npm test

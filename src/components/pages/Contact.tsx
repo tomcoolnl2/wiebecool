@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { SectionContainer } from './SectionContainer';
-import { SectionTitle } from './SectionTitle';
-import { ContactForm } from './contact/ContactForm';
-import { Map } from './contact/Map';
+import { SectionContainer } from '../SectionContainer';
+import { SectionTitle } from '../SectionTitle';
+import { ContactForm } from '../ContactForm';
+import { GoogleMaps } from '../GoogleMaps';
 
-export const Contact = () => {
+export const Contact: React.FC = () => {
 	return (
 		<SectionContainer name={'contact'}>
 			<div className="container">
@@ -14,7 +14,7 @@ export const Contact = () => {
 							<SectionTitle pageName={'Contact'} title={'Neem gerust contact op voor meer informatie'} />
 						</div>
 					</div>
-					<Map />
+					<GoogleMaps />
 					<ContactForm />
 				</div>
 			</div>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ActionType, NewsModal, PortfolioItem, Product, ServiceModal, State, StateAction } from './model';
+import { ActionType, PortfolioItem, Product, ServiceModal, State, StateAction } from './model';
 
 // Initial Value
 const initialState: State = {
