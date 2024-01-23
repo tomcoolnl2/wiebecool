@@ -358,23 +358,6 @@
 .tokyo_tm_portfolio .portfolio_list li .inner:hover .abs_image {
 	transform: scale(1.1) translateZ(0);
 }
-.tokyo_tm_portfolio_titles {
-	white-space: nowrap;
-	background: #ffffff;
-	font-size: 18px;
-	padding: 5px 15px;
-	font-family: 'Montserrat';
-	font-weight: 600;
-	color: #000;
-	position: fixed;
-	z-index: 15;
-	opacity: 0;
-	visibility: hidden;
-}
-.tokyo_tm_portfolio_titles.visible {
-	opacity: 1;
-	visibility: visible;
-}
 .product-cards li .list_inner {
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.07);
 }

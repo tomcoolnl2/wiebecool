@@ -62,15 +62,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 		});
 	}, []);
 
-	const { route, animation, modal, productModal, portfolioDetailsModal } = React.useMemo(
-		() => ({ ...state }),
-		[state]
-	);
+	const { animation, modal, productModal, portfolioDetailsModal } = React.useMemo(() => ({ ...state }), [state]);
 
 	return (
 		<AppContext.Provider
 			value={{
-				route,
 				animation,
 				modal,
 				modalToggle,

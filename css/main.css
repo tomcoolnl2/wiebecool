@@ -928,43 +928,6 @@ h6 {
 	margin-top: 30px;
 }
 
-.tokyo_tm_portfolio_titles {
-	visibility: hidden;
-	position: fixed;
-	z-index: 15;
-	white-space: nowrap;
-	--tw-bg-opacity: 1;
-	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-	padding-top: 5px;
-	padding-bottom: 5px;
-	padding-left: 15px;
-	padding-right: 15px;
-	font-family: Montserrat, sans-serif;
-	font-size: 18px;
-	font-weight: 600;
-	--tw-text-opacity: 1;
-	color: rgb(0 0 0 / var(--tw-text-opacity));
-	opacity: 0;
-}
-
-.tokyo_tm_portfolio_titles .work__cat {
-	position: absolute;
-	top: 100%;
-	left: 0px;
-	margin-top: -10px;
-	--tw-bg-opacity: 1;
-	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	font-family: Mulish, sans-serif;
-	font-size: 15px;
-	font-weight: 500;
-	--tw-text-opacity: 1;
-	color: rgb(118 118 118 / var(--tw-text-opacity));
-}
-
 .entry {
 	position: relative;
 }

@@ -75,7 +75,6 @@ const detailData = [
 export default function Portfolio() {
 	//
 	React.useEffect(() => {
-		tokyo.portfolioHover();
 		tokyo.dataImage();
 	}, []);
 
@@ -115,7 +114,7 @@ export default function Portfolio() {
 										<a className="popup-vimeo" href="https://vimeo.com/337293658">
 											<img
 												className="opacity-0 min-w-full"
-												src="assets/img/thumbs/1-1.jpg"
+												src="img/_new/portfolio/wiebe_1.jpg" //THUMB
 												alt="image"
 											/>
 											<div
@@ -136,7 +135,7 @@ export default function Portfolio() {
 										<a className="popup-youtube" href="https://www.youtube.com/watch?v=7e90gBu4pas">
 											<img
 												className="opacity-0 min-w-full"
-												src="assets/img/thumbs/1-1.jpg"
+												src="img/_new/portfolio/wiebe_2.jpg" //THUMB
 												alt="image"
 											/>
 											<div
@@ -160,7 +159,7 @@ export default function Portfolio() {
 										>
 											<img
 												className="opacity-0 min-w-full"
-												src="assets/img/thumbs/1-1.jpg"
+												src="img/_new/portfolio/wiebe_3.jpg" //THUMB
 												alt="image"
 											/>
 											<div
@@ -178,10 +177,10 @@ export default function Portfolio() {
 										data-title="Gloria Jenkins"
 										data-category="Image"
 									>
-										<a className="zoom" href="assets/img/portfolio/3.jpg">
+										<a className="zoom" href="img/_new/portfolio/wiebe_4.jpg">
 											<img
 												className="opacity-0 min-w-full"
-												src="assets/img/thumbs/1-1.jpg"
+												src="img/_new/portfolio/wiebe_4.jpg" //THUMB
 												alt="image"
 											/>
 											<div
@@ -209,7 +208,7 @@ export default function Portfolio() {
 										>
 											<img
 												className="opacity-0 min-w-full"
-												src="assets/img/thumbs/1-1.jpg"
+												src="img/_new/portfolio/wiebe_5.jpg" //THUMB
 												alt="image"
 											/>
 											<div
@@ -237,7 +236,7 @@ export default function Portfolio() {
 										>
 											<img
 												className="opacity-0 min-w-full"
-												src="assets/img/thumbs/1-1.jpg"
+												src="img/_new/portfolio/wiebe_6.jpg" //THUMB
 												alt="image"
 											/>
 											<div
@@ -265,7 +264,7 @@ export default function Portfolio() {
 										>
 											<img
 												className="opacity-0 min-w-full"
-												src="assets/img/thumbs/1-1.jpg"
+												src="img/_new/portfolio/blanca.jpg" //THUMB
 												alt="image"
 											/>
 											<div
@@ -293,7 +292,7 @@ export default function Portfolio() {
 										>
 											<img
 												className="opacity-0 min-w-full"
-												src="assets/img/thumbs/1-1.jpg"
+												src="img/_new/portfolio/blauwe_janus.jpg" //THUMB
 												alt="image"
 											/>
 											<div
@@ -321,7 +320,7 @@ export default function Portfolio() {
 										>
 											<img
 												className="opacity-0 min-w-full"
-												src="assets/img/thumbs/1-1.jpg"
+												src="img/_new/portfolio/demeter.jpg" //THUMB
 												alt="image"
 											/>
 											<div
@@ -349,7 +348,7 @@ export default function Portfolio() {
 										>
 											<img
 												className="opacity-0 min-w-full"
-												src="assets/img/thumbs/1-1.jpg"
+												src="img/_new/portfolio/sanne.jpg" //THUMB
 												alt="image"
 											/>
 											<div
@@ -377,7 +376,7 @@ export default function Portfolio() {
 										>
 											<img
 												className="opacity-0 min-w-full"
-												src="assets/img/thumbs/1-1.jpg"
+												src="img/_new/portfolio/maria_magdalena.jpg" //THUMB
 												alt="image"
 											/>
 											<div

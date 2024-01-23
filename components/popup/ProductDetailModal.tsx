@@ -14,7 +14,7 @@ export const ProductDetailComponent: React.FC = () => {
 	return (
 		<ModalContainer<Product> nullValue={setProductModal}>
 			<div className="image relative overflow-hidden">
-				<img className="min-w-full opacity-0" src="assets/img/thumbs/40-25.jpg" alt="image" />
+				<img className="min-w-full opacity-0" src="img/thumbs/40-25.jpg" alt="image" />
 				<div
 					className="main absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
 					data-img-url={productModal.image}
