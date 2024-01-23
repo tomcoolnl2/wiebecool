@@ -1,7 +1,7 @@
 export const tokyo = {
 	dataImage() {
 		let d = document.querySelectorAll('[data-img-url]') as NodeListOf<HTMLElement>;
-		for (let i = 0; i < d.length; i++) {
+		for (let i = 0, n = d.length; i < n; i += 1) {
 			const element = d[i];
 			element.style.backgroundImage = `url(${element.getAttribute('data-img-url')})`;
 		}
@@ -106,6 +106,7 @@ export const tokyo = {
 		if (preloader) {
 			if (!isMobile) {
 				setTimeout(function () {
+					console.log('800', preloader);
 					preloader.classList.add('preloaded');
 				}, 800);
 				setTimeout(function () {

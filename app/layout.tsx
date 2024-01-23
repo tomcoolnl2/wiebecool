@@ -14,7 +14,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 		<html lang="nl">
 			<body className="dark">
 				<Providers>
-					<Template key={1}>{children}</Template>
+					<Template key={Date.now()}>{children}</Template>
 				</Providers>
 			</body>
 		</html>

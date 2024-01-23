@@ -1,4 +1,3 @@
-'use client';
 import * as React from 'react';
 import { ActionType, PortfolioItem, Product, ServiceModal, State, StateAction } from '@/model';
 
@@ -16,7 +15,6 @@ const initialState: State = {
 		{ id: 4, name: 'Contact', href: '/contact' },
 	],
 	navChange: () => void 0,
-	animationChange: () => void 0,
 	setServiceModal: () => void 0,
 	modalToggle: () => void 0,
 	setProductModal: () => void 0,
@@ -32,11 +30,6 @@ const reducer = (state: State, action: StateAction): State => {
 			return {
 				...state,
 				nav: payload,
-			};
-		case ActionType.ANIMATION:
-			return {
-				...state,
-				animation: payload,
 			};
 		case ActionType.MODAL:
 			return {
@@ -70,13 +63,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 	const navChange = React.useCallback((value: string) => {
 		dispatch({
 			type: ActionType.NAV,
-			payload: value,
-		});
-	}, []);
-
-	const animationChange = React.useCallback((value: string) => {
-		dispatch({
-			type: ActionType.ANIMATION,
 			payload: value,
 		});
 	}, []);
@@ -121,7 +107,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 				nav,
 				navChange,
 				animation,
-				animationChange,
 				modal,
 				modalToggle,
 				serviceModal,

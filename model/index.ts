@@ -7,7 +7,6 @@ export interface State {
 	portfolioDetailsModal: PortfolioItem | null;
 	menus: MenuItem[];
 	navChange: (value: string) => void;
-	animationChange: (value: string) => void;
 	setServiceModal: (value: ServiceModal | null) => void;
 	modalToggle: (value: boolean) => void;
 	setProductModal: (value: Product | null) => void;
@@ -16,7 +15,6 @@ export interface State {
 
 export enum ActionType {
 	NAV = 'NAV',
-	ANIMATION = 'ANIMATION',
 	MODAL = 'MODAL',
 	SERVICEMODAL = 'SERVICEMODAL',
 	NEWSMODAL = 'NEWSMODAL',
@@ -25,7 +23,6 @@ export enum ActionType {
 
 export type StateAction =
 	| { type: ActionType.NAV; payload: string }
-	| { type: ActionType.ANIMATION; payload: string }
 	| { type: ActionType.MODAL; payload: boolean }
 	| { type: ActionType.SERVICEMODAL; payload: ServiceModal | null }
 	| { type: ActionType.NEWSMODAL; payload: Product | null }

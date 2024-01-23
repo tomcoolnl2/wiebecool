@@ -7,9 +7,9 @@
 @import 'swiper/css/pagination';
 @import 'swiper/css/scrollbar';
 
-@import '@/css/plugins.css';
-@import '@/css/custom.css';
-@import '@/css/main.css';
+@import '../css/plugins.css';
+@import '../css/custom.css';
+@import '../css/main.css';
 
 a {
 	color: #b7950b;

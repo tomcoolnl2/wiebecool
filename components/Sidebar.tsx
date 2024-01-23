@@ -3,7 +3,7 @@ import * as React from 'react';
 import { AppContext } from '@/context/Context';
 import { SocialMediaLinks } from '../components/SocialMediaLinks';
 
-export const Sidebar = () => {
+export const Sidebar: React.FC = () => {
 	//
 	const { nav, menus } = React.useContext(AppContext);
 

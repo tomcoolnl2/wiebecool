@@ -21,7 +21,9 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
 	const { modal, serviceModal, productModal, portfolioDetailsModal } = React.useContext(AppContext);
 
-	console.log(modal, serviceModal, productModal, portfolioDetailsModal);
+	React.useEffect(() => {
+		console.log(modal, serviceModal, productModal, portfolioDetailsModal);
+	}, [modal, serviceModal, productModal, portfolioDetailsModal]);
 
 	return (
 		<>
