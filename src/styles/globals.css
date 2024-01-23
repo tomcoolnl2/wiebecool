@@ -3,6 +3,10 @@
 @import 'swiper/css/pagination';
 @import 'swiper/css/scrollbar';
 
+@import '../../public/assets/css/plugins.css';
+@import '../../public/assets/css/custom.css';
+@import '../../public/assets/css/main.css';
+
 a {
 	color: #b7950b;
 	transition: color 0.3s;
