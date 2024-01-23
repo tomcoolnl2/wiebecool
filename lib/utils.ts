@@ -107,25 +107,4 @@ export const tokyo = {
 			}
 		}
 	},
-	preloader() {
-		let isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ? true : false;
-		let preloader = document.getElementById('preloader') as HTMLElement;
-
-		if (preloader) {
-			if (!isMobile) {
-				setTimeout(function () {
-					console.log('800', preloader);
-					preloader.style.border = '10px solid teal';
-					preloader.classList.add('preloaded');
-				}, 800);
-				setTimeout(function () {
-					console.log("time's up", preloader);
-					preloader.remove();
-					console.log('800', preloader);
-				}, 2000);
-			} else {
-				preloader.remove();
-			}
-		}
-	},
 };
