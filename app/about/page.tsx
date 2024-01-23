@@ -1,10 +1,11 @@
 'use client';
+import Link from 'next/link';
 import * as React from 'react';
+import { Product } from '@/model';
 import { SectionContainer } from '@/components/SectionContainer';
 import { SectionTitle } from '@/components/SectionTitle';
 import { ProductCards } from '@/components/ProductCards';
 import { ContactDetails } from '@/components/ContactDetails';
-import { Product } from '@/model';
 
 const products1: Product[] = [
 	{
@@ -69,9 +70,9 @@ export default function About() {
 						<h4 className="mb-[22px]">Over beelden in steen en hout:</h4>
 						<p className="mb-[11px]">
 							<q>
-								Keer op keer ervaar ik het als een uitdaging om een stuk steen of &apos;dood`&apos;`
-								hout tot leven te wekken, zo te bewerken dat het gaat spreken, dat het een beeld wordt
-								dat een ander raakt. Ik vind het machtig om aardse materie om te zetten in een bezield
+								Keer op keer ervaar ik het als een uitdaging om een stuk steen of &apos;dood`&apos; hout
+								tot leven te wekken, zo te bewerken dat het gaat spreken, dat het een beeld wordt dat
+								een ander raakt. Ik vind het machtig om aardse materie om te zetten in een bezield
 								beeld.
 							</q>
 						</p>
@@ -104,7 +105,7 @@ export default function About() {
 							De laatste tijd werk ik het liefst in steen, maar ook hout- en bronswerk heb ik in het
 							verleden uitgebreid verkend. Abstract of figuratief werken; beiden doe ik graag. In de loop
 							der jaren heb ik een voorliefde ontwikkeld voor impressionistische portretten. (zie{' '}
-							<a href="#portfolio">werk</a>)
+							<Link href="/portfolio">werk</Link>)
 						</p>
 						<q className="mb-[22px]">
 							In musea kijk ik vooral naar beelden en dan loop ik er het liefst een paar keer omheen, op
@@ -115,8 +116,8 @@ export default function About() {
 					<div className="about_text w-full h-auto clear-both float-left border-solid border-[#DFDFDF] border-b pb-[31px] mb-[30px]">
 						<p className="mb-[11px]">
 							Nadere kennismaking voor een opdracht kan telefonisch of via mijn{' '}
-							<a href="#contact">e-mailadres</a>, graag nodig ik mensen uit om langs te komen in Dronten
-							om te kijken wat er allemaal staat en om een en ander nader te bespreken.
+							<Link href="/contact">e-mailadres</Link>, graag nodig ik mensen uit om langs te komen in
+							Dronten om te kijken wat er allemaal staat en om een en ander nader te bespreken.
 						</p>
 					</div>
 					<div className="about_text w-full h-auto clear-both float-left pb-[31px] mb-[30px]">
