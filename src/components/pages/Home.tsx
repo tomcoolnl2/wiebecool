@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { SectionContainer } from '../SectionContainer';
 import { ContactDetails } from '../ContactDetails';
+import { SocialMediaLinks } from '../SocialMediaLinks';
 
 const socialIcon = [
 	// {
@@ -70,21 +71,7 @@ export const Home = () => {
 								<br />
 								Wekelijks geopend op woensdag, donderdag, vrijdag en zaterdag van 10.00 tot 17.00 uur.
 							</p>
-							<nav className="social w-full float-left  mb-[25px]">
-								<ul className="m-0 list-none">
-									{socialIcon.map((item) => (
-										<li key={item.id}>
-											<a
-												className="text-black text-[20px] transition-all duration-300 hover:text-black"
-												href={item.link}
-												target="_blank"
-											>
-												<i className={item.iconName} />
-											</a>
-										</li>
-									))}
-								</ul>
-							</nav>
+							<SocialMediaLinks />
 							<br />
 							<ContactDetails />
 						</div>

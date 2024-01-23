@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { AppContext } from '../Context';
+import { SocialMediaLinks } from '../components/SocialMediaLinks';
 
 export const Sidebar = () => {
 	//
@@ -31,6 +32,7 @@ export const Sidebar = () => {
 						))}
 					</ul>
 				</div>
+				<SocialMediaLinks size={11} />
 				<div className="copyright w-full float-left">
 					<p className="text-[12px] text-[#999] font-montserrat leading-[25px]">
 						© {new Date().getFullYear()}
