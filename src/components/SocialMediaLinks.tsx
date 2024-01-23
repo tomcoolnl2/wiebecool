@@ -30,12 +30,12 @@ const socialIcon = [
 
 export const SocialMediaLinks: React.FC<{ size?: number }> = ({ size = 20 }) => {
 	return (
-		<nav className="social w-full">
+		<div className="social w-full">
 			{socialIcon.map((item) => (
-				<a key={item.id} className={`text-[${size}px]`} href={item.link} target="_blank">
+				<a key={item.id} className={`text-[${size}px]`} href={item.link} target="_blank" role="link">
 					<i className={item.iconName} />
 				</a>
 			))}
-		</nav>
+		</div>
 	);
 };
