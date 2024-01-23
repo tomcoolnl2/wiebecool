@@ -1,9 +1,10 @@
+'use client';
 import * as React from 'react';
-import { SectionContainer } from '../SectionContainer';
-import { SectionTitle } from '../SectionTitle';
-import { ProductCards } from '../ProductCards';
-import { ContactDetails } from '../ContactDetails';
-import { Product } from '../../model';
+import { SectionContainer } from 'components/SectionContainer';
+import { SectionTitle } from 'components/SectionTitle';
+import { ProductCards } from 'components/ProductCards';
+import { ContactDetails } from 'components/ContactDetails';
+import { Product } from '@/src/model';
 
 const products1: Product[] = [
 	{
@@ -41,7 +42,7 @@ const products2: Product[] = [
 	},
 ];
 
-export const About = () => {
+export default function About() {
 	return (
 		<SectionContainer name={'about'}>
 			<div className="container">
@@ -112,4 +113,4 @@ export const About = () => {
 			</div>
 		</SectionContainer>
 	);
-};
+}

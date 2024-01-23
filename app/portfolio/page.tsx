@@ -1,8 +1,9 @@
+'use client';
 import * as React from 'react';
-import { AppContext } from '../../Context';
-import { tokyo } from '../../utils';
-import { SectionContainer } from '../SectionContainer';
-import { SectionTitle } from '../SectionTitle';
+import { AppContext } from '../../src/Context';
+import { tokyo } from '../../src/utils';
+import { SectionContainer } from 'components/SectionContainer';
+import { SectionTitle } from 'components/SectionTitle';
 
 const detailData = [
 	{
@@ -71,7 +72,7 @@ const detailData = [
 	},
 ];
 
-export const Portfolio: React.FC = () => {
+export default function Portfolio() {
 	//
 	React.useEffect(() => {
 		tokyo.portfolioHover();
@@ -393,4 +394,4 @@ export const Portfolio: React.FC = () => {
 			</div>
 		</SectionContainer>
 	);
-};
+}

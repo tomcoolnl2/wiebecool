@@ -1,9 +1,10 @@
+'use client';
 import * as React from 'react';
-import { SectionContainer } from '../SectionContainer';
-import { ContactDetails } from '../ContactDetails';
-import { SocialMediaLinks } from '../SocialMediaLinks';
+import { SectionContainer } from '../src/components/SectionContainer';
+import { ContactDetails } from '../src/components/ContactDetails';
+import { SocialMediaLinks } from '../src/components/SocialMediaLinks';
 
-export const Home = () => {
+export default function Home() {
 	return (
 		<SectionContainer name={'home'}>
 			<div className="container">
@@ -58,4 +59,4 @@ export const Home = () => {
 			</div>
 		</SectionContainer>
 	);
-};
+}

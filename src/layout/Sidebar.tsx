@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import * as React from 'react';
 import { AppContext } from '../Context';
 import { SocialMediaLinks } from '../components/SocialMediaLinks';
@@ -12,7 +13,7 @@ export const Sidebar = () => {
 				<div className="logo" data-type="text">
 					{' '}
 					{/* You can use image or text as logo. data-type values are: "image" and "text" */}
-					<a href="#" role="link">
+					<a href="/" role="link">
 						<img className="max-w-[150px]" src="assets/img/logo/dark.png" alt="image" />
 						<h3 className="font-poppins font-black text-[22px] tracking-[5px]">BEELDHOUWER</h3>
 					</a>
@@ -21,14 +22,14 @@ export const Sidebar = () => {
 					<ul className="transition_link m-0 list-none">
 						{menus.map((menu) => (
 							<li className={`m-0 w-full float-left ${menu.href == nav ? 'active' : ''}`} key={menu.id}>
-								<a
+								<Link
 									className="text-[#767676] capitalize inline-block font-medium font-montserrat transition-all duration-300 hover:text-black"
-									href={`#${menu.href}`}
-									onClick={() => navChange(menu.href)}
+									href={menu.href}
+									// onClick={() => navChange(menu.href)}
 									role="link"
 								>
 									{menu.name}
-								</a>
+								</Link>
 							</li>
 						))}
 					</ul>

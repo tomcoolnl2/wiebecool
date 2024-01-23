@@ -1,10 +1,11 @@
+'use client';
 import * as React from 'react';
-import { SectionContainer } from '../SectionContainer';
-import { SectionTitle } from '../SectionTitle';
-import { ContactForm } from '../ContactForm';
-import { GoogleMaps } from '../GoogleMaps';
+import { SectionContainer } from 'components/SectionContainer';
+import { SectionTitle } from 'components/SectionTitle';
+import { ContactForm } from 'components/ContactForm';
+import { GoogleMaps } from 'components/GoogleMaps';
 
-export const Contact: React.FC = () => {
+export default function Contact() {
 	return (
 		<SectionContainer name={'contact'}>
 			<div className="container">
@@ -20,4 +21,4 @@ export const Contact: React.FC = () => {
 			</div>
 		</SectionContainer>
 	);
-};
+}

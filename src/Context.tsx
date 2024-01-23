@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import { ActionType, PortfolioItem, Product, ServiceModal, State, StateAction } from './model';
 
@@ -10,12 +11,12 @@ const initialState: State = {
 	productModal: null,
 	portfolioDetailsModal: null,
 	menus: [
-		{ id: 1, name: 'Home', href: 'home' },
-		{ id: 2, name: 'Missie', href: 'about' },
+		{ id: 1, name: 'Home', href: '/' },
+		{ id: 2, name: 'Missie', href: '/about' },
 		// { id: 3, name: 'service', href: 'service' },
-		{ id: 4, name: 'Werk', href: 'portfolio' },
+		{ id: 4, name: 'Werk', href: '/portfolio' },
 		// { id: 5, name: 'News', href: 'news' },
-		{ id: 6, name: 'Contact', href: 'contact' },
+		{ id: 6, name: 'Contact', href: '/contact' },
 	],
 	navChange: () => void 0,
 	animationChange: () => void 0,
