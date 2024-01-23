@@ -8,9 +8,9 @@ import { SectionTitle } from '@/components/SectionTitle';
 const detailData = [
 	{
 		id: 1,
-		thumbnail: 'assets/img/portfolio/7.jpg',
-		title: 'Selena Gomez',
-		text: ['Lipsum dolr et si amet.'],
+		thumbnail: 'img/_new/portfolio/wiebe_1.jpg',
+		title: 'Wiebe Cool',
+		text: ['Lipsum dolor et si amet.'],
 		client: 'Wiebe Cool',
 		date: 'October 22, 2022',
 		category: 'Detail',
@@ -31,17 +31,14 @@ const detailData = [
 				link: 'https://www.linkedin.com/',
 			},
 		],
-		bigImage: 'assets/img/portfolio/1.jpg',
-		images: ['assets/img/portfolio/2.jpg', 'assets/img/portfolio/3.jpg'],
+		bigImage: 'img/_new/portfolio/wiebe_1.jpg',
+		images: ['img/_new/portfolio/wiebe_1.jpg', 'img/_new/portfolio/wiebe_1.jpg'],
 	},
 	{
 		id: 2,
 		thumbnail: 'assets/img/portfolio/8.jpg',
-		title: 'Ave Simone',
-		text: [
-			'We live in a world where we need to move quickly and iterate on our ideas as flexibly as possible. Building mockups strikes the ideal balance between true-life representation of the end product and ease of modification.',
-			"Mockups are useful both for the creative phase of the project - for instance when you're trying to figure out your user flows or the proper visual hierarchy - and the production phase when they will represent the target product. Making mockups a part of your creative and development process allows you to quickly and easily ideate.",
-		],
+		title: 'Wiebe Cool',
+		text: ['Lorem Ipsum'],
 		client: 'Wiebe Cool',
 		date: 'October 22, 2022',
 		category: 'Detail',
@@ -67,8 +64,8 @@ const detailData = [
 				link: 'https://www.linkedin.com/',
 			},
 		],
-		bigImage: 'assets/img/portfolio/1.jpg',
-		images: ['assets/img/portfolio/2.jpg', 'assets/img/portfolio/3.jpg'],
+		bigImage: 'img/_new/portfolio/wiebe_2.jpg',
+		images: ['img/_new/portfolio/wiebe_2.jpg', 'img/_new/portfolio/wiebe_2.jpg'],
 	},
 ];
 
@@ -115,14 +112,17 @@ export default function Portfolio() {
 							<br />
 						</p>
 						<ul className="portfolio_list gallery_zoom ml-[-40px] list-none">
-							<li className="vimeo mb-[40px] float-left w-1/3 pl-[40px] item__">
+							<li className="image mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div
-										className="entry tokyo_tm_portfolio_animation_wrap"
-										data-title="Teresa Butler"
-										data-category="Vimeo"
-									>
-										<a className="popup-vimeo" href="https://vimeo.com/337293658">
+									<div className="entry" data-title="Teresa Butler" data-category="Image">
+										<a
+											className="popup_info"
+											href="#"
+											onClick={() => {
+												setPortfolioDetailsModal(detailData[0]);
+												modalToggle(true);
+											}}
+										>
 											<img
 												className="opacity-0 min-w-full"
 												src="img/_new/portfolio/wiebe_1.jpg" //THUMB
@@ -136,14 +136,17 @@ export default function Portfolio() {
 									</div>
 								</div>
 							</li>
-							<li className="youtube mb-[40px] float-left w-1/3 pl-[40px] item__">
+							<li className="image mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div
-										className="entry tokyo_tm_portfolio_animation_wrap"
-										data-title="Ashley Flores"
-										data-category="Youtube"
-									>
-										<a className="popup-youtube" href="https://www.youtube.com/watch?v=7e90gBu4pas">
+									<div className="entry" data-title="Ashley Flores" data-category="Image">
+										<a
+											className="popup_info"
+											href="#"
+											onClick={() => {
+												setPortfolioDetailsModal(detailData[0]);
+												modalToggle(true);
+											}}
+										>
 											<img
 												className="opacity-0 min-w-full"
 												src="img/_new/portfolio/wiebe_2.jpg" //THUMB
@@ -157,16 +160,16 @@ export default function Portfolio() {
 									</div>
 								</div>
 							</li>
-							<li className="soundcloud mb-[40px] float-left w-1/3 pl-[40px] item__">
+							<li className="image mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div
-										className="entry tokyo_tm_portfolio_animation_wrap"
-										data-title="Derek Smith"
-										data-category="Soundcloud"
-									>
+									<div className="entry" data-title="Derek Smith" data-category="Image">
 										<a
-											className="soundcloude_link mfp-iframe audio"
-											href="https://w.soundcloud.com/player/?visual=true&url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F159967086&show_artwork=true&maxwidth=1020&maxheight=1000&auto_play=1"
+											className="popup_info"
+											href="#"
+											onClick={() => {
+												setPortfolioDetailsModal(detailData[0]);
+												modalToggle(true);
+											}}
 										>
 											<img
 												className="opacity-0 min-w-full"
@@ -183,12 +186,15 @@ export default function Portfolio() {
 							</li>
 							<li className="image mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div
-										className="entry tokyo_tm_portfolio_animation_wrap"
-										data-title="Gloria Jenkins"
-										data-category="Image"
-									>
-										<a className="zoom" href="img/_new/portfolio/wiebe_4.jpg">
+									<div className="entry" data-title="Gloria Jenkins" data-category="Image">
+										<a
+											className="popup_info"
+											href="#"
+											onClick={() => {
+												setPortfolioDetailsModal(detailData[0]);
+												modalToggle(true);
+											}}
+										>
 											<img
 												className="opacity-0 min-w-full"
 												src="img/_new/portfolio/wiebe_4.jpg" //THUMB
@@ -204,11 +210,7 @@ export default function Portfolio() {
 							</li>
 							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div
-										className="entry tokyo_tm_portfolio_animation_wrap"
-										data-title="Selena Gomez"
-										data-category="Detail"
-									>
+									<div className="entry" data-title="Selena Gomez" data-category="Detail">
 										<a
 											className="popup_info"
 											href="#"
@@ -232,11 +234,7 @@ export default function Portfolio() {
 							</li>
 							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div
-										className="entry tokyo_tm_portfolio_animation_wrap"
-										data-title="Ave Simone"
-										data-category="Detail"
-									>
+									<div className="entry" data-title="Ave Simone" data-category="Detail">
 										<a
 											className="popup_info"
 											href="#"
@@ -260,11 +258,7 @@ export default function Portfolio() {
 							</li>
 							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div
-										className="entry tokyo_tm_portfolio_animation_wrap"
-										data-title="Selena Gomez"
-										data-category="Detail"
-									>
+									<div className="entry" data-title="Selena Gomez" data-category="Detail">
 										<a
 											className="popup_info"
 											href="#"
@@ -288,11 +282,7 @@ export default function Portfolio() {
 							</li>
 							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div
-										className="entry tokyo_tm_portfolio_animation_wrap"
-										data-title="Selena Gomez"
-										data-category="Detail"
-									>
+									<div className="entry" data-title="Selena Gomez" data-category="Detail">
 										<a
 											className="popup_info"
 											href="#"
@@ -316,11 +306,7 @@ export default function Portfolio() {
 							</li>
 							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div
-										className="entry tokyo_tm_portfolio_animation_wrap"
-										data-title="Selena Gomez"
-										data-category="Detail"
-									>
+									<div className="entry" data-title="Selena Gomez" data-category="Detail">
 										<a
 											className="popup_info"
 											href="#"
@@ -344,11 +330,7 @@ export default function Portfolio() {
 							</li>
 							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div
-										className="entry tokyo_tm_portfolio_animation_wrap"
-										data-title="Selena Gomez"
-										data-category="Detail"
-									>
+									<div className="entry" data-title="Selena Gomez" data-category="Detail">
 										<a
 											className="popup_info"
 											href="#"
@@ -372,11 +354,7 @@ export default function Portfolio() {
 							</li>
 							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div
-										className="entry tokyo_tm_portfolio_animation_wrap"
-										data-title="Selena Gomez"
-										data-category="Detail"
-									>
+									<div className="entry" data-title="Selena Gomez" data-category="Detail">
 										<a
 											className="popup_info"
 											href="#"
