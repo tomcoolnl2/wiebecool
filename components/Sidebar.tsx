@@ -12,11 +12,10 @@ export const Sidebar: React.FC<{ menuItems: MenuItem[] }> = ({ menuItems }) => {
 	return (
 		<aside className="leftpart w-[450px] h-[100vh] fixed flex items-center z-[12] px-[100px] py-[0px] bg-white">
 			<div className="leftpart_inner w-full h-auto">
+				{/* You can use image or text as logo. data-type values are: "image" and "text" */}
 				<div className="logo" data-type="text">
 					{' '}
-					{/* You can use image or text as logo. data-type values are: "image" and "text" */}
 					<a href="/" role="link">
-						<img className="max-w-[150px]" src="img/logo/dark.png" alt="image" />
 						<h3 className="font-poppins font-black text-[22px] tracking-[5px]">BEELDHOUWER</h3>
 					</a>
 				</div>
