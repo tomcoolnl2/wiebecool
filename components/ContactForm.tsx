@@ -12,8 +12,11 @@ export const ContactForm = () => {
 	const { name, email, message } = mailData;
 
 	const [error, setError] = React.useState<boolean | null>(null);
-	const onChange = (e) => setMailData({ ...mailData, [e.target.name]: e.target.value });
-	const onSubmit = (e) => {
+
+	const onChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) =>
+		setMailData({ ...mailData, [e.target.name]: e.target.value });
+
+	const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		if (name.length === 0 || email.length === 0 || message.length === 0) {
 			setError(true);

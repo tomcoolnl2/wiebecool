@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppContext } from '../Context';
+import { AppContext } from '@/context/Context';
 
 export const Mobile = () => {
 	//

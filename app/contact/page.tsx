@@ -1,9 +1,9 @@
 'use client';
 import * as React from 'react';
-import { SectionContainer } from '../../src/components/SectionContainer';
-import { SectionTitle } from '../../src/components/SectionTitle';
-import { ContactForm } from '../../src/components/ContactForm';
-import { GoogleMaps } from '../../src/components/GoogleMaps';
+import { SectionContainer } from '@/components/SectionContainer';
+import { SectionTitle } from '@/components/SectionTitle';
+import { ContactForm } from '@/components/ContactForm';
+import { GoogleMaps } from '@/components/GoogleMaps';
 
 export default function Contact() {
 	return (

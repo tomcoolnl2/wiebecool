@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { AppContext } from '../../Context';
+import { PortfolioItem } from '@/model';
+import { AppContext } from '@/context/Context';
 import { ModalContainer } from './ModalContainer';
-import { PortfolioItem } from '../../model';
 
 export const DetailsModalComponent: React.FC = () => {
 	//

@@ -1,16 +1,15 @@
 'use client';
 import * as React from 'react';
-import { tokyo } from '../src/utils';
-import { AppContext, AppProvider } from '../src/Context';
-import { Cursor } from '../src/layout/Cursor';
-import { Mobile } from '../src/layout/Mobile';
-import { Sidebar } from '../src/layout/Sidebar';
-import { ImageView } from '../src/components/popup/ImageView';
-import { MediaPopup } from '../src/components/popup/MediaPopup';
-import { ProductDetailComponent } from '../src/components/popup/ProductDetailModal';
-import { ServiceModalComponent } from '../src/components/popup/ServiceModal';
-import { DetailsModalComponent } from '../src/components/popup/DetailsModal';
-import { PreLoader } from '../src/layout/PreLoader';
+import { tokyo } from '@/lib/utils';
+import { AppContext } from '@/context/Context';
+import { Cursor } from '@/components/Cursor';
+import { Mobile } from '@/components/Mobile';
+import { Sidebar } from '@/components/Sidebar';
+import { PreLoader } from '@/components/PreLoader';
+import { ImageView } from '@/components/popup/ImageView';
+import { ProductDetailComponent } from '@/components/popup/ProductDetailModal';
+import { ServiceModalComponent } from '@/components/popup/ServiceModal';
+import { DetailsModalComponent } from '@/components/popup/DetailsModal';
 
 export default function Template({ children }: { children: React.ReactNode }) {
 	//
@@ -22,10 +21,11 @@ export default function Template({ children }: { children: React.ReactNode }) {
 
 	const { modal, serviceModal, productModal, portfolioDetailsModal } = React.useContext(AppContext);
 
+	console.log(modal, serviceModal, productModal, portfolioDetailsModal);
+
 	return (
-		<AppProvider>
+		<>
 			<PreLoader />
-			<MediaPopup />
 			<ImageView />
 			{modal && serviceModal && <ServiceModalComponent />}
 			{modal && productModal && <ProductDetailComponent />}
@@ -40,6 +40,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
 				</div>
 				<Cursor />
 			</div>
-		</AppProvider>
+		</>
 	);
 }

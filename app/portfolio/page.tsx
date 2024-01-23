@@ -1,9 +1,10 @@
 'use client';
+import Image from 'next/image';
 import * as React from 'react';
-import { AppContext } from '../../src/Context';
-import { tokyo } from '../../src/utils';
-import { SectionContainer } from '../../src/components/SectionContainer';
-import { SectionTitle } from '../../src/components/SectionTitle';
+import { AppContext } from '@/context/Context';
+import { tokyo } from '@/lib/utils';
+import { SectionContainer } from '@/components/SectionContainer';
+import { SectionTitle } from '@/components/SectionTitle';
 
 const detailData = [
 	{
@@ -113,14 +114,14 @@ export default function Portfolio() {
 										data-category="Vimeo"
 									>
 										<a className="popup-vimeo" href="https://vimeo.com/337293658">
-											<img
+											<Image
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/_new/portfolio/wiebe_1.jpg"
+												data-img-url="img/_new/portfolio/wiebe_1.jpg"
 											/>
 										</a>
 									</div>
@@ -134,14 +135,14 @@ export default function Portfolio() {
 										data-category="Youtube"
 									>
 										<a className="popup-youtube" href="https://www.youtube.com/watch?v=7e90gBu4pas">
-											<img
+											<Image
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/_new/portfolio/wiebe_2.jpg"
+												data-img-url="img/_new/portfolio/wiebe_2.jpg"
 											/>
 										</a>
 									</div>
@@ -158,14 +159,14 @@ export default function Portfolio() {
 											className="soundcloude_link mfp-iframe audio"
 											href="https://w.soundcloud.com/player/?visual=true&url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F159967086&show_artwork=true&maxwidth=1020&maxheight=1000&auto_play=1"
 										>
-											<img
+											<Image
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/_new/portfolio/wiebe_3.jpg"
+												data-img-url="img/_new/portfolio/wiebe_3.jpg"
 											/>
 										</a>
 									</div>
@@ -179,14 +180,14 @@ export default function Portfolio() {
 										data-category="Image"
 									>
 										<a className="zoom" href="assets/img/portfolio/3.jpg">
-											<img
+											<Image
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/_new/portfolio/wiebe_4.jpg"
+												data-img-url="img/_new/portfolio/wiebe_4.jpg"
 											/>
 										</a>
 									</div>
@@ -207,14 +208,14 @@ export default function Portfolio() {
 												modalToggle(true);
 											}}
 										>
-											<img
+											<Image
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/_new/portfolio/wiebe_5.jpg"
+												data-img-url="img/_new/portfolio/wiebe_5.jpg"
 											/>
 										</a>
 									</div>
@@ -235,14 +236,14 @@ export default function Portfolio() {
 												modalToggle(true);
 											}}
 										>
-											<img
+											<Image
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/_new/portfolio/wiebe_6.jpg"
+												data-img-url="img/_new/portfolio/wiebe_6.jpg"
 											/>
 										</a>
 									</div>
@@ -263,14 +264,14 @@ export default function Portfolio() {
 												modalToggle(true);
 											}}
 										>
-											<img
+											<Image
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/_new/portfolio/blanca.jpg"
+												data-img-url="img/_new/portfolio/blanca.jpg"
 											/>
 										</a>
 									</div>
@@ -291,14 +292,14 @@ export default function Portfolio() {
 												modalToggle(true);
 											}}
 										>
-											<img
+											<Image
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/_new/portfolio/blauwe_janus.jpg"
+												data-img-url="img/_new/portfolio/blauwe_janus.jpg"
 											/>
 										</a>
 									</div>
@@ -319,14 +320,14 @@ export default function Portfolio() {
 												modalToggle(true);
 											}}
 										>
-											<img
+											<Image
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/_new/portfolio/demeter.jpg"
+												data-img-url="img/_new/portfolio/demeter.jpg"
 											/>
 										</a>
 									</div>
@@ -347,14 +348,14 @@ export default function Portfolio() {
 												modalToggle(true);
 											}}
 										>
-											<img
+											<Image
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/_new/portfolio/sanne.jpg"
+												data-img-url="img/_new/portfolio/sanne.jpg"
 											/>
 										</a>
 									</div>
@@ -375,14 +376,14 @@ export default function Portfolio() {
 												modalToggle(true);
 											}}
 										>
-											<img
+											<Image
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="assets/img/_new/portfolio/maria_magdalena.jpg"
+												data-img-url="img/_new/portfolio/maria_magdalena.jpg"
 											/>
 										</a>
 									</div>

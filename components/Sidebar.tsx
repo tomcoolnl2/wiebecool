@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import * as React from 'react';
-import { AppContext } from '../Context';
+import { AppContext } from '@/context/Context';
 import { SocialMediaLinks } from '../components/SocialMediaLinks';
 
 export const Sidebar = () => {
 	//
-	const { navChange, nav, menus } = React.useContext(AppContext);
+	const { nav, menus } = React.useContext(AppContext);
 
 	return (
 		<aside className="leftpart w-[450px] h-[100vh] fixed flex items-center z-[12] px-[100px] py-[0px] bg-white">
@@ -14,7 +14,7 @@ export const Sidebar = () => {
 					{' '}
 					{/* You can use image or text as logo. data-type values are: "image" and "text" */}
 					<a href="/" role="link">
-						<img className="max-w-[150px]" src="assets/img/logo/dark.png" alt="image" />
+						<img className="max-w-[150px]" src="img/logo/dark.png" alt="image" />
 						<h3 className="font-poppins font-black text-[22px] tracking-[5px]">BEELDHOUWER</h3>
 					</a>
 				</div>
@@ -25,7 +25,6 @@ export const Sidebar = () => {
 								<Link
 									className="text-[#767676] capitalize inline-block font-medium font-montserrat transition-all duration-300 hover:text-black"
 									href={menu.href}
-									// onClick={() => navChange(menu.href)}
 									role="link"
 								>
 									{menu.name}

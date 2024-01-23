@@ -1,10 +1,16 @@
 import * as React from 'react';
-import { useClickOutside } from '../../useClickOutside';
+import { useClickOutside } from '@/lib/useClickOutside';
 
-const ImgViews = ({ close, src }) => {
+const ImgViews: React.FC<{ close: (arg0: boolean) => void; src: string | null }> = ({ close, src }) => {
+	//
 	let domNode = useClickOutside(() => {
 		close(false);
 	});
+
+	if (!src) {
+		return null;
+	}
+
 	return (
 		<>
 			<div className="mfp-bg mfp-ready" onClick={() => close(false)}></div>
@@ -16,7 +22,7 @@ const ImgViews = ({ close, src }) => {
 				<div className={` popup-container mfp-container mfp-s-ready mfp-iframe-holder mfp-img-container`}>
 					<div className="mfp-content" ref={domNode}>
 						<div className="mfp-iframe-scaler">
-							<img className="mfp-img" src={src} />
+							<img className="mfp-img" src={src} alt="" width={undefined} />
 						</div>
 					</div>
 					<div className="mfp-preloader">Loading...</div>

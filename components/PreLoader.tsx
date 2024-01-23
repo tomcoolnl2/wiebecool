@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { tokyo } from '../utils';
+import { tokyo } from '@/lib/utils';
 
 export const PreLoader = () => {
 	React.useEffect(() => {

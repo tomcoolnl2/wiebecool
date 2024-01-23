@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppContext } from '../../Context';
+import { AppContext } from '@/context/Context';
 import { ModalContainer } from './ModalContainer';
 import { ServiceModal } from '../../model';
 
@@ -15,7 +15,7 @@ export const ServiceModalComponent: React.FC = () => {
 		<ModalContainer<ServiceModal> nullValue={setServiceModal}>
 			<div className="service_popup_informations w-full h-auto clear-both float-left">
 				<div className="image">
-					<img src="assets/img/thumbs/4-2.jpg" alt="" />
+					<img src="assets/img/thumbs/4-2.jpg" alt="" width={undefined} />
 					<div
 						className="main"
 						data-img-url={serviceModal.image}

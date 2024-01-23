@@ -41,7 +41,7 @@ export const tokyo = {
 			e = document.querySelector('.cursor-inner') as HTMLElement,
 			t = document.querySelector('.cursor-outer') as HTMLElement;
 
-		function mouseEvent(element) {
+		function mouseEvent(element: HTMLElement) {
 			element.addEventListener('mouseenter', function () {
 				e.classList.add('cursor-hover'), t.classList.add('cursor-hover');
 			});
@@ -85,13 +85,13 @@ export const tokyo = {
 								});
 							}
 							for (let i = 0; i < slider.length; i++) {
-								const element = slider[i];
+								const element = slider[i] as HTMLElement;
 								mouseEvent(element);
 							}
 
-							hamburger && mouseEvent(hamburger);
-							kura_tm_topbar && mouseEvent(kura_tm_topbar);
-							pointer && mouseEvent(pointer);
+							hamburger && mouseEvent(hamburger as HTMLElement);
+							kura_tm_topbar && mouseEvent(kura_tm_topbar as HTMLElement);
+							pointer && mouseEvent(pointer as HTMLElement);
 						}
 					),
 					(e.style.visibility = 'visible'),

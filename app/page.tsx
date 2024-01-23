@@ -1,8 +1,8 @@
 'use client';
 import * as React from 'react';
-import { SectionContainer } from '../src/components/SectionContainer';
-import { ContactDetails } from '../src/components/ContactDetails';
-import { SocialMediaLinks } from '../src/components/SocialMediaLinks';
+import { SectionContainer } from '@/components/SectionContainer';
+import { ContactDetails } from '@/components/ContactDetails';
+import { SocialMediaLinks } from '@/components/SocialMediaLinks';
 
 export default function Home() {
 	return (
@@ -15,7 +15,7 @@ export default function Home() {
 							{/* data-type values are: "wave", "circle", "square"*/}
 							<div
 								className="image absolute inset-0 bg-no-repeat bg-center bg-cover"
-								data-img-url="assets/img/_new/wiebe_cool_beeldhouwer.png"
+								data-img-url="img/_new/wiebe_cool_beeldhouwer.png"
 							/>
 						</div>
 						<div className="details ml-[80px]">

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { AppContext } from '../../Context';
-import { useClickOutside } from '../../useClickOutside';
+import { AppContext } from '@/context/Context';
+import { useClickOutside } from '@/lib/useClickOutside';
 
 export interface ModalContainerProps<T> {
 	children: React.ReactNode;
