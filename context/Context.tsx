@@ -49,6 +49,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 	}, []);
 
 	const setProductModal = React.useCallback((value: Product | null) => {
+		modalToggle(true);
 		dispatch({
 			type: ActionType.NEWSMODAL,
 			payload: value,
@@ -56,6 +57,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 	}, []);
 
 	const setPortfolioDetailsModal = React.useCallback((value: PortfolioItem | null) => {
+		modalToggle(true);
 		dispatch({
 			type: ActionType.PORTFOLIODETAILSMODAL,
 			payload: value,

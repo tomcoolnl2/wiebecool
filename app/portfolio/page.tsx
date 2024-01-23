@@ -118,10 +118,7 @@ export default function Portfolio() {
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
 												className="opacity-0 min-w-full"
@@ -142,10 +139,7 @@ export default function Portfolio() {
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
 												className="opacity-0 min-w-full"
@@ -166,10 +160,7 @@ export default function Portfolio() {
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
 												className="opacity-0 min-w-full"
@@ -190,10 +181,7 @@ export default function Portfolio() {
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
 												className="opacity-0 min-w-full"
@@ -214,10 +202,7 @@ export default function Portfolio() {
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
 												className="opacity-0 min-w-full"
@@ -238,10 +223,7 @@ export default function Portfolio() {
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[1]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
 												className="opacity-0 min-w-full"
@@ -262,10 +244,7 @@ export default function Portfolio() {
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
 												className="opacity-0 min-w-full"
@@ -286,10 +265,7 @@ export default function Portfolio() {
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
 												className="opacity-0 min-w-full"
@@ -310,10 +286,7 @@ export default function Portfolio() {
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
 												className="opacity-0 min-w-full"
@@ -334,10 +307,7 @@ export default function Portfolio() {
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
 												className="opacity-0 min-w-full"
@@ -358,10 +328,7 @@ export default function Portfolio() {
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
 												className="opacity-0 min-w-full"
