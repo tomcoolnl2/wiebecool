@@ -1,5 +1,9 @@
+//
 export function detectMobile(): boolean {
-	return /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent);
+	if (typeof window === 'undefined') {
+		return false;
+	}
+	return window.navigator && /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(window.navigator.userAgent);
 }
 
 export const tokyo = {
