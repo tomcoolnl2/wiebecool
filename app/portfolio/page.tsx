@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image';
 import * as React from 'react';
 import { AppContext } from '@/context/Context';
 import { tokyo } from '@/lib/utils';
@@ -114,7 +113,7 @@ export default function Portfolio() {
 										data-category="Vimeo"
 									>
 										<a className="popup-vimeo" href="https://vimeo.com/337293658">
-											<Image
+											<img
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
@@ -135,7 +134,7 @@ export default function Portfolio() {
 										data-category="Youtube"
 									>
 										<a className="popup-youtube" href="https://www.youtube.com/watch?v=7e90gBu4pas">
-											<Image
+											<img
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
@@ -159,7 +158,7 @@ export default function Portfolio() {
 											className="soundcloude_link mfp-iframe audio"
 											href="https://w.soundcloud.com/player/?visual=true&url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F159967086&show_artwork=true&maxwidth=1020&maxheight=1000&auto_play=1"
 										>
-											<Image
+											<img
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
@@ -180,7 +179,7 @@ export default function Portfolio() {
 										data-category="Image"
 									>
 										<a className="zoom" href="assets/img/portfolio/3.jpg">
-											<Image
+											<img
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
@@ -208,7 +207,7 @@ export default function Portfolio() {
 												modalToggle(true);
 											}}
 										>
-											<Image
+											<img
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
@@ -236,7 +235,7 @@ export default function Portfolio() {
 												modalToggle(true);
 											}}
 										>
-											<Image
+											<img
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
@@ -264,7 +263,7 @@ export default function Portfolio() {
 												modalToggle(true);
 											}}
 										>
-											<Image
+											<img
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
@@ -292,7 +291,7 @@ export default function Portfolio() {
 												modalToggle(true);
 											}}
 										>
-											<Image
+											<img
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
@@ -320,7 +319,7 @@ export default function Portfolio() {
 												modalToggle(true);
 											}}
 										>
-											<Image
+											<img
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
@@ -348,7 +347,7 @@ export default function Portfolio() {
 												modalToggle(true);
 											}}
 										>
-											<Image
+											<img
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"
@@ -376,7 +375,7 @@ export default function Portfolio() {
 												modalToggle(true);
 											}}
 										>
-											<Image
+											<img
 												className="opacity-0 min-w-full"
 												src="assets/img/thumbs/1-1.jpg"
 												alt="image"

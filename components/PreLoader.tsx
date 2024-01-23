@@ -14,9 +14,7 @@ export const PreLoader = () => {
 					preloader.classList.add('preloaded');
 				}, 800);
 				setTimeout(function () {
-					console.log("time's up", preloader);
 					preloader.remove();
-					console.log('800', preloader);
 				}, 2000);
 			}
 		}

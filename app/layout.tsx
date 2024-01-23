@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Metadata } from 'next';
 import { Providers } from './providers';
-import Template from './template';
+import LayoutWrapper from '../components/LayoutWrapper';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 		<html lang="nl">
 			<body className="dark">
 				<Providers>
-					<Template key={Date.now()}>{children}</Template>
+					<LayoutWrapper>{children}</LayoutWrapper>
 				</Providers>
 			</body>
 		</html>
