@@ -85,8 +85,20 @@ export default function About() {
 					<div className="about_text w-full h-auto clear-both float-left pb-[31px] mb-[30px]">
 						<p className="mb-[11px]">
 							Overal vandaan sleep ik stenen mee naar huis en leg daarin de opgedane indrukken vast.
-							Meesters zoals Rodin, Barbara Hepworth of Henry Moore boeien me zeer. Deze beeldhouwers
-							hebben ongelooflijk mooi werk nagelaten dat mij meerdere keren al heeft geïnspireerd.
+							Meesters zoals{' '}
+							<a href="https://en.wikipedia.org/wiki/Auguste_Rodin" target="_blank">
+								Rodin
+							</a>
+							,{' '}
+							<a href="https://en.wikipedia.org/wiki/Barbara_Hepworth" target="_blank">
+								Barbara Hebworth
+							</a>{' '}
+							of{' '}
+							<a href="https://en.wikipedia.org/wiki/Henry_Moore" target="_blank">
+								Henry Moore
+							</a>{' '}
+							boeien me zeer. Deze beeldhouwers hebben ongelooflijk mooi werk nagelaten dat mij meerdere
+							keren al heeft geïnspireerd.
 						</p>
 						<p className="mb-[22px]">
 							De laatste tijd werk ik het liefst in steen, maar ook hout- en bronswerk heb ik in het

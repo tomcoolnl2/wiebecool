@@ -96,10 +96,21 @@ export default function Portfolio() {
 							ook veel inspiratie in oude kathedralen en middeleeuwse beelden. <br />
 							<br />
 							Overal vandaan neem ik stenen mee terug uit de streken die ik bezoek en dan leg ik er thuis
-							de opgedane impressies in vast. Ook meer eigentijdse meesters zoals Rodin, Barbara Hebworth
-							of Henry Moore vind ik ongelooflijk mooi en inspirerend. In musea kijk ik vooral naar de
-							beeldende kunst en loop ik er het liefst een paar keer omheen, op zoek naar de schoonheid in
-							het stuk steen of hout.
+							de opgedane impressies in vast. Ook meer eigentijdse meesters zoals{' '}
+							<a href="https://en.wikipedia.org/wiki/Auguste_Rodin" target="_blank">
+								Rodin
+							</a>
+							,{' '}
+							<a href="https://en.wikipedia.org/wiki/Barbara_Hepworth" target="_blank">
+								Barbara Hebworth
+							</a>{' '}
+							of{' '}
+							<a href="https://en.wikipedia.org/wiki/Henry_Moore" target="_blank">
+								Henry Moore
+							</a>{' '}
+							vind ik ongelooflijk mooi en inspirerend. In musea kijk ik vooral naar de beeldende kunst en
+							loop ik er het liefst een paar keer omheen, op zoek naar de schoonheid in het stuk steen of
+							hout.
 							<br />
 							<br />
 						</p>
