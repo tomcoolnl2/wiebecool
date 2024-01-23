@@ -355,8 +355,17 @@
 .tokyo_tm_pricing .price .currency {
 	position: absolute !important;
 }
+.abs_image {
+	width: 100%;
+	aspect-ratio: 1;
+	overflow: hidden;
+}
 .tokyo_tm_portfolio .portfolio_list li .inner:hover .abs_image {
 	transform: scale(1.1) translateZ(0);
+}
+.product-cards  {
+	max-width: 1000px;
+    margin: auto;
 }
 .product-cards li .list_inner {
 	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.07);

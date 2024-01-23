@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import * as React from 'react';
 import { Product } from '@/model';
 import { SectionContainer } from '@/components/SectionContainer';
@@ -53,8 +54,8 @@ export default function About() {
 							<SectionTitle pageName={'Over mij'} title={'Mijn missie'} />
 						</div>
 					</div>
-					<div className="author-image w-full h-auto clear-both float-left relative mb-[35px]">
-						<img className="min-w-full" src="img/werkplaats.png" alt="Wiebe Cool Beeldhouwer Werkplaats" />
+					<div className="author-image w-full h-80 clear-both float-left relative mb-[35px]">
+						<Image src="/img/werkplaats.png" alt="Wiebe Cool Beeldhouwer Werkplaats" fill />
 					</div>
 					<div className="about_title w-full h-auto clear-both float-left border-solid border-[#DFDFDF] border-b pb-[20px] mb-[30px]">
 						<h3 className="text-[22px] font-bold">

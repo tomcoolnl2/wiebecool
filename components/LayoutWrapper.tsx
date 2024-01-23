@@ -6,7 +6,7 @@ import { Cursor } from '@/components/Cursor';
 import { Mobile } from '@/components/Mobile';
 import { Sidebar } from '@/components/Sidebar';
 import { PreLoader } from '@/components/PreLoader';
-import { ImageView } from '@/components/popup/ImageView';
+// import { ImageView } from '@/components/popup/ImageView';
 import { ProductDetailComponent } from '@/components/popup/ProductDetailModal';
 import { DetailsModalComponent } from '@/components/popup/DetailsModal';
 import { MenuItem } from '@/model';
@@ -30,7 +30,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 	return (
 		<>
 			<PreLoader />
-			<ImageView />
+			{/* <ImageView /> */}
 			{modal && productModal && <ProductDetailComponent />}
 			{modal && portfolioDetailsModal && <DetailsModalComponent />}
 			<div className="tokyo_tm_all_wrap">

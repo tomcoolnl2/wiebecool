@@ -1,10 +1,11 @@
 import * as React from 'react';
+import Image from 'next/image';
 import { Product } from '@/model';
 import { AppContext } from '@/context/Context';
 
 export const ProductCards: React.FC<{ products: Product[] }> = ({ products }) => {
 	//
-	const { setProductModal, modalToggle } = React.useContext(AppContext);
+	const { setProductModal } = React.useContext(AppContext);
 
 	return (
 		<ul className="product-cards list-none">
@@ -12,12 +13,7 @@ export const ProductCards: React.FC<{ products: Product[] }> = ({ products }) =>
 				<li className="mb-[50px] float-left w-1/2 pl-[50px]" key={item.id}>
 					<div className="list_inner w-full clear-both float-left h-auto relative">
 						<div className="image relative overflow-hidden">
-							<img className="min-w-full opacity-0" src={item.image} alt="image" />
-							<div
-								className="main absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-								data-img-url={item.image}
-								style={{ backgroundImage: `url(${item.image})` }}
-							/>
+							<Image className="min-w-full" src={`/${item.image}`} alt="image" width={420} height={262} />
 							<a className="product-cards-full-link" href="#" onClick={() => setProductModal(item)} />
 						</div>
 						<div className="details w-full float-left px-[40px] pt-[30px] pb-[25px] bg-white transition-all duration-300">
