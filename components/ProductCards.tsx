@@ -12,7 +12,7 @@ export const ProductCards: React.FC<{ products: Product[] }> = ({ products }) =>
 				<li className="mb-[50px] float-left w-1/2 pl-[50px]" key={item.id}>
 					<div className="list_inner w-full clear-both float-left h-auto relative">
 						<div className="image relative overflow-hidden">
-							<img className="min-w-full opacity-0" src="assets/img/thumbs/40-25.jpg" alt="image" />
+							<img className="min-w-full opacity-0" src={item.image} alt="image" />
 							<div
 								className="main absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
 								data-img-url={item.image}

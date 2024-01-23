@@ -35,7 +35,7 @@ const ImgViews: React.FC<{ close: (arg0: boolean) => void; src: string | null }>
 export const ImageView = () => {
 	const [img, setImg] = React.useState<boolean>(false);
 	const [imgValue, setImgValue] = React.useState<string | null>(null);
-
+	console.log('render ImageView');
 	React.useEffect(() => {
 		setTimeout(() => {
 			const a = document.querySelectorAll('a');

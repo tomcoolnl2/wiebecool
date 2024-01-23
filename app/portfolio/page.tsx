@@ -36,7 +36,7 @@ const detailData = [
 	},
 	{
 		id: 2,
-		thumbnail: 'assets/img/portfolio/8.jpg',
+		thumbnail: 'img/_new/portfolio/wiebe_2.jpg',
 		title: 'Wiebe Cool',
 		text: ['Lorem Ipsum'],
 		client: 'Wiebe Cool',
