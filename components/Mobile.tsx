@@ -1,8 +1,10 @@
-import { MenuItem } from '@/model';
+import { usePathname } from 'next/navigation';
 import * as React from 'react';
+import { MenuItem } from '@/model';
 
 export const Mobile: React.FC<{ menuItems: MenuItem[] }> = ({ menuItems }) => {
 	//
+	const pathname = usePathname();
 	const [toggle, setToggle] = React.useState(false);
 
 	return (
@@ -37,7 +39,7 @@ export const Mobile: React.FC<{ menuItems: MenuItem[] }> = ({ menuItems }) => {
 				<div className="menu_list w-full h-auto clear-both float-left text-right px-[20px] pt-[100px] pb-[0px]">
 					<ul className="transition_link list-none">
 						{menuItems.map((menu) => (
-							<li className={`active mb-[7px]`} key={menu.id}>
+							<li className={`${menu.href === pathname ? 'active' : ''} mb-[7px]`} key={menu.id}>
 								<a
 									className="text-black font-montserrat"
 									href={`${menu.href}`}
