@@ -41,7 +41,13 @@ export const Home = () => {
 								Daar staan altijd drie van mijn beelden.
 								<br />
 								<br />
-								Wekelijks geopend op woensdag, donderdag, vrijdag en zaterdag van 10.00 tot 17.00 uur.
+								<a
+									href="https://www.galeriedronten.nl/contact#:~:text=info%40galeriedronten.nl-,Openingstijden,-woensdag%20t/m"
+									target="_blank"
+								>
+									Wekelijks geopend
+								</a>{' '}
+								op woensdag, donderdag, vrijdag en zaterdag van 10.00 tot 17.00 uur.
 							</p>
 							<SocialMediaLinks />
 							<br />
