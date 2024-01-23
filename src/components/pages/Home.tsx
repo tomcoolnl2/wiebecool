@@ -1,34 +1,7 @@
 import * as React from 'react';
-import { SectionContainer } from './SectionContainer';
-import { ContactDetails } from './ContactDetails';
-
-const socialIcon = [
-	// {
-	// 	id: 1,
-	// 	iconName: 'icon-facebook-squared',
-	// 	link: 'https://www.facebook.com/',
-	// },
-	// {
-	// 	id: 2,
-	// 	iconName: 'icon-twitter-squared',
-	// 	link: 'https://twitter.com/',
-	// },
-	// {
-	// 	id: 3,
-	// 	iconName: 'icon-behance-squared',
-	// 	link: 'https://www.behance.net/',
-	// },
-	// {
-	// 	id: 4,
-	// 	iconName: 'icon-linkedin-squared',
-	// 	link: 'https://www.linkedin.com/',
-	// },
-	{
-		id: 5,
-		iconName: 'icon-instagram-3',
-		link: 'https://www.instagram.com/wiebecoolbeeldhouwer/',
-	},
-];
+import { SectionContainer } from '../SectionContainer';
+import { ContactDetails } from '../ContactDetails';
+import { SocialMediaLinks } from '../SocialMediaLinks';
 
 export const Home = () => {
 	return (
@@ -48,35 +21,20 @@ export const Home = () => {
 							<h1 className="name font-extrabold uppercase mb-[14px]">
 								Wiebe <span className="text-slate-300">Cool</span>
 							</h1>
-							<h2 className="subtitle">Welkom op mijn site!</h2>
-							<ContactDetails />
-							<nav className="social w-full float-left  mb-[25px]">
-								<ul className="m-0 list-none">
-									{socialIcon.map((item) => (
-										<li key={item.id}>
-											<a
-												className="text-black text-[20px] transition-all duration-300 hover:text-black"
-												href={item.link}
-												target="_blank"
-											>
-												<i className={item.iconName} />
-											</a>
-										</li>
-									))}
-								</ul>
-							</nav>
-							<br />
-							<p className="job font-montserrat font-medium max-w-[450px] mb-[25px]">
+							<h2 className="subtitle mb-[11px]">Welkom op mijn site</h2>
+							<p className="job font-montserrat font-medium max-w-[450px] mb-[25px] border-solid border-[#DFDFDF] border-b pb-[31px]">
 								Sinds eind 2022 ben ik lid van{' '}
 								<a href="https://www.galeriedronten.nl/" target="_blank">
 									Kunstvereniging Galerie Dronten
 								</a>
-								. Wij hebben als vereniging een prachtige gelerieruimte aan{' '}
+								.
+								<br />
+								Wij hebben als vereniging een prachtige{' '}
 								<a
 									href="https://www.google.com/maps/place/De+Redepassage+6-8,+8254+KD+Dronten,+Netherlands/"
 									target="_blank"
 								>
-									De Redepassage 6-8, 8252 HE
+									gelerieruimte
 								</a>{' '}
 								in het winkelcentrum van Dronten.
 								<br />
@@ -85,6 +43,9 @@ export const Home = () => {
 								<br />
 								Wekelijks geopend op woensdag, donderdag, vrijdag en zaterdag van 10.00 tot 17.00 uur.
 							</p>
+							<SocialMediaLinks />
+							<br />
+							<ContactDetails />
 						</div>
 					</div>
 				</div>

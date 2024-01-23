@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { SectionContainer } from './SectionContainer';
-import { SectionTitle } from './SectionTitle';
-import { ProductCards } from './product/ProductCards';
-import { Product } from '../model';
+import { SectionContainer } from '../SectionContainer';
+import { SectionTitle } from '../SectionTitle';
+import { ProductCards } from '../ProductCards';
+import { Product } from '../../model';
 
 const products: Product[] = [
 	{

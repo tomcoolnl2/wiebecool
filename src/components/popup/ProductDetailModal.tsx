@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AppContext } from '../../Context';
-import { NewsModal, Product } from '../../model';
+import { Product } from '../../model';
 import { ModalContainer } from './ModalContainer';
 
 export const ProductDetailComponent: React.FC = () => {
@@ -35,4 +35,3 @@ export const ProductDetailComponent: React.FC = () => {
 		</ModalContainer>
 	);
 };
-export default NewsModal;

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { AppContext } from '../Context';
-import { tokyo } from '../utils';
-import { SectionContainer } from './SectionContainer';
-import { SectionTitle } from './SectionTitle';
+import { AppContext } from '../../Context';
+import { tokyo } from '../../utils';
+import { SectionContainer } from '../SectionContainer';
+import { SectionTitle } from '../SectionTitle';
 
 const detailData = [
 	{
@@ -71,7 +71,7 @@ const detailData = [
 	},
 ];
 
-export const Portfolio = () => {
+export const Portfolio: React.FC = () => {
 	//
 	React.useEffect(() => {
 		tokyo.portfolioHover();

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Layout } from '../src/layout/Layout';
-import { About } from '../src/components/About';
-import { Contact } from '../src/components/Contact';
-import { Home } from '../src/components/Home';
-import { News } from '../src/components/News';
-import { Service } from '../src/components/Service';
-import { Portfolio } from '../src/components/Portfolio';
+import { About } from '../src/components/pages/About';
+import { Contact } from '../src/components/pages/Contact';
+import { Home } from '../src/components/pages/Home';
+import { News } from '../src/components/pages/News';
+import { Service } from '../src/components/pages/Service';
+import { Portfolio } from '../src/components/pages/Portfolio';
 
 const Index = () => {
 	return (

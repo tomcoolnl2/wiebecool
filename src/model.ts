@@ -37,13 +37,6 @@ export interface MenuItem {
 	href: string;
 }
 
-export interface NewsModal {
-	image: string;
-	author: string;
-	date: string;
-	title: string;
-}
-
 export interface ServiceModal {
 	id: number;
 	name: string;

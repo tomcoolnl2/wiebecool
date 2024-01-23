@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Product } from '../../model';
-import { AppContext } from '../../Context';
+import { Product } from '../model';
+import { AppContext } from '../Context';
 
 export const ProductCards: React.FC<{ products: Product[] }> = ({ products }) => {
 	//

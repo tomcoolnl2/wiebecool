@@ -27,29 +27,18 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 			{modal && serviceModal && <ServiceModalComponent />}
 			{modal && productModal && <ProductDetailComponent />}
 			{modal && portfolioDetailsModal && <DetailsModalComponent />}
-			{/* WRAPPER ALL */}
 			<div className="tokyo_tm_all_wrap">
-				{/* PRELOADER */}
 				{/* <div id="preloader">
-          <div className="loader_line" />
-        </div> */}
-				{/* /PRELOADER */}
-				{/* MOBILE MENU */}
+					<div className="loader_line" />
+				</div> */}
 				<Mobile />
-				{/* /MOBILE MENU */}
-				{/* LEFTPART */}
 				<Sidebar />
-				{/* /LEFTPART */}
-				{/* RIGHTPART */}
 				<div className="rightpart w-full min-h-[100vh] float-left relative bg-[#f8f8f8] pl-[450px]">
 					<div className="rightpart_in relative w-full float-left clear-both border-solid border-[#ebebeb] border-l min-h-[100vh]">
 						{children}
 					</div>
 				</div>
-				{/* /RIGHTPART */}
-				{/* CURSOR */}
 				<Cursor />
-				{/* /CURSOR */}
 			</div>
 		</>
 	);
