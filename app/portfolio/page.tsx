@@ -8,7 +8,7 @@ import { SectionTitle } from '@/components/SectionTitle';
 const detailData = [
 	{
 		id: 1,
-		thumbnail: 'img/_new/portfolio/wiebe_1.jpg',
+		thumbnail: 'img/portfolio/wiebe_1.jpg',
 		title: 'Wiebe Cool',
 		text: ['Lipsum dolor et si amet.'],
 		client: 'Wiebe Cool',
@@ -31,12 +31,12 @@ const detailData = [
 				link: 'https://www.linkedin.com/',
 			},
 		],
-		bigImage: 'img/_new/portfolio/wiebe_1.jpg',
-		images: ['img/_new/portfolio/wiebe_1.jpg', 'img/_new/portfolio/wiebe_1.jpg'],
+		bigImage: 'img/portfolio/wiebe_1.jpg',
+		images: ['img/portfolio/wiebe_1.jpg', 'img/portfolio/wiebe_1.jpg'],
 	},
 	{
 		id: 2,
-		thumbnail: 'assets/img/portfolio/8.jpg',
+		thumbnail: 'img/portfolio/wiebe_2.jpg',
 		title: 'Wiebe Cool',
 		text: ['Lorem Ipsum'],
 		client: 'Wiebe Cool',
@@ -64,8 +64,8 @@ const detailData = [
 				link: 'https://www.linkedin.com/',
 			},
 		],
-		bigImage: 'img/_new/portfolio/wiebe_2.jpg',
-		images: ['img/_new/portfolio/wiebe_2.jpg', 'img/_new/portfolio/wiebe_2.jpg'],
+		bigImage: 'img/portfolio/wiebe_2.jpg',
+		images: ['img/portfolio/wiebe_2.jpg', 'img/portfolio/wiebe_2.jpg'],
 	},
 ];
 
@@ -114,23 +114,24 @@ export default function Portfolio() {
 						<ul className="portfolio_list gallery_zoom ml-[-40px] list-none">
 							<li className="image mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div className="entry" data-title="Teresa Butler" data-category="Image">
+									<div
+										className="entry w-full min-h-[420px]"
+										data-title="Teresa Butler"
+										data-category="Image"
+									>
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
-												className="opacity-0 min-w-full"
-												src="img/_new/portfolio/wiebe_1.jpg" //THUMB
+												className="opacity-0 absolute min-w-full"
+												src="img/portfolio/wiebe_1.jpg" //THUMB
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/_new/portfolio/wiebe_1.jpg"
+												data-img-url="img/portfolio/wiebe_1.jpg"
 											/>
 										</a>
 									</div>
@@ -138,23 +139,24 @@ export default function Portfolio() {
 							</li>
 							<li className="image mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div className="entry" data-title="Ashley Flores" data-category="Image">
+									<div
+										className="entry w-full min-h-[420px]"
+										data-title="Ashley Flores"
+										data-category="Image"
+									>
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
-												className="opacity-0 min-w-full"
-												src="img/_new/portfolio/wiebe_2.jpg" //THUMB
+												className="opacity-0 absolute min-w-full"
+												src="img/portfolio/wiebe_2.jpg" //THUMB
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/_new/portfolio/wiebe_2.jpg"
+												data-img-url="img/portfolio/wiebe_2.jpg"
 											/>
 										</a>
 									</div>
@@ -162,23 +164,24 @@ export default function Portfolio() {
 							</li>
 							<li className="image mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div className="entry" data-title="Derek Smith" data-category="Image">
+									<div
+										className="entry w-full min-h-[420px]"
+										data-title="Wiebe Cool"
+										data-category="Image"
+									>
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
-												className="opacity-0 min-w-full"
-												src="img/_new/portfolio/wiebe_3.jpg" //THUMB
+												className="opacity-0 absolute min-w-full"
+												src="img/portfolio/wiebe_3.jpg" //THUMB
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/_new/portfolio/wiebe_3.jpg"
+												data-img-url="img/portfolio/wiebe_3.jpg"
 											/>
 										</a>
 									</div>
@@ -186,23 +189,24 @@ export default function Portfolio() {
 							</li>
 							<li className="image mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div className="entry" data-title="Gloria Jenkins" data-category="Image">
+									<div
+										className="entry w-full min-h-[420px]"
+										data-title="Wiebe Cool"
+										data-category="Image"
+									>
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
-												className="opacity-0 min-w-full"
-												src="img/_new/portfolio/wiebe_4.jpg" //THUMB
+												className="opacity-0 absolute min-w-full"
+												src="img/portfolio/wiebe_4.jpg" //THUMB
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/_new/portfolio/wiebe_4.jpg"
+												data-img-url="img/portfolio/wiebe_4.jpg"
 											/>
 										</a>
 									</div>
@@ -210,23 +214,24 @@ export default function Portfolio() {
 							</li>
 							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div className="entry" data-title="Selena Gomez" data-category="Detail">
+									<div
+										className="entry w-full min-h-[420px]"
+										data-title="Wiebe Cool"
+										data-category="Detail"
+									>
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
-												className="opacity-0 min-w-full"
-												src="img/_new/portfolio/wiebe_5.jpg" //THUMB
+												className="opacity-0 absolute min-w-full"
+												src="img/portfolio/wiebe_5.jpg" //THUMB
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/_new/portfolio/wiebe_5.jpg"
+												data-img-url="img/portfolio/wiebe_5.jpg"
 											/>
 										</a>
 									</div>
@@ -234,23 +239,24 @@ export default function Portfolio() {
 							</li>
 							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div className="entry" data-title="Ave Simone" data-category="Detail">
+									<div
+										className="entry w-full min-h-[420px]"
+										data-title="Wiebe Cool"
+										data-category="Detail"
+									>
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[1]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
-												className="opacity-0 min-w-full"
-												src="img/_new/portfolio/wiebe_6.jpg" //THUMB
+												className="opacity-0 absolute min-w-full"
+												src="img/portfolio/wiebe_6.jpg" //THUMB
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/_new/portfolio/wiebe_6.jpg"
+												data-img-url="img/portfolio/wiebe_6.jpg"
 											/>
 										</a>
 									</div>
@@ -258,23 +264,24 @@ export default function Portfolio() {
 							</li>
 							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div className="entry" data-title="Selena Gomez" data-category="Detail">
+									<div
+										className="entry w-full min-h-[420px]"
+										data-title="Wiebe Cool"
+										data-category="Detail"
+									>
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
-												className="opacity-0 min-w-full"
-												src="img/_new/portfolio/blanca.jpg" //THUMB
+												className="opacity-0 absolute min-w-full"
+												src="img/portfolio/blanca.jpg" //THUMB
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/_new/portfolio/blanca.jpg"
+												data-img-url="img/portfolio/blanca.jpg"
 											/>
 										</a>
 									</div>
@@ -282,23 +289,24 @@ export default function Portfolio() {
 							</li>
 							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div className="entry" data-title="Selena Gomez" data-category="Detail">
+									<div
+										className="entry w-full min-h-[420px]"
+										data-title="Wiebe Cool"
+										data-category="Detail"
+									>
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
-												className="opacity-0 min-w-full"
-												src="img/_new/portfolio/blauwe_janus.jpg" //THUMB
+												className="opacity-0 absolute min-w-full"
+												src="img/portfolio/blauwe_janus.jpg" //THUMB
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/_new/portfolio/blauwe_janus.jpg"
+												data-img-url="img/portfolio/blauwe_janus.jpg"
 											/>
 										</a>
 									</div>
@@ -306,23 +314,24 @@ export default function Portfolio() {
 							</li>
 							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div className="entry" data-title="Selena Gomez" data-category="Detail">
+									<div
+										className="entry w-full min-h-[420px]"
+										data-title="Wiebe Cool"
+										data-category="Detail"
+									>
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
-												className="opacity-0 min-w-full"
-												src="img/_new/portfolio/demeter.jpg" //THUMB
+												className="opacity-0 absolute min-w-full"
+												src="img/portfolio/demeter.jpg" //THUMB
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/_new/portfolio/demeter.jpg"
+												data-img-url="img/portfolio/demeter.jpg"
 											/>
 										</a>
 									</div>
@@ -330,23 +339,24 @@ export default function Portfolio() {
 							</li>
 							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div className="entry" data-title="Selena Gomez" data-category="Detail">
+									<div
+										className="entry w-full min-h-[420px]"
+										data-title="Wiebe Cool"
+										data-category="Detail"
+									>
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
-												className="opacity-0 min-w-full"
-												src="img/_new/portfolio/sanne.jpg" //THUMB
+												className="opacity-0 absolute min-w-full"
+												src="img/portfolio/sanne.jpg" //THUMB
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/_new/portfolio/sanne.jpg"
+												data-img-url="img/portfolio/sanne.jpg"
 											/>
 										</a>
 									</div>
@@ -354,23 +364,24 @@ export default function Portfolio() {
 							</li>
 							<li className="detail mb-[40px] float-left w-1/3 pl-[40px] item__">
 								<div className="inner w-full h-auto clear-both float-left overflow-hidden relative">
-									<div className="entry" data-title="Selena Gomez" data-category="Detail">
+									<div
+										className="entry w-full min-h-[420px]"
+										data-title="Wiebe Cool"
+										data-category="Detail"
+									>
 										<a
 											className="popup_info"
 											href="#"
-											onClick={() => {
-												setPortfolioDetailsModal(detailData[0]);
-												modalToggle(true);
-											}}
+											onClick={() => setPortfolioDetailsModal(detailData[0])}
 										>
 											<img
-												className="opacity-0 min-w-full"
-												src="img/_new/portfolio/maria_magdalena.jpg" //THUMB
+												className="opacity-0 absolute min-w-full"
+												src="img/portfolio/maria_magdalena.jpg" //THUMB
 												alt="image"
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/_new/portfolio/maria_magdalena.jpg"
+												data-img-url="img/portfolio/maria_magdalena.jpg"
 											/>
 										</a>
 									</div>

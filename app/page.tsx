@@ -1,5 +1,6 @@
 'use client';
 import * as React from 'react';
+import Image from 'next/image';
 import { SectionContainer } from '@/components/SectionContainer';
 import { ContactDetails } from '@/components/ContactDetails';
 import { SocialMediaLinks } from '@/components/SocialMediaLinks';
@@ -10,12 +11,12 @@ export default function Home() {
 			<div className="container">
 				<div className="home_page w-full min-h-[100vh] clear-both flex items-center justify-center relative">
 					<div className="home_content flex items-center">
-						<div className="avatar min-w-[300px] min-h-[300px] relative rounded-full" data-type="circle">
-							{' '}
-							{/* data-type values are: "wave", "circle", "square"*/}
-							<div
-								className="image absolute inset-0 bg-no-repeat bg-center bg-cover"
-								data-img-url="img/_new/wiebe_cool_beeldhouwer.png"
+						<div className="avatar min-w-[300px] min-h-[300px] relative rounded-full inner-border">
+							<Image
+								src="/img/wiebe_cool_beeldhouwer.png"
+								alt="Wiebe Cool - Beeldhouwer"
+								layout="fill"
+								objectFit="contain"
 							/>
 						</div>
 						<div className="details ml-[80px]">

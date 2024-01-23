@@ -2501,6 +2501,11 @@ body.dark .loader_line:after {
 	min-height: 300px;
 }
 
+.min-h-\[420px\] {
+	min-height: 420px;
+}
+
+
 .w-full {
 	width: 100%;
 }
