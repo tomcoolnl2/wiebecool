@@ -92,7 +92,7 @@ export default function Portfolio() {
 					<div className="list_wrapper w-full h-auto clear-both float-left">
 						<p className="mb-[22px]">
 							Jaren geleden heb ik mijzelf het beeldhouwen aangeleerd, in een vakantie, midden tussen de
-							fascinerende stenen van Bretagne. Naast megalithische, Griekse en Keltische kunst vind ik
+							fascinerende stenen van Bretagne. Naast Megalithische, Griekse en Keltische kunst vind ik
 							ook veel inspiratie in oude kathedralen en middeleeuwse beelden. <br />
 							<br />
 							Overal vandaan neem ik stenen mee terug uit de streken die ik bezoek en dan leg ik er thuis
