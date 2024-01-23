@@ -1,11 +1,13 @@
-import Link from 'next/link';
+'use client';
+import { usePathname } from 'next/navigation';
 import * as React from 'react';
-import { AppContext } from '@/context/Context';
+import Link from 'next/link';
+import { MenuItem } from '@/model';
 import { SocialMediaLinks } from '../components/SocialMediaLinks';
 
-export const Sidebar: React.FC = () => {
+export const Sidebar: React.FC<{ menuItems: MenuItem[] }> = ({ menuItems }) => {
 	//
-	const { nav, menus } = React.useContext(AppContext);
+	const pathname = usePathname();
 
 	return (
 		<aside className="leftpart w-[450px] h-[100vh] fixed flex items-center z-[12] px-[100px] py-[0px] bg-white">
@@ -20,8 +22,11 @@ export const Sidebar: React.FC = () => {
 				</div>
 				<nav className="menu px-[0px] py-[50px] w-full float-left" role="navigation">
 					<ul className="transition_link m-0 list-none">
-						{menus.map((menu) => (
-							<li className={`m-0 w-full float-left ${menu.href == nav ? 'active' : ''}`} key={menu.id}>
+						{menuItems.map((menu) => (
+							<li
+								className={`m-0 w-full float-left ${menu.href === pathname ? 'active' : ''}`}
+								key={menu.id}
+							>
 								<Link
 									className="text-[#767676] capitalize inline-block font-medium font-montserrat transition-all duration-300 hover:text-black"
 									href={menu.href}
