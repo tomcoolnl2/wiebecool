@@ -15,7 +15,7 @@ export default function Home() {
 							{/* data-type values are: "wave", "circle", "square"*/}
 							<div
 								className="image absolute inset-0 bg-no-repeat bg-center bg-cover"
-								data-img-url="img/_new/wiebe_cool_beeldhouwer.png"
+								data-img-url="img/wiebe_cool_beeldhouwer.png"
 							/>
 						</div>
 						<div className="details ml-[80px]">
