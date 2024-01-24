@@ -1,7 +1,6 @@
 'use client';
 import * as React from 'react';
 import { AppContext } from '@/context/Context';
-import { tokyo } from '@/lib/utils';
 import { SectionContainer } from '@/components/SectionContainer';
 import { SectionTitle } from '@/components/SectionTitle';
 
@@ -71,11 +70,7 @@ const detailData = [
 
 export default function Portfolio() {
 	//
-	React.useEffect(() => {
-		tokyo.dataImage();
-	}, []);
-
-	const { setPortfolioDetailsModal, modalToggle } = React.useContext(AppContext);
+	const { setPortfolioDetailsModal } = React.useContext(AppContext);
 
 	return (
 		<SectionContainer name={'portfolio'}>
@@ -131,7 +126,9 @@ export default function Portfolio() {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/portfolio/wiebe_1.jpg"
+												style={{
+													backgroundImage: `url(img/portfolio/wiebe_1.jpg)`,
+												}}
 											/>
 										</a>
 									</div>
@@ -156,7 +153,9 @@ export default function Portfolio() {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/portfolio/wiebe_2.jpg"
+												style={{
+													backgroundImage: `url(img/portfolio/wiebe_2.jpg)`,
+												}}
 											/>
 										</a>
 									</div>
@@ -181,7 +180,9 @@ export default function Portfolio() {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/portfolio/wiebe_3.jpg"
+												style={{
+													backgroundImage: `url(img/portfolio/wiebe_3.jpg)`,
+												}}
 											/>
 										</a>
 									</div>
@@ -206,7 +207,9 @@ export default function Portfolio() {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/portfolio/wiebe_4.jpg"
+												style={{
+													backgroundImage: `url(img/portfolio/wiebe_4.jpg)`,
+												}}
 											/>
 										</a>
 									</div>
@@ -231,7 +234,9 @@ export default function Portfolio() {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/portfolio/wiebe_5.jpg"
+												style={{
+													backgroundImage: `url(img/portfolio/wiebe_5.jpg)`,
+												}}
 											/>
 										</a>
 									</div>
@@ -256,7 +261,9 @@ export default function Portfolio() {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/portfolio/wiebe_6.jpg"
+												style={{
+													backgroundImage: `url(img/portfolio/wiebe_6.jpg)`,
+												}}
 											/>
 										</a>
 									</div>
@@ -281,7 +288,9 @@ export default function Portfolio() {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/portfolio/blanca.jpg"
+												style={{
+													backgroundImage: `url(img/portfolio/blanca.jpg)`,
+												}}
 											/>
 										</a>
 									</div>
@@ -306,7 +315,9 @@ export default function Portfolio() {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/portfolio/blauwe_janus.jpg"
+												style={{
+													backgroundImage: `url(img/portfolio/blauwe_janus.jpg)`,
+												}}
 											/>
 										</a>
 									</div>
@@ -331,7 +342,9 @@ export default function Portfolio() {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/portfolio/demeter.jpg"
+												style={{
+													backgroundImage: `url(img/portfolio/demeter.jpg)`,
+												}}
 											/>
 										</a>
 									</div>
@@ -356,7 +369,9 @@ export default function Portfolio() {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/portfolio/sanne.jpg"
+												style={{
+													backgroundImage: `url(img/portfolio/sanne.jpg)`,
+												}}
 											/>
 										</a>
 									</div>
@@ -381,7 +396,9 @@ export default function Portfolio() {
 											/>
 											<div
 												className="abs_image absolute inset-0 bg-no-repeat bg-cover bg-center transition-all duration-300"
-												data-img-url="img/portfolio/maria_magdalena.jpg"
+												style={{
+													backgroundImage: `url(img/portfolio/maria_magdalena.jpg)`,
+												}}
 											/>
 										</a>
 									</div>
