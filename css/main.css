@@ -184,7 +184,7 @@ h6 {
 	width: 100%;
 }
 
-.tokyo_tm_read_more {
+.read-more {
 	position: relative;
 	float: left;
 	clear: both;
@@ -193,7 +193,7 @@ h6 {
 	overflow: hidden;
 }
 
-.tokyo_tm_read_more a {
+.read-more a {
 	position: relative;
 	display: inline-block;
 	overflow: hidden;
@@ -206,14 +206,6 @@ h6 {
 	color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
-.tokyo_tm_services .list ul li .tokyo_tm_read_more {
-	margin-top: 7px;
-}
-
-.tokyo_tm_services .\!list ul li .tokyo_tm_read_more {
-	margin-top: 7px;
-}
-
 .product-cards-full-link {
 	position: absolute;
 	top: 0px;
@@ -221,46 +213,6 @@ h6 {
 	bottom: 0px;
 	left: 0px;
 	z-index: 4;
-}
-
-.modalbox .service_popup_informations .image {
-	position: relative;
-	float: left;
-	margin-bottom: 37px;
-	width: 100%;
-}
-
-.modalbox .service_popup_informations .image img {
-	position: relative;
-	min-width: 100%;
-	opacity: 0;
-}
-
-.modalbox .service_popup_informations .image .main {
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-	left: 0px;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-}
-
-.modalbox .service_popup_informations .main_title {
-	float: left;
-	margin-bottom: 23px;
-	width: 100%;
-}
-
-.modalbox .service_popup_informations .main_title h3 {
-	font-size: 23px;
-	font-weight: 600;
-}
-
-.tokyo_tm_pricing .price span {
-	position: relative;
-	display: inline-block;
 }
 
 .modalbox {
@@ -389,24 +341,6 @@ h6 {
 	content: var(--tw-content);
 }
 
-.tokyo_tm_pricing .price .currency {
-	bottom: 10px;
-	right: -10px;
-	font-size: 15px;
-}
-
-.tokyo_tm_pricing .item li.active {
-	opacity: 1;
-}
-
-.tokyo_tm_pricing .\!item li.active {
-	opacity: 1;
-}
-
-.tokyo_tm_pricing .submit-button {
-	margin-top: 30px;
-}
-
 .entry {
 	position: relative;
 }
@@ -450,7 +384,7 @@ h6 {
 	font-weight: 700;
 }
 
-.tokyo_tm_portfolio .popup_details {
+.portfolio-page .popup_details {
 	visibility: hidden;
 	position: absolute;
 	z-index: -111;
@@ -586,14 +520,6 @@ h6 {
 	content: var(--tw-content);
 }
 
-.tokyo_tm_news .main_content {
-	visibility: hidden;
-	position: absolute;
-	z-index: -111;
-	display: none;
-	opacity: 0;
-}
-
 /*----------------------------------------------------*/
 
 /*     MEDIA QUERIES FOR SMALL DEVICES                */
@@ -667,23 +593,9 @@ h6 {
 		border-left-width: 0px;
 	}
 
-	.tokyo_tm_about {
-		padding-top: 130px;
-	}
-
-	.tokyo_tm_portfolio {
-		padding-top: 130px;
-	}
-
-	.tokyo_tm_contact {
-		padding-top: 130px;
-	}
-
-	.tokyo_tm_news {
-		padding-top: 130px;
-	}
-
-	.tokyo_tm_services {
+	.about-page,
+	.portfolio-page,
+	.contact-page {
 		padding-top: 130px;
 	}
 
@@ -746,12 +658,12 @@ h6 {
 		margin-left: 0px;
 	}
 
-	.tokyo_tm_title .title_flex {
+	.section-title .title_flex {
 		flex-direction: column;
 		align-items: flex-start;
 	}
 
-	.tokyo_tm_title .portfolio_filter {
+	.section-title .portfolio_filter {
 		padding-top: 48px;
 	}
 
@@ -767,10 +679,6 @@ h6 {
 	}
 
 	.modalbox .portfolio_main_title h3 {
-		font-size: 20px;
-	}
-
-	.modalbox .service_popup_informations .main_title h3 {
 		font-size: 20px;
 	}
 }
@@ -791,11 +699,11 @@ h6 {
 		min-width: 200px;
 	}
 
-	.tokyo_tm_portfolio .portfolio_list {
+	.portfolio-page .portfolio_list {
 		margin: 0px;
 	}
 
-	.tokyo_tm_portfolio .portfolio_list li {
+	.portfolio-page .portfolio_list li {
 		width: 100%;
 		padding-left: 0px;
 	}
@@ -841,119 +749,6 @@ h6 {
 
 	.modalbox .description_wrap {
 		padding: 20px;
-	}
-
-	.tokyo_tm_short_info {
-		flex-direction: column;
-	}
-
-	.tokyo_tm_short_info .left {
-		width: 100%;
-		padding-right: 0px;
-	}
-
-	.tokyo_tm_short_info .right {
-		width: 100%;
-		padding-left: 0px;
-	}
-
-	.tokyo_tm_progressbox .in {
-		flex-direction: column;
-	}
-
-	.tokyo_tm_progressbox .in .left {
-		margin-bottom: 60px;
-		width: 100%;
-		padding-right: 0px;
-	}
-
-	.tokyo_tm_progressbox .in .right {
-		width: 100%;
-		padding-left: 0px;
-	}
-
-	.tokyo_tm_skillbox .in {
-		flex-direction: column;
-	}
-
-	.tokyo_tm_skillbox .in .left {
-		margin-bottom: 60px;
-		width: 100%;
-		padding-right: 0px;
-	}
-
-	.tokyo_tm_skillbox .in .right {
-		width: 100%;
-		padding-left: 0px;
-	}
-
-	.tokyo_tm_resumebox .in {
-		flex-direction: column;
-	}
-
-	.tokyo_tm_resumebox .in .left {
-		margin-bottom: 60px;
-		width: 100%;
-		padding-right: 0px;
-	}
-
-	.tokyo_tm_resumebox .in .right {
-		width: 100%;
-		padding-left: 0px;
-	}
-
-	.tokyo_tm_services .list ul {
-		margin: 0px;
-	}
-
-	.tokyo_tm_services .\!list ul {
-		margin: 0px;
-	}
-
-	.tokyo_tm_services .list ul li {
-		width: 100%;
-		padding-left: 0px;
-	}
-
-	.tokyo_tm_services .\!list ul li {
-		width: 100%;
-		padding-left: 0px;
-	}
-
-	.tokyo_tm_facts .list ul {
-		margin: 0px;
-	}
-
-	.tokyo_tm_facts .\!list ul {
-		margin: 0px;
-	}
-
-	.tokyo_tm_facts .list ul li {
-		width: 100%;
-		padding-left: 0px;
-	}
-
-	.tokyo_tm_facts .\!list ul li {
-		width: 100%;
-		padding-left: 0px;
-	}
-
-	.tokyo_tm_pricing .list > ul {
-		margin: 0px;
-	}
-
-	.tokyo_tm_pricing .\!list > ul {
-		margin: 0px;
-	}
-
-	.tokyo_tm_pricing .list > ul > li {
-		width: 100%;
-		padding-left: 0px;
-	}
-
-	.tokyo_tm_pricing .\!list > ul > li {
-		width: 100%;
-		padding-left: 0px;
 	}
 
 	.modalbox .description_wrap:after {
@@ -1096,17 +891,17 @@ body.dark .submit-button a {
 	color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_about .description .right > ul > li a {
+body.dark .about-page .description .right > ul > li a {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_about .description .right > ul > li a:hover {
+body.dark .about-page .description .right > ul > li a:hover {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_about .description .right > ul > li span {
+body.dark .about-page .description .right > ul > li span {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
@@ -1121,18 +916,18 @@ body.dark .modalbox_about .counter ul li .\!name {
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_title span {
+body.dark .section-title span {
 	background-color: rgba(255, 255, 255, 0.04);
 	--tw-text-opacity: 1;
 	color: rgb(149 149 149 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_portfolio .portfolio_filter ul li a {
+body.dark .portfolio-page .portfolio_filter ul li a {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_portfolio .portfolio_filter ul li a:hover {
+body.dark .portfolio-page .portfolio_filter ul li a:hover {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
@@ -1172,35 +967,35 @@ body.dark .modalbox .main_content .descriptions .bigger {
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_contact .fields ul li input {
+body.dark .contact-page .fields ul li input {
 	border-color: rgba(255, 255, 255, 0.2);
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_contact .fields .last textarea {
+body.dark .contact-page .fields .last textarea {
 	border-color: rgba(255, 255, 255, 0.2);
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_contact .fields .\!last textarea {
+body.dark .contact-page .fields .\!last textarea {
 	border-color: rgba(255, 255, 255, 0.2);
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_contact .fields ul li input:focus {
+body.dark .contact-page .fields ul li input:focus {
 	border-color: rgba(255, 255, 255, 1);
 }
 
-body.dark .tokyo_tm_contact .fields .last textarea:focus {
+body.dark .contact-page .fields .last textarea:focus {
 	border-color: rgba(255, 255, 255, 1);
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_contact .fields .\!last textarea:focus {
+body.dark .contact-page .fields .\!last textarea:focus {
 	border-color: rgba(255, 255, 255, 1);
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1216,17 +1011,17 @@ body.dark .product-cards li .extra:before {
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
-body.dark .tokyo_tm_read_more a {
+body.dark .read-more a {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_read_more a span {
+body.dark .read-more a span {
 	--tw-bg-opacity: 1;
 	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
 }
 
-body.dark .tokyo_tm_read_more a:before {
+body.dark .read-more a:before {
 	--tw-bg-opacity: 1;
 	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
@@ -1324,31 +1119,12 @@ body.dark .modalbox .details .extra:before {
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
-body.dark .tokyo_tm_about .about_title {
+body.dark .about-page .about_title {
 	border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
-body.dark .tokyo_tm_about .about_text {
+body.dark .about-page .about-text {
 	border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-body.dark .tokyo_tm_short_info {
-	border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-body.dark .tokyo_tm_info ul li span:first-child {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-body.dark .tokyo_tm_info ul li a {
-	--tw-text-opacity: 1;
-	color: rgb(187 187 187 / var(--tw-text-opacity));
-}
-
-body.dark .tokyo_tm_progressbox {
-	--tw-bg-opacity: 1;
-	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
 }
 
 body.dark .modalbox .description_wrap:after {
@@ -1359,40 +1135,6 @@ body.dark .modalbox .description_wrap:after {
 body.dark .modalbox .description_wrap:before {
 	--tw-bg-opacity: 1;
 	background-color: rgb(52 53 58 / var(--tw-bg-opacity));
-}
-
-body.dark .tokyo_tm_facts .list ul li .list_inner {
-	--tw-border-opacity: 1;
-	border-color: rgb(86 88 92 / var(--tw-border-opacity));
-}
-
-body.dark .tokyo_tm_facts .\!list ul li .list_inner {
-	--tw-border-opacity: 1;
-	border-color: rgb(86 88 92 / var(--tw-border-opacity));
-}
-
-body.dark .tokyo_tm_pricing {
-	--tw-bg-opacity: 1;
-	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
-}
-
-body.dark .tokyo_tm_pricing .list > ul > li .list_inner {
-	border-color: rgba(255, 255, 255, 0.2);
-}
-
-body.dark .tokyo_tm_pricing .\!list > ul > li .list_inner {
-	border-color: rgba(255, 255, 255, 0.2);
-}
-
-body.dark .tokyo_tm_pricing .popular {
-	--tw-bg-opacity: 1;
-	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-	--tw-text-opacity: 1;
-	color: rgb(0 0 0 / var(--tw-text-opacity));
-}
-
-body.dark .tokyo_tm_pricing .plan h3 {
-	border-color: rgba(255, 255, 255, 0.1);
 }
 
 body.dark .modalbox .details {
@@ -1413,29 +1155,6 @@ body.dark .loader_line:before {
 body.dark .loader_line:after {
 	--tw-bg-opacity: 1;
 	background-color: rgb(204 204 204 / var(--tw-bg-opacity));
-}
-
-.sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-	border-width: 0;
-}
-
-.not-sr-only {
-	position: static;
-	width: auto;
-	height: auto;
-	padding: 0;
-	margin: 0;
-	overflow: visible;
-	clip: auto;
-	white-space: normal;
 }
 
 .pointer-events-none {

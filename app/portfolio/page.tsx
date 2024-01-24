@@ -75,8 +75,8 @@ export default function Portfolio() {
 	return (
 		<SectionContainer name={'portfolio'}>
 			<div className="container">
-				<div className="tokyo_tm_portfolio w-full h-auto clear-both float-left px-0 pt-[100px] pb-[40px]">
-					<div className="tokyo_tm_title w-full h-auto clear-both float-left mb-[62px]">
+				<div className="portfolio-page w-full h-auto clear-both float-left px-0 pt-[100px] pb-[40px]">
+					<div className="section-title w-full h-auto clear-both float-left mb-[62px]">
 						<div className="title_flex w-full h-auto clear-both flex justify-between items-end">
 							<SectionTitle pageName={'Portfolio'} title={'Mijn Werk'} />
 						</div>

@@ -48,8 +48,8 @@ export default function About() {
 	return (
 		<SectionContainer name={'about'}>
 			<div className="container">
-				<div className="tokyo_tm_about w-full h-auto clear-both float-left py-[100px] px-0">
-					<div className="tokyo_tm_title w-full h-auto clear-both float-left mb-[62px]">
+				<div className="about-page w-full h-auto clear-both float-left py-[100px] px-0">
+					<div className="section-title w-full h-auto clear-both float-left mb-[62px]">
 						<div className="title_flex w-full h-auto clear-both flex justify-between items-end">
 							<SectionTitle pageName={'Over mij'} title={'Mijn missie'} />
 						</div>
@@ -63,7 +63,7 @@ export default function About() {
 						</h3>
 						<span>Beeldhouwer</span>
 					</div>
-					<div className="about_text w-full h-auto clear-both float-left border-solid border-[#DFDFDF] border-b pb-[31px] mb-[30px]">
+					<div className="about-text w-full h-auto clear-both float-left border-solid border-[#DFDFDF] border-b pb-[31px] mb-[30px]">
 						<h4 className="mb-[22px]">Over beelden in steen en hout:</h4>
 						<p className="mb-[11px]">
 							<q>
@@ -80,7 +80,7 @@ export default function About() {
 						</p>
 					</div>
 					<ProductCards products={products1} />
-					<div className="about_text w-full h-auto clear-both float-left pb-[31px] mb-[30px]">
+					<div className="about-text w-full h-auto clear-both float-left pb-[31px] mb-[30px]">
 						<p className="mb-[11px]">
 							Overal vandaan sleep ik stenen mee naar huis en leg daarin de opgedane indrukken vast.
 							Meesters zoals{' '}
@@ -110,14 +110,14 @@ export default function About() {
 						</q>
 					</div>
 					<ProductCards products={products2} />
-					<div className="about_text w-full h-auto clear-both float-left border-solid border-[#DFDFDF] border-b pb-[31px] mb-[30px]">
+					<div className="about-text w-full h-auto clear-both float-left border-solid border-[#DFDFDF] border-b pb-[31px] mb-[30px]">
 						<p className="mb-[11px]">
 							Nadere kennismaking voor een opdracht kan telefonisch of via mijn{' '}
 							<Link href="/contact">e-mailadres</Link>, graag nodig ik mensen uit om langs te komen in
 							Dronten om te kijken wat er allemaal staat en om een en ander nader te bespreken.
 						</p>
 					</div>
-					<div className="about_text w-full h-auto clear-both float-left pb-[31px] mb-[30px]">
+					<div className="about-text w-full h-auto clear-both float-left pb-[31px] mb-[30px]">
 						<ContactDetails />
 					</div>
 				</div>
