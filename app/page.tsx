@@ -15,8 +15,8 @@ export default function Home() {
 							<Image
 								src="/img/wiebe_cool_beeldhouwer.png"
 								alt="Wiebe Cool - Beeldhouwer"
-								layout="fill"
-								objectFit="contain"
+								fill
+								sizes="100%"
 							/>
 						</div>
 						<div className="details ml-[80px]">
