@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Portal } from './hoc/Portal';
+import { detectMobile } from '@/lib/utils';
 
 interface CursorPosition {
 	x: number;
@@ -8,6 +9,10 @@ interface CursorPosition {
 
 export const Cursor: React.FC = () => {
 	//
+	if (detectMobile()) {
+		return null;
+	}
+
 	const cursorOuter = React.useRef<HTMLDivElement>(null);
 	const cursorInner = React.useRef<HTMLDivElement>(null);
 	const [cursorPosition, setCursorPosition] = React.useState<CursorPosition>({ x: 0, y: 0 });
@@ -22,7 +27,6 @@ export const Cursor: React.FC = () => {
 	}, [isHovered]);
 
 	const handleMouseMove = React.useCallback((e: MouseEvent) => {
-		//console.log('handleMouseMove');
 		setCursorPosition({ x: e.clientX, y: e.clientY });
 	}, []);
 
