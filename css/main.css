@@ -45,11 +45,6 @@ svg {
 	fill: currentColor;
 }
 
-img.svg {
-	height: 15px;
-	width: 15px;
-}
-
 h1,
 h2,
 h3,
@@ -1373,11 +1368,6 @@ body.dark .tokyo_tm_info ul li a {
 body.dark .tokyo_tm_progressbox {
 	--tw-bg-opacity: 1;
 	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
-}
-
-body.dark .tokyo_tm_skill_list ul li .svg {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 body.dark .tokyo_tm_resumebox {

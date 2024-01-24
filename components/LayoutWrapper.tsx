@@ -22,7 +22,6 @@ const menuItems: MenuItem[] = [
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
 	//
 	React.useEffect(() => {
-		tokyo.imageToSvg();
 		tokyo.customCursor();
 	}, []);
 
