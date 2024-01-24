@@ -28,7 +28,6 @@ export const Cursor: React.FC = () => {
 
 	React.useEffect(() => {
 		//
-		console.log('ursorInner.current', cursorInner);
 		if (!cursorInner.current || !cursorOuter.current) {
 			return;
 		}

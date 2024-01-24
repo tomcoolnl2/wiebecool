@@ -9,7 +9,7 @@ export default function Home() {
 	return (
 		<SectionContainer name={'home'}>
 			<div className="container">
-				<div className="home_page w-full min-h-[100vh] clear-both flex items-center justify-center relative">
+				<div className="home-page w-full min-h-[100vh] clear-both flex items-center justify-center relative">
 					<div className="home_content flex items-center">
 						<div className="avatar min-w-[300px] min-h-[300px] relative rounded-full inner-border">
 							<Image
