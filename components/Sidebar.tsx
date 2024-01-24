@@ -13,9 +13,10 @@ const menuItems: MenuItem[] = [
 
 interface Props {
 	mobileNavigationIsOpen: boolean;
+	openMobileNavigation: (value: boolean) => void;
 }
 
-export const Sidebar: React.FC<Props> = ({ mobileNavigationIsOpen }) => {
+export const Sidebar: React.FC<Props> = ({ mobileNavigationIsOpen, openMobileNavigation }) => {
 	//
 	const pathname = usePathname();
 
@@ -32,6 +33,7 @@ export const Sidebar: React.FC<Props> = ({ mobileNavigationIsOpen }) => {
 									className="capitalize inline-block font-medium font-montserrat"
 									href={item.href}
 									role="link"
+									onClick={() => openMobileNavigation(false)}
 								>
 									{item.name}
 								</Link>

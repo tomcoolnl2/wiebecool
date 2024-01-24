@@ -22,7 +22,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 			{modal && portfolioDetailsModal && <DetailsModalComponent />}
 			<div className="site-wrapper">
 				<TopBar mobileNavigationIsOpen={mobileNavigationIsOpen} openMobileNavigation={openMobileNavigation} />
-				<Sidebar mobileNavigationIsOpen={mobileNavigationIsOpen} />
+				<Sidebar mobileNavigationIsOpen={mobileNavigationIsOpen} openMobileNavigation={openMobileNavigation} />
 				<main className="main-content w-full min-h-[100vh] float-left relative bg-[#f8f8f8]">
 					<div className="main-content-in relative w-full float-left clear-both border-solid border-[#ebebeb] border-l min-h-[100vh]">
 						{children}
