@@ -1,520 +1,5 @@
-/*
-! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com
-*/
-
-/*
-1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
-2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
-*/
-
-*,
-::before,
-::after {
+* {
 	box-sizing: border-box;
-	/* 1 */
-	border-width: 0;
-	/* 2 */
-	border-style: solid;
-	/* 2 */
-	border-color: #e5e7eb;
-	/* 2 */
-}
-
-::before,
-::after {
-	--tw-content: '';
-}
-
-/*
-1. Use a consistent sensible line-height in all browsers.
-2. Prevent adjustments of font size after orientation changes in iOS.
-3. Use a more readable tab size.
-4. Use the user's configured `sans` font-family by default.
-5. Use the user's configured `sans` font-feature-settings by default.
-*/
-
-html {
-	line-height: 1.5;
-	/* 1 */
-	-webkit-text-size-adjust: 100%;
-	/* 2 */
-	-moz-tab-size: 4;
-	/* 3 */
-	-o-tab-size: 4;
-	tab-size: 4;
-	/* 3 */
-	font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
-		Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-	/* 4 */
-	font-feature-settings: normal;
-	/* 5 */
-}
-
-/*
-1. Remove the margin in all browsers.
-2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.
-*/
-
-body {
-	margin: 0;
-	/* 1 */
-	line-height: inherit;
-	/* 2 */
-}
-
-/*
-1. Add the correct height in Firefox.
-2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
-3. Ensure horizontal rules are visible by default.
-*/
-
-hr {
-	height: 0;
-	/* 1 */
-	color: inherit;
-	/* 2 */
-	border-top-width: 1px;
-	/* 3 */
-}
-
-/*
-Add the correct text decoration in Chrome, Edge, and Safari.
-*/
-
-abbr:where([title]) {
-	-webkit-text-decoration: underline dotted;
-	text-decoration: underline dotted;
-}
-
-/*
-Remove the default font size and weight for headings.
-*/
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-size: inherit;
-	font-weight: inherit;
-}
-
-/*
-Reset links to optimize for opt-in styling instead of opt-out.
-*/
-
-a {
-	color: inherit;
-	text-decoration: inherit;
-}
-
-/*
-Add the correct font weight in Edge and Safari.
-*/
-
-b,
-strong {
-	font-weight: bolder;
-}
-
-/*
-1. Use the user's configured `mono` font family by default.
-2. Correct the odd `em` font sizing in all browsers.
-*/
-
-code,
-kbd,
-samp,
-pre {
-	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-	/* 1 */
-	font-size: 1em;
-	/* 2 */
-}
-
-/*
-Add the correct font size in all browsers.
-*/
-
-small {
-	font-size: 80%;
-}
-
-/*
-Prevent `sub` and `sup` elements from affecting the line height in all browsers.
-*/
-
-sub,
-sup {
-	font-size: 75%;
-	line-height: 0;
-	position: relative;
-	vertical-align: baseline;
-}
-
-sub {
-	bottom: -0.25em;
-}
-
-sup {
-	top: -0.5em;
-}
-
-/*
-1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
-2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
-3. Remove gaps between table borders by default.
-*/
-
-table {
-	text-indent: 0;
-	/* 1 */
-	border-color: inherit;
-	/* 2 */
-	border-collapse: collapse;
-	/* 3 */
-}
-
-/*
-1. Change the font styles in all browsers.
-2. Remove the margin in Firefox and Safari.
-3. Remove default padding in all browsers.
-*/
-
-button,
-input,
-optgroup,
-select,
-textarea {
-	font-family: inherit;
-	/* 1 */
-	font-size: 100%;
-	/* 1 */
-	font-weight: inherit;
-	/* 1 */
-	line-height: inherit;
-	/* 1 */
-	color: inherit;
-	/* 1 */
-	margin: 0;
-	/* 2 */
-	padding: 0;
-	/* 3 */
-}
-
-/*
-Remove the inheritance of text transform in Edge and Firefox.
-*/
-
-button,
-select {
-	text-transform: none;
-}
-
-/*
-1. Correct the inability to style clickable types in iOS and Safari.
-2. Remove default button styles.
-*/
-
-button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
-	-webkit-appearance: button;
-	/* 1 */
-	background-color: transparent;
-	/* 2 */
-	background-image: none;
-	/* 2 */
-}
-
-/*
-Use the modern Firefox focus style for all focusable elements.
-*/
-
-:-moz-focusring {
-	outline: auto;
-}
-
-/*
-Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
-*/
-
-:-moz-ui-invalid {
-	box-shadow: none;
-}
-
-/*
-Add the correct vertical alignment in Chrome and Firefox.
-*/
-
-progress {
-	vertical-align: baseline;
-}
-
-/*
-Correct the cursor style of increment and decrement buttons in Safari.
-*/
-
-::-webkit-inner-spin-button,
-::-webkit-outer-spin-button {
-	height: auto;
-}
-
-/*
-1. Correct the odd appearance in Chrome and Safari.
-2. Correct the outline style in Safari.
-*/
-
-[type='search'] {
-	-webkit-appearance: textfield;
-	/* 1 */
-	outline-offset: -2px;
-	/* 2 */
-}
-
-/*
-Remove the inner padding in Chrome and Safari on macOS.
-*/
-
-::-webkit-search-decoration {
-	-webkit-appearance: none;
-}
-
-/*
-1. Correct the inability to style clickable types in iOS and Safari.
-2. Change font properties to `inherit` in Safari.
-*/
-
-::-webkit-file-upload-button {
-	-webkit-appearance: button;
-	/* 1 */
-	font: inherit;
-	/* 2 */
-}
-
-/*
-Add the correct display in Chrome and Safari.
-*/
-
-summary {
-	display: list-item;
-}
-
-/*
-Removes the default spacing and border for appropriate elements.
-*/
-
-blockquote,
-dl,
-dd,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-hr,
-figure,
-p,
-pre {
-	margin: 0;
-}
-
-fieldset {
-	margin: 0;
-	padding: 0;
-}
-
-legend {
-	padding: 0;
-}
-
-ol,
-ul,
-menu {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-/*
-Prevent resizing textareas horizontally by default.
-*/
-
-textarea {
-	resize: vertical;
-}
-
-/*
-1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
-2. Set the default placeholder color to the user's configured gray 400 color.
-*/
-
-input::-moz-placeholder,
-textarea::-moz-placeholder {
-	opacity: 1;
-	/* 1 */
-	color: #9ca3af;
-	/* 2 */
-}
-
-input::placeholder,
-textarea::placeholder {
-	opacity: 1;
-	/* 1 */
-	color: #9ca3af;
-	/* 2 */
-}
-
-/*
-Set the default cursor for buttons.
-*/
-
-button,
-[role='button'] {
-	cursor: pointer;
-}
-
-/*
-Make sure disabled buttons don't get the pointer cursor.
-*/
-
-:disabled {
-	cursor: default;
-}
-
-/*
-1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)
-2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)
-   This can trigger a poorly considered lint error in some tools but is included by design.
-*/
-
-img,
-svg,
-video,
-canvas,
-audio,
-iframe,
-embed,
-object {
-	display: block;
-	/* 1 */
-	vertical-align: middle;
-	/* 2 */
-}
-
-/*
-Constrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)
-*/
-
-img,
-video {
-	max-width: 100%;
-	height: auto;
-}
-
-/* Make elements with the HTML hidden attribute stay hidden by default */
-
-[hidden] {
-	display: none;
-}
-
-*,
-::before,
-::after {
-	--tw-border-spacing-x: 0;
-	--tw-border-spacing-y: 0;
-	--tw-translate-x: 0;
-	--tw-translate-y: 0;
-	--tw-rotate: 0;
-	--tw-skew-x: 0;
-	--tw-skew-y: 0;
-	--tw-scale-x: 1;
-	--tw-scale-y: 1;
-	--tw-pan-x: ;
-	--tw-pan-y: ;
-	--tw-pinch-zoom: ;
-	--tw-scroll-snap-strictness: proximity;
-	--tw-ordinal: ;
-	--tw-slashed-zero: ;
-	--tw-numeric-figure: ;
-	--tw-numeric-spacing: ;
-	--tw-numeric-fraction: ;
-	--tw-ring-inset: ;
-	--tw-ring-offset-width: 0px;
-	--tw-ring-offset-color: #fff;
-	--tw-ring-color: rgb(59 130 246 / 0.5);
-	--tw-ring-offset-shadow: 0 0 #0000;
-	--tw-ring-shadow: 0 0 #0000;
-	--tw-shadow: 0 0 #0000;
-	--tw-shadow-colored: 0 0 #0000;
-	--tw-blur: ;
-	--tw-brightness: ;
-	--tw-contrast: ;
-	--tw-grayscale: ;
-	--tw-hue-rotate: ;
-	--tw-invert: ;
-	--tw-saturate: ;
-	--tw-sepia: ;
-	--tw-drop-shadow: ;
-	--tw-backdrop-blur: ;
-	--tw-backdrop-brightness: ;
-	--tw-backdrop-contrast: ;
-	--tw-backdrop-grayscale: ;
-	--tw-backdrop-hue-rotate: ;
-	--tw-backdrop-invert: ;
-	--tw-backdrop-opacity: ;
-	--tw-backdrop-saturate: ;
-	--tw-backdrop-sepia: ;
-}
-
-::backdrop {
-	--tw-border-spacing-x: 0;
-	--tw-border-spacing-y: 0;
-	--tw-translate-x: 0;
-	--tw-translate-y: 0;
-	--tw-rotate: 0;
-	--tw-skew-x: 0;
-	--tw-skew-y: 0;
-	--tw-scale-x: 1;
-	--tw-scale-y: 1;
-	--tw-pan-x: ;
-	--tw-pan-y: ;
-	--tw-pinch-zoom: ;
-	--tw-scroll-snap-strictness: proximity;
-	--tw-ordinal: ;
-	--tw-slashed-zero: ;
-	--tw-numeric-figure: ;
-	--tw-numeric-spacing: ;
-	--tw-numeric-fraction: ;
-	--tw-ring-inset: ;
-	--tw-ring-offset-width: 0px;
-	--tw-ring-offset-color: #fff;
-	--tw-ring-color: rgb(59 130 246 / 0.5);
-	--tw-ring-offset-shadow: 0 0 #0000;
-	--tw-ring-shadow: 0 0 #0000;
-	--tw-shadow: 0 0 #0000;
-	--tw-shadow-colored: 0 0 #0000;
-	--tw-blur: ;
-	--tw-brightness: ;
-	--tw-contrast: ;
-	--tw-grayscale: ;
-	--tw-hue-rotate: ;
-	--tw-invert: ;
-	--tw-saturate: ;
-	--tw-sepia: ;
-	--tw-drop-shadow: ;
-	--tw-backdrop-blur: ;
-	--tw-backdrop-brightness: ;
-	--tw-backdrop-contrast: ;
-	--tw-backdrop-grayscale: ;
-	--tw-backdrop-hue-rotate: ;
-	--tw-backdrop-invert: ;
-	--tw-backdrop-opacity: ;
-	--tw-backdrop-saturate: ;
-	--tw-backdrop-sepia: ;
 }
 
 .container {
@@ -542,7 +27,6 @@ body {
 	overflow-x: hidden;
 	--tw-bg-opacity: 1;
 	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-	font-family: Mulish, sans-serif;
 	font-size: 15px;
 	font-weight: 400;
 	line-height: 30px;
@@ -617,7 +101,7 @@ h6 {
 	padding-bottom: 0px;
 }
 
-.tokyo_tm_all_wrap {
+.site-wrapper {
 	position: relative;
 	float: left;
 	clear: both;
@@ -625,19 +109,19 @@ h6 {
 	width: 100%;
 }
 
-.tokyo_tm_all_wrap,
-.tokyo_tm_all_wrap * {
+.site-wrapper,
+.site-wrapper * {
 	box-sizing: border-box;
 }
 
-.tokyo_tm_button {
+.submit-button {
 	float: left;
 	clear: both;
 	height: auto;
 	width: 100%;
 }
 
-.tokyo_tm_button a {
+.submit-button a {
 	display: inline-block;
 	--tw-bg-opacity: 1;
 	background-color: rgb(0 0 0 / var(--tw-bg-opacity));
@@ -744,20 +228,20 @@ h6 {
 	z-index: 4;
 }
 
-.tokyo_tm_modalbox .service_popup_informations .image {
+.modalbox .service_popup_informations .image {
 	position: relative;
 	float: left;
 	margin-bottom: 37px;
 	width: 100%;
 }
 
-.tokyo_tm_modalbox .service_popup_informations .image img {
+.modalbox .service_popup_informations .image img {
 	position: relative;
 	min-width: 100%;
 	opacity: 0;
 }
 
-.tokyo_tm_modalbox .service_popup_informations .image .main {
+.modalbox .service_popup_informations .image .main {
 	position: absolute;
 	top: 0px;
 	right: 0px;
@@ -768,13 +252,13 @@ h6 {
 	background-repeat: no-repeat;
 }
 
-.tokyo_tm_modalbox .service_popup_informations .main_title {
+.modalbox .service_popup_informations .main_title {
 	float: left;
 	margin-bottom: 23px;
 	width: 100%;
 }
 
-.tokyo_tm_modalbox .service_popup_informations .main_title h3 {
+.modalbox .service_popup_informations .main_title h3 {
 	font-size: 23px;
 	font-weight: 600;
 }
@@ -784,7 +268,7 @@ h6 {
 	display: inline-block;
 }
 
-.tokyo_tm_modalbox {
+.modalbox {
 	visibility: hidden;
 	position: fixed;
 	top: 0px;
@@ -799,16 +283,16 @@ h6 {
 	transition-duration: 300ms;
 }
 
-.tokyo_tm_modalbox.opened {
+.modalbox.opened {
 	visibility: visible;
 	opacity: 1;
 }
 
-.tokyo_tm_modalbox .container {
+.modalbox .container {
 	height: 100vh;
 }
 
-.tokyo_tm_modalbox .box_inner {
+.modalbox .box_inner {
 	visibility: hidden;
 	position: absolute;
 	top: 70px;
@@ -829,13 +313,13 @@ h6 {
 	transition-duration: 300ms;
 }
 
-.tokyo_tm_modalbox.opened .box_inner {
+.modalbox.opened .box_inner {
 	visibility: visible;
 	margin-top: 0px;
 	opacity: 1;
 }
 
-.tokyo_tm_modalbox .close {
+.modalbox .close {
 	position: fixed;
 	left: 100%;
 	top: 0px;
@@ -843,7 +327,7 @@ h6 {
 	margin-left: 30px;
 }
 
-.tokyo_tm_modalbox .close a {
+.modalbox .close a {
 	position: relative;
 	display: block;
 	height: 40px;
@@ -860,11 +344,11 @@ h6 {
 	transition-duration: 300ms;
 }
 
-.tokyo_tm_modalbox .close a:hover {
+.modalbox .close a:hover {
 	border-radius: 9999px;
 }
 
-.tokyo_tm_modalbox .close a i {
+.modalbox .close a i {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -874,7 +358,7 @@ h6 {
 		skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.tokyo_tm_modalbox .description_wrap {
+.modalbox .description_wrap {
 	position: relative;
 	float: left;
 	height: 100%;
@@ -884,7 +368,7 @@ h6 {
 	padding: 50px;
 }
 
-.tokyo_tm_modalbox .description_wrap:after {
+.modalbox .description_wrap:after {
 	position: fixed;
 	right: 0px;
 	left: 0px;
@@ -897,7 +381,7 @@ h6 {
 	content: var(--tw-content);
 }
 
-.tokyo_tm_modalbox .description_wrap:before {
+.modalbox .description_wrap:before {
 	position: fixed;
 	right: 0px;
 	left: 0px;
@@ -924,7 +408,7 @@ h6 {
 	opacity: 1;
 }
 
-.tokyo_tm_pricing .tokyo_tm_button {
+.tokyo_tm_pricing .submit-button {
 	margin-top: 30px;
 }
 
@@ -936,19 +420,19 @@ h6 {
 	position: relative;
 }
 
-.tokyo_tm_modalbox .popup_details .top_image {
+.modalbox .popup_details .top_image {
 	position: relative;
 	margin-bottom: 37px;
 	overflow: hidden;
 }
 
-.tokyo_tm_modalbox .popup_details .top_image img {
+.modalbox .popup_details .top_image img {
 	position: relative;
 	min-width: 100%;
 	opacity: 0;
 }
 
-.tokyo_tm_modalbox .popup_details .top_image .main {
+.modalbox .popup_details .top_image .main {
 	position: absolute;
 	top: 0px;
 	right: 0px;
@@ -959,13 +443,13 @@ h6 {
 	background-repeat: no-repeat;
 }
 
-.tokyo_tm_modalbox .portfolio_main_title {
+.modalbox .portfolio_main_title {
 	float: left;
 	margin-bottom: 28px;
 	width: 100%;
 }
 
-.tokyo_tm_modalbox .portfolio_main_title h3 {
+.modalbox .portfolio_main_title h3 {
 	margin-bottom: 5px;
 	font-size: 23px;
 	font-weight: 700;
@@ -979,14 +463,14 @@ h6 {
 	opacity: 0;
 }
 
-.tokyo_tm_modalbox .popup_details {
+.modalbox .popup_details {
 	float: left;
 	clear: both;
 	height: auto;
 	width: 100%;
 }
 
-.tokyo_tm_modalbox .additional_images ul li:nth-child(3n-2) {
+.modalbox .additional_images ul li:nth-child(3n-2) {
 	width: 100%;
 }
 
@@ -1000,7 +484,7 @@ h6 {
 	content: var(--tw-content);
 }
 
-.tokyo_tm_modalbox .details .extra {
+.modalbox .details .extra {
 	position: relative;
 	margin-bottom: 30px;
 	display: flex;
@@ -1008,7 +492,7 @@ h6 {
 	justify-content: space-between;
 }
 
-.tokyo_tm_modalbox .details .extra:before {
+.modalbox .details .extra:before {
 	position: absolute;
 	bottom: -10px;
 	height: 1px;
@@ -1029,24 +513,24 @@ h6 {
 	content: var(--tw-content);
 }
 
-.tokyo_tm_modalbox .details {
+.modalbox .details {
 	float: left;
 	margin-bottom: 20px;
 	width: 100%;
 	padding: 0px;
 }
 
-.tokyo_tm_modalbox .description_wrap .image {
+.modalbox .description_wrap .image {
 	position: relative;
 	z-index: -1;
 	margin-bottom: 40px;
 }
 
-.tokyo_tm_modalbox .description_wrap .image img {
+.modalbox .description_wrap .image img {
 	min-width: 100%;
 }
 
-.tokyo_tm_modalbox .description_wrap .image .main {
+.modalbox .description_wrap .image .main {
 	position: absolute;
 	top: 0px;
 	right: 0px;
@@ -1057,13 +541,13 @@ h6 {
 	background-repeat: no-repeat;
 }
 
-.tokyo_tm_modalbox .details .title {
+.modalbox .details .title {
 	margin-bottom: 9px;
 	font-size: 23px;
 	font-weight: 600;
 }
 
-.tokyo_tm_modalbox .date {
+.modalbox .date {
 	font-family: Montserrat, sans-serif;
 	font-size: 12px;
 	text-transform: uppercase;
@@ -1071,7 +555,7 @@ h6 {
 	color: rgb(118 118 118 / var(--tw-text-opacity));
 }
 
-.tokyo_tm_modalbox .date a {
+.modalbox .date a {
 	--tw-text-opacity: 1;
 	color: rgb(118 118 118 / var(--tw-text-opacity));
 	transition-property: all;
@@ -1079,17 +563,17 @@ h6 {
 	transition-duration: 300ms;
 }
 
-.tokyo_tm_modalbox .date a:hover {
+.modalbox .date a:hover {
 	--tw-text-opacity: 1;
 	color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
-.tokyo_tm_modalbox .date span {
+.modalbox .date span {
 	position: relative;
 	margin-bottom: 11px;
 }
 
-.tokyo_tm_modalbox .date span:before {
+.modalbox .date span:before {
 	position: absolute;
 	top: 50%;
 	right: 100%;
@@ -1128,7 +612,7 @@ h6 {
 		max-width: 968px;
 	}
 
-	.tokyo_tm_all_wrap .leftpart {
+	.site-wrapper .leftpart {
 		width: 350px;
 		padding-top: 0px;
 		padding-bottom: 0px;
@@ -1136,7 +620,7 @@ h6 {
 		padding-right: 70px;
 	}
 
-	.tokyo_tm_all_wrap .rightpart {
+	.site-wrapper .rightpart {
 		padding-left: 350px;
 	}
 
@@ -1164,7 +648,7 @@ h6 {
 		margin-bottom: 22px;
 	}
 
-	.tokyo_tm_modalbox .box_inner {
+	.modalbox .box_inner {
 		width: 850px;
 	}
 }
@@ -1176,15 +660,15 @@ h6 {
 		padding-left: 0px;
 	}
 
-	.tokyo_tm_all_wrap .leftpart {
+	.site-wrapper .leftpart {
 		display: none;
 	}
 
-	.tokyo_tm_all_wrap .rightpart {
+	.site-wrapper .rightpart {
 		padding-left: 0px;
 	}
 
-	.tokyo_tm_all_wrap .rightpart_in {
+	.site-wrapper .rightpart_in {
 		border-left-width: 0px;
 	}
 
@@ -1208,43 +692,43 @@ h6 {
 		padding-top: 130px;
 	}
 
-	.tokyo_tm_modalbox .description_wrap {
+	.modalbox .description_wrap {
 		padding: 40px;
 	}
 
-	.tokyo_tm_modalbox .box_inner {
+	.modalbox .box_inner {
 		width: 500px;
 	}
 
-	.tokyo_tm_modalbox .main_details {
+	.modalbox .main_details {
 		flex-direction: column;
 	}
 
-	.tokyo_tm_modalbox .main_details .textbox {
+	.modalbox .main_details .textbox {
 		margin-bottom: 30px;
 		width: 100%;
 		padding-right: 0px;
 	}
 
-	.tokyo_tm_modalbox .main_details .detailbox {
+	.modalbox .main_details .detailbox {
 		width: 100%;
 		padding-left: 0px;
 	}
 
-	.tokyo_tm_modalbox .additional_images ul {
+	.modalbox .additional_images ul {
 		margin: 0px;
 	}
 
-	.tokyo_tm_modalbox .additional_images ul li {
+	.modalbox .additional_images ul li {
 		width: 100%;
 		padding-left: 0px;
 	}
 
-	.tokyo_tm_modalbox .description_wrap:after {
+	.modalbox .description_wrap:after {
 		height: 40px;
 	}
 
-	.tokyo_tm_modalbox .description_wrap:before {
+	.modalbox .description_wrap:before {
 		height: 40px;
 	}
 }
@@ -1298,15 +782,15 @@ h6 {
 		width: 33.333333%;
 	}
 
-	.tokyo_tm_modalbox .details .title {
+	.modalbox .details .title {
 		font-size: 20px;
 	}
 
-	.tokyo_tm_modalbox .portfolio_main_title h3 {
+	.modalbox .portfolio_main_title h3 {
 		font-size: 20px;
 	}
 
-	.tokyo_tm_modalbox .service_popup_informations .main_title h3 {
+	.modalbox .service_popup_informations .main_title h3 {
 		font-size: 20px;
 	}
 }
@@ -1350,32 +834,32 @@ h6 {
 		padding-right: 30px;
 	}
 
-	.tokyo_tm_modalbox .main_content .icon {
+	.modalbox .main_content .icon {
 		position: relative;
 		margin-bottom: 25px;
 	}
 
-	.tokyo_tm_modalbox .main_content .quotebox {
+	.modalbox .main_content .quotebox {
 		padding-left: 0px;
 	}
 
-	.tokyo_tm_modalbox .close a {
+	.modalbox .close a {
 		height: 30px;
 		width: 30px;
 		font-size: 14px;
 	}
 
-	.tokyo_tm_modalbox .close {
+	.modalbox .close {
 		left: auto;
 		right: 0px;
 		top: -40px;
 	}
 
-	.tokyo_tm_modalbox .box_inner {
+	.modalbox .box_inner {
 		width: 300px;
 	}
 
-	.tokyo_tm_modalbox .description_wrap {
+	.modalbox .description_wrap {
 		padding: 20px;
 	}
 
@@ -1496,15 +980,15 @@ h6 {
 		padding-left: 0px;
 	}
 
-	.tokyo_tm_modalbox .description_wrap:after {
+	.modalbox .description_wrap:after {
 		height: 20px;
 	}
 
-	.tokyo_tm_modalbox .description_wrap:before {
+	.modalbox .description_wrap:before {
 		height: 20px;
 	}
 
-	.tokyo_tm_modalbox .portfolio_main_title {
+	.modalbox .portfolio_main_title {
 		margin-bottom: 20px;
 	}
 }
@@ -1532,47 +1016,47 @@ body.dark h6 {
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_all_wrap .leftpart {
+body.dark .site-wrapper .leftpart {
 	--tw-bg-opacity: 1;
 	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
 }
 
-body.dark .tokyo_tm_all_wrap .leftpart .menu ul li a {
+body.dark .site-wrapper .leftpart .menu ul li a {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_all_wrap .leftpart .menu ul li a:hover {
+body.dark .site-wrapper .leftpart .menu ul li a:hover {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_all_wrap .leftpart .menu ul li.active a {
+body.dark .site-wrapper .leftpart .menu ul li.active a {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_all_wrap .leftpart .copyright p {
+body.dark .site-wrapper .leftpart .copyright p {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_all_wrap .leftpart .copyright a {
+body.dark .site-wrapper .leftpart .copyright a {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_all_wrap .leftpart .copyright a:hover {
+body.dark .site-wrapper .leftpart .copyright a:hover {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_all_wrap .rightpart {
+body.dark .site-wrapper .rightpart {
 	--tw-bg-opacity: 1;
 	background-color: rgb(52 53 58 / var(--tw-bg-opacity));
 }
 
-body.dark .tokyo_tm_all_wrap .rightpart_in {
+body.dark .site-wrapper .rightpart_in {
 	border-left-width: 0px;
 }
 
@@ -1629,7 +1113,7 @@ body.dark .tokyo_tm_mobile_menu .menu_list ul li a {
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_button a {
+body.dark .submit-button a {
 	--tw-bg-opacity: 1;
 	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 	--tw-text-opacity: 1;
@@ -1651,12 +1135,12 @@ body.dark .tokyo_tm_about .description .right > ul > li span {
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox_about .counter ul li .name {
+body.dark .modalbox_about .counter ul li .name {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox_about .counter ul li .\!name {
+body.dark .modalbox_about .counter ul li .\!name {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
@@ -1697,17 +1181,17 @@ body.dark .product-cards li .details .date a:hover {
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox_news .details .title {
+body.dark .modalbox_news .details .title {
 	--tw-text-opacity: 1;
 	color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox_news .main_content .descriptions p {
+body.dark .modalbox_news .main_content .descriptions p {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox .main_content .descriptions .bigger {
+body.dark .modalbox .main_content .descriptions .bigger {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
@@ -1777,12 +1261,12 @@ body.dark .product-cards li .list_inner {
 	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-body.dark .tokyo_tm_modalbox_about .box_inner {
+body.dark .modalbox_about .box_inner {
 	--tw-bg-opacity: 1;
 	background-color: rgb(52 53 58 / var(--tw-bg-opacity));
 }
 
-body.dark .tokyo_tm_modalbox_about .about_title h3 {
+body.dark .modalbox_about .about_title h3 {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
@@ -1801,66 +1285,66 @@ body.dark .progress_inner .background .bar_in {
 	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-body.dark .tokyo_tm_modalbox_about .list_inner {
+body.dark .modalbox_about .list_inner {
 	border-color: rgba(255, 255, 255, 0.1);
 }
 
-body.dark .tokyo_tm_modalbox .box_inner {
+body.dark .modalbox .box_inner {
 	--tw-bg-opacity: 1;
 	background-color: rgb(52 53 58 / var(--tw-bg-opacity));
 }
 
-body.dark .tokyo_tm_modalbox .main_details .detailbox .first {
+body.dark .modalbox .main_details .detailbox .first {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox .main_details .detailbox .\!first {
+body.dark .modalbox .main_details .detailbox .\!first {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox .main_details .detailbox span a {
+body.dark .modalbox .main_details .detailbox span a {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox .main_details .detailbox span a:hover {
+body.dark .modalbox .main_details .detailbox span a:hover {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox .main_details .detailbox .share li a {
+body.dark .modalbox .main_details .detailbox .share li a {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox .main_details .detailbox .share li a:hover {
+body.dark .modalbox .main_details .detailbox .share li a:hover {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox .main_content .icon i {
+body.dark .modalbox .main_content .icon i {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox .date {
+body.dark .modalbox .date {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox .date a {
+body.dark .modalbox .date a {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox .date a:hover {
+body.dark .modalbox .date a:hover {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox .details .extra:before {
+body.dark .modalbox .details .extra:before {
 	background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -1989,12 +1473,12 @@ body.dark .tokyo_tm_services .\!list ul li .title {
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .tokyo_tm_modalbox .description_wrap:after {
+body.dark .modalbox .description_wrap:after {
 	--tw-bg-opacity: 1;
 	background-color: rgb(52 53 58 / var(--tw-bg-opacity));
 }
 
-body.dark .tokyo_tm_modalbox .description_wrap:before {
+body.dark .modalbox .description_wrap:before {
 	--tw-bg-opacity: 1;
 	background-color: rgb(52 53 58 / var(--tw-bg-opacity));
 }
@@ -2048,7 +1532,7 @@ body.dark .tokyo_tm_pricing .plan h3 {
 	border-color: rgba(255, 255, 255, 0.1);
 }
 
-body.dark .tokyo_tm_modalbox .details {
+body.dark .modalbox .details {
 	background-color: transparent;
 }
 

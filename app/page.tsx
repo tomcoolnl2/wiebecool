@@ -20,10 +20,10 @@ export default function Home() {
 							/>
 						</div>
 						<div className="details ml-[80px]">
-							<h1 className="name font-extrabold uppercase mb-[14px]">
+							<h1 className="name font-poppins text-[55px] font-extrabold uppercase mb-[14px]">
 								Wiebe <span className="text-slate-300">Cool</span>
 							</h1>
-							<h2 className="subtitle mb-[11px]">Welkom op mijn site</h2>
+							<h2 className="font-poppins subtitle mb-[11px]">Welkom op mijn site</h2>
 							<p className="job font-montserrat font-medium max-w-[450px] mb-[25px] border-solid border-[#DFDFDF] border-b pb-[31px]">
 								Sinds eind 2022 ben ik lid van{' '}
 								<a href="https://www.galeriedronten.nl/" target="_blank">

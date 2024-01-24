@@ -17,7 +17,7 @@ export const ModalContainer = <T,>({ children, nullValue }: ModalContainerProps<
 	});
 
 	return (
-		<div className="tokyo_tm_modalbox opened">
+		<div className="modalbox opened">
 			<div className="box_inner" ref={domNode}>
 				<div className="close">
 					<a

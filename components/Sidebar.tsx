@@ -20,10 +20,10 @@ export const Sidebar: React.FC<{ menuItems: MenuItem[] }> = ({ menuItems }) => {
 					</a>
 				</div>
 				<nav className="menu px-[0px] py-[50px] w-full float-left" role="navigation">
-					<ul className="transition_link m-0 list-none">
+					<ul className="m-0 list-none">
 						{menuItems.map((menu) => (
 							<li
-								className={`m-0 w-full float-left ${menu.href === pathname ? 'active' : ''}`}
+								className={`mb-3 text-lg w-full float-left ${menu.href === pathname ? 'active' : ''}`}
 								key={menu.id}
 							>
 								<Link
