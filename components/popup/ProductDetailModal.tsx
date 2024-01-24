@@ -1,10 +1,9 @@
 import * as React from 'react';
-import Image from 'next/image';
 import { AppContext } from '@/context/Context';
 import { Product } from '@/model';
 import { ModalContainer } from './ModalContainer';
 
-export const ProductDetailComponent: React.FC = () => {
+const ProductDetailComponent: React.FC = () => {
 	//
 	const { productModal, setProductModal } = React.useContext(AppContext);
 
@@ -29,3 +28,5 @@ export const ProductDetailComponent: React.FC = () => {
 		</ModalContainer>
 	);
 };
+
+export default ProductDetailComponent;

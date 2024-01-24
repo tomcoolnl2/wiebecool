@@ -1,15 +1,16 @@
 'use client';
+import dynamic from 'next/dynamic';
 import * as React from 'react';
+import { MenuItem } from '@/model';
 import { tokyo } from '@/lib/utils';
 import { AppContext } from '@/context/Context';
 import { Cursor } from '@/components/Cursor';
 import { Mobile } from '@/components/Mobile';
 import { Sidebar } from '@/components/Sidebar';
 import { PreLoader } from '@/components/PreLoader';
-// import { ImageView } from '@/components/popup/ImageView';
-import { ProductDetailComponent } from '@/components/popup/ProductDetailModal';
-import { DetailsModalComponent } from '@/components/popup/DetailsModal';
-import { MenuItem } from '@/model';
+
+const ProductDetailComponent = dynamic(() => import('@/components/popup/ProductDetailModal'), { ssr: false });
+const DetailsModalComponent = dynamic(() => import('@/components/popup/DetailsModal'), { ssr: false });
 
 const menuItems: MenuItem[] = [
 	{ id: 1, name: 'Home', href: '/' },
@@ -30,7 +31,6 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 	return (
 		<>
 			<PreLoader />
-			{/* <ImageView /> */}
 			{modal && productModal && <ProductDetailComponent />}
 			{modal && portfolioDetailsModal && <DetailsModalComponent />}
 			<div className="site-wrapper">

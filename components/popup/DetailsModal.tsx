@@ -118,3 +118,5 @@ export const DetailsModalComponent: React.FC = () => {
 		</ModalContainer>
 	);
 };
+
+export default DetailsModalComponent;
