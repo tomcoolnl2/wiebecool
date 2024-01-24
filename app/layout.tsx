@@ -1,8 +1,8 @@
+import { Montserrat, Mulish, Poppins } from 'next/font/google';
 import * as React from 'react';
 import { Metadata } from 'next';
 import { Providers } from './providers';
 import LayoutWrapper from '../components/LayoutWrapper';
-import { Montserrat, Mulish, Poppins } from 'next/font/google';
 import '../css/globals.css';
 
 const montserrat = Montserrat({
