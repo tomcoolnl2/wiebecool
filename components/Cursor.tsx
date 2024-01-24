@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Portal } from './hoc/Portal';
 
 interface CursorPosition {
 	x: number;
@@ -54,9 +55,9 @@ export const Cursor: React.FC = () => {
 	}, []);
 
 	return (
-		<>
+		<Portal>
 			<div ref={cursorOuter} className={`mouse-cursor cursor-outer${hoverClassName}`} style={{ transform }} />
 			<div ref={cursorInner} className={`mouse-cursor cursor-inner${hoverClassName}`} style={{ transform }} />
-		</>
+		</Portal>
 	);
 };
