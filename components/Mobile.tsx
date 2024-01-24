@@ -18,10 +18,9 @@ export const Mobile: React.FC<{ menuItems: MenuItem[] }> = ({ menuItems }) => {
 							<i className="icon-home-1" />
 						</a>
 					</div>
-
-					<div className="trigger relative top-[5px]">
+					<div className="relative top-[5px]">
 						<div
-							className={`cursor-pointer hamburger hamburger--slider ${toggle ? 'is-active' : ''}`}
+							className={`cursor-pointer hamburger--slider hamburger${toggle ? ' is-active' : ''}`}
 							onClick={() => setToggle(!toggle)}
 						>
 							<div className="hamburger-box w-[30px]">
@@ -32,7 +31,7 @@ export const Mobile: React.FC<{ menuItems: MenuItem[] }> = ({ menuItems }) => {
 				</div>
 			</div>
 			<div
-				className={`tokyo_tm_mobile_menu fixed top-[50px] right-[-200px] h-[100vh] w-[200px] z-[15] bg-white transition-all duration-300 ${
+				className={`mobile-menu fixed top-[50px] right-[-200px] h-[100vh] w-[200px] z-[15] bg-white transition-all duration-300 ${
 					toggle ? 'opened' : ''
 				}`}
 			>

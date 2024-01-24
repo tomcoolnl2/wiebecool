@@ -22,11 +22,13 @@ export const Cursor: React.FC = () => {
 	}, [isHovered]);
 
 	const handleMouseMove = React.useCallback((e: MouseEvent) => {
+		//console.log('handleMouseMove');
 		setCursorPosition({ x: e.clientX, y: e.clientY });
 	}, []);
 
 	React.useEffect(() => {
 		//
+		console.log('ursorInner.current', cursorInner);
 		if (!cursorInner.current || !cursorOuter.current) {
 			return;
 		}
@@ -52,12 +54,12 @@ export const Cursor: React.FC = () => {
 				trigger.removeEventListener('mouseleave', handleMouseLeave);
 			});
 		};
-	}, []);
+	}, [cursorInner.current, cursorOuter.current]);
 
 	return (
-		<Portal>
+		<>
 			<div ref={cursorOuter} className={`mouse-cursor cursor-outer${hoverClassName}`} style={{ transform }} />
 			<div ref={cursorInner} className={`mouse-cursor cursor-inner${hoverClassName}`} style={{ transform }} />
-		</Portal>
+		</>
 	);
 };

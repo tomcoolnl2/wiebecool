@@ -1,24 +1,34 @@
+'use client';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 interface PortalProps {
-	container?: Element | DocumentFragment | null;
+	id?: string | null;
 	key?: string | null | undefined;
 	children: React.ReactNode;
 }
 
-export const Portal: React.FC<PortalProps> = ({ container = document?.body || null, key, children }) => {
+export const Portal: React.FC<PortalProps> = ({ id = null, key, children }) => {
 	//
-	if (!container) {
-		return null;
-	}
-
 	const [mounted, setMounted] = React.useState<boolean>(false);
+	const [element, setElement] = React.useState<Element | null>(null);
 
 	React.useEffect(() => {
+		setElement(!id ? document.body : document.getElementById(id));
 		setMounted(true);
 		return () => setMounted(false);
 	}, []);
 
-	return mounted ? ReactDOM.createPortal(children, container, key) : null;
+	React.useEffect(() => {
+		if (mounted && element) {
+			const portal = document.createElement('div');
+			element.appendChild(portal);
+
+			return () => {
+				element.removeChild(portal);
+			};
+		}
+	}, [id, mounted, element]);
+
+	return mounted && element ? ReactDOM.createPortal(children, element, key) : null;
 };
