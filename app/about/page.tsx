@@ -55,7 +55,7 @@ export default function About() {
 						</div>
 					</div>
 					<div className="author-image w-full h-80 clear-both float-left relative mb-[35px]">
-						<Image src="/img/werkplaats.png" alt="Wiebe Cool Beeldhouwer Werkplaats" fill />
+						<Image src="/img/werkplaats.png" alt="Wiebe Cool Beeldhouwer Werkplaats" fill priority />
 					</div>
 					<div className="about_title w-full h-auto clear-both float-left border-solid border-[#DFDFDF] border-b pb-[20px] mb-[30px]">
 						<h3 className="text-[22px] font-bold">
