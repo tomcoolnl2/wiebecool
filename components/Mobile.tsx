@@ -9,7 +9,7 @@ export const Mobile: React.FC<{ menuItems: MenuItem[] }> = ({ menuItems }) => {
 
 	return (
 		<>
-			<div className="tokyo_tm_topbar bg-white fixed top-0 left-0 right-0 h-[50px] z-[14] hidden">
+			<div className="mobile-topbar bg-white fixed top-0 left-0 right-0 h-[50px] z-[14] hidden">
 				<div className="topbar_inner w-full h-full clear-both flex items-center justify-between py-0 px-[20px]">
 					<div className="logo" data-type="image">
 						{' '}

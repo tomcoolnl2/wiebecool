@@ -1060,7 +1060,7 @@ body.dark .cursor-outer.cursor-hover {
 	opacity: 0;
 }
 
-body.dark .tokyo_tm_topbar {
+body.dark .mobile-topbar {
 	--tw-bg-opacity: 1;
 	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
 }
