@@ -33,7 +33,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 			{/* <ImageView /> */}
 			{modal && productModal && <ProductDetailComponent />}
 			{modal && portfolioDetailsModal && <DetailsModalComponent />}
-			<div className="tokyo_tm_all_wrap">
+			<div className="site-wrapper">
 				<Mobile menuItems={menuItems} />
 				<Sidebar menuItems={menuItems} />
 				<main className="rightpart w-full min-h-[100vh] float-left relative bg-[#f8f8f8] pl-[450px]">

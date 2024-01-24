@@ -37,12 +37,12 @@ export const Mobile: React.FC<{ menuItems: MenuItem[] }> = ({ menuItems }) => {
 				}`}
 			>
 				<div className="menu_list w-full h-auto clear-both float-left text-right px-[20px] pt-[100px] pb-[0px]">
-					<ul className="transition_link list-none">
+					<ul className="list-none">
 						{menuItems.map((menu) => (
 							<li className={`${menu.href === pathname ? 'active' : ''} mb-[7px]`} key={menu.id}>
 								<a
 									className="text-black font-montserrat"
-									href={`${menu.href}`}
+									href={menu.href}
 									onClick={() => {
 										setToggle(!toggle);
 									}}
