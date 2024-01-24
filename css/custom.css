@@ -166,93 +166,10 @@
 .site-wrapper .leftpart .menu ul li.active a {
 	color: #000;
 }
-.home_page .avatar[data-type='square'] .image {
-	animation: none;
-}
 .home_page .avatar[data-type='circle'] .image {
-	animation: none;
 	border-radius: 100%;
-}
-.home_page .avatar .image {
-	animation: morph 8s ease-in-out infinite 1s;
-	background-blend-mode: multiply;
-	-webkit-box-shadow: inset 0px 0px 0px 9px rgba(255, 255, 255, 0.3);
-	-moz-box-shadow: inset 0px 0px 0px 9px rgba(255, 255, 255, 0.3);
-	box-shadow: inset 0px 0px 0px 9px rgba(255, 255, 255, 0.3);
 }
 
-@keyframes morph {
-	0% {
-		border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-	}
-	50% {
-		border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
-	}
-	100% {
-		border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-	}
-}
-.tokyo_tm_resume_list ul:before {
-	content: '';
-	position: absolute;
-	width: 1px;
-	height: 100%;
-	top: 0;
-	left: 0;
-	background-color: rgba(0, 0, 0, 0.07);
-}
-.tokyo_tm_resume_list ul li:before {
-	content: '';
-	position: absolute;
-	height: 18px;
-	width: 18px;
-	background: #fff;
-	border-radius: 100%;
-	border: solid 1px #ccc;
-	left: -9px;
-	top: 8px;
-}
-.tokyo_tm_testimonials .list ul li .text:before {
-	position: absolute;
-	content: '';
-	height: 0px;
-	width: 0px;
-	top: 100%;
-	left: 50px;
-	border: solid transparent;
-	border-top-color: #e5edf4;
-	border-width: 18px 18px 0px 0px;
-}
-.tokyo_tm_testimonials .list ul li .text:after {
-	position: absolute;
-	content: '';
-	top: 100%;
-	left: 50px;
-	height: 0px;
-	width: 0px;
-	border: solid transparent;
-	border-top-color: #f6fbff;
-	border-width: 14px 13px 0px 0px;
-	margin-left: 2px;
-}
-.tokyo_tm_testimonials .owl-carousel .owl-stage-outer {
-	overflow: hidden;
-}
-.tokyo_tm_testimonials .owl-carousel .owl-stage-outer {
-	overflow: visible;
-}
-.tokyo_tm_testimonials .owl-item.active {
-	opacity: 1;
-}
-.tokyo_tm_testimonials .owl-item {
-	opacity: 0;
-}
-.tokyo_tm_services .list ul li .list_inner:hover {
-	border: 1px solid rgba(0, 0, 0, 0.2);
-}
-.tokyo_tm_services .list ul li .list_inner:hover .number {
-	background-color: rgba(0, 0, 0, 0.08);
-}
 .tokyo_tm_read_more a:before {
 	position: absolute;
 	content: '';
@@ -270,6 +187,7 @@
 	animation-duration: 0.4s;
 	animation-timing-function: cubic-bezier(0.6, 0.01, 0, 1);
 }
+
 .tokyo_tm_read_more a span {
 	display: inline-block;
 	position: relative;
@@ -278,6 +196,7 @@
 	transition: 0.6s cubic-bezier(0.6, 0.01, 0, 1);
 	transform: translateX(-110%);
 }
+
 @keyframes read-more-anim {
 	0% {
 		transform-origin: right center;
@@ -348,12 +267,6 @@
 	background-color: #999;
 	border-radius: 6px;
 	border: 3px solid #fff;
-}
-.tokyo_tm_partners ul {
-	min-width: calc(100% + 12px);
-}
-.tokyo_tm_pricing .price .currency {
-	position: absolute !important;
 }
 .abs_image {
 	width: 100%;
@@ -480,7 +393,6 @@ body.modal {
 	border-radius: 50%;
 	-webkit-transform: translateZ(0);
 	transform: translateZ(0);
-	visibility: hidden;
 }
 .cursor-inner {
 	margin-left: -3px;

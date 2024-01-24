@@ -21,7 +21,7 @@ export const Mobile: React.FC<{ menuItems: MenuItem[] }> = ({ menuItems }) => {
 
 					<div className="trigger relative top-[5px]">
 						<div
-							className={`hamburger hamburger--slider ${toggle ? 'is-active' : ''}`}
+							className={`cursor-pointer hamburger hamburger--slider ${toggle ? 'is-active' : ''}`}
 							onClick={() => setToggle(!toggle)}
 						>
 							<div className="hamburger-box w-[30px]">
