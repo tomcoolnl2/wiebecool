@@ -38,7 +38,7 @@ export const ProductCards: React.FC<{ products: Product[] }> = ({ products }) =>
 								</p>
 							</div>
 
-							<div className="tokyo_tm_read_more">
+							<div className="read-more">
 								<a href="#" onClick={() => setProductModal(item)}>
 									<span>Read More</span>
 								</a>

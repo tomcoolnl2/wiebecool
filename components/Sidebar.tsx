@@ -1,48 +1,47 @@
-'use client';
 import { usePathname } from 'next/navigation';
 import * as React from 'react';
 import Link from 'next/link';
 import { MenuItem } from '@/model';
-import { SocialMediaLinks } from '../components/SocialMediaLinks';
+import { SocialMediaLinks } from './SocialMediaLinks';
 
-export const Sidebar: React.FC<{ menuItems: MenuItem[] }> = ({ menuItems }) => {
+const menuItems: MenuItem[] = [
+	{ id: 1, name: 'Home', href: '/' },
+	{ id: 2, name: 'Missie', href: '/about' },
+	{ id: 3, name: 'Werk', href: '/portfolio' },
+	{ id: 4, name: 'Contact', href: '/contact' },
+];
+
+interface Props {
+	mobileNavigationIsOpen: boolean;
+	openMobileNavigation: (value: boolean) => void;
+}
+
+export const Sidebar: React.FC<Props> = ({ mobileNavigationIsOpen, openMobileNavigation }) => {
 	//
 	const pathname = usePathname();
 
 	return (
-		<aside className="leftpart w-[450px] h-[100vh] fixed flex items-center z-[12] px-[100px] py-[0px] bg-white">
-			<div className="leftpart_inner w-full h-auto">
-				{/* You can use image or text as logo. data-type values are: "image" and "text" */}
-				<div className="logo" data-type="text">
-					{' '}
-					<a href="/" role="link">
-						<h3 className="font-poppins font-black text-[22px] tracking-[5px]">BEELDHOUWER</h3>
-					</a>
-				</div>
-				<nav className="menu px-[0px] py-[50px] w-full float-left" role="navigation">
+		<aside
+			className={`sidebar h-[100vh] fixed flex z-[12] bg-white${mobileNavigationIsOpen ? ' mobile-open' : ''}`}
+		>
+			<div className="sidebar-inner w-full h-auto">
+				<nav className="menu w-full" role="navigation">
 					<ul className="m-0 list-none">
-						{menuItems.map((menu) => (
-							<li
-								className={`mb-3 text-lg w-full float-left ${menu.href === pathname ? 'active' : ''}`}
-								key={menu.id}
-							>
+						{menuItems.map((item) => (
+							<li className={`mb-3 w-full ${item.href === pathname ? 'active' : ''}`} key={item.id}>
 								<Link
-									className="text-[#767676] capitalize inline-block font-medium font-montserrat transition-all duration-300 hover:text-black"
-									href={menu.href}
+									className="capitalize inline-block font-medium font-montserrat"
+									href={item.href}
 									role="link"
+									onClick={() => openMobileNavigation(false)}
 								>
-									{menu.name}
+									{item.name}
 								</Link>
 							</li>
 						))}
 					</ul>
 				</nav>
 				<SocialMediaLinks size={11} />
-				<div className="copyright w-full float-left">
-					<p className="text-[12px] text-[#999] font-montserrat leading-[25px]">
-						© {new Date().getFullYear()}
-					</p>
-				</div>
 			</div>
 		</aside>
 	);

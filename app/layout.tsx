@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	return (
 		<html lang="nl">
-			<body className={`dark ${montserrat.variable} ${mulish.variable} font-mulish`}>
+			<body className={`dark ${montserrat.variable} ${mulish.variable} ${poppins.variable} font-mulish`}>
 				<Providers>
 					<LayoutWrapper>{children}</LayoutWrapper>
 				</Providers>

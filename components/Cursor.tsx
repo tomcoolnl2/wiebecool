@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { detectMobile } from '@/lib/utils';
 
 interface CursorPosition {
 	x: number;
@@ -7,6 +8,10 @@ interface CursorPosition {
 
 export const Cursor: React.FC = () => {
 	//
+	if (detectMobile()) {
+		return null;
+	}
+
 	const cursorOuter = React.useRef<HTMLDivElement>(null);
 	const cursorInner = React.useRef<HTMLDivElement>(null);
 	const [cursorPosition, setCursorPosition] = React.useState<CursorPosition>({ x: 0, y: 0 });
@@ -51,7 +56,7 @@ export const Cursor: React.FC = () => {
 				trigger.removeEventListener('mouseleave', handleMouseLeave);
 			});
 		};
-	}, []);
+	}, [cursorInner.current, cursorOuter.current]);
 
 	return (
 		<>
