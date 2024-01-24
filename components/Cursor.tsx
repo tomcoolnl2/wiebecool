@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Portal } from './hoc/Portal';
 import { detectMobile } from '@/lib/utils';
 
 interface CursorPosition {
