@@ -19,7 +19,6 @@ export const DetailsModalComponent: React.FC = () => {
 					<img src={portfolioDetailsModal.thumbnail} alt="image" />
 					<div
 						className="main"
-						data-img-url={portfolioDetailsModal.thumbnail}
 						style={{
 							backgroundImage: `url(${portfolioDetailsModal.thumbnail})`,
 						}}
@@ -84,7 +83,6 @@ export const DetailsModalComponent: React.FC = () => {
 									{/*  THUMB */}
 									<div
 										className="main absolute inset-0 bg-no-repeat bg-center bg-cover"
-										data-img-url={portfolioDetailsModal.bigImage}
 										style={{
 											backgroundImage: `url(${portfolioDetailsModal.bigImage})`,
 										}}
@@ -103,7 +101,6 @@ export const DetailsModalComponent: React.FC = () => {
 										/>
 										<div
 											className="main absolute inset-0 bg-no-repeat bg-center bg-cover"
-											data-img-url={img}
 											style={{
 												backgroundImage: `url(${img})`,
 											}}

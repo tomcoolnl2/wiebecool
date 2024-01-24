@@ -2,7 +2,6 @@
 import dynamic from 'next/dynamic';
 import * as React from 'react';
 import { MenuItem } from '@/model';
-import { tokyo } from '@/lib/utils';
 import { AppContext } from '@/context/Context';
 import { Cursor } from '@/components/Cursor';
 import { Mobile } from '@/components/Mobile';
@@ -21,12 +20,6 @@ const menuItems: MenuItem[] = [
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
 	//
-	React.useEffect(() => {
-		tokyo.dataImage();
-		tokyo.imageToSvg();
-		tokyo.customCursor();
-	}, []);
-
 	const { modal, productModal, portfolioDetailsModal } = React.useContext(AppContext);
 	return (
 		<>
