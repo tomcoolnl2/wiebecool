@@ -23,4 +23,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 The app is deployed to using the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
 
-The `develop` branch is deployed [here](https://wiebecool-oizfuyimn-tom-cools-projects.vercel.app/)
+The `develop` branch is deployed [here](https://wiebecool-git-develop-tom-cools-projects.vercel.app/)
