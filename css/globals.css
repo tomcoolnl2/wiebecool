@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '../css/plugins.css';
 @import '../css/custom.css';
 @import '../css/main.css';
 

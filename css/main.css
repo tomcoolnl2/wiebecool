@@ -731,9 +731,6 @@ h6 {
 /******** Middle Screens *********/
 
 @media (max-width: 1040px) {
-	.mouse-cursor {
-		display: none;
-	}
 
 	.home_page .home_content {
 		flex-direction: column;
@@ -763,18 +760,6 @@ h6 {
 		padding-right: 20px;
 		padding-top: 0px;
 		padding-bottom: 0px;
-	}
-
-	.tokyo_tm_services .list ul li {
-		width: 50%;
-	}
-
-	.tokyo_tm_services .\!list ul li {
-		width: 50%;
-	}
-
-	.tokyo_tm_partners ul li {
-		width: 33.333333%;
 	}
 
 	.modalbox .details .title {
@@ -933,10 +918,6 @@ h6 {
 	.tokyo_tm_services .\!list ul li {
 		width: 100%;
 		padding-left: 0px;
-	}
-
-	.tokyo_tm_partners ul li {
-		width: 50%;
 	}
 
 	.tokyo_tm_facts .list ul {
@@ -1370,99 +1351,6 @@ body.dark .tokyo_tm_progressbox {
 	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
 }
 
-body.dark .tokyo_tm_resumebox {
-	--tw-bg-opacity: 1;
-	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
-}
-
-body.dark .tokyo_tm_resume_list ul li .time span {
-	background-color: rgba(255, 255, 255, 0.05);
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-body.dark .tokyo_tm_resume_list ul:before {
-	background-color: rgba(255, 255, 255, 0.07);
-}
-
-body.dark .tokyo_tm_resume_list ul li:before {
-	border-color: rgba(255, 255, 255, 0.2);
-	--tw-bg-opacity: 1;
-	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
-}
-
-body.dark .tokyo_tm_testimonials .list ul li .text {
-	--tw-border-opacity: 1;
-	border-color: rgb(86 88 92 / var(--tw-border-opacity));
-}
-
-body.dark .tokyo_tm_testimonials .\!list ul li .text {
-	--tw-border-opacity: 1;
-	border-color: rgb(86 88 92 / var(--tw-border-opacity));
-}
-
-body.dark .tokyo_tm_testimonials .list ul li .text:before {
-	--tw-border-opacity: 1;
-	border-top-color: rgb(86 88 92 / var(--tw-border-opacity));
-}
-
-body.dark .tokyo_tm_testimonials .\!list ul li .text:before {
-	--tw-border-opacity: 1;
-	border-top-color: rgb(86 88 92 / var(--tw-border-opacity));
-}
-
-body.dark .tokyo_tm_testimonials .list ul li .text:after {
-	--tw-border-opacity: 1;
-	border-top-color: rgb(52 53 58 / var(--tw-border-opacity));
-}
-
-body.dark .tokyo_tm_testimonials .\!list ul li .text:after {
-	--tw-border-opacity: 1;
-	border-top-color: rgb(52 53 58 / var(--tw-border-opacity));
-}
-
-body.dark .tokyo_tm_services .list ul li .list_inner {
-	border-width: 0px;
-	--tw-bg-opacity: 1;
-	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
-}
-
-body.dark .tokyo_tm_services .\!list ul li .list_inner {
-	border-width: 0px;
-	--tw-bg-opacity: 1;
-	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
-}
-
-body.dark .tokyo_tm_services .list ul li .number {
-	background-color: rgba(255, 255, 255, 0.03);
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-body.dark .tokyo_tm_services .\!list ul li .number {
-	background-color: rgba(255, 255, 255, 0.03);
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-body.dark .tokyo_tm_services .list ul li .list_inner:hover .number {
-	background-color: rgba(255, 255, 255, 0.08);
-}
-
-body.dark .tokyo_tm_services .\!list ul li .list_inner:hover .number {
-	background-color: rgba(255, 255, 255, 0.08);
-}
-
-body.dark .tokyo_tm_services .list ul li .title {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-body.dark .tokyo_tm_services .\!list ul li .title {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
 body.dark .modalbox .description_wrap:after {
 	--tw-bg-opacity: 1;
 	background-color: rgb(52 53 58 / var(--tw-bg-opacity));
@@ -1471,21 +1359,6 @@ body.dark .modalbox .description_wrap:after {
 body.dark .modalbox .description_wrap:before {
 	--tw-bg-opacity: 1;
 	background-color: rgb(52 53 58 / var(--tw-bg-opacity));
-}
-
-body.dark .tokyo_tm_partners {
-	--tw-bg-opacity: 1;
-	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
-}
-
-body.dark .tokyo_tm_partners .partners_inner {
-	--tw-border-opacity: 1;
-	border-color: rgb(86 88 92 / var(--tw-border-opacity));
-}
-
-body.dark .tokyo_tm_partners ul li {
-	--tw-border-opacity: 1;
-	border-color: rgb(86 88 92 / var(--tw-border-opacity));
 }
 
 body.dark .tokyo_tm_facts .list ul li .list_inner {
