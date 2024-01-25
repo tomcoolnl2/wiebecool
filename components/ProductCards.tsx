@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import Image from 'next/image';
 import { Product } from '@/model';
@@ -50,3 +51,5 @@ export const ProductCards: React.FC<{ products: Product[] }> = ({ products }) =>
 		</ul>
 	);
 };
+
+export default ProductCards;

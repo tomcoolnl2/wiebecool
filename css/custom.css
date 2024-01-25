@@ -154,6 +154,12 @@
 .site-wrapper .sidebar .menu ul li.active a {
 	color: #000;
 }
+
+.home-page .avatar {
+	width: 300px;
+	aspect-ratio: 1;
+}
+
 .home-page .avatar .image {
 	border-radius: 100%;
 }

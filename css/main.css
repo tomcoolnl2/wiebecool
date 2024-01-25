@@ -511,8 +511,7 @@ h6 {
 	}
 
 	.home-page .avatar {
-		min-height: 250px;
-		min-width: 250px;
+		width: 250px;
 	}
 
 	.home-page .details .name {
@@ -686,8 +685,7 @@ h6 {
 	}
 
 	.home-page .avatar {
-		min-height: 200px;
-		min-width: 200px;
+		width: 200px;
 	}
 
 	.portfolio-page .portfolio_list {

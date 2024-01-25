@@ -1,19 +1,38 @@
 import * as React from 'react';
+import { fetchContentfulData } from '@/lib/api';
+import { generateGoogleMapsAddress } from '@/lib/utils';
 
-export const ContactDetails: React.FC = () => {
+const query = `
+	query Address {
+		address(id: "VYrkgFK6dR1V81lIJqez2") {
+			postalAddressText
+			postalAddress
+			phoneNumberText
+			phoneNumber
+		}
+	}
+`;
+
+export const ContactDetails: React.FC = async () => {
+	//
+	const { address } = await fetchContentfulData(query);
+
 	return (
 		<p className="job font-montserrat font-medium max-w-[450px] mb-[25px]">
-			Wanneer je meer wilt weten:
+			{address.phoneNumberText}
 			<br />
-			<a href="tel:0031628979316" target="_blank">
-				0031628979316
+			<a href={`tel:${address.phoneNumber}`} target="_blank">
+				{address.phoneNumber}
 			</a>
 			<br />
 			<br />
-			Bezoekadres:
+			{address.postalAddressText}
 			<br />
-			<a href="https://www.google.com/maps/place/Venkel+25,+8252+CH+Dronten,+Netherlands/" target="_blank">
-				Venkel 25, 8252 CH Dronten
+			<a
+				href={`https://www.google.com/maps/place/${generateGoogleMapsAddress(address.postalAddress)}/`}
+				target="_blank"
+			>
+				{address.postalAddress}
 			</a>
 		</p>
 	);
