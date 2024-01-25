@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppContext } from '@/context/Context';
+import { AppContext } from '@/components/context/Context';
 import { Product } from '@/model';
 import { ModalContainer } from './ModalContainer';
 

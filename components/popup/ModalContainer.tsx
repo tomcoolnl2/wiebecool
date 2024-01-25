@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppContext } from '@/context/Context';
+import { AppContext } from '@/components/context/Context';
 import { useClickOutside } from '@/hooks/useClickOutside';
 
 export interface ModalContainerProps<T> {
