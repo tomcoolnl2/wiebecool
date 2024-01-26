@@ -21,6 +21,7 @@ const pageQuery = `
 			description {
 				json
 			}
+			submitButtonText
 		}
 	}`;
 
@@ -39,7 +40,7 @@ export default async function Contact() {
 					<div className="font-montserrat font-medium mb-[25px] border-solid pb-[31px]">
 						{processRichText(contactPage.description.json)}
 					</div>
-					<ContactForm />
+					<ContactForm buttonText={contactPage.submitButtonText} />
 				</div>
 			</div>
 		</SectionContainer>

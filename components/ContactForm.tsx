@@ -2,7 +2,7 @@
 import * as React from 'react';
 import emailjs from '@emailjs/browser';
 
-export const ContactForm = () => {
+export const ContactForm: React.FC<{ buttonText: string }> = ({ buttonText }) => {
 	//
 	const [mailData, setMailData] = React.useState({
 		name: '',
@@ -95,7 +95,7 @@ export const ContactForm = () => {
 					/>
 				</div>
 				<div className="submit-button" data-position="left">
-					<button type="submit">Versturen</button>
+					<button type="submit">{buttonText}</button>
 				</div>
 			</form>
 		</div>

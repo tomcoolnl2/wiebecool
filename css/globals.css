@@ -32,6 +32,7 @@
 	}
 
 	p {
+		/* @contentful/rich-text-react-renderer */
 		white-space: pre-wrap;
 	}
 
