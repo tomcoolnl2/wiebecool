@@ -31,6 +31,11 @@
 		color: white;
 	}
 
+	p {
+		/* @contentful/rich-text-react-renderer */
+		white-space: pre-wrap;
+	}
+
 	q,
 	blockquote {
 		font-style: italic;
@@ -38,6 +43,10 @@
 		max-width: 800px;
 		display: grid;
 		margin: auto;
+	}
+
+	input, textarea {
+		padding: 10px;
 	}
 }
 

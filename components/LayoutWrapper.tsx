@@ -1,7 +1,7 @@
 'use client';
 import dynamic from 'next/dynamic';
 import * as React from 'react';
-import { AppContext } from '@/context/Context';
+import { AppContext } from '@/components/context/Context';
 import { Cursor } from '@/components/Cursor';
 import { Sidebar } from '@/components/Sidebar';
 import { PreLoader } from '@/components/PreLoader';

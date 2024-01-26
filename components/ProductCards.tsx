@@ -1,7 +1,8 @@
+'use client';
 import * as React from 'react';
 import Image from 'next/image';
 import { Product } from '@/model';
-import { AppContext } from '@/context/Context';
+import { AppContext } from '@/components/context/Context';
 
 export const ProductCards: React.FC<{ products: Product[] }> = ({ products }) => {
 	//
@@ -50,3 +51,5 @@ export const ProductCards: React.FC<{ products: Product[] }> = ({ products }) =>
 		</ul>
 	);
 };
+
+export default ProductCards;

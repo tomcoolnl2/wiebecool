@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { AppContext } from '@/context/Context';
+import { AppContext } from '@/components/context/Context';
 import { SectionContainer } from '@/components/SectionContainer';
 import { SectionTitle } from '@/components/SectionTitle';
 

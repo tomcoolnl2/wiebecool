@@ -1,56 +1,61 @@
-'use client';
-import * as React from 'react';
+import { Metadata } from 'next';
 import Image from 'next/image';
+import * as React from 'react';
+import { parseSeoMetaDataQuery, processRichText } from '@/lib/utils';
+import { fetchContentfulData } from '@/lib/api';
 import { SectionContainer } from '@/components/SectionContainer';
 import { ContactDetails } from '@/components/ContactDetails';
 import { SocialMediaLinks } from '@/components/SocialMediaLinks';
 
-export default function Home() {
+export async function generateMetadata(): Promise<Metadata> {
+	const pageSeoQuery = parseSeoMetaDataQuery('7bjsm9rIwR5janeyF5XK2n');
+	const { seoMetaData } = await fetchContentfulData(pageSeoQuery);
+	return seoMetaData;
+}
+
+const pageQuery = `
+	query HomePage {
+		homePage(id: "7bjsm9rIwR5janeyF5XK2n") {
+			title
+			subtitle
+			mugshot {
+				url
+				description
+				width
+				height
+			}
+			introduction {
+				json
+			}
+		}
+	}
+`;
+
+export default async function Home() {
+	//
+	const { homePage } = await fetchContentfulData(pageQuery);
+
 	return (
 		<SectionContainer name={'home'}>
 			<div className="container">
 				<div className="home-page w-full min-h-[100vh] clear-both flex items-center justify-center relative">
 					<div className="home_content flex items-center">
-						<div className="avatar min-w-[300px] min-h-[300px] relative rounded-full inner-border">
+						<div className="avatar relative rounded-full inner-border">
 							<Image
-								src="/img/wiebe_cool_beeldhouwer.png"
-								alt="Wiebe Cool - Beeldhouwer"
-								fill
-								sizes="100%"
+								src={homePage.mugshot.url}
+								alt={homePage.mugshot.description}
+								width={homePage.mugshot.width}
+								height={homePage.mugshot.height}
 							/>
 						</div>
 						<div className="details ml-[80px]">
 							<h1 className="name font-poppins text-[55px] font-extrabold uppercase mb-[14px]">
-								Wiebe <span className="text-slate-300">Cool</span>
+								{homePage.title}
 							</h1>
-							<h2 className="font-poppins subtitle mb-[11px]">Welkom op mijn site</h2>
-							<p className="job font-montserrat font-medium max-w-[450px] mb-[25px] border-solid border-[#DFDFDF] border-b pb-[31px]">
-								Sinds eind 2022 ben ik lid van{' '}
-								<a href="https://www.galeriedronten.nl/" target="_blank">
-									Kunstvereniging Galerie Dronten
-								</a>
-								.
-								<br />
-								Wij hebben als vereniging een prachtige{' '}
-								<a
-									href="https://www.google.com/maps/place/De+Redepassage+6-8,+8254+KD+Dronten,+Netherlands/"
-									target="_blank"
-								>
-									gelerieruimte
-								</a>{' '}
-								in het winkelcentrum van Dronten.
-								<br />
-								Daar staan altijd drie van mijn beelden.
-								<br />
-								<br />
-								<a
-									href="https://www.galeriedronten.nl/contact#:~:text=info%40galeriedronten.nl-,Openingstijden,-woensdag%20t/m"
-									target="_blank"
-								>
-									Wekelijks geopend
-								</a>{' '}
-								op woensdag, donderdag, vrijdag en zaterdag van 10.00 tot 17.00 uur.
-							</p>
+							<h2 className="font-poppins subtitle mb-[11px]">{homePage.subtitle}</h2>
+							<div className="job font-montserrat font-medium max-w-[450px] mb-[25px] border-solid border-[#DFDFDF] border-b pb-[31px]">
+								{processRichText(homePage.introduction.json)}
+							</div>
 							<SocialMediaLinks />
 							<br />
 							<ContactDetails />

@@ -24,6 +24,8 @@ const poppins = Poppins({
 export const metadata: Metadata = {
 	title: 'Wiebe Cool | Beeldhouwer',
 	description: 'Wiebe Cool | Beeldhouwer',
+	applicationName: 'Wiebe Cool | Beeldhouwer',
+	referrer: 'origin',
 };
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
