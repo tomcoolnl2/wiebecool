@@ -1,5 +1,4 @@
 export interface State {
-	animation: string;
 	modal: boolean;
 	portfolioDetailsModal: PortfolioItem | null;
 	modalToggle: (value: boolean) => void;

@@ -22,6 +22,10 @@ const nextConfig = {
 				source: '/werk',
 				destination: '/portfolio',
 			},
+			{
+				source: '/werk/:slug*',
+				destination: '/portfolio/:slug*',
+			},
 		];
 	},
 };

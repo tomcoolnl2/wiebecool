@@ -40,6 +40,7 @@ const pageQuery = `
 						detailPagesCollection {
 							items {
 								sys { id }
+								slug
 								title
 								status
 								imagesCollection(limit: 1) {

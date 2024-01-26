@@ -36,3 +36,10 @@ export function formatStatus(input: string): string {
 		return input;
 	}
 }
+
+export function ensureLeadingSlash(str: string): string {
+	if (!str.startsWith('/')) {
+		return `/${str}`;
+	}
+	return str;
+}

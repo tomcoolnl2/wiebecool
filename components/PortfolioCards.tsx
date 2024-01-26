@@ -10,6 +10,7 @@ interface PortFolioImage {
 
 interface PortfolioCard {
 	sys: { id: string };
+	slug: string;
 	title: string;
 	status: string;
 	imagesCollection: {
@@ -41,7 +42,7 @@ export const PortfolioCardsComponent: React.FC<Props> = ({ item }) => {
 					key={card.sys.id}
 					className="product-card cursor-pointer w-full md:w-1/2 max-w-md overflow-hidden shadow-lg relative mb-6"
 				>
-					<a href="#" className="block">
+					<a href={`/werk${card.slug}`} className="block">
 						<div className="image relative overflow-hidden">
 							<Image
 								className="w-full"
@@ -67,10 +68,4 @@ export const PortfolioCardsComponent: React.FC<Props> = ({ item }) => {
 			))}
 		</aside>
 	);
-
-	// remove product modal
-
-	// clean model.ts
-
-	// center address
 };
