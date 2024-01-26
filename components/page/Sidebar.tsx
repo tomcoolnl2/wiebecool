@@ -2,7 +2,7 @@ import { usePathname } from 'next/navigation';
 import * as React from 'react';
 import Link from 'next/link';
 import { MenuItem } from '@/model';
-import { SocialMediaLinks } from './SocialMediaLinks';
+import { SocialMediaLinks } from '../SocialMediaLinks';
 
 const menuItems: MenuItem[] = [
 	{ id: 1, name: 'Home', href: '/' },

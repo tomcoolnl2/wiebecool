@@ -1,8 +1,8 @@
 'use client';
 import * as React from 'react';
 import { AppContext } from '@/components/context/Context';
-import { SectionContainer } from '@/components/SectionContainer';
-import { SectionTitle } from '@/components/SectionTitle';
+import { SectionContainer } from '@/components/page/SectionContainer';
+import { SectionTitle } from '@/components/page/SectionTitle';
 
 const detailData = [
 	{

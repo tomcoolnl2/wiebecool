@@ -2,10 +2,10 @@ import { Metadata } from 'next';
 import * as React from 'react';
 import { fetchContentfulData } from '@/lib/api';
 import { parseSeoMetaDataQuery, processRichText } from '@/lib/utils';
-import { SectionContainer } from '@/components/SectionContainer';
-import { SectionTitle } from '@/components/SectionTitle';
-import { ContactForm } from '@/components/ContactForm';
-import { GoogleMaps } from '@/components/GoogleMaps';
+import { SectionContainer } from '@/components/page/SectionContainer';
+import { SectionTitle } from '@/components/page/SectionTitle';
+import { ContactForm } from '@/components/contact/ContactForm';
+import { GoogleMaps } from '@/components/contact/GoogleMaps';
 
 export async function generateMetadata(): Promise<Metadata> {
 	const pageSeoQuery = parseSeoMetaDataQuery('6Giq0hPzdDxxtohDi6kucy');

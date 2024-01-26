@@ -3,12 +3,12 @@ import Image from 'next/image';
 import * as React from 'react';
 import { parseSeoMetaDataQuery, processRichText } from '@/lib/utils';
 import { fetchContentfulData } from '@/lib/api';
-import { SectionContainer } from '@/components/SectionContainer';
+import { SectionContainer } from '@/components/page/SectionContainer';
 import { ContactDetails } from '@/components/ContactDetails';
 import { SocialMediaLinks } from '@/components/SocialMediaLinks';
 
 export async function generateMetadata(): Promise<Metadata> {
-	const pageSeoQuery = parseSeoMetaDataQuery('7bjsm9rIwR5janeyF5XK2n');
+	const pageSeoQuery = parseSeoMetaDataQuery('70FCDbDpk8iLUWWHAU76Ge');
 	const { seoMetaData } = await fetchContentfulData(pageSeoQuery);
 	return seoMetaData;
 }
