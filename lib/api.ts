@@ -27,7 +27,7 @@ export const fetchContentfulData = async (query: string) => {
 				Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
 			},
 			body: JSON.stringify({ query }),
-			cache: 'force-cache', // default
+			cache: process.env.NODE_ENV === 'development' ? 'no-cache' : 'force-cache',
 		});
 		if (!response.ok) {
 			throw new Error('Network response was not ok.');

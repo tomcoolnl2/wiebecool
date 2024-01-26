@@ -164,10 +164,10 @@
 	border-radius: 100%;
 }
 
-.read-more a:before {
+.read-more > span:before {
 	position: absolute;
 	content: '';
-	background-color: #000;
+	background-color: white;
 	margin: auto;
 	width: 100%;
 	height: 1px;
@@ -182,10 +182,10 @@
 	animation-timing-function: cubic-bezier(0.6, 0.01, 0, 1);
 }
 
-.read-more a span {
+.read-more > span > span {
 	display: inline-block;
 	position: relative;
-	background-color: #fff;
+	color: white;
 	z-index: 1;
 	transition: 0.6s cubic-bezier(0.6, 0.01, 0, 1);
 	transform: translateX(-110%);
@@ -251,28 +251,57 @@
 .portfolio-page .portfolio_list li .inner:hover .abs_image {
 	transform: scale(1.1) translateZ(0);
 }
+
 .product-cards  {
-	max-width: 1000px;
     margin: auto;
 }
-.product-cards li .list_inner {
-	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.07);
+
+.product-card > a {
+	background-color: rgb(73 75 80 / 1)
 }
-.product-cards li .list_inner .image:hover .main {
-	transform: scale(1.1) translateZ(0);
+
+.product-card .image {
+	aspect-ratio: 1;
 }
-.product-cards li .list_inner:hover .details {
-	box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.12);
+
+.product-card .image img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	transform-origin: top left;
+    filter: grayscale(1);
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
-.product-cards li .list_inner:hover .read-more a:before {
+
+.product-card:hover .image img {
+    transform: scale(1.1) translateZ(0) translate(-50%, -50%);
+    filter: grayscale(0);
+}
+
+.product-card:hover .read-more span:before {
 	animation: read-more-anim-2;
 	animation-fill-mode: forwards;
 	animation-duration: 0.4s;
 	animation-timing-function: cubic-bezier(0.6, 0.01, 0, 1);
 }
-.product-cards li .list_inner:hover .read-more a span {
+
+.product-card:hover .read-more span {
 	transform: translateX(0%);
 }
+
+.product-card .extra:before {
+	position: absolute;
+	bottom: -14px;
+	height: 1px;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.2);
+	--tw-content: '';
+	content: var(--tw-content);
+}
+
+
 .modalbox .read-more {
 	display: none;
 }

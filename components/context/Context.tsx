@@ -1,14 +1,12 @@
 'use client';
 import * as React from 'react';
-import { ActionType, PortfolioItem, Product, State, StateAction } from '@/model';
+import { ActionType, PortfolioItem, State, StateAction } from '@/model';
 
 const initialState: State = {
 	animation: 'fadeInLeft',
 	modal: false,
-	productModal: null,
 	portfolioDetailsModal: null,
 	modalToggle: () => void 0,
-	setProductModal: () => void 0,
 	setPortfolioDetailsModal: () => void 0,
 };
 
@@ -21,11 +19,6 @@ const reducer = (state: State, action: StateAction): State => {
 			return {
 				...state,
 				modal: payload,
-			};
-		case ActionType.NEWSMODAL:
-			return {
-				...state,
-				productModal: payload,
 			};
 		case ActionType.PORTFOLIODETAILSMODAL:
 			return {
@@ -48,14 +41,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 		});
 	}, []);
 
-	const setProductModal = React.useCallback((value: Product | null) => {
-		modalToggle(true);
-		dispatch({
-			type: ActionType.NEWSMODAL,
-			payload: value,
-		});
-	}, []);
-
 	const setPortfolioDetailsModal = React.useCallback((value: PortfolioItem | null) => {
 		modalToggle(true);
 		dispatch({
@@ -64,7 +49,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 		});
 	}, []);
 
-	const { animation, modal, productModal, portfolioDetailsModal } = React.useMemo(() => ({ ...state }), [state]);
+	const { animation, modal, portfolioDetailsModal } = React.useMemo(() => ({ ...state }), [state]);
 
 	return (
 		<AppContext.Provider
@@ -72,8 +57,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 				animation,
 				modal,
 				modalToggle,
-				productModal,
-				setProductModal,
 				portfolioDetailsModal,
 				setPortfolioDetailsModal,
 			}}

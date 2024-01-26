@@ -26,3 +26,13 @@ export function parseSeoMetaDataQuery(id: string): string {
 		}
 	`;
 }
+
+export function formatStatus(input: string): string {
+	const price = parseFloat(input);
+	if (!isNaN(price)) {
+		const formattedPrice = price.toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' });
+		return formattedPrice;
+	} else {
+		return input;
+	}
+}

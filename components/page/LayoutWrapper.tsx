@@ -8,17 +8,15 @@ import { PreLoader } from '@/components/PreLoader';
 import { TopBar } from '@/components/page/TopBar';
 import { Footer } from './Footer';
 
-const ProductDetailComponent = dynamic(() => import('@/components/popup/ProductDetailModal'), { ssr: false });
 const DetailsModalComponent = dynamic(() => import('@/components/popup/DetailsModal'), { ssr: false });
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
 	//
 	const [mobileNavigationIsOpen, openMobileNavigation] = React.useState<boolean>(false);
-	const { modal, productModal, portfolioDetailsModal } = React.useContext(AppContext);
+	const { modal, portfolioDetailsModal } = React.useContext(AppContext);
 	return (
 		<>
 			<PreLoader />
-			{modal && productModal && <ProductDetailComponent />}
 			{modal && portfolioDetailsModal && <DetailsModalComponent />}
 			<div className="site-wrapper">
 				<TopBar mobileNavigationIsOpen={mobileNavigationIsOpen} openMobileNavigation={openMobileNavigation} />
