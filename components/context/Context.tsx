@@ -3,7 +3,6 @@ import * as React from 'react';
 import { ActionType, PortfolioItem, State, StateAction } from '@/model';
 
 const initialState: State = {
-	animation: 'fadeInLeft',
 	modal: false,
 	portfolioDetailsModal: null,
 	modalToggle: () => void 0,
@@ -49,12 +48,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 		});
 	}, []);
 
-	const { animation, modal, portfolioDetailsModal } = React.useMemo(() => ({ ...state }), [state]);
+	const { modal, portfolioDetailsModal } = React.useMemo(() => ({ ...state }), [state]);
 
 	return (
 		<AppContext.Provider
 			value={{
-				animation,
 				modal,
 				modalToggle,
 				portfolioDetailsModal,
