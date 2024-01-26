@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { type TextBlock, TextBlockComponent } from '@/components/TextBlockComponent';
+import { type TextBlock, TextBlockComponent } from '@/components/TextBlock';
+import { type PortfolioCards, PortfolioCardsComponent } from '../PortfolioCards';
 
-export type RenderComponentItem = TextBlock;
+export type RenderComponentItem = TextBlock | PortfolioCards;
 
 interface ComponentMap {
 	[key: string]: React.ComponentType<{ item: RenderComponentItem }>;
@@ -9,6 +10,7 @@ interface ComponentMap {
 
 const ComponentMap: ComponentMap = {
 	TextBlock: TextBlockComponent,
+	PortfolioCards: PortfolioCardsComponent,
 };
 
 interface RenderComponentProps {

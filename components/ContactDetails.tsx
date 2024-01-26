@@ -18,7 +18,7 @@ export const ContactDetails: React.FC = async () => {
 	const { address } = await fetchContentfulData(query);
 
 	return (
-		<p className="job font-montserrat font-medium max-w-[450px] mb-[25px]">
+		<p className="font-montserrat font-medium mb-6">
 			{address.phoneNumberText}
 			<br />
 			<a href={`tel:${address.phoneNumber}`} target="_blank">

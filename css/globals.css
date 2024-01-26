@@ -43,6 +43,7 @@
 		max-width: 800px;
 		display: grid;
 		margin: auto;
+		margin: 24px auto;
 	}
 
 	input, textarea {
@@ -59,9 +60,26 @@
 
 @layer components {
 
+	.container {
+		max-width: 1024px;
+	}
+
 	.inner-border {
 		outline: 5px solid rgba(255,255,255,.1);
 		outline-offset: 0px;
+	}
+
+	body.dark  .text-block h3, h4, h5 {
+		margin-bottom: 1rem;
+	}
+
+	body.dark  .text-block h3 {
+		font-size: 24px;
+	}
+
+	body.dark  .text-block h4 {
+		font-size: 18px;
+		color: lightgray;
 	}
 
 	.modalbox .date span {
