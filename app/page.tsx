@@ -52,7 +52,9 @@ export default async function Home() {
 							<h1 className="name font-poppins text-[55px] font-extrabold uppercase mb-[14px]">
 								{homePage.title}
 							</h1>
-							<h2 className="font-poppins subtitle mb-[11px]">{homePage.subtitle}</h2>
+							{homePage.subtitle && (
+								<h2 className="font-poppins subtitle mb-[11px]">{homePage.subtitle}</h2>
+							)}
 							<div className="job font-montserrat font-medium max-w-[450px] mb-[25px] border-solid border-[#DFDFDF] border-b pb-[31px]">
 								{processRichText(homePage.introduction.json)}
 							</div>
