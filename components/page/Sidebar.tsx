@@ -18,7 +18,7 @@ interface Props {
 
 export const Sidebar: React.FC<Props> = ({ mobileNavigationIsOpen, openMobileNavigation }) => {
 	//
-	const pathname = usePathname();
+	const path = usePathname().split('/').filter(Boolean);
 
 	return (
 		<aside
@@ -27,18 +27,25 @@ export const Sidebar: React.FC<Props> = ({ mobileNavigationIsOpen, openMobileNav
 			<div className="sidebar-inner w-full h-auto">
 				<nav className="menu w-full" role="navigation">
 					<ul className="m-0 list-none">
-						{menuItems.map((item) => (
-							<li className={`mb-3 w-full ${item.href === pathname ? 'active' : ''}`} key={item.id}>
-								<Link
-									className="capitalize inline-block font-medium font-montserrat"
-									href={item.href}
-									role="link"
-									onClick={() => openMobileNavigation(false)}
+						{menuItems.map((item) => {
+							return (
+								<li
+									className={`mb-3 w-full ${
+										path.includes(item.href.replace('/', '')) ? 'active' : ''
+									}`}
+									key={item.id}
 								>
-									{item.name}
-								</Link>
-							</li>
-						))}
+									<Link
+										className="capitalize inline-block font-medium font-montserrat"
+										href={item.href}
+										role="link"
+										onClick={() => openMobileNavigation(false)}
+									>
+										{item.name}
+									</Link>
+								</li>
+							);
+						})}
 					</ul>
 				</nav>
 				<SocialMediaLinks size={11} />
