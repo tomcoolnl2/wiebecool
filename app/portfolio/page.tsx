@@ -1,8 +1,8 @@
 'use client';
 import * as React from 'react';
 import { AppContext } from '@/components/context/Context';
-import { SectionContainer } from '@/components/SectionContainer';
-import { SectionTitle } from '@/components/SectionTitle';
+import { SectionContainer } from '@/components/page/SectionContainer';
+import { SectionTitle } from '@/components/page/SectionTitle';
 
 const detailData = [
 	{
@@ -78,7 +78,7 @@ export default function Portfolio() {
 				<div className="portfolio-page w-full h-auto clear-both float-left px-0 pt-[100px] pb-[40px]">
 					<div className="section-title w-full h-auto clear-both float-left mb-[62px]">
 						<div className="title_flex w-full h-auto clear-both flex justify-between items-end">
-							<SectionTitle pageName={'Portfolio'} title={'Mijn Werk'} />
+							<SectionTitle pageName={'Werk'} title={'Mijn Portfolio'} />
 						</div>
 					</div>
 					<div className="list_wrapper w-full h-auto clear-both float-left">

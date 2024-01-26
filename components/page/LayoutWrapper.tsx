@@ -2,10 +2,10 @@
 import dynamic from 'next/dynamic';
 import * as React from 'react';
 import { AppContext } from '@/components/context/Context';
-import { Cursor } from '@/components/Cursor';
-import { Sidebar } from '@/components/Sidebar';
+import { Cursor } from '@/components/page/Cursor';
+import { Sidebar } from '@/components/page/Sidebar';
 import { PreLoader } from '@/components/PreLoader';
-import { TopBar } from '@/components/TopBar';
+import { TopBar } from '@/components/page/TopBar';
 import { Footer } from './Footer';
 
 const ProductDetailComponent = dynamic(() => import('@/components/popup/ProductDetailModal'), { ssr: false });

@@ -1,3 +1,4 @@
+
 /** /** @type {import('next').NextConfig} */
 const nextConfig = {
 	reactStrictMode: true,
@@ -10,6 +11,18 @@ const nextConfig = {
 				pathname: '/**',
 			},
 		],
+	},
+	async rewrites() {
+		return [
+			{
+				source: '/over-mij',
+				destination: '/about',
+			},
+			{
+				source: '/werk',
+				destination: '/portfolio',
+			},
+		];
 	},
 };
 
