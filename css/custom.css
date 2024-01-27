@@ -151,9 +151,6 @@
 .section-container::-webkit-scrollbar {
 	width: 0px;
 }
-.site-wrapper .sidebar .menu ul li.active a {
-	color: #000;
-}
 
 .home-page .avatar {
 	width: 300px;
@@ -362,18 +359,6 @@ body.modal {
 	text-align: left;
 	font-weight: 500;
 }
-.mobile-topbar .logo[data-type='image'] img {
-	display: inline-block;
-}
-.mobile-topbar .logo[data-type='image'] h3 {
-	display: none;
-}
-.mobile-topbar .logo[data-type='text'] img {
-	display: none;
-}
-.mobile-topbar .logo[data-type='text'] h3 {
-	display: inline-block;
-}
 
 .mobile-menu.opened {
 	right: 0px;
@@ -446,9 +431,4 @@ body.dark .modalbox .description_wrap::-webkit-scrollbar-thumb {
 	background-color: #777;
 	border-radius: 6px;
 	border: 3px solid #34353a;
-}
-@media (max-width: 1200px) {
-	.mobile-topbar {
-		display: block !important;
-	}
 }

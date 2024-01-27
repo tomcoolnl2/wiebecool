@@ -27,6 +27,28 @@ export function parseSeoMetaDataQuery(id: string): string {
 	`;
 }
 
+export function detailPagesByTagIDQuery(id: string) {
+	const guery = `
+	query DetailPagesByTagID {
+		detailPageCollection(
+		  	where: { contentfulMetadata: { tags: { id_contains_all: "${id}"} } }
+		) {
+		  	items {
+				name
+				title
+				description
+				imagesCollection {
+					items {
+					  url
+					  title
+					  description
+					}
+				  }
+		  	}
+		}
+	}`;
+}
+
 export function formatStatus(input: string): string {
 	const price = parseFloat(input);
 	if (!isNaN(price)) {

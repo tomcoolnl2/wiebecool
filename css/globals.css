@@ -136,7 +136,7 @@
 	.hamburger.is-active .hamburger-inner,
 	.hamburger.is-active .hamburger-inner:after,
 	.hamburger.is-active .hamburger-inner:before {
-		background-color: #000;
+		background-color: white;
 	}
 	.hamburger-box {
 		position: relative;
@@ -159,7 +159,7 @@
 		transition-duration: 0.15s;
 		transition-property: transform;
 		border-radius: 4px;
-		background-color: #000;
+		background-color: white;
 	}
 	.hamburger-inner:after,
 	.hamburger-inner:before {
