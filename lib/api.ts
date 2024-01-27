@@ -1,3 +1,6 @@
+import { DocumentNode } from 'graphql';
+import { cache } from 'react';
+import 'server-only';
 /**
  * Represents an authentication error.
  * @class
@@ -17,25 +20,43 @@ export class ContentfulError extends Error {
 	}
 }
 
-export const fetchContentfulData = async (query: string) => {
+export const preload = (query: string | DocumentNode, variables = {}) => {
+	void fetchContentfulData(query, variables);
+};
+
+export const fetchContentfulData = cache(async (query: string | DocumentNode, variables = {}) => {
 	try {
 		const url = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
+
+		const body =
+			typeof query === 'string'
+				? JSON.stringify({ query, variables })
+				: JSON.stringify({
+						query: query.loc!.source.body,
+						variables,
+				  });
+
 		const response = await fetch(url, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
 			},
-			body: JSON.stringify({ query }),
+			body,
 			cache: process.env.NODE_ENV === 'development' ? 'no-cache' : 'force-cache',
 		});
+
 		if (!response.ok) {
-			throw new Error('Network response was not ok.');
+			const msg = 'Network response was not ok.';
+			console.log(msg, response);
+			throw new Error(msg);
 		}
+
 		const json = await response.json();
 		return json.data;
 		//
 	} catch (error) {
+		console.error(error);
 		throw new ContentfulError(`Fetch error: Something went wrong`);
 	}
-};
+});

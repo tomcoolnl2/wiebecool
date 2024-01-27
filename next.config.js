@@ -1,5 +1,5 @@
-
 /** /** @type {import('next').NextConfig} */
+
 const nextConfig = {
 	reactStrictMode: true,
 	images: {
@@ -20,13 +20,21 @@ const nextConfig = {
 			},
 			{
 				source: '/werk',
-				destination: '/portfolio',
+				destination: '/collection',
 			},
 			{
 				source: '/werk/:slug*',
 				destination: '/detail/:slug*',
 			},
 		];
+	},
+	webpack: (config) => {
+		config.module.rules.push({
+			test: /\.(graphql|gql)$/,
+			exclude: /node_modules/,
+			loader: 'graphql-tag/loader',
+		});
+		return config;
 	},
 };
 

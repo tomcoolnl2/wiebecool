@@ -1,66 +1,23 @@
 import Image from 'next/image';
 import { Metadata } from 'next';
 import * as React from 'react';
-import { parseSeoMetaDataQuery } from '@/lib/utils';
 import { fetchContentfulData } from '@/lib/api';
 import { SectionContainer } from '@/components/page/SectionContainer';
 import { SectionTitle } from '@/components/page/SectionTitle';
 import { ContactDetails } from '@/components/ContactDetails';
 import { RenderComponent, type RenderComponentItem } from '@/components/hoc/RenderComponent';
 
+import AboutPageQuery from '@/graphql/AboutPage.gql';
+import MetaDataQuery from '@/graphql/MetaData.gql';
+
 export async function generateMetadata(): Promise<Metadata> {
-	const pageSeoQuery = parseSeoMetaDataQuery('70FCDbDpk8iLUWWHAU76Ge');
-	const { seoMetaData } = await fetchContentfulData(pageSeoQuery);
+	const { seoMetaData } = await fetchContentfulData(MetaDataQuery, { sysID: '4nI3oprys4FZujusjxmQcz' });
 	return seoMetaData;
 }
 
-const pageQuery = `
-	query AboutPage {
-		aboutPage(id: "3LaYVXJtqbtQYH38PqSkeQ") {
-			slug
-			title
-			name
-			bannerImage {
-				width
-				height
-				url
-				description
-			}
-			buildingBlocksCollection {
-				items {
-					__typename
-					... on TextBlock {
-						sys { id }
-						title
-						description {
-							json
-						}
-					}
-					... on PortfolioCards {
-						detailPagesCollection {
-							items {
-								sys { id }
-								slug
-								title
-								status
-								imagesCollection(limit: 1) {
-									items {
-										url
-										description
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-`;
-
 export default async function About() {
 	//
-	const { aboutPage } = await fetchContentfulData(pageQuery);
+	const { aboutPage } = await fetchContentfulData(AboutPageQuery, { sysID: '3LaYVXJtqbtQYH38PqSkeQ' });
 	const hero = aboutPage.bannerImage;
 	const blocks = aboutPage.buildingBlocksCollection?.items || [];
 

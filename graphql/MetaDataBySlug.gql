@@ -1,0 +1,12 @@
+#
+query GetMetaDataBySlug($slug: String!) {
+	detailPageCollection(where: { slug: $slug }, limit: 1) {
+		items {
+			seoMetaData {
+				title
+				description
+				keywords
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+#
+query HomePage($sysID: String!) {
+	homePage(id: $sysID) {
+		title
+		subtitle
+		mugshot {
+			url
+			description
+			width
+			height
+		}
+		introduction {
+			json
+		}
+	}
+}

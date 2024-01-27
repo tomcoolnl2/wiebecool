@@ -3,74 +3,40 @@ import { fetchContentfulData } from '@/lib/api';
 import { ensureLeadingSlash } from '@/lib/utils';
 import { SectionContainer } from '@/components/page/SectionContainer';
 
+import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
+import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
+
 type Props = {
 	params: { slug: string };
 };
 
-const metaDataQuery = (slug: string): string => `
-	query GetMetaDataBySlug {
-		detailPageCollection(where: { slug: "${slug}" }, limit: 1) {
-			items {
-				seoMetaData {
-          			title
-					description
-					keywords
-				}
-			}
-		}
-	}
-`;
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	//
-	console.log(params.slug);
-	// const slug = ensureLeadingSlash(params.slug);
-	// const query = metaDataQuery(slug);
-	// const {
-	// 	detailPageCollection: {
-	// 		items: [{ seoMetaData }],
-	// 	},
-	// } = await fetchContentfulData(query);
+	const slug = ensureLeadingSlash(params.slug[0]);
+	const {
+		detailPageCollection: {
+			items: [{ seoMetaData }],
+		},
+	} = await fetchContentfulData(MetaDataBySlugQuery, { slug });
 
 	return {
-		// ...seoMetaData,
-		// alternates: {
-		// 	canonical: `https://wiebecool.nl/werk${slug}`,
-		// },
+		...seoMetaData,
+		alternates: {
+			canonical: `https://www.wiebecool.nl/werk${slug}`,
+		},
 	};
 }
 
-const pageQuery = (slug: string): string => `
-	query GetPageBySlug {
-		detailPageCollection(where: {slug: "${slug}"}, limit: 1) {
-		  items {
-			name
-			title
-			description
-			status
-			creationDate
-			imagesCollection {
-			  items {
-				url
-				description
-			  }
-			}
-		  }
-		}
-	  }
-`;
-
 export default async function DetailPage({ params }: Props) {
 	//
-	// const slug = ensureLeadingSlash(params.slug);
-	// const query = pageQuery(slug);
-	// const {
-	// 	detailPageCollection: {
-	// 		items: [detailPage],
-	// 	},
-	// } = await fetchContentfulData(query);
+	const slug = ensureLeadingSlash(params.slug[0]);
+	const {
+		detailPageCollection: {
+			items: [detailPage],
+		},
+	} = await fetchContentfulData(DetailPageBySlugQuery, { slug });
 
-	// console.log('DetailPage', params.slug, detailPage);
+	console.log(detailPage);
 
 	return <SectionContainer name={'detail'}>My Post: {params.slug}</SectionContainer>;
 }

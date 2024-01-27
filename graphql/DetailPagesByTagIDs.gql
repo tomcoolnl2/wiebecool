@@ -1,0 +1,15 @@
+#
+query DetailPagesByTagIDs($tagIDs: [String]!) {
+	detailPageCollection(where: { contentfulMetadata: { tags: { id_contains_all: $tagIDs } } }) {
+		items {
+			title
+			imagesCollection {
+				items {
+					url
+					title
+					description
+				}
+			}
+		}
+	}
+}

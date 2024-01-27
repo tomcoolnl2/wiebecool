@@ -1,0 +1,11 @@
+#
+query ContactPage($sysID: String!) {
+	contactPage(id: $sysID) {
+		name
+		title
+		description {
+			json
+		}
+		submitButtonText
+	}
+}

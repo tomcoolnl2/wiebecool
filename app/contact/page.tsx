@@ -1,32 +1,22 @@
 import { Metadata } from 'next';
 import * as React from 'react';
 import { fetchContentfulData } from '@/lib/api';
-import { parseSeoMetaDataQuery, processRichText } from '@/lib/utils';
+import { processRichText } from '@/lib/utils';
 import { SectionContainer } from '@/components/page/SectionContainer';
 import { SectionTitle } from '@/components/page/SectionTitle';
 import { ContactForm } from '@/components/contact/ContactForm';
 import { GoogleMaps } from '@/components/contact/GoogleMaps';
 
+import ContactPageQuery from '@/graphql/ContactPage.gql';
+import MetaDataQuery from '@/graphql/MetaData.gql';
+
 export async function generateMetadata(): Promise<Metadata> {
-	const pageSeoQuery = parseSeoMetaDataQuery('6Giq0hPzdDxxtohDi6kucy');
-	const { seoMetaData } = await fetchContentfulData(pageSeoQuery);
+	const { seoMetaData } = await fetchContentfulData(MetaDataQuery, { sysID: '6Giq0hPzdDxxtohDi6kucy' });
 	return seoMetaData;
 }
 
-const pageQuery = `
-	query ContactPage {
-		contactPage(id: "68BbqtKbBhg4PwwWHNOB2") {
-			name
-			title
-			description {
-				json
-			}
-			submitButtonText
-		}
-	}`;
-
 export default async function Contact() {
-	const { contactPage } = await fetchContentfulData(pageQuery);
+	const { contactPage } = await fetchContentfulData(ContactPageQuery, { sysID: '68BbqtKbBhg4PwwWHNOB2' });
 	return (
 		<SectionContainer name={'contact'}>
 			<div className="container">

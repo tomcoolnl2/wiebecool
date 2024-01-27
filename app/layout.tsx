@@ -5,10 +5,9 @@ import * as React from 'react';
 import { Cursor } from '@/components/page/Cursor';
 import { SiteNavigation } from '@/components/page/SiteNavigation';
 import { Footer } from '@/components/page/Footer';
+import '../css/globals.css';
 
 const PreLoader = dynamic(() => import('@/components/PreLoader'), { ssr: false });
-
-import '../css/globals.css';
 
 const montserrat = Montserrat({
 	subsets: ['latin'],
