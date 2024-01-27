@@ -24,7 +24,7 @@ const nextConfig = {
 			},
 			{
 				source: '/werk/:slug*',
-				destination: '/portfolio/:slug*',
+				destination: '/detail/:slug*',
 			},
 		];
 	},

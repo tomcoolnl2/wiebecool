@@ -19,6 +19,7 @@ interface Props {
 export const Sidebar: React.FC<Props> = ({ mobileNavigationIsOpen, openMobileNavigation }) => {
 	//
 	const path = usePathname().split('/').filter(Boolean);
+	// console.log('Sidebar path', path);
 
 	return (
 		<aside

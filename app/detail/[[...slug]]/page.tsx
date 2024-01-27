@@ -1,6 +1,6 @@
 import { Metadata, ResolvingMetadata } from 'next';
 import { fetchContentfulData } from '@/lib/api';
-import { ensureLeadingSlash, parseSeoMetaDataQuery } from '@/lib/utils';
+import { ensureLeadingSlash } from '@/lib/utils';
 import { SectionContainer } from '@/components/page/SectionContainer';
 
 type Props = {
@@ -23,19 +23,20 @@ const metaDataQuery = (slug: string): string => `
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	//
-	const slug = ensureLeadingSlash(params.slug);
-	const query = metaDataQuery(slug);
-	const {
-		detailPageCollection: {
-			items: [{ seoMetaData }],
-		},
-	} = await fetchContentfulData(query);
+	console.log(params.slug);
+	// const slug = ensureLeadingSlash(params.slug);
+	// const query = metaDataQuery(slug);
+	// const {
+	// 	detailPageCollection: {
+	// 		items: [{ seoMetaData }],
+	// 	},
+	// } = await fetchContentfulData(query);
 
 	return {
-		...seoMetaData,
-		alternates: {
-			canonical: `https://wiebecool.nl/werk${slug}`,
-		},
+		// ...seoMetaData,
+		// alternates: {
+		// 	canonical: `https://wiebecool.nl/werk${slug}`,
+		// },
 	};
 }
 
@@ -61,15 +62,15 @@ const pageQuery = (slug: string): string => `
 
 export default async function DetailPage({ params }: Props) {
 	//
-	const slug = ensureLeadingSlash(params.slug);
-	const query = pageQuery(slug);
-	const {
-		detailPageCollection: {
-			items: [detailPage],
-		},
-	} = await fetchContentfulData(query);
+	// const slug = ensureLeadingSlash(params.slug);
+	// const query = pageQuery(slug);
+	// const {
+	// 	detailPageCollection: {
+	// 		items: [detailPage],
+	// 	},
+	// } = await fetchContentfulData(query);
 
-	console.log(params.slug, detailPage);
+	// console.log('DetailPage', params.slug, detailPage);
 
 	return <SectionContainer name={'detail'}>My Post: {params.slug}</SectionContainer>;
 }
