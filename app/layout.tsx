@@ -1,7 +1,6 @@
 import { Montserrat, Mulish, Poppins } from 'next/font/google';
 import * as React from 'react';
 import { Metadata } from 'next';
-import { Providers } from './providers';
 import LayoutWrapper from '../components/page/LayoutWrapper';
 import '../css/globals.css';
 
@@ -32,9 +31,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 	return (
 		<html lang="nl">
 			<body className={`dark ${montserrat.variable} ${mulish.variable} ${poppins.variable} font-mulish`}>
-				<Providers>
-					<LayoutWrapper>{children}</LayoutWrapper>
-				</Providers>
+				<LayoutWrapper>{children}</LayoutWrapper>
 			</body>
 		</html>
 	);

@@ -1,23 +1,18 @@
-'use client';
 import dynamic from 'next/dynamic';
 import * as React from 'react';
-import { AppContext } from '@/components/context/Context';
 import { Cursor } from '@/components/page/Cursor';
 import { Sidebar } from '@/components/page/Sidebar';
 import { PreLoader } from '@/components/PreLoader';
 import { TopBar } from '@/components/page/TopBar';
 import { Footer } from './Footer';
 
-const DetailsModalComponent = dynamic(() => import('@/components/popup/DetailsModal'), { ssr: false });
-
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
 	//
 	const [mobileNavigationIsOpen, openMobileNavigation] = React.useState<boolean>(false);
-	const { modal, portfolioDetailsModal } = React.useContext(AppContext);
+
 	return (
 		<>
 			<PreLoader />
-			{modal && portfolioDetailsModal && <DetailsModalComponent />}
 			<div className="site-wrapper">
 				<TopBar mobileNavigationIsOpen={mobileNavigationIsOpen} openMobileNavigation={openMobileNavigation} />
 				<Sidebar mobileNavigationIsOpen={mobileNavigationIsOpen} openMobileNavigation={openMobileNavigation} />
