@@ -1,4 +1,4 @@
-import { Metadata, ResolvingMetadata } from 'next';
+import { Metadata } from 'next';
 import { fetchContentfulData } from '@/lib/api';
 import { ensureLeadingSlash } from '@/lib/utils';
 import { SectionContainer } from '@/components/page/SectionContainer';

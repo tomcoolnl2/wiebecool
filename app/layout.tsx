@@ -1,13 +1,13 @@
-import dynamic from 'next/dynamic';
 import { Metadata } from 'next';
 import { Montserrat, Mulish, Poppins } from 'next/font/google';
 import * as React from 'react';
+import { fetchContentfulData } from '@/lib/api';
+import { PreLoader } from '@/components/PreLoader';
 import { Cursor } from '@/components/page/Cursor';
-import { SiteNavigation } from '@/components/page/SiteNavigation';
+import { MainNavigation } from '@/components/page/MainNavigation';
 import { Footer } from '@/components/page/Footer';
+import MainNavigationQuery from '@/graphql/MainNavigation.gql';
 import '../css/globals.css';
-
-const PreLoader = dynamic(() => import('@/components/PreLoader'), { ssr: false });
 
 const montserrat = Montserrat({
 	subsets: ['latin'],
@@ -32,13 +32,24 @@ export const metadata: Metadata = {
 	referrer: 'origin',
 };
 
-const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children }) => {
+	//
+	const {
+		navigation: {
+			title,
+			navigationItemsCollection: { items: navigation },
+		},
+	} = await fetchContentfulData(MainNavigationQuery, { sysID: '5bRsPaSUeUrD7QB5m868iu' });
+
+	// foreach navigation -> fetch subnavigation
+	// console.log(navigation);
+
 	return (
 		<html lang="nl">
 			<body className={`dark ${montserrat.variable} ${mulish.variable} ${poppins.variable} font-mulish`}>
 				<PreLoader />
 				<div className="site-wrapper">
-					<SiteNavigation />
+					<MainNavigation title={title} navigation={navigation} />
 					<main className="main-content w-full min-h-[100vh] relative bg-[#f8f8f8]">
 						<div className="main-content-inner relative w-full border-solid border-[#ebebeb] border-l min-h-[100vh]">
 							{children}
