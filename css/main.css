@@ -96,9 +96,13 @@ h6 {
 	z-index: 20;
 }
 
-.sidebar {
-	width: 450px;
-	padding: 100px;
+.main-navigation {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 350px;
+	padding: 0 70px;
+	padding-top: 0px;
 	align-items: center;
 }
 
@@ -466,15 +470,8 @@ h6 {
 		left: 70px;
 	}
 
-
-	.sidebar {
-		width: 350px;
-		padding: 0 70px;
-		padding-top: 0px;
-	}
-
-	.menu a {
-		font-size: 18px;
+	.main-navigation .navigation a {
+		font-size: 16px;
 	}
 
 	.main-content {
@@ -526,35 +523,38 @@ h6 {
 		top: 0;
 		left: 0;
 		padding: 12px 20px;
-		z-index: 20;
-		background-color: rgb(73 75 80 / 1);
 		width: 100vw;
 	}
 
-	.sidebar {
+	.main-navigation {
 		width: 200px;
 		position: fixed;
 		right: 0;
+		left: auto;
 		transform: translateX(200px);
 		transition: transform .3s;
 		padding: 130px 20px;
 		align-items: start;
 	}
 
-	.sidebar.mobile-open {
+	.main-navigation.mobile-open {
 		transform: translateX(0px);
 	}
 
-	.menu li {
-		text-align: right;
+	.main-navigation a {
 		font-size: 16px;
+	}
+
+
+	.navigation {
+		text-align: right;
 	}
 
 	.main-content {
 		padding-left: 0px;
 	}
 
-	 .main-content-in {
+	 .main-content-inner {
 		border-left-width: 0px;
 	}
 
@@ -617,6 +617,10 @@ h6 {
 
 	.home-page .avatar {
 		margin-bottom: 30px;
+	}
+
+	.main-navigation a {
+		font-size: 16px;
 	}
 
 	.home-page .details {
@@ -737,53 +741,13 @@ body.dark h6 {
 	color: rgb(255 255 255);
 }
 
-body.dark .site-wrapper .sidebar {
-	--tw-bg-opacity: 1;
-	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
-}
-
-body.dark .site-wrapper .sidebar .menu ul li a {
-	--tw-text-opacity: 1;
-	color: rgb(187 187 187 / var(--tw-text-opacity));
-}
-
-body.dark .site-wrapper .sidebar .menu ul li a:hover {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-body.dark .site-wrapper .sidebar .menu ul li.active a {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-body.dark .site-wrapper .sidebar .copyright p {
-	--tw-text-opacity: 1;
-	color: rgb(187 187 187 / var(--tw-text-opacity));
-}
-
-body.dark .site-wrapper .sidebar .copyright a {
-	--tw-text-opacity: 1;
-	color: rgb(187 187 187 / var(--tw-text-opacity));
-}
-
-body.dark .site-wrapper .sidebar .copyright a:hover {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
 body.dark .site-wrapper .main-content {
 	--tw-bg-opacity: 1;
 	background-color: rgb(52 53 58 / var(--tw-bg-opacity));
 }
 
-body.dark .site-wrapper .main-content-in {
+body.dark .site-wrapper .main-content-inner {
 	border-left-width: 0px;
-}
-
-body.dark .home-page .social ul li a {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 body.dark .cursor-inner {
@@ -803,35 +767,6 @@ body.dark .cursor-outer {
 
 body.dark .cursor-outer.cursor-hover {
 	opacity: 0;
-}
-
-body.dark .mobile-topbar {
-	--tw-bg-opacity: 1;
-	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
-}
-
-body.dark .hamburger-inner,
-body.dark .hamburger-inner:after,
-body.dark .hamburger-inner:before {
-	--tw-bg-opacity: 1;
-	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-body.dark .hamburger.is-active .hamburger-inner,
-body.dark .hamburger.is-active .hamburger-inner:after,
-body.dark .hamburger.is-active .hamburger-inner:before {
-	--tw-bg-opacity: 1;
-	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-body.dark .mobile-menu {
-	--tw-bg-opacity: 1;
-	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
-}
-
-body.dark .mobile-menu .menu_list ul li a {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 body.dark .submit-button a {
@@ -942,37 +877,16 @@ body.dark .contact-page .fields .\!last textarea:focus {
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .product-cards li .details {
-	--tw-bg-opacity: 1;
-	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
-	min-height: 220px;
-}
-
-body.dark .product-cards li .extra:before {
-	background-color: rgba(255, 255, 255, 0.1);
-}
-
 body.dark .read-more a {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .read-more a span {
-	--tw-bg-opacity: 1;
-	background-color: rgb(73 75 80 / var(--tw-bg-opacity));
-}
 
 body.dark .read-more a:before {
 	--tw-bg-opacity: 1;
 	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
-
-body.dark .product-cards li .list_inner {
-	--tw-shadow: 0 0 #0000;
-	--tw-shadow-colored: 0 0 #0000;
-	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
 body.dark .modalbox_about .box_inner {
 	--tw-bg-opacity: 1;
 	background-color: rgb(52 53 58 / var(--tw-bg-opacity));
