@@ -1,0 +1,44 @@
+#
+union Page = HomePage | AboutPage | CollectionPage | ContactPage
+
+type HomePage {
+	slug: String!
+}
+
+type AboutPage {
+	slug: String!
+}
+
+type CollectionPage {
+	slug: String!
+}
+
+type ContactPage {
+	slug: String!
+}
+
+query Navigation($sysID: String!) {
+	navigation(id: $sysID) {
+		title
+		description
+		navigationItemsCollection {
+			items {
+				__typename
+				... on NavigationPageEntry {
+					name
+					page {
+						__typename
+						... on Page {
+							slug
+						}
+					}
+					subNavigation {
+						sys {
+							id
+						}
+					}
+				}
+			}
+		}
+	}
+}

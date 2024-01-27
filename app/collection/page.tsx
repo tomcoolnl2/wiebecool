@@ -1,8 +1,32 @@
+import { Metadata } from 'next';
 import * as React from 'react';
+import { fetchContentfulData } from '@/lib/api';
 import { SectionContainer } from '@/components/page/SectionContainer';
 import { SectionTitle } from '@/components/page/SectionTitle';
 
-export default function Portfolio() {
+import DetailPagesByTagIDs from '@/graphql/DetailPagesByTagIDs.gql';
+import CollectionPageQuery from '@/graphql/CollectionPage.gql';
+import MetaDataQuery from '@/graphql/MetaData.gql';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const { seoMetaData } = await fetchContentfulData(MetaDataQuery, { sysID: '4t5dOaAjpOJfBvz8OKwkPF' });
+	return seoMetaData;
+}
+
+export default async function CollectionPage() {
+	//
+	const { collectionPage } = await fetchContentfulData(CollectionPageQuery, { sysID: '2l4HrRXbjqjHOjnmaewXf' });
+
+	let collection = [];
+	if (collectionPage.tags?.length) {
+		const { detailPageCollection } = await fetchContentfulData(DetailPagesByTagIDs, {
+			tagIDs: [collectionPage.tags[0]],
+		});
+		collection = detailPageCollection;
+	}
+
+	console.log(collection);
+
 	return (
 		<SectionContainer name={'portfolio'}>
 			<div className="container">

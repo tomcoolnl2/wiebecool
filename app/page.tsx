@@ -1,39 +1,23 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import * as React from 'react';
-import { parseSeoMetaDataQuery, processRichText } from '@/lib/utils';
+import { processRichText } from '@/lib/utils';
 import { fetchContentfulData } from '@/lib/api';
 import { SectionContainer } from '@/components/page/SectionContainer';
 import { ContactDetails } from '@/components/ContactDetails';
 import { SocialMediaLinks } from '@/components/SocialMediaLinks';
 
+import HomePageQuery from '@/graphql/HomePage.gql';
+import MetaDataQuery from '@/graphql/MetaData.gql';
+
 export async function generateMetadata(): Promise<Metadata> {
-	const pageSeoQuery = parseSeoMetaDataQuery('70FCDbDpk8iLUWWHAU76Ge');
-	const { seoMetaData } = await fetchContentfulData(pageSeoQuery);
+	const { seoMetaData } = await fetchContentfulData(MetaDataQuery, { sysID: '70FCDbDpk8iLUWWHAU76Ge' });
 	return seoMetaData;
 }
 
-const pageQuery = `
-	query HomePage {
-		homePage(id: "7bjsm9rIwR5janeyF5XK2n") {
-			title
-			subtitle
-			mugshot {
-				url
-				description
-				width
-				height
-			}
-			introduction {
-				json
-			}
-		}
-	}
-`;
-
 export default async function Home() {
 	//
-	const { homePage } = await fetchContentfulData(pageQuery);
+	const { homePage } = await fetchContentfulData(HomePageQuery, { sysID: '7bjsm9rIwR5janeyF5XK2n' });
 
 	return (
 		<SectionContainer name={'home'}>
