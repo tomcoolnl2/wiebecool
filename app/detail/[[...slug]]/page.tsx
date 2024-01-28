@@ -36,7 +36,7 @@ export default async function DetailPage({ params }: Props) {
 		},
 	} = await fetchContentfulData(DetailPageBySlugQuery, { slug });
 
-	console.log(detailPage);
+	// console.log(detailPage);
 
 	return <SectionContainer name={'detail'}>My Post: {params.slug}</SectionContainer>;
 }

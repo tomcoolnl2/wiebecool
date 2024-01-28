@@ -1,6 +1,8 @@
-import { DocumentNode } from 'graphql';
-import { cache } from 'react';
 import 'server-only';
+import { cache } from 'react';
+import { DocumentNode } from 'graphql';
+import { NavigationPageEntry, NavigationResponse, SysID } from '@/model/navigation';
+import MainNavigationQuery from '@/graphql/MainNavigation.gql';
 /**
  * Represents an authentication error.
  * @class
@@ -60,3 +62,23 @@ export const fetchContentfulData = cache(async (query: string | DocumentNode, va
 		throw new ContentfulError(`Fetch error: Something went wrong`);
 	}
 });
+
+export const fetchMainNavigation = async (sysID: string): Promise<NavigationResponse> => {
+	const {
+		navigation: {
+			title,
+			navigationItemsCollection: { items: navigation },
+		},
+	} = await fetchContentfulData(MainNavigationQuery, { sysID });
+
+	const promises = navigation.map(async (item: NavigationPageEntry) => {
+		const subNavigation = item.subNavigation as SysID;
+		if (subNavigation?.sys?.id) {
+			const { navigation: subNavigationEntries } = await fetchMainNavigation(subNavigation.sys.id);
+			item.subNavigation = subNavigationEntries;
+		}
+	});
+	await Promise.all(promises);
+
+	return { title, navigation };
+};
