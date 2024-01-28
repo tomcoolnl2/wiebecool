@@ -9,24 +9,28 @@ query Navigation($sysID: String!) {
 					name
 					page {
 						... on HomePage {
+							__typename
 							sys {
 								id
 							}
 							slug
 						}
 						... on AboutPage {
+							__typename
 							sys {
 								id
 							}
 							slug
 						}
 						... on CollectionPage {
+							__typename
 							sys {
 								id
 							}
 							slug
 						}
 						... on ContactPage {
+							__typename
 							sys {
 								id
 							}

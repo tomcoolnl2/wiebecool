@@ -26,6 +26,10 @@ const nextConfig = {
 				source: '/werk/:slug*',
 				destination: '/detail/:slug*',
 			},
+			{
+				source: '/collectie/:tag',
+				destination: '/collection',
+			},
 		];
 	},
 	webpack: (config) => {

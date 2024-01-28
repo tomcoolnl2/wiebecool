@@ -25,7 +25,7 @@ export default async function CollectionPage() {
 		collection = detailPageCollection;
 	}
 
-	console.log(collection);
+	// console.log(collection);
 
 	return (
 		<SectionContainer name={'portfolio'}>
