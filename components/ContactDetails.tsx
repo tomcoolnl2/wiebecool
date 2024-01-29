@@ -1,20 +1,10 @@
 import * as React from 'react';
 import { fetchContentfulData, generateGoogleMapsAddress } from '@/lib';
-
-const query = `
-	query Address {
-		address(id: "VYrkgFK6dR1V81lIJqez2") {
-			postalAddressText
-			postalAddress
-			phoneNumberText
-			phoneNumber
-		}
-	}
-`;
+import AddressQuery from '@/graphql/Address.gql';
 
 export const ContactDetails: React.FC = async () => {
 	//
-	const { address } = await fetchContentfulData(query);
+	const { address } = await fetchContentfulData(AddressQuery, { sysID: 'VYrkgFK6dR1V81lIJqez2' });
 
 	return (
 		<p className="font-montserrat font-medium mb-6">
