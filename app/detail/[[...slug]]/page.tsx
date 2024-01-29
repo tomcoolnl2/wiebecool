@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
-import { fetchContentfulData } from '@/lib/api';
-import { ensureLeadingSlash } from '@/lib/utils';
-import { SectionContainer } from '@/components/page/SectionContainer';
+import { ensureLeadingSlash, fetchContentfulData } from '@/lib';
+import { SectionContainer } from '@/components';
 
 import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
 import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';

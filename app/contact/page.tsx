@@ -1,11 +1,7 @@
 import { Metadata } from 'next';
 import * as React from 'react';
-import { fetchContentfulData } from '@/lib/api';
-import { processRichText } from '@/lib/utils';
-import { SectionContainer } from '@/components/page/SectionContainer';
-import { SectionTitle } from '@/components/page/SectionTitle';
-import { ContactForm } from '@/components/contact/ContactForm';
-import { GoogleMaps } from '@/components/contact/GoogleMaps';
+import { processRichText, fetchContentfulData } from '@/lib';
+import { ContactForm, GoogleMaps, SectionContainer, SectionTitle } from '@/components';
 
 import ContactPageQuery from '@/graphql/ContactPage.gql';
 import MetaDataQuery from '@/graphql/MetaData.gql';

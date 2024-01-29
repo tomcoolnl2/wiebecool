@@ -1,8 +1,7 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { NavigationPageEntry } from '@/model/navigation';
-import { PageType, ReWriteRule } from '@/model/page';
+import { PageType, ReWriteRule, NavigationPageEntry } from '@/model';
 
 function hrefBuilder(typename: PageType, slug: string): string {
 	slug = `/${slug}`;

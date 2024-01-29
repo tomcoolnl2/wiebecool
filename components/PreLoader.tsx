@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { detectMobile } from '@/lib/utils';
+import { detectMobile } from '@/lib';
 
 export const PreLoader = () => {
 	//

@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import * as React from 'react';
-import { NavigationPageEntry } from '@/model/navigation';
+import { NavigationPageEntry } from '@/model';
 import { SocialMediaLinks } from '../SocialMediaLinks';
 import { Navigation } from '../Navigation';
 

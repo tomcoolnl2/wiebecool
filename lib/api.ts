@@ -1,8 +1,8 @@
-import 'server-only';
 import { cache } from 'react';
 import { DocumentNode } from 'graphql';
 import { NavigationPageEntry, NavigationResponse, SysID } from '@/model/navigation';
 import MainNavigationQuery from '@/graphql/MainNavigation.gql';
+
 /**
  * Represents an authentication error.
  * @class

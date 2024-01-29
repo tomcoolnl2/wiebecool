@@ -1,11 +1,14 @@
 import Image from 'next/image';
 import { Metadata } from 'next';
 import * as React from 'react';
-import { fetchContentfulData } from '@/lib/api';
-import { SectionContainer } from '@/components/page/SectionContainer';
-import { SectionTitle } from '@/components/page/SectionTitle';
-import { ContactDetails } from '@/components/ContactDetails';
-import { RenderComponent, type RenderComponentItem } from '@/components/hoc/RenderComponent';
+import { fetchContentfulData } from '@/lib';
+import {
+	type RenderComponentItem,
+	RenderComponent,
+	SectionContainer,
+	ContactDetails,
+	SectionTitle,
+} from '@/components';
 
 import AboutPageQuery from '@/graphql/AboutPage.gql';
 import MetaDataQuery from '@/graphql/MetaData.gql';

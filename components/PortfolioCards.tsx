@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Image from 'next/image';
-import { formatStatus } from '@/lib/utils';
+import { formatStatus } from '@/lib';
 import { type RenderComponentItem } from './hoc/RenderComponent';
 
 interface PortFolioImage {
