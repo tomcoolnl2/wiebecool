@@ -1,0 +1,6 @@
+#
+query Address($sysID: String!) {
+	address(id: $sysID) {
+		postalAddress
+	}
+}
