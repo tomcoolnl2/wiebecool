@@ -9,4 +9,13 @@ query GetMetaDataBySlug($slug: String!) {
 			}
 		}
 	}
+	collectionPageCollection(where: { slug: $slug }, limit: 1) {
+		items {
+			seoMetaData {
+				title
+				description
+				keywords
+			}
+		}
+	}
 }

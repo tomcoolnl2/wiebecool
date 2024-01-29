@@ -29,6 +29,13 @@ query Navigation($sysID: String!) {
 							}
 							slug
 						}
+						... on DetailPage {
+							__typename
+							sys {
+								id
+							}
+							slug
+						}
 						... on ContactPage {
 							__typename
 							sys {

@@ -1,21 +1,61 @@
 import { Metadata } from 'next';
 import * as React from 'react';
+
+import { PageType, ReWriteRule } from '@/model/page';
 import { fetchContentfulData } from '@/lib/api';
+import { ensureLeadingSlash } from '@/lib/utils';
 import { SectionContainer } from '@/components/page/SectionContainer';
 import { SectionTitle } from '@/components/page/SectionTitle';
 
+import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
+import CollectionPageBySlugQuery from '@/graphql/CollectionPageBySlug.gql';
 import DetailPagesByTagIDs from '@/graphql/DetailPagesByTagIDs.gql';
-import CollectionPageQuery from '@/graphql/CollectionPage.gql';
-import MetaDataQuery from '@/graphql/MetaData.gql';
 
-export async function generateMetadata(): Promise<Metadata> {
-	const { seoMetaData } = await fetchContentfulData(MetaDataQuery, { sysID: '4t5dOaAjpOJfBvz8OKwkPF' });
-	return seoMetaData;
+type Props = {
+	params: { slug: string };
+};
+
+// /work serves as the base for both collections and detail pages
+const collectionBaseUrl = ReWriteRule[PageType.DetailPage];
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	//
+	let slug = params?.slug?.[0] || collectionBaseUrl;
+	slug = ensureLeadingSlash(slug);
+
+	const {
+		collectionPageCollection: {
+			items: [{ seoMetaData }],
+		},
+	} = await fetchContentfulData(MetaDataBySlugQuery, { slug });
+
+	const canonical =
+		slug !== collectionBaseUrl
+			? {
+					alternates: {
+						canonical: `https://www.wiebecool.nl${ReWriteRule[PageType.CollectionPage]}${slug}`,
+					},
+			  }
+			: {};
+
+	const response = {
+		...seoMetaData,
+		...canonical,
+	};
+
+	return response;
 }
 
-export default async function CollectionPage() {
+export default async function CollectionPage({ params }: Props) {
 	//
-	const { collectionPage } = await fetchContentfulData(CollectionPageQuery, { sysID: '2l4HrRXbjqjHOjnmaewXf' });
+	let slug = params?.slug?.[0] || collectionBaseUrl;
+	slug = ensureLeadingSlash(slug);
+
+	const {
+		collectionPageCollection: {
+			items: [collectionPage],
+		},
+	} = await fetchContentfulData(CollectionPageBySlugQuery, { slug });
 
 	let collection = [];
 	if (collectionPage.tags?.length) {
@@ -25,11 +65,13 @@ export default async function CollectionPage() {
 		collection = detailPageCollection;
 	}
 
-	// console.log(collection);
+	console.log(collection);
 
 	return (
 		<SectionContainer name={'portfolio'}>
-			<div className="container">
+			<h1>slug: {slug}</h1>
+			<h1>tags: {collectionPage.tags[0]}</h1>
+			{/* <div className="container">
 				<div className="portfolio-page w-full h-auto clear-both float-left px-0 pt-[100px] pb-[40px]">
 					<div className="section-title w-full h-auto clear-both float-left mb-[62px]">
 						<div className="title_flex w-full h-auto clear-both flex justify-between items-end">
@@ -119,7 +161,7 @@ export default async function CollectionPage() {
 						</ul>
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</SectionContainer>
 	);
 }

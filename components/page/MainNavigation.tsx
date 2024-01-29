@@ -1,8 +1,6 @@
 'use client';
 import Link from 'next/link';
 import * as React from 'react';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavigationPageEntry } from '@/model/navigation';
 import { SocialMediaLinks } from '../SocialMediaLinks';
 import { Navigation } from '../Navigation';

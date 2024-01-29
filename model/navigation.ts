@@ -1,5 +1,7 @@
 //
 
+import { PageType } from './page';
+
 export interface Navigation {
 	title: string;
 	description: string;
@@ -12,6 +14,7 @@ export interface SysID {
 	sys: { id: string };
 }
 interface PageEntry extends SysID {
+	__typename: PageType;
 	slug: string;
 }
 

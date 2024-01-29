@@ -1,0 +1,13 @@
+#
+query CollectionPageBySlug($slug: String!) {
+	collectionPageCollection(where: { slug: $slug }, limit: 1) {
+		items {
+			name
+			title
+			description {
+				json
+			}
+			tags
+		}
+	}
+}
