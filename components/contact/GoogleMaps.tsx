@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { fetchContentfulData } from '@/lib/api';
-import { generateGoogleMapsAddress } from '@/lib/utils';
+import { fetchContentfulData, generateGoogleMapsAddress } from '@/lib';
 
 const addressQuery = `
 	query Address {

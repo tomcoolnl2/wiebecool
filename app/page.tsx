@@ -1,11 +1,8 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import * as React from 'react';
-import { processRichText } from '@/lib/utils';
-import { fetchContentfulData } from '@/lib/api';
-import { SectionContainer } from '@/components/page/SectionContainer';
-import { ContactDetails } from '@/components/ContactDetails';
-import { SocialMediaLinks } from '@/components/SocialMediaLinks';
+import { fetchContentfulData, processRichText } from '@/lib';
+import { SectionContainer, SocialMediaLinks, ContactDetails } from '@/components';
 
 import HomePageQuery from '@/graphql/HomePage.gql';
 import MetaDataQuery from '@/graphql/MetaData.gql';

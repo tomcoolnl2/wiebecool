@@ -3,11 +3,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import * as React from 'react';
 
-import { CollectionItems, PageType, ReWriteRule } from '@/model/page';
-import { fetchContentfulData } from '@/lib/api';
-import { ensureLeadingSlash } from '@/lib/utils';
-import { SectionContainer } from '@/components/page/SectionContainer';
-import { SectionTitle } from '@/components/page/SectionTitle';
+import { CollectionItems, PageType, ReWriteRule } from '@/model';
+import { ensureLeadingSlash, fetchContentfulData } from '@/lib';
+import { SectionContainer, SectionTitle } from '@/components';
 
 import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
 import CollectionPageBySlugQuery from '@/graphql/CollectionPageBySlug.gql';

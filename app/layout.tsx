@@ -1,11 +1,8 @@
 import { Metadata } from 'next';
 import { Montserrat, Mulish, Poppins } from 'next/font/google';
 import * as React from 'react';
-import { fetchMainNavigation } from '@/lib/api';
-import { PreLoader } from '@/components/PreLoader';
-import { Cursor } from '@/components/Cursor';
-import { MainNavigation } from '@/components/page/MainNavigation';
-import { Footer } from '@/components/page/Footer';
+import { fetchMainNavigation } from '@/lib';
+import { PreLoader, MainNavigation, Footer, Cursor } from '@/components';
 
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';

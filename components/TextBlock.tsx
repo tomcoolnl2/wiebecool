@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { processRichText } from '@/lib/utils';
-import { RenderComponentItem } from './hoc/RenderComponent';
+import { processRichText } from '@/lib';
+import { RenderComponentItem } from '@/components';
 
 export interface TextBlock {
 	__typename: 'TextBlock';
