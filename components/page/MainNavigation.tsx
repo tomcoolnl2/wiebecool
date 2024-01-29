@@ -21,6 +21,7 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 					<h1>Wiebe Cool</h1>
 					<h2>Beeldhouwer</h2>
 				</Link>
+				<SocialMediaLinks size={11} className="soc" />
 				<div
 					className={`cursor-pointer hamburger--slider hamburger${isMobileOpen ? ' is-active' : ''}`}
 					onClick={() => toggleMobile(!isMobileOpen)}
@@ -34,7 +35,6 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 				<h1 className="visually-hidden">{title}</h1>
 				<Navigation items={navigation} className={['navigation']} onClick={() => toggleMobile(false)} />
 			</nav>
-			<SocialMediaLinks size={11} />
 		</>
 	);
 };
