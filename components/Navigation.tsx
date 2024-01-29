@@ -1,17 +1,18 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { PageType, ReWriteRule, NavigationPageEntry } from '@/model';
+import { PageType, ReWriteRule, NavigationPageEntry, Slug } from '@/model';
+import { ensureLeadingSlash } from '@/lib';
 
-function hrefBuilder(typename: PageType, slug: string): string {
-	slug = `/${slug}`;
+function hrefBuilder(typename: PageType, slug: string): Slug {
+	const formattedSlug: Slug = ensureLeadingSlash(slug);
 	switch (typename) {
 		case PageType.CollectionPage:
-			return (ReWriteRule[PageType.CollectionPage] as string) + slug;
+			return (ReWriteRule[PageType.CollectionPage] + formattedSlug) as Slug;
 		case PageType.DetailPage:
-			return (ReWriteRule[PageType.DetailPage] as string) + slug;
+			return (ReWriteRule[PageType.DetailPage] + formattedSlug) as Slug;
 		default:
-			return '/' + slug;
+			return formattedSlug;
 	}
 }
 

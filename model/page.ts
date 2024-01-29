@@ -1,6 +1,7 @@
 import { SysID } from './navigation';
 
-//
+export type Slug = `/${string}`;
+
 export enum PageType {
 	HomePage = 'HomePage',
 	AboutPage = 'AboutPage',
