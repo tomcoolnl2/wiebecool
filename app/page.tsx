@@ -37,7 +37,8 @@ export default async function Home() {
 							<div className="job font-montserrat font-medium max-w-[450px] mb-[25px] border-solid border-[#DFDFDF] border-b pb-[31px]">
 								{processRichText(homePage.introduction.json)}
 							</div>
-							<SocialMediaLinks />
+							<SocialMediaLinks size="2xl" />
+							<br />
 							<br />
 							<ContactDetails />
 						</div>
