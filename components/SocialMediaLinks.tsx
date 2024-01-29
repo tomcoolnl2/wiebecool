@@ -1,29 +1,16 @@
-import classNames from 'classnames';
 import Link from 'next/link';
 import * as React from 'react';
-
-const socialIcon = [
-	{
-		id: 1,
-		iconName: 'icon-instagram-3',
-		link: 'https://www.instagram.com/wiebecoolbeeldhouwer/',
-	},
-];
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
 
 interface Props {
-	className?: string | { [key: string]: boolean };
-	size?: number;
+	size?: FontAwesomeIconProps['size'];
 }
 
-export const SocialMediaLinks: React.FC<Props> = ({ className = '', size = 20 }) => {
+export const SocialMediaLinks: React.FC<Props> = ({ size = 'sm' }) => {
 	return (
-		<div role="list" className={classNames('w-full', className)}>
-			{socialIcon.map((item) => (
-				<Link key={item.id} className={`text-[${size}px]`} href={item.link} target="_blank">
-					{/* <i className={item.iconName} /> */}
-					Instagram
-				</Link>
-			))}
-		</div>
+		<Link href="https://www.instagram.com/wiebecoolbeeldhouwer/" target="_blank">
+			<FontAwesomeIcon icon={faInstagram} size={size} />
+		</Link>
 	);
 };

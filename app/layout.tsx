@@ -6,7 +6,11 @@ import { PreLoader } from '@/components/PreLoader';
 import { Cursor } from '@/components/page/Cursor';
 import { MainNavigation } from '@/components/page/MainNavigation';
 import { Footer } from '@/components/page/Footer';
+
+import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import '../css/globals.css';
+config.autoAddCss = false;
 
 const montserrat = Montserrat({
 	subsets: ['latin'],

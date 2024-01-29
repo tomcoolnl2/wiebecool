@@ -27,7 +27,7 @@
 		color: #3498db;
 	}
 
-	a > *[class^='icon-'] {
+	a > svg {
 		color: white;
 	}
 

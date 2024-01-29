@@ -35,7 +35,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({ item, onClick }) => {
 		<li className="mb-5 w-full">
 			<NavigationLink name={item.name} slug={slug} path={path} onClick={onClick} />
 			{item.subNavigation instanceof Array && (
-				<Navigation items={item.subNavigation} className={['sub-navigation']} />
+				<Navigation items={item.subNavigation} className="sub-navigation" />
 			)}
 		</li>
 	);
@@ -43,13 +43,13 @@ const NavigationItem: React.FC<NavigationItemProps> = ({ item, onClick }) => {
 
 interface NavigationProps {
 	items: NavigationPageEntry[];
-	className?: string[];
+	className?: string | { [key: string]: boolean };
 	onClick?: () => void;
 }
 
-export const Navigation: React.FC<NavigationProps> = ({ items, className = [''], onClick }) => {
+export const Navigation: React.FC<NavigationProps> = ({ items, className = '', onClick }) => {
 	return (
-		<ul className={classNames(...className, 'w-full')}>
+		<ul className={classNames(className, 'w-full')}>
 			{items.map((item) => (
 				<NavigationItem key={item.page.sys.id} item={item} onClick={onClick} />
 			))}
