@@ -20,12 +20,6 @@ body::-webkit-scrollbar {
 	width: 0px;
 }
 
-svg {
-	height: 15px;
-	width: 15px;
-	fill: currentColor;
-}
-
 h1,
 h2,
 h3,
@@ -92,7 +86,8 @@ h6 {
 	position: absolute;
 	top: 250px;
 	left: 100px;
-	padding-top: 0px;
+	padding-top: 10vh;
+	padding-left: 70px;
 	z-index: 20;
 }
 

@@ -1,6 +1,8 @@
 'use client';
 import Link from 'next/link';
 import * as React from 'react';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavigationPageEntry } from '@/model/navigation';
 import { SocialMediaLinks } from '../SocialMediaLinks';
 import { Navigation } from '../Navigation';
@@ -21,6 +23,7 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 					<h1>Wiebe Cool</h1>
 					<h2>Beeldhouwer</h2>
 				</Link>
+				<SocialMediaLinks size="2xl" />
 				<div
 					className={`cursor-pointer hamburger--slider hamburger${isMobileOpen ? ' is-active' : ''}`}
 					onClick={() => toggleMobile(!isMobileOpen)}
@@ -32,9 +35,8 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 			</header>
 			<nav className={`main-navigation${isMobileOpen ? ' mobile-open' : ''}`}>
 				<h1 className="visually-hidden">{title}</h1>
-				<Navigation items={navigation} className={['navigation']} onClick={() => toggleMobile(false)} />
+				<Navigation items={navigation} className="navigation" onClick={() => toggleMobile(false)} />
 			</nav>
-			<SocialMediaLinks size={11} />
 		</>
 	);
 };
