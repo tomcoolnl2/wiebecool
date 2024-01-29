@@ -245,7 +245,7 @@
 	aspect-ratio: 1;
 	overflow: hidden;
 }
-.portfolio-page .portfolio_list li .inner:hover .abs_image {
+.collection-page .portfolio_list li .inner:hover .abs_image {
 	transform: scale(1.1) translateZ(0);
 }
 

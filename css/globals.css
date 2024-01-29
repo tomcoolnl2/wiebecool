@@ -197,4 +197,16 @@
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 		transition-duration: 300ms;
 	}
+
+	.collection-page .collection {
+		@apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center;
+	}
+
+	.collection-page .collection-item {
+		@apply relative aspect-square border-yellow-600 border-opacity-80 border-2 overflow-hidden hover:border-opacity-100;
+	}
+
+	.collection-page .collection-item-image {
+		@apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 origin-center grayscale hover:grayscale-0 hover:scale-110 transition duration-300;
+	}
 }

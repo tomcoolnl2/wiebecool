@@ -1,8 +1,4 @@
 
-.container {
-	width: 100%;
-}
-
 body {
 	width: 100%;
 	overflow-x: hidden;
@@ -341,7 +337,7 @@ h6 {
 	font-weight: 700;
 }
 
-.portfolio-page .popup_details {
+.collection-page .popup_details {
 	visibility: hidden;
 	position: absolute;
 	z-index: -111;
@@ -571,7 +567,7 @@ h6 {
 	}
 
 	.about-page,
-	.portfolio-page,
+	.collection-page,
 	.contact-page {
 		padding-top: 130px;
 	}
@@ -639,11 +635,6 @@ h6 {
 		margin-left: 0px;
 	}
 
-	.section-title .title_flex {
-		flex-direction: column;
-		align-items: flex-start;
-	}
-
 	.section-title .portfolio_filter {
 		padding-top: 48px;
 	}
@@ -679,11 +670,11 @@ h6 {
 		width: 200px;
 	}
 
-	.portfolio-page .portfolio_list {
+	.collection-page .portfolio_list {
 		margin: 0px;
 	}
 
-	.portfolio-page .portfolio_list li {
+	.collection-page .portfolio_list li {
 		width: 100%;
 		padding-left: 0px;
 	}
@@ -813,18 +804,12 @@ body.dark .modalbox_about .counter ul li .\!name {
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .section-title span {
-	background-color: rgba(255, 255, 255, 0.04);
-	--tw-text-opacity: 1;
-	color: rgb(149 149 149 / var(--tw-text-opacity));
-}
-
-body.dark .portfolio-page .portfolio_filter ul li a {
+body.dark .collection-page .portfolio_filter ul li a {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
 }
 
-body.dark .portfolio-page .portfolio_filter ul li a:hover {
+body.dark .collection-page .portfolio_filter ul li a:hover {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
