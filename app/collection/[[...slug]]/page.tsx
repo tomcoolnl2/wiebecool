@@ -60,7 +60,7 @@ export default async function CollectionPage({ params }: Props) {
 	let collection = [];
 	if (collectionPage.tags?.length) {
 		const { detailPageCollection } = await fetchContentfulData(DetailPagesByTagIDs, {
-			tagIDs: [collectionPage.tags[0]],
+			tagIDs: [collectionPage.tags[0].toLowerCase()],
 		});
 		collection = detailPageCollection;
 	}
