@@ -3,9 +3,7 @@ import { fetchContentfulData, generateGoogleMapsAddress } from '@/lib';
 import AddressQuery from '@/graphql/Address.gql';
 
 export const ContactDetails: React.FC = async () => {
-	//
 	const { address } = await fetchContentfulData(AddressQuery, { sysID: 'VYrkgFK6dR1V81lIJqez2' });
-
 	return (
 		<p className="font-montserrat font-medium mb-6">
 			{address.phoneNumberText}

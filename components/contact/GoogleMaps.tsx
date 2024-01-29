@@ -4,7 +4,6 @@ import AddressQuery from '@/graphql/Address.gql';
 
 export const GoogleMaps = async () => {
 	const { address } = await fetchContentfulData(AddressQuery, { sysID: 'VYrkgFK6dR1V81lIJqez2' });
-	console.log(address);
 	return (
 		address && (
 			<div className="map_wrap w-full float-left clear-both h-auto mb-[50px]">
