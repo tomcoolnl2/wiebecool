@@ -3,7 +3,7 @@ import { Montserrat, Mulish, Poppins } from 'next/font/google';
 import * as React from 'react';
 import { fetchMainNavigation } from '@/lib/api';
 import { PreLoader } from '@/components/PreLoader';
-import { Cursor } from '@/components/page/Cursor';
+import { Cursor } from '@/components/Cursor';
 import { MainNavigation } from '@/components/page/MainNavigation';
 import { Footer } from '@/components/page/Footer';
 

@@ -22,7 +22,7 @@ export default async function Home() {
 	return (
 		<SectionContainer name={'home'}>
 			<div className="container">
-				<div className="home-page w-full min-h-[100vh] clear-both flex items-center justify-center relative">
+				<div className="home-page pb-10 pt-24">
 					<div className="home_content flex items-center">
 						<div className="avatar relative rounded-full inner-border">
 							<Image
@@ -36,9 +36,7 @@ export default async function Home() {
 							<h1 className="name font-poppins text-[55px] font-extrabold uppercase mb-[14px]">
 								{homePage.title}
 							</h1>
-							{homePage.subtitle && (
-								<h2 className="font-poppins subtitle mb-[11px]">{homePage.subtitle}</h2>
-							)}
+							{homePage.subtitle && <h2 className="font-poppins subtitle mb-3">{homePage.subtitle}</h2>}
 							<div className="job font-montserrat font-medium max-w-[450px] mb-[25px] border-solid border-[#DFDFDF] border-b pb-[31px]">
 								{processRichText(homePage.introduction.json)}
 							</div>

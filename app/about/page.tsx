@@ -24,12 +24,8 @@ export default async function About() {
 	return (
 		<SectionContainer name={'about'}>
 			<div className="container">
-				<div className="about-page w-full py-[100px] px-0">
-					<div className="section-title w-full mb-[62px]">
-						<div className="title_flex w-full flex justify-between items-end">
-							<SectionTitle pageName={aboutPage.name} title={aboutPage.title} />
-						</div>
-					</div>
+				<div className="about-page pb-10 pt-24">
+					<SectionTitle pageName={aboutPage.name} title={aboutPage.title} />
 					<div className="shadow-lg w-full h-80 relative mb-[35px]">
 						<Image src={hero.url} alt={hero.description} fill priority />
 					</div>

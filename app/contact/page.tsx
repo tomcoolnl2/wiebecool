@@ -20,12 +20,8 @@ export default async function Contact() {
 	return (
 		<SectionContainer name={'contact'}>
 			<div className="container">
-				<div className="contact-page w-full float-left clear-both h-auto py-[100px] px-[0px]">
-					<div className="section-title w-full h-auto clear-both float-left mb-[62px]">
-						<div className="title_flex w-full h-auto clear-both flex justify-between items-end">
-							<SectionTitle pageName={contactPage.name} title={contactPage.title} />
-						</div>
-					</div>
+				<div className="contact-page pb-10 pt-24">
+					<SectionTitle pageName={contactPage.name} title={contactPage.title} />
 					<GoogleMaps />
 					<div className="font-montserrat font-medium mb-[25px] border-solid pb-[31px]">
 						{processRichText(contactPage.description.json)}
