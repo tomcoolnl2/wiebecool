@@ -27,8 +27,8 @@ const nextConfig = {
 				destination: '/detail/:slug*',
 			},
 			{
-				source: '/collectie/:tag',
-				destination: '/collection',
+				source: '/collectie/:slug*',
+				destination: '/collection/:slug*',
 			},
 		];
 	},

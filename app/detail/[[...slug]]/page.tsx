@@ -30,13 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function DetailPage({ params }: Props) {
 	//
 	const slug = ensureLeadingSlash(params.slug[0]);
+	console.log(slug);
 	const {
 		detailPageCollection: {
 			items: [detailPage],
 		},
 	} = await fetchContentfulData(DetailPageBySlugQuery, { slug });
 
-	// console.log(detailPage);
+	console.log(detailPage);
 
 	return <SectionContainer name={'detail'}>My Post: {params.slug}</SectionContainer>;
 }

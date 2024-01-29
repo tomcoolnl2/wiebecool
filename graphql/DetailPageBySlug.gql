@@ -1,4 +1,4 @@
-query GetDetailPageBySlug($slug: String!) {
+query DetailPageBySlug($slug: String!) {
 	detailPageCollection(where: { slug: $slug }, limit: 1) {
 		items {
 			slug
