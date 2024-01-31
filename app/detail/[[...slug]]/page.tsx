@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
-import { ensureLeadingSlash, fetchContentfulData } from '@/lib';
-import { SectionContainer } from '@/components';
+import Image from 'next/image';
+import { ItemImage } from '@/model';
 
+import { ensureLeadingSlash, fetchContentfulData } from '@/lib';
+import { SectionContainer, SectionTitle } from '@/components';
 import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
 import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
 
@@ -38,5 +40,27 @@ export default async function DetailPage({ params }: Props) {
 
 	console.log(detailPage);
 
-	return <SectionContainer name={'detail'}>My Post: {params.slug}</SectionContainer>;
+	return (
+		<SectionContainer name={'collection'}>
+			<div className="container">
+				<div className="detail-page pb-10 pt-24">
+					<SectionTitle pageName={detailPage.name} title={detailPage.title} />
+					<div className="image-container">
+						{detailPage.imagesCollection.items.map((img: ItemImage) => (
+							<div className="image-container image-container-portrait">
+								<Image
+									src={img.url + '?w=400'}
+									title={img.title}
+									alt={img.description}
+									width={400}
+									height={400}
+									className="zoomable-centered-image"
+								/>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</SectionContainer>
+	);
 }

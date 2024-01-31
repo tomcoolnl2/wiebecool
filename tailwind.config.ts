@@ -13,6 +13,9 @@ const config: Config = {
 				mulish: 'var(--font-mulish), sans-serif',
 				poppins: 'var(--font-poppins), sans-serif',
 			},
+			aspectRatio: {
+				'3/4': '3 / 4',
+			},
 		},
 	},
 	plugins: [],

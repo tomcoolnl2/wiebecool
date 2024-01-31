@@ -72,7 +72,7 @@ export default async function CollectionPage({ params }: Props) {
 					<SectionTitle pageName={collectionPage.name} title={collectionPage.title} />
 					<div className="collection">
 						{collection.items.map((item) => (
-							<div key={item.sys.id} className="collection-item">
+							<div key={item.sys.id} className="image-container image-container-square">
 								{item.imagesCollection.items.map((img) => (
 									<Link href={collectionBaseUrl + ensureLeadingSlash(item.slug)} title={img.title}>
 										<Image
@@ -81,7 +81,7 @@ export default async function CollectionPage({ params }: Props) {
 											alt={img.description}
 											width={400}
 											height={400}
-											className="collection-item-image"
+											className="zoomable-centered-image"
 										/>
 									</Link>
 								))}

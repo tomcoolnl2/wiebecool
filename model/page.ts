@@ -15,7 +15,7 @@ export const ReWriteRule = {
 	[PageType.DetailPage]: '/werk',
 };
 
-export interface CollectionItemImage {
+export interface ItemImage {
 	url: string;
 	title: string;
 	description: string;
@@ -29,6 +29,6 @@ export interface CollectionItem extends SysID {
 	slug: string;
 	title: string;
 	imagesCollection: {
-		items: CollectionItemImage[];
+		items: ItemImage[];
 	};
 }
