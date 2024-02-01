@@ -1,6 +1,4 @@
 
-.detail-page {}
-
 .detail-page-main-image {
-    @apply max-w-sm mx-auto;
+    @apply max-w-sm mx-auto mb-10;
 }

@@ -5,6 +5,20 @@
 @import '../css/custom.css';
 @import '../css/main.css';
 
+@keyframes fadeInLeft {
+	0% {
+		opacity: 0;
+		transform: translate3d(-50%, 0, 0);
+	}
+	60% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+
 @layer base {
 	* {
 		box-sizing: border-box;
@@ -52,6 +66,12 @@
 }
 
 @layer utilities {
+	.animated {
+		animation-duration: .9s;
+		animation-fill-mode: both;
+		animation-name: fadeInLeft;
+	  }
+
 	.visually-hidden {
 		clip-path: polygon(0 0, 0 0, 0 0, 0 0);
 		position: absolute;
@@ -67,6 +87,22 @@
 	.inner-border {
 		outline: 5px solid rgba(255,255,255,.1);
 		outline-offset: 0px;
+	}
+
+	.section-container {
+		@apply absolute inset-0 overflow-hidden overflow-y-scroll z-10;
+
+		
+	}
+	
+	.section-container::-webkit-scrollbar {
+		@apply w-0;
+	}
+
+	@media (max-width: 1200px) {
+		.section-container {
+			padding-left: 0px;
+		}
 	}
 
 	.main-navigation {
@@ -92,7 +128,6 @@
 	
 	.hamburger {
 		font: inherit;
-		display: inline-block;
 		overflow: visible;
 		margin: 0;
 		padding: 0px;
@@ -110,7 +145,7 @@
 		right: 16px;
 	}
 
-	@media (max-width: 1200px) {
+	@media (max-width: 1280px) {
 		.hamburger {
 			display: block;
 		}
