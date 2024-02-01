@@ -6,7 +6,7 @@ import { PreLoader, MainNavigation, Footer, Cursor } from '@/components';
 
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import '../css/globals.css';
+import '@/css/globals.css';
 config.autoAddCss = false;
 
 const montserrat = Montserrat({

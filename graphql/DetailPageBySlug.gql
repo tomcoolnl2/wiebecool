@@ -4,13 +4,35 @@ query DetailPageBySlug($slug: String!) {
 			slug
 			name
 			title
-			description
+			description {
+				json
+			}
 			status
 			creationDate
 			imageCollection(limit: 1) {
 				items {
+					sys {
+						id
+					}
 					url
 					title
+					description
+				}
+			}
+			imageCarousel {
+				description {
+					json
+				}
+				showDescription
+				imageCollection {
+					items {
+						sys {
+							id
+						}
+						url
+						title
+						description
+					}
 				}
 			}
 		}

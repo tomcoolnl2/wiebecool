@@ -1,0 +1,8 @@
+
+.richt-text-block {
+    @apply w-full border-solid mb-10 font-montserrat;
+}
+
+.richt-text-block-border {
+    @apply richt-text-block border-[#DFDFDF] border-b pb-5;
+}

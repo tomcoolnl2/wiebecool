@@ -1,13 +1,12 @@
 'use client';
 import * as React from 'react';
 import { Swiper, SwiperSlide, SwiperClass } from 'swiper/react';
-import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
-
+import { Navigation, Thumbs } from 'swiper/modules';
+import { PageCarousel } from '@/model';
+import { processRichText } from '@/lib';
 import '@/css/components/carousel.css';
 
-const amount = 10;
-
-export const Carousel: React.FC = () => {
+export const Carousel: React.FC<PageCarousel> = ({ description, showDescription, imageCollection }) => {
 	//
 	const [thumbsSwiper, setThumbsSwiper] = React.useState<SwiperClass | null>(null);
 
@@ -16,52 +15,58 @@ export const Carousel: React.FC = () => {
 		'--swiper-pagination-color': '#fff',
 	} as React.CSSProperties;
 
+	if (imageCollection.items?.length < 0) {
+		return null;
+	}
+
 	return (
-		<div className="carousel">
-			<Swiper
-				style={style}
-				spaceBetween={10}
-				navigation={true}
-				thumbs={{ swiper: thumbsSwiper }}
-				modules={[Navigation, Thumbs]}
-				className="carousel-main"
-			>
-				{Array.from({ length: amount }, (_, i) => (i += 1)).map((nr) => {
-					return (
-						<SwiperSlide key={nr} tag="figure" className="carousel-slide">
-							<img
-								className="carousel-main-image"
-								src={`https://swiperjs.com/demos/images/nature-${nr}.jpg`}
-							/>
-							{/* if description is available */}
-							<figcaption className="carousel-slide-description">Description of Image {nr}</figcaption>
-						</SwiperSlide>
-					);
-				})}
-			</Swiper>
-			{amount > 1 && (
+		<>
+			{description && <div className="richt-text-block">{processRichText(description.json)}</div>}
+			<div className="carousel mb-10">
 				<Swiper
 					style={style}
-					onSwiper={setThumbsSwiper}
 					spaceBetween={10}
-					slidesPerView={4.25}
-					watchSlidesProgress={true}
+					navigation={true}
+					thumbs={{ swiper: thumbsSwiper }}
 					modules={[Navigation, Thumbs]}
-					className="carousel-thumbnails"
+					className="carousel-main"
 				>
-					{Array.from({ length: amount }, (_, i) => (i += 1)).map((nr) => {
+					{description && <div className="richt-text-block">{processRichText(description.json)}</div>}
+					{imageCollection.items.map((slide) => {
 						return (
-							<SwiperSlide key={nr} className="image-container image-container-square">
-								<img
-									className="zoomable-centered-image" // contentful image generator
-									src={`https://swiperjs.com/demos/images/nature-${nr}.jpg`}
-								/>
+							<SwiperSlide key={slide.sys.id} tag="figure" className="carousel-main-slide">
+								<img className="carousel-main-image" src={slide.url} alt={slide.title} />
+								{showDescription && slide.description && (
+									<figcaption className="carousel-slide-description">{slide.description}</figcaption>
+								)}
 							</SwiperSlide>
 						);
 					})}
 				</Swiper>
-			)}
-		</div>
+				{imageCollection.items.length > 1 && (
+					<Swiper
+						style={style}
+						onSwiper={setThumbsSwiper}
+						spaceBetween={10}
+						slidesPerView={4.25}
+						watchSlidesProgress={true}
+						modules={[Navigation, Thumbs]}
+						className="carousel-thumbnails"
+					>
+						{imageCollection.items.map((slide) => {
+							return (
+								<SwiperSlide
+									key={slide.sys.id + '-thumb'}
+									className="image-container image-container-square"
+								>
+									<img className="zoomable-centered-image" src={slide.url} alt={slide.title} />
+								</SwiperSlide>
+							);
+						})}
+					</Swiper>
+				)}
+			</div>
+		</>
 	);
 };
 

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { processRichText } from '@/lib';
 import { RenderComponentItem } from '@/components';
+import '@/css/components/text-block.css';
 
 export interface TextBlock {
 	__typename: 'TextBlock';
@@ -15,7 +16,7 @@ interface Props {
 export const TextBlockComponent: React.FC<Props> = ({ item }) => {
 	const { title = null, description } = item as TextBlock;
 	return (
-		<div className="text-block w-full border-solid border-[#DFDFDF] border-b pb-5 mb-10 font-montserrat">
+		<div className="richt-text-block-border">
 			{title && <h3>{title}</h3>}
 			{processRichText(description.json)}
 		</div>

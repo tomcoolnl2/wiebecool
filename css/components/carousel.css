@@ -9,7 +9,8 @@
 }
 
 .carousel-main {
-    @apply w-full aspect-video relative;
+    @apply w-[80%] relative;
+    aspect-ratio: 16/10;
 }
 
 .carousel-main-slide {
@@ -18,8 +19,9 @@
 
 
 .carousel-main-image {
-    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 origin-center;
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 origin-center max-w-full max-h-full;
 }
+
 .carousel-slide-description {
     @apply w-full text-white absolute bottom-0 p-5 text-center;
     background-color: rgba(0, 0, 0, 0.5);

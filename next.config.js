@@ -10,12 +10,6 @@ const nextConfig = {
 				port: '',
 				pathname: '/**',
 			},
-			{
-				protocol: 'https',
-				hostname: 'swiperjs.com',
-				port: '',
-				pathname: '/**',
-			},
 		],
 	},
 	async rewrites() {
