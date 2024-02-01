@@ -513,11 +513,7 @@ h6 {
 /******** Larger Screens *********/
 
 @media (max-width: 1200px) {
-
-	.section-container {
-		padding-left: 0px;
-	}
-
+	
 	.top-bar {
 		position: absolute;
 		top: 0;
