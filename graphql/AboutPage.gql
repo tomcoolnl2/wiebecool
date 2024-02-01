@@ -31,7 +31,7 @@ query AboutPageQuery($sysID: String!) {
 							slug
 							title
 							status
-							mainImageCollection(limit: 1) {
+							imageCollection(limit: 1) {
 								items {
 									url
 									title

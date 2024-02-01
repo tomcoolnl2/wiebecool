@@ -7,7 +7,7 @@ query DetailPageBySlug($slug: String!) {
 			description
 			status
 			creationDate
-			mainImageCollection(limit: 1) {
+			imageCollection(limit: 1) {
 				items {
 					url
 					title
