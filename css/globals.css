@@ -70,11 +70,11 @@
 	}
 
 	.main-navigation {
-		@apply flex h-screen bg-gray-600 z-20;
+		@apply flex h-screen bg-gray-700 z-20;
 	}
 
 	.navigation-link {
-		@apply capitalize inline-block font-medium font-montserrat hover:text-white;
+		@apply inline-block font-medium font-montserrat hover:text-white;
 	}
 
 	.text-block h3, h4, h5 {
@@ -183,6 +183,10 @@
 		transform: translate3d(0, -20px, 0) rotate(-90deg);
 	}
 
+	.collection-page .collection {
+		@apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center;
+	}
+
 	.submit-button button {
 		display: inline-block;
 		--tw-bg-opacity: 1;
@@ -198,15 +202,19 @@
 		transition-duration: 300ms;
 	}
 
-	.collection-page .collection {
-		@apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center;
+	.image-container {
+		@apply relative border-yellow-600 border-opacity-80 border-2 hover:border-opacity-100;
 	}
 
-	.collection-page .collection-item {
-		@apply relative aspect-square border-yellow-600 border-opacity-80 border-2 overflow-hidden hover:border-opacity-100;
+	.image-container.image-container-square {
+		@apply aspect-square overflow-hidden;
 	}
 
-	.collection-page .collection-item-image {
+	.image-container.image-container-portrait {
+		@apply aspect-[3/4] overflow-hidden;
+	}
+
+	.zoomable-centered-image {
 		@apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 origin-center grayscale hover:grayscale-0 hover:scale-110 transition duration-300;
 	}
 }

@@ -1,4 +1,5 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { Slug } from '@/model';
 
 export function detectMobile(): boolean {
 	if (typeof window === 'undefined') {
@@ -25,9 +26,9 @@ export function formatStatus(input: string): string {
 	}
 }
 
-export function ensureLeadingSlash(str: string): string {
+export function ensureLeadingSlash(str: string): Slug {
 	if (!str.startsWith('/')) {
 		return `/${str}`;
 	}
-	return str;
+	return str as Slug;
 }

@@ -2,8 +2,7 @@
 import Link from 'next/link';
 import * as React from 'react';
 import { NavigationPageEntry } from '@/model';
-import { SocialMediaLinks } from '../SocialMediaLinks';
-import { Navigation } from '../Navigation';
+import { Navigation, SocialMediaLinks } from '@/components';
 
 interface MainNavigation {
 	title: string;

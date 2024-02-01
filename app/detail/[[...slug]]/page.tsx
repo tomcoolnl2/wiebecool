@@ -1,9 +1,15 @@
 import { Metadata } from 'next';
-import { ensureLeadingSlash, fetchContentfulData } from '@/lib';
-import { SectionContainer } from '@/components';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
 import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
+
+import { ensureLeadingSlash, fetchContentfulData, processRichText } from '@/lib';
+import { SectionContainer, SectionTitle } from '@/components';
+const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
+
+import '@/css/pages/detail-page.css';
 
 type Props = {
 	params: { slug: string };
@@ -29,14 +35,36 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function DetailPage({ params }: Props) {
 	//
 	const slug = ensureLeadingSlash(params.slug[0]);
-	console.log(slug);
+
 	const {
 		detailPageCollection: {
 			items: [detailPage],
 		},
 	} = await fetchContentfulData(DetailPageBySlugQuery, { slug });
 
-	console.log(detailPage);
+	const detailPageImg = detailPage.imageCollection.items[0];
 
-	return <SectionContainer name={'detail'}>My Post: {params.slug}</SectionContainer>;
+	return (
+		<SectionContainer name={'collection'}>
+			<div className="container">
+				<div className="detail-page pb-10 pt-24">
+					<SectionTitle pageName={detailPage.name} title={detailPage.title} />
+					{detailPage.description && (
+						<div className="richt-text-block">{processRichText(detailPage.description.json)}</div>
+					)}
+					<div className="detail-page-main-image image-container image-container-portrait">
+						<Image
+							src={detailPageImg.url + '?w=400'}
+							title={detailPageImg.title}
+							alt={detailPageImg.description}
+							width={400}
+							height={400}
+							className="zoomable-centered-image"
+						/>
+					</div>
+				</div>
+				<Carousel {...detailPage.imageCarousel} />
+			</div>
+		</SectionContainer>
+	);
 }

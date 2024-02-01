@@ -5,7 +5,7 @@ import { type RenderComponentItem } from './hoc/RenderComponent';
 
 interface PortFolioImage {
 	url: string;
-	description: string | null;
+	title: string | null;
 }
 
 interface PortfolioCard {
@@ -13,7 +13,7 @@ interface PortfolioCard {
 	slug: string;
 	title: string;
 	status: string;
-	imagesCollection: {
+	imageCollection: {
 		items: PortFolioImage[];
 	};
 }
@@ -35,6 +35,8 @@ export const PortfolioCardsComponent: React.FC<Props> = ({ item }) => {
 		detailPagesCollection: { items: cards = [] },
 	} = item as PortfolioCards;
 
+	console.log(cards);
+
 	return (
 		<aside className="product-cards flex flex-row flex-wrap justify-center md:justify-between gap-0 md:gap-3 items-center mt-8 transition-all duration-300">
 			{cards.map((card: PortfolioCard) => (
@@ -46,8 +48,8 @@ export const PortfolioCardsComponent: React.FC<Props> = ({ item }) => {
 						<div className="image relative overflow-hidden">
 							<Image
 								className="w-full"
-								src={card.imagesCollection.items[0].url + '?w=450'}
-								alt={card.imagesCollection.items[0].description || 'Wiebe Cool | Beeldhouwer'}
+								src={card.imageCollection.items[0].url + '?w=450'}
+								alt={card.imageCollection.items[0].title || 'Wiebe Cool | Beeldhouwer'}
 								width={450}
 								height={450}
 							/>

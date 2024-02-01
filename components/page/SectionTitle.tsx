@@ -6,7 +6,7 @@ export const SectionTitle: React.FC<{ pageName: string; title: string }> = ({ pa
 			<span className="inline-block bg-gray-600 uppercase py-1 px-3 font-semibold font-montserrat mb-3">
 				{pageName}
 			</span>
-			<h1 className="font-extrabold font-montserrat text-[40px]">{title}</h1>
+			<h1 className="font-extrabold font-montserrat text-4xl">{title}</h1>
 		</div>
 	);
 };

@@ -1,6 +1,6 @@
 //
 
-import { PageType } from './page';
+import { PageType } from './enum';
 
 export interface Navigation {
 	title: string;
