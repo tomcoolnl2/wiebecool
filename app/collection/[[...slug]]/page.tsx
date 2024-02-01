@@ -82,6 +82,7 @@ export default async function CollectionPage({ params }: Props) {
 											width={400}
 											height={400}
 											className="zoomable-centered-image"
+											priority
 										/>
 									</Link>
 								))}
