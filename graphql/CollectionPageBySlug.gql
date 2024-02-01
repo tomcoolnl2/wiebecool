@@ -4,6 +4,7 @@ query CollectionPageBySlug($slug: String!) {
 		items {
 			name
 			title
+			subtitle
 			description {
 				json
 			}

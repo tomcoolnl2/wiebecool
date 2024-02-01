@@ -2,14 +2,12 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import * as React from 'react';
-
-import { CollectionItems, PageType, ReWriteRule } from '@/model';
-import { ensureLeadingSlash, fetchContentfulData } from '@/lib';
-import { SectionContainer, SectionTitle } from '@/components';
-
 import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
 import CollectionPageBySlugQuery from '@/graphql/CollectionPageBySlug.gql';
 import DetailPagesByTagIDs from '@/graphql/DetailPagesByTagIDs.gql';
+import { CollectionItems, PageType, ReWriteRule } from '@/model';
+import { ensureLeadingSlash, fetchContentfulData, processRichText } from '@/lib';
+import { SectionContainer, SectionTitle } from '@/components';
 
 type Props = {
 	params: { slug: string };
@@ -64,12 +62,17 @@ export default async function CollectionPage({ params }: Props) {
 		});
 		collection = detailPageCollection;
 	}
+	console.log(collectionPage);
 
 	return (
 		<SectionContainer name={'collection'}>
 			<div className="container">
 				<div className="collection-page pb-10 pt-24">
 					<SectionTitle pageName={collectionPage.name} title={collectionPage.title} />
+					{collectionPage.subtitle && <h2 className="mb-5">{collectionPage.subtitle}</h2>}
+					{collectionPage.description && (
+						<div className="richt-text-block">{processRichText(collectionPage.description.json)}</div>
+					)}
 					<div className="collection">
 						{collection.items.map((item) => (
 							<div key={item.sys.id} className="image-container image-container-square">
