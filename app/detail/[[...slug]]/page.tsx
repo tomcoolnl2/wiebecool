@@ -6,7 +6,7 @@ import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
 import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
 
 import { ensureLeadingSlash, fetchContentfulData, processRichText } from '@/lib';
-import { SectionContainer, SectionTitle } from '@/components';
+import { ContactDetails, SectionContainer, SectionTitle } from '@/components';
 const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
 
 import '@/css/pages/detail-page.css';
@@ -62,8 +62,11 @@ export default async function DetailPage({ params }: Props) {
 							className="zoomable-centered-image"
 						/>
 					</div>
+					{detailPage.imageCarousel?.imageCollection && <Carousel {...detailPage.imageCarousel} />}
+					<aside className="text-block pt-5 pb-8 mt-8 text-center">
+						<ContactDetails />
+					</aside>
 				</div>
-				<Carousel {...detailPage.imageCarousel} />
 			</div>
 		</SectionContainer>
 	);
