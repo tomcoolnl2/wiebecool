@@ -15,10 +15,6 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 		'--swiper-pagination-color': '#fff',
 	} as React.CSSProperties;
 
-	if (imageCollection.items?.length < 0) {
-		return null;
-	}
-
 	return (
 		<>
 			{description && <div className="richt-text-block">{processRichText(description.json)}</div>}
