@@ -2,6 +2,7 @@ export * from './contact';
 export * from './hoc';
 export * from './page';
 
+// export * from './Carousel';
 export * from './ContactDetails';
 export * from './Cursor';
 export * from './Navigation';

@@ -1,11 +1,15 @@
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { ItemImage } from '@/model';
 
-import { ensureLeadingSlash, fetchContentfulData } from '@/lib';
-import { SectionContainer, SectionTitle } from '@/components';
 import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
 import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
+
+import { ItemImage } from '@/model';
+import { ensureLeadingSlash, fetchContentfulData } from '@/lib';
+import { SectionContainer, SectionTitle } from '@/components';
+
+const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
 
 type Props = {
 	params: { slug: string };
@@ -38,14 +42,12 @@ export default async function DetailPage({ params }: Props) {
 		},
 	} = await fetchContentfulData(DetailPageBySlugQuery, { slug });
 
-	console.log(detailPage);
-
 	return (
 		<SectionContainer name={'collection'}>
 			<div className="container">
 				<div className="detail-page pb-10 pt-24">
 					<SectionTitle pageName={detailPage.name} title={detailPage.title} />
-					<div className="image-container">
+					{/* <div className="image-container">
 						{detailPage.imagesCollection.items.map((img: ItemImage) => (
 							<div className="image-container image-container-portrait">
 								<Image
@@ -58,7 +60,8 @@ export default async function DetailPage({ params }: Props) {
 								/>
 							</div>
 						))}
-					</div>
+					</div> */}
+					<Carousel />
 				</div>
 			</div>
 		</SectionContainer>

@@ -203,15 +203,15 @@
 	}
 
 	.image-container {
-		@apply relative rounded-lg border-yellow-600 border-opacity-80 border-2 hover:border-opacity-100;
+		@apply relative border-yellow-600 border-opacity-80 border-2 hover:border-opacity-100;
 	}
 
 	.image-container.image-container-square {
-		@apply  aspect-square overflow-hidden;
+		@apply aspect-square overflow-hidden;
 	}
 
 	.image-container.image-container-portrait {
-		@apply  aspect-[4/3] overflow-hidden;
+		@apply aspect-[4/3] overflow-hidden;
 	}
 
 	.zoomable-centered-image {
