@@ -73,7 +73,7 @@ export default async function CollectionPage({ params }: Props) {
 					<div className="collection">
 						{collection.items.map((item) => (
 							<div key={item.sys.id} className="image-container image-container-square">
-								{item.imagesCollection.items.map((img) => (
+								{item.imageCollection.items.map((img) => (
 									<Link href={collectionBaseUrl + ensureLeadingSlash(item.slug)} title={img.title}>
 										<Image
 											src={img.url + '?w=300'}

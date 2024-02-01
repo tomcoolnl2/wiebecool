@@ -7,7 +7,7 @@ query DetailPagesByTagIDs($tagIDs: [String]!) {
 			}
 			slug
 			title
-			imagesCollection(limit: 1) {
+			imageCollection(limit: 1) {
 				items {
 					url
 					title

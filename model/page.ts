@@ -15,7 +15,7 @@ export interface CollectionItems {
 export interface CollectionItem extends SysID {
 	slug: string;
 	title: string;
-	imagesCollection: {
+	imageCollection: {
 		items: ItemImage[];
 	};
 }
