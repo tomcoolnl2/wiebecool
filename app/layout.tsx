@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children }) => {
 	//
-	const { title, navigation } = await fetchMainNavigation('5bRsPaSUeUrD7QB5m868iu');
+	const { title, navigation } = await fetchMainNavigation();
 
 	return (
 		<html lang="nl">
@@ -42,12 +42,12 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children })
 				<PreLoader />
 				<div className="site-wrapper">
 					<MainNavigation title={title} navigation={navigation} />
-					<main className="main-content w-full min-h-[100vh] relative bg-[#f8f8f8]">
-						<div className="main-content-inner relative w-full border-solid border-[#ebebeb] border-l min-h-[100vh]">
+					<div className="main-content w-full min-h-[100vh] relative bg-[#f8f8f8]">
+						<main className="main-content-inner relative w-full border-solid border-[#ebebeb] border-l min-h-[100vh]">
 							{children}
-						</div>
-					</main>
-					<Footer />
+						</main>
+						<Footer />
+					</div>
 				</div>
 				<Cursor />
 			</body>

@@ -1,6 +1,5 @@
 //
-
-import { PageType } from './enum';
+import { PageType } from '.';
 
 export interface Navigation {
 	title: string;
@@ -13,6 +12,7 @@ export interface Navigation {
 export interface SysID {
 	sys: { id: string };
 }
+
 interface PageEntry extends SysID {
 	__typename: PageType;
 	slug: string;
