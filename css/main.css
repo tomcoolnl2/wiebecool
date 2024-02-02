@@ -107,7 +107,9 @@ h6 {
 }
 
 .main-content {
-	@apply pl-[450px];
+	@apply pl-[350px];
+	background: rgb(52,54,58);
+	background: linear-gradient(-70deg, rgba(72,81,99,1) 0%, rgba(58,60,62,1) 50%, rgba(52,54,58,1) 100%);
 }
 
 .page-footer {
