@@ -10,7 +10,7 @@ class SiteMapEntry implements SitemapItem {
 		slug: string,
 		public lastModified: string,
 		public changeFrequency: SitemapItem['changeFrequency'],
-		public priority: SitemapItem['priority']
+		public priority: number
 	) {
 		this.url = this.baseUrl + slug;
 	}
