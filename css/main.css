@@ -112,10 +112,6 @@ h6 {
 	background: linear-gradient(-70deg, rgba(72,81,99,1) 0%, rgba(58,60,62,1) 50%, rgba(52,54,58,1) 100%);
 }
 
-.page-footer {
-	@apply absolute bottom-4 right-5 z-20 text-[12px];
-}
-
 .submit-button {
 	float: left;
 	clear: both;
@@ -476,10 +472,6 @@ h6 {
 		padding-left: 350px;
 	}
 
-	.page-footer {
-		right: 20px;
-	}
-
 	.home-page .avatar {
 		width: 250px;
 	}
@@ -621,7 +613,7 @@ h6 {
 		margin-bottom: 30px;
 	}
 
-	.main-navigation a {
+	.main-navigation li a {
 		font-size: 16px;
 	}
 

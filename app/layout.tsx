@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { Montserrat, Mulish, Poppins } from 'next/font/google';
 import * as React from 'react';
 import { fetchMainNavigation } from '@/lib';
-import { PreLoader, MainNavigation, Footer, Cursor, Background } from '@/components';
+import { PreLoader, MainNavigation, Cursor, Background } from '@/components';
 
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -46,7 +46,6 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children })
 						<main className="main-content-inner relative w-full border-solid border-[#ebebeb] border-l min-h-[100vh]">
 							{children}
 						</main>
-						<Footer />
 					</div>
 				</div>
 				<Cursor />

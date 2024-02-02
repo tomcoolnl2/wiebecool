@@ -253,4 +253,12 @@
 	.zoomable-centered-image {
 		@apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 origin-center grayscale hover:grayscale-0 hover:scale-110 transition duration-300;
 	}
+
+	.page-footer {
+		@apply absolute flex bottom-2 right-3 z-20 text-[12px];
+	}
+
+	.page-footer a {
+		@apply ml-2;
+	}
 }
