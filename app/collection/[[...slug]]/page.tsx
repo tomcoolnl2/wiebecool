@@ -62,7 +62,6 @@ export default async function CollectionPage({ params }: Props) {
 		});
 		collection = detailPageCollection;
 	}
-	console.log(collectionPage);
 
 	return (
 		<SectionContainer name={'collection'}>

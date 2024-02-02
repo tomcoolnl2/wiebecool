@@ -107,15 +107,11 @@ h6 {
 }
 
 .main-content {
-	padding-left: 450px;
+	@apply pl-[450px];
 }
 
 .page-footer {
-	position: absolute;
-    bottom: 16px;
-    left: 20px;
-    z-index: 20;
-	display: inline-block;
+	@apply absolute bottom-4 right-5 z-20 text-[12px];
 }
 
 .submit-button {

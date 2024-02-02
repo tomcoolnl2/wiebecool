@@ -1,0 +1,42 @@
+query Sitemap {
+	homePageCollection(limit: 1) {
+		items {
+			slug
+			sys {
+				publishedAt
+			}
+		}
+	}
+	aboutPageCollection {
+		items {
+			slug
+			sys {
+				publishedAt
+			}
+		}
+	}
+	contactPageCollection(limit: 1) {
+		items {
+			slug
+			sys {
+				publishedAt
+			}
+		}
+	}
+	collectionPageCollection {
+		items {
+			slug
+			sys {
+				publishedAt
+			}
+		}
+	}
+	detailPageCollection {
+		items {
+			slug
+			sys {
+				publishedAt
+			}
+		}
+	}
+}

@@ -63,7 +63,7 @@ export const fetchContentfulData = cache(async (query: string | DocumentNode, va
 	}
 });
 
-export const fetchMainNavigation = async (sysID: string): Promise<NavigationResponse> => {
+export const fetchNavigation = async (sysID: string): Promise<NavigationResponse> => {
 	const {
 		navigation: {
 			title,
@@ -74,7 +74,7 @@ export const fetchMainNavigation = async (sysID: string): Promise<NavigationResp
 	const promises = navigation.map(async (item: NavigationPageEntry) => {
 		const subNavigation = item.subNavigation as SysID;
 		if (subNavigation?.sys?.id) {
-			const { navigation: subNavigationEntries } = await fetchMainNavigation(subNavigation.sys.id);
+			const { navigation: subNavigationEntries } = await fetchNavigation(subNavigation.sys.id);
 			item.subNavigation = subNavigationEntries;
 		}
 	});
@@ -82,3 +82,7 @@ export const fetchMainNavigation = async (sysID: string): Promise<NavigationResp
 
 	return { title, navigation };
 };
+
+export async function fetchMainNavigation() {
+	return await fetchNavigation('5bRsPaSUeUrD7QB5m868iu');
+}
