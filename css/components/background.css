@@ -1,6 +1,6 @@
 
 .bg {
-    @apply absolute z-0 inset-0;
+    @apply absolute z-0 inset-0 overflow-hidden;
 }
 
 .bg-overlay {

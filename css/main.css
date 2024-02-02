@@ -102,6 +102,10 @@ h6 {
 	margin-top: 8px;
 }
 
+.sub-navigation li {
+	@apply mb-2;
+}
+
 .sub-navigation .navigation-link {
 	font-size: 95%;
 }

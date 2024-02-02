@@ -28,7 +28,7 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ useHrefBuilder, item, s
 	const href = useHrefBuilder ? hrefBuilder(item.page.__typename, slug) : `/${slug}`;
 	return (
 		<Link
-			className={`navigation-link${path.includes(slug) ? ' text-white' : ' text-gray-300'}`}
+			className={`navigation-link${path.slice(-1)[0] === slug ? ' text-[#b7950b]' : ' text-gray-300'}`}
 			href={href}
 			role="link"
 			onClick={() => onClick?.()}
@@ -51,7 +51,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({ item, onClick, useHrefB
 		<li className="mb-5 w-full">
 			<NavigationLink useHrefBuilder={useHrefBuilder} item={item} slug={slug} path={path} onClick={onClick} />
 			{item.subNavigation instanceof Array && (
-				<Navigation items={item.subNavigation} className="sub-navigation" useHrefBuilder />
+				<Navigation items={item.subNavigation} className="sub-navigation" useHrefBuilder onClick={onClick} />
 			)}
 		</li>
 	);
