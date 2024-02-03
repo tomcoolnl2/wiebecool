@@ -42,14 +42,14 @@ export function generateSchema(
 	switch (schemaType) {
 		case SchemaType.POSTAL_ADDRESS: {
 			const addressData = data as Address;
-			const schema: PostalAddressSchema = {
+			const schema = {
 				'@type': SchemaType.POSTAL_ADDRESS,
 				streetAddress: addressData.streetAddress,
 				addressLocality: addressData.city,
 				postalCode: addressData.zipCode,
 				addressCountry: addressData.country,
 			};
-			return schema;
+			return schema as PostalAddressSchema;
 		}
 		case SchemaType.SCULPTURE: {
 			const detailPageData = data as DetailPage;
@@ -57,7 +57,7 @@ export function generateSchema(
 			const material = detailPageData.material ?? null;
 			const dimensions = detailPageData.dimensions ?? null;
 			const image = img?.url ?? '';
-			const schema: SculptureSchema = {
+			const schema = {
 				...baseSchema,
 				...basePageSchema,
 				image,
@@ -69,20 +69,20 @@ export function generateSchema(
 				...(material ? { material } : {}),
 				...(dimensions ? { dimensions } : {}),
 			};
-			return schema;
+			return schema as SculptureSchema;
 		}
 		case SchemaType.CONTACT_PAGE: {
 			const contactPageData = data as ContactPage;
-			const address = generateSchema(contactPageData.address, SchemaType.POSTAL_ADDRESS);
-			console.log(address);
 			const schema = {
 				...baseSchema,
 				...basePageSchema,
-				address: address as PostalAddressSchema,
-				telephone: contactPageData.artist.telephone,
-				email: contactPageData.artist.email,
-			} as ContactPageSchema;
-			return schema;
+				contactPoint: {
+					'@type': SchemaType.CONTACT_POINT,
+					telephone: contactPageData.artist.telephone,
+					email: contactPageData.artist.email,
+				},
+			};
+			return schema as ContactPageSchema;
 		}
 		default:
 			throw new Error('Unsupported schema type');

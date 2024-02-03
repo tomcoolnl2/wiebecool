@@ -7,6 +7,7 @@ export enum SchemaType {
 	PLACE = 'Place',
 	CONTACT_PAGE = 'ContactPage',
 	POSTAL_ADDRESS = 'PostalAddress',
+	CONTACT_POINT = 'ContactPoint',
 }
 
 export interface BaseSchema {
@@ -53,9 +54,11 @@ export interface PostalAddressSchema {
 
 export interface ContactPageSchema extends BaseSchema {
 	'@type': SchemaType.CONTACT_PAGE;
-	address: PostalAddressSchema;
-	telephone: string;
-	email: string;
+	contactPoint: {
+		'@type': SchemaType.CONTACT_POINT;
+		telephone: string;
+		email: string;
+	};
 }
 
 export type Schema = ArtistSchema | SculptureSchema | ContactPageSchema | PostalAddressSchema;
