@@ -1,9 +1,9 @@
 #
 query Address($sysID: String!) {
 	address(id: $sysID) {
-		postalAddressText
-		postalAddress
-		phoneNumberText
-		phoneNumber
+		streetAddress
+		zipCode
+		city
+		country
 	}
 }

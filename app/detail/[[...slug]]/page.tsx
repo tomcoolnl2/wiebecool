@@ -1,53 +1,39 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-
-import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
-import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
-
-import { ensureLeadingSlash, fetchContentfulData, processRichText } from '@/lib';
-import { ContactDetails, SectionContainer, SectionTitle } from '@/components';
-const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
-
+import { ItemImage, PageType, ReWriteRule, SchemaType, Slug } from '@/model';
+import { fetchDetailPage, fetchSeoMetaDataBySlug, generateSchema } from '@/lib';
+import { baseUrl, ensureLeadingSlash, processRichText } from '@/lib';
+import { ContactDetails, SchemaTag, SectionContainer, SectionTitle } from '@/components';
 import '@/css/pages/detail-page.css';
 
-type Props = {
+const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
+
+type PageProps = {
 	params: { slug: string };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-	//
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	const slug = ensureLeadingSlash(params.slug[0]);
-	const {
-		detailPageCollection: {
-			items: [{ seoMetaData }],
-		},
-	} = await fetchContentfulData(MetaDataBySlugQuery, { slug });
-
+	const seoMetaData = await fetchSeoMetaDataBySlug(slug as Slug);
 	return {
 		...seoMetaData,
 		alternates: {
-			canonical: `https://www.wiebecool.nl/werk${slug}`,
+			canonical: `${baseUrl}${ReWriteRule[PageType.DetailPage]}${slug}`,
 		},
 	};
 }
 
-export default async function DetailPage({ params }: Props) {
-	//
+export default async function DetailPage({ params }: PageProps) {
 	const slug = ensureLeadingSlash(params.slug[0]);
-
-	const {
-		detailPageCollection: {
-			items: [detailPage],
-		},
-	} = await fetchContentfulData(DetailPageBySlugQuery, { slug });
-
+	const detailPage = await fetchDetailPage(slug as Slug);
 	const detailPageImg = detailPage.imageCollection.items[0];
-
+	const jsonLd = generateSchema(detailPage, SchemaType.SCULPTURE, detailPageImg);
 	return (
-		<SectionContainer name={'collection'}>
+		<SectionContainer name={'detail'}>
+			<SchemaTag schema={jsonLd} />
 			<div className="container">
-				<div className="detail-page pb-10 pt-24">
+				<div className="detail-page page">
 					<SectionTitle pageName={detailPage.name} title={detailPage.title} />
 					{detailPage.description && (
 						<div className="richt-text-block">{processRichText(detailPage.description.json)}</div>

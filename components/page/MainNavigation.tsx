@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import * as React from 'react';
 import { NavigationPageEntry } from '@/model';
+import { creator } from '@/lib';
 import { Navigation, SocialMediaLinks } from '@/components';
 
 interface MainNavigation {
@@ -17,8 +18,8 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 		<>
 			<header className="top-bar z-30 absolute top-1 left-0">
 				<Link href="/" className="visually-hidden">
-					<h1>Wiebe Cool</h1>
-					<h2>Beeldhouwer</h2>
+					<h1>{creator.name}</h1>
+					<h2>{creator.occupation}</h2>
 				</Link>
 				<SocialMediaLinks size="2xl" />
 				<div

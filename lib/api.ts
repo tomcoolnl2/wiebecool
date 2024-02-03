@@ -1,18 +1,58 @@
 import { cache } from 'react';
-import { DocumentNode } from 'graphql';
-import { NavigationPageEntry, NavigationResponse, SysID } from '@/model/navigation';
+import { DocumentNode as GraphQLDocumentNode } from 'graphql';
+import {
+	AboutPage,
+	AboutPageResponse,
+	Address,
+	AddressResponse,
+	Artist,
+	ArtistResponse,
+	CollectionPage,
+	CollectionPageResponse,
+	ContactDetails,
+	ContactPage,
+	ContactPageResponse,
+	DetailPage,
+	DetailPageBySlugResponse,
+	DetailPageCollectionResponse,
+	HomePage,
+	HomePageResponse,
+	MetaDataBySlugResponse,
+	MetaDataResponse,
+	Navigation,
+	NavigationPageEntry,
+	NavigationResponse,
+	PageType,
+	SeoMetaData,
+	Sitemap,
+	SitemapResponse,
+	Slug,
+	SysID,
+} from '@/model';
+
+import MetaDataQuery from '@/graphql/MetaData.gql';
 import MainNavigationQuery from '@/graphql/MainNavigation.gql';
+import HomePageQuery from '@/graphql/HomePage.gql';
+import ContactPageQuery from '@/graphql/ContactPage.gql';
+import AddressQuery from '@/graphql/Address.gql';
+import ArtistQuery from '@/graphql/Artist.gql';
+import AboutPageQuery from '@/graphql/AboutPage.gql';
+import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
+import CollectionPageBySlugQuery from '@/graphql/CollectionPageBySlug.gql';
+import DetailPagesByTagIDs from '@/graphql/DetailPagesByTagIDs.gql';
+import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
+import SiteMapQuery from '@/graphql/Sitemap.gql';
 
 /**
- * Represents an authentication error.
+ * Represents an error specific to Contentful-related operations.
  * @class
  * @extends Error
  */
 export class ContentfulError extends Error {
 	/**
-	 * Creates an instance of AuthError.
+	 * Creates an instance of ContentfulError.
 	 * @param {string} message - The error message.
-	 * @param {number} status - The status code associated with the error.
+	 * @param {number} status - The status code associated with the error. Default is 500.
 	 */
 	constructor(message: string, public status: number = 500) {
 		super(message);
@@ -22,11 +62,22 @@ export class ContentfulError extends Error {
 	}
 }
 
-export const preload = (query: string | DocumentNode, variables = {}) => {
+/**
+ * Preloads data by fetching from Contentful.
+ * @param {string | DocumentNode} query - The GraphQL query or document node.
+ * @param {Object} [variables={}] - The variables to be passed with the query.
+ */
+export const preload = (query: string | GraphQLDocumentNode, variables = {}) => {
 	void fetchContentfulData(query, variables);
 };
 
-export const fetchContentfulData = cache(async (query: string | DocumentNode, variables = {}) => {
+/**
+ * Fetches data from Contentful.
+ * @param {string | DocumentNode} query - The GraphQL query or document node.
+ * @param {Object} [variables={}] - The variables to be passed with the query.
+ * @returns {Promise<Object>} A promise resolving to the fetched data.
+ */
+export const fetchContentfulData = cache(async <T>(query: string | GraphQLDocumentNode, variables = {}): Promise<T> => {
 	try {
 		const url = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
 
@@ -50,7 +101,6 @@ export const fetchContentfulData = cache(async (query: string | DocumentNode, va
 
 		if (!response.ok) {
 			const msg = 'Network response was not ok.';
-			console.log(msg, response);
 			throw new Error(msg);
 		}
 
@@ -63,13 +113,40 @@ export const fetchContentfulData = cache(async (query: string | DocumentNode, va
 	}
 });
 
-export const fetchNavigation = async (sysID: string): Promise<NavigationResponse> => {
+/**
+ * Fetches SEO Meta data from Contentful based on a sys ID.
+ * @param {string} sysID The Contentful identifier
+ * @returns {Promise<MetaDataResponse>} A promise resolving to the fetched seo meta data.
+ */
+export async function fetchSeoMetaData(sysID: string): Promise<MetaDataResponse> {
+	return await fetchContentfulData<MetaDataResponse>(MetaDataQuery, { sysID });
+}
+
+/**
+ * Fetches SEO Meta data from Contentful based on a slug.
+ * @param {Slug} slug The Contentful identifier
+ * @returns {Promise<SeoMetaData>} A promise resolving to the fetched seo meta data.
+ */
+export async function fetchSeoMetaDataBySlug(slug: Slug): Promise<SeoMetaData> {
+	const { collectionPageCollection, detailPageCollection } = await fetchContentfulData<MetaDataBySlugResponse>(
+		MetaDataBySlugQuery,
+		{ slug }
+	);
+	const result = [collectionPageCollection, detailPageCollection].filter((collection) => {
+		return collection.items.length;
+	});
+	const { seoMetaData } = result[0].items[0];
+	return seoMetaData;
+}
+
+export const fetchNavigation = async (sysID: string): Promise<Navigation> => {
+	//
 	const {
 		navigation: {
 			title,
 			navigationItemsCollection: { items: navigation },
 		},
-	} = await fetchContentfulData(MainNavigationQuery, { sysID });
+	} = await fetchContentfulData<NavigationResponse>(MainNavigationQuery, { sysID });
 
 	const promises = navigation.map(async (item: NavigationPageEntry) => {
 		const subNavigation = item.subNavigation as SysID;
@@ -78,11 +155,138 @@ export const fetchNavigation = async (sysID: string): Promise<NavigationResponse
 			item.subNavigation = subNavigationEntries;
 		}
 	});
+
 	await Promise.all(promises);
 
 	return { title, navigation };
 };
 
-export async function fetchMainNavigation() {
+/**
+ * Fetches navigation data from Contentful based on a sys ID.
+ * @returns {Promise<Navigation>} A promise resolving to the fetched navigation data.
+ */
+export async function fetchMainNavigation(): Promise<Navigation> {
 	return await fetchNavigation('5bRsPaSUeUrD7QB5m868iu');
+}
+
+/**
+ * Fetches address data from Contentful based on a sys ID.
+ * @returns {Promise<Artist>} A promise resolving to the fetched address data.
+ */
+export async function fetchArtist(): Promise<Artist> {
+	const { artist } = await fetchContentfulData<ArtistResponse>(ArtistQuery, { sysID: '42dyv6PaMYHTxIQvt5k1BR' });
+	return artist;
+}
+
+/**
+ * Fetches address data from Contentful based on a sys ID.
+ * @returns {Promise<Address>} A promise resolving to the fetched address data.
+ */
+export async function fetchAddress(): Promise<Address> {
+	const { address } = await fetchContentfulData<AddressResponse>(AddressQuery, { sysID: 'VYrkgFK6dR1V81lIJqez2' });
+	return address;
+}
+
+export async function fetchContactDetails(): Promise<ContactDetails> {
+	const [artist, address] = await Promise.all([fetchArtist(), fetchAddress()]);
+	return { artist, address };
+}
+
+/**
+ * Fetches home page data from Contentful based on a sys ID.
+ * @returns {Promise<HomePage>} A promise resolving to the fetched home page data.
+ */
+export async function fetchHomePage(): Promise<HomePage> {
+	const [{ homePage }, artist] = await Promise.all([
+		await fetchContentfulData<HomePageResponse>(HomePageQuery, {
+			sysID: '7bjsm9rIwR5janeyF5XK2n',
+		}),
+		fetchArtist(),
+	]);
+	return { ...homePage, type: PageType.HomePage, artist };
+}
+
+/**
+ * Fetches about page data from Contentful based on a sys ID.
+ * @returns {Promise<AboutPage>} A promise resolving to the fetched about page data.
+ */
+export async function fetchAboutPage(): Promise<AboutPage> {
+	const [{ aboutPage }, artist] = await Promise.all([
+		await fetchContentfulData<AboutPageResponse>(AboutPageQuery, {
+			sysID: '3LaYVXJtqbtQYH38PqSkeQ',
+		}),
+		fetchArtist(),
+	]);
+	return { ...aboutPage, type: PageType.AboutPage, artist };
+}
+
+/**
+ * Fetches collection page data from Contentful based on a slug.
+ * @param {Slug} slug The Contentful identifier
+ * @returns {Promise<CollectionPage>} A promise resolving to the fetched about page data.
+ */
+export async function fetchCollectionPage(slug: Slug): Promise<CollectionPage> {
+	const { collectionPageCollection } = await fetchContentfulData<CollectionPageResponse>(CollectionPageBySlugQuery, {
+		slug,
+	});
+	const collectionPage: CollectionPage = {
+		...collectionPageCollection.items[0],
+		type: PageType.CollectionPage,
+	};
+	const tag: string = collectionPage.tags[0].toLowerCase();
+	const {
+		detailPageCollection: { items: collection },
+	} = await fetchContentfulData<DetailPageCollectionResponse>(DetailPagesByTagIDs, {
+		tagIDs: [tag],
+	});
+	return { ...collectionPage, type: PageType.CollectionPage, collection };
+}
+
+/**
+ * Fetches detail/sculpture page data from Contentful based on a slug.
+ * @param {Slug} slug The Contentful identifier
+ * @returns {Promise<DetailPage>} A promise resolving to the fetched detail/sculpture page data.
+ */
+export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
+	const {
+		detailPageCollection: {
+			items: [detailPage],
+		},
+	} = await fetchContentfulData<DetailPageBySlugResponse>(DetailPageBySlugQuery, { slug });
+	return detailPage;
+}
+
+/**
+ * Fetches contact page data from Contentful based on a sys ID.
+ * @returns {Promise<ContactPage>} A promise resolving to the fetched contact page data.
+ */
+export async function fetchContactPage(): Promise<ContactPage> {
+	const [{ contactPage }, artist, address] = await Promise.all([
+		await fetchContentfulData<ContactPageResponse>(ContactPageQuery, {
+			sysID: '68BbqtKbBhg4PwwWHNOB2',
+		}),
+		fetchArtist(),
+		fetchAddress(),
+	]);
+	return { ...contactPage, type: PageType.ContactPage, artist, address };
+}
+
+/**
+ * Fetches all main  pages from Contentful
+ * @returns {Promise<Sitemap>} A promise resolving to the fetched pages data.
+ */
+export async function fetchSitemap(): Promise<Sitemap> {
+	const {
+		homePageCollection: {
+			items: [homePage],
+		},
+		aboutPageCollection: { items: aboutPages },
+		collectionPageCollection: { items: collectionPages },
+		detailPageCollection: { items: detailPages },
+		contactPageCollection: {
+			items: [contactPage],
+		},
+	} = await fetchContentfulData<SitemapResponse>(SiteMapQuery);
+
+	return { homePage, aboutPages, collectionPages, detailPages, contactPage };
 }

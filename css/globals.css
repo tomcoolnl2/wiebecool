@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '../css/custom.css';
-@import '../css/main.css';
+@import '@/css/custom.css';
+@import '@/css/main.css';
+@import '@/css/components/text-block.css';
 
 @keyframes fadeInLeft {
 	0% {
@@ -79,6 +80,10 @@
 }
 
 @layer components {
+
+	.page {
+		@apply pb-10 pt-24;
+	}
 
 	.container {
 		max-width: 1024px;
@@ -221,21 +226,6 @@
 
 	.collection-page .collection {
 		@apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center;
-	}
-
-	.submit-button button {
-		display: inline-block;
-		--tw-bg-opacity: 1;
-		background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-		padding-top: 9px;
-		padding-right: 40px;
-		padding-bottom: 14px;
-		padding-left: 40px;
-		--tw-text-opacity: 1;
-		color: rgb(255 255 255 / var(--tw-text-opacity));
-		transition-property: all;
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-		transition-duration: 300ms;
 	}
 
 	.image-container {

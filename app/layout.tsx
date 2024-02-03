@@ -1,7 +1,7 @@
+import * as React from 'react';
 import { Metadata } from 'next';
 import { Montserrat, Mulish, Poppins } from 'next/font/google';
-import * as React from 'react';
-import { fetchMainNavigation } from '@/lib';
+import { creator, fetchMainNavigation, locale } from '@/lib';
 import { PreLoader, MainNavigation, Cursor, Background } from '@/components';
 
 import { config } from '@fortawesome/fontawesome-svg-core';
@@ -26,9 +26,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-	title: 'Wiebe Cool | Beeldhouwer',
-	description: 'Wiebe Cool | Beeldhouwer',
-	applicationName: 'Wiebe Cool | Beeldhouwer',
+	title: creator.description,
+	description: creator.description,
+	applicationName: creator.description,
 	referrer: 'origin',
 };
 
@@ -37,7 +37,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children })
 	const { title, navigation } = await fetchMainNavigation();
 
 	return (
-		<html lang="nl">
+		<html lang={locale}>
 			<body className={`dark ${montserrat.variable} ${mulish.variable} ${poppins.variable} font-mulish`}>
 				<PreLoader />
 				<div className="site-wrapper">

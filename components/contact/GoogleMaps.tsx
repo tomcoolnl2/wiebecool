@@ -1,12 +1,15 @@
 import * as React from 'react';
-import { fetchContentfulData, generateGoogleMapsAddress } from '@/lib';
-import AddressQuery from '@/graphql/Address.gql';
+import { generateGoogleMapsAddress } from '@/lib';
+import { Address } from '@/model';
 
-export const GoogleMaps = async () => {
-	const { address } = await fetchContentfulData(AddressQuery, { sysID: 'VYrkgFK6dR1V81lIJqez2' });
+interface Props {
+	address: Address;
+}
+
+export const GoogleMaps: React.FC<Props> = async ({ address }) => {
 	return (
 		address && (
-			<div className="map_wrap w-full float-left clear-both h-auto mb-[50px]">
+			<div className="map_wrap w-full mb-[50px]">
 				<div className="mapouter">
 					<div className="gmap_canvas">
 						<iframe
@@ -14,8 +17,8 @@ export const GoogleMaps = async () => {
 							height={355}
 							id="gmap_canvas"
 							src={`https://maps.google.com/maps?q=${generateGoogleMapsAddress(
-								address.postalAddress
-							)},+Netherlands&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+								address
+							)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
 						/>
 					</div>
 				</div>
