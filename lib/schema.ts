@@ -6,6 +6,8 @@ import {
 	ContactPageSchema,
 	ContentData,
 	DetailPage,
+	HomePage,
+	HomePageSchema,
 	ItemImage,
 	PageData,
 	PageType,
@@ -35,11 +37,25 @@ export function generateSchema(
 		basePageSchema = {
 			name: data.title || 'Untitled',
 			description: processPlainText(data.description),
-			url: buildUrl(data.slug, ReWriteRule[PageType.DetailPage]).href,
 		};
 	}
 
 	switch (schemaType) {
+		case SchemaType.HOME_PAGE: {
+			const homePageData = data as HomePage;
+			const schema = {
+				...baseSchema,
+				...basePageSchema,
+				url: buildUrl(homePageData.slug).href,
+				about: {
+					'@type': SchemaType.PERSON,
+					name: homePageData.artist.name,
+					description: homePageData.artist.description,
+					sameAs: homePageData.artist.mentions?.join(',') || '',
+				},
+			};
+			return schema as HomePageSchema;
+		}
 		case SchemaType.POSTAL_ADDRESS: {
 			const addressData = data as Address;
 			const schema = {
@@ -60,6 +76,7 @@ export function generateSchema(
 			const schema = {
 				...baseSchema,
 				...basePageSchema,
+				url: buildUrl(detailPageData.slug, ReWriteRule[PageType.DetailPage]).href,
 				image,
 				creator: {
 					'@type': SchemaType.PERSON,
@@ -76,6 +93,7 @@ export function generateSchema(
 			const schema = {
 				...baseSchema,
 				...basePageSchema,
+				url: buildUrl(contactPageData.slug).href,
 				contactPoint: {
 					'@type': SchemaType.CONTACT_POINT,
 					telephone: contactPageData.artist.telephone,

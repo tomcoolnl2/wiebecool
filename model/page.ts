@@ -49,6 +49,8 @@ export interface ItemImage extends SysID {
 	url: string;
 	title: string;
 	description: string;
+	width: number;
+	height: number;
 }
 
 export interface ImageCollection {
@@ -77,6 +79,7 @@ export interface Artist {
 	description: string;
 	telephone: string;
 	email: string;
+	mentions?: string[];
 }
 
 export interface Address {
@@ -84,6 +87,11 @@ export interface Address {
 	zipCode: string;
 	city: string;
 	country: string;
+}
+
+export interface ContactDetails {
+	artist: Artist;
+	address: Address;
 }
 
 interface BasePage {
@@ -94,14 +102,16 @@ interface BasePage {
 	description: RichText;
 }
 
-export interface ContactPage extends BasePage {
-	type: PageType.ContactPage;
+export interface HomePage extends BasePage {
+	type: PageType.HomePage;
+	title: string;
+	subtitle: string;
+	mugshot: ItemImage;
 	artist: Artist;
-	address: Address;
-	submitButtonText: string;
 }
 
 export interface DetailPage extends BasePage {
+	type: PageType.DetailPage;
 	material: string | null;
 	dimensions: string | null;
 	status: string | null;
@@ -110,6 +120,13 @@ export interface DetailPage extends BasePage {
 	imageCarousel: PageCarousel;
 }
 
-export type PageData = DetailPage | ContactPage;
+export interface ContactPage extends BasePage {
+	type: PageType.ContactPage;
+	artist: Artist;
+	address: Address;
+	submitButtonText: string;
+}
+
+export type PageData = HomePage | DetailPage | ContactPage;
 
 export type ContentData = Address;

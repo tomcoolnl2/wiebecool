@@ -5,8 +5,11 @@ import {
 	AddressResponse,
 	Artist,
 	ArtistResponse,
+	ContactDetails,
 	ContactPage,
 	ContactPageResponse,
+	HomePage,
+	HomePageResponse,
 	MetaDataResponse,
 	Navigation,
 	NavigationPageEntry,
@@ -16,6 +19,7 @@ import {
 } from '@/model';
 import MetaDataQuery from '@/graphql/MetaData.gql';
 import MainNavigationQuery from '@/graphql/MainNavigation.gql';
+import HomePageQuery from '@/graphql/HomePage.gql';
 import ContactPageQuery from '@/graphql/ContactPage.gql';
 import AddressQuery from '@/graphql/Address.gql';
 import ArtistQuery from '@/graphql/Artist.gql';
@@ -147,16 +151,24 @@ export async function fetchAddress(): Promise<Address> {
 	return address;
 }
 
-// /**
-//  * Fetches home page data from Contentful based on a sys ID.
-//  * @returns {Promise<ContactPageResponse>} A promise resolving to the fetched contact page data.
-//  */
-// export async function fetchHomePage(): Promise<ContactPage> {
-// 	const { contactPage } = await fetchContentfulData<ContactPageResponse>(ContactPageQuery, {
-// 		sysID: '68BbqtKbBhg4PwwWHNOB2',
-// 	});
-// 	return contactPage;
-// }
+export async function fetchContactDetails(): Promise<ContactDetails> {
+	const [artist, address] = await Promise.all([fetchArtist(), fetchAddress()]);
+	return { artist, address };
+}
+
+/**
+ * Fetches home page data from Contentful based on a sys ID.
+ * @returns {Promise<HomePage>} A promise resolving to the fetched home page data.
+ */
+export async function fetchHomePage(): Promise<HomePage> {
+	const [{ homePage }, artist] = await Promise.all([
+		await fetchContentfulData<HomePageResponse>(HomePageQuery, {
+			sysID: '7bjsm9rIwR5janeyF5XK2n',
+		}),
+		fetchArtist(),
+	]);
+	return { ...homePage, type: PageType.HomePage, artist };
+}
 
 /**
  * Fetches contact page data from Contentful based on a sys ID.

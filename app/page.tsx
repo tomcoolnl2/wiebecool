@@ -1,11 +1,9 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import * as React from 'react';
-import { fetchContentfulData, fetchSeoMetaData, processRichText } from '@/lib';
-import { SectionContainer, SocialMediaLinks, ContactDetails } from '@/components';
-
-import HomePageQuery from '@/graphql/HomePage.gql';
-import MetaDataQuery from '@/graphql/MetaData.gql';
+import { fetchHomePage, fetchSeoMetaData, generateSchema, processRichText } from '@/lib';
+import { SectionContainer, SocialMediaLinks, ContactDetails, SchemaTag } from '@/components';
+import { SchemaType } from '@/model';
 
 export async function generateMetadata(): Promise<Metadata> {
 	const { seoMetaData } = await fetchSeoMetaData('70FCDbDpk8iLUWWHAU76Ge');
@@ -13,11 +11,11 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Home() {
-	//
-	const { homePage } = await fetchContentfulData(HomePageQuery, { sysID: '7bjsm9rIwR5janeyF5XK2n' });
-
+	const homePage = await fetchHomePage();
+	const jsonLd = generateSchema(homePage, SchemaType.HOME_PAGE);
 	return (
 		<SectionContainer name={'home'}>
+			<SchemaTag schema={jsonLd} />
 			<div className="container">
 				<div className="home-page page">
 					<div className="home_content flex items-center">
@@ -34,8 +32,8 @@ export default async function Home() {
 								{homePage.title}
 							</h1>
 							{homePage.subtitle && <h2 className="font-poppins subtitle mb-3">{homePage.subtitle}</h2>}
-							<div className="job font-montserrat font-medium max-w-[450px] mb-[25px] border-solid border-[#DFDFDF] border-b pb-[31px]">
-								{processRichText(homePage.introduction.json)}
+							<div className="font-montserrat font-medium max-w-[450px] mb-[25px] border-solid border-[#DFDFDF] border-b pb-[31px]">
+								{processRichText(homePage.description.json)}
 							</div>
 							<SocialMediaLinks size="2xl" />
 							<br />
