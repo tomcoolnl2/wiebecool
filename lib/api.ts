@@ -1,18 +1,18 @@
 import { cache } from 'react';
-import { DocumentNode } from 'graphql';
+import { DocumentNode as GraphQLDocumentNode } from 'graphql';
 import { NavigationPageEntry, NavigationResponse, SysID } from '@/model/navigation';
 import MainNavigationQuery from '@/graphql/MainNavigation.gql';
 
 /**
- * Represents an authentication error.
+ * Represents an error specific to Contentful-related operations.
  * @class
  * @extends Error
  */
 export class ContentfulError extends Error {
 	/**
-	 * Creates an instance of AuthError.
+	 * Creates an instance of ContentfulError.
 	 * @param {string} message - The error message.
-	 * @param {number} status - The status code associated with the error.
+	 * @param {number} status - The status code associated with the error. Default is 500.
 	 */
 	constructor(message: string, public status: number = 500) {
 		super(message);
@@ -22,11 +22,22 @@ export class ContentfulError extends Error {
 	}
 }
 
-export const preload = (query: string | DocumentNode, variables = {}) => {
+/**
+ * Preloads data by fetching from Contentful.
+ * @param {string | DocumentNode} query - The GraphQL query or document node.
+ * @param {Object} [variables={}] - The variables to be passed with the query.
+ */
+export const preload = (query: string | GraphQLDocumentNode, variables = {}) => {
 	void fetchContentfulData(query, variables);
 };
 
-export const fetchContentfulData = cache(async (query: string | DocumentNode, variables = {}) => {
+/**
+ * Fetches data from Contentful.
+ * @param {string | DocumentNode} query - The GraphQL query or document node.
+ * @param {Object} [variables={}] - The variables to be passed with the query.
+ * @returns {Promise<Object>} A promise resolving to the fetched data.
+ */
+export const fetchContentfulData = cache(async (query: string | GraphQLDocumentNode, variables = {}) => {
 	try {
 		const url = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
 
@@ -82,6 +93,11 @@ export const fetchNavigation = async (sysID: string): Promise<NavigationResponse
 	return { title, navigation };
 };
 
+/**
+ * Fetches navigation data from Contentful based on a sys ID.
+ * @param {string} sysID - The sys ID associated with the navigation.
+ * @returns {Promise<NavigationResponse>} A promise resolving to the fetched navigation data.
+ */
 export async function fetchMainNavigation() {
 	return await fetchNavigation('5bRsPaSUeUrD7QB5m868iu');
 }

@@ -12,9 +12,9 @@ class SiteMapEntry implements SitemapItem {
 		public lastModified: string,
 		public changeFrequency: SitemapItem['changeFrequency'],
 		public priority: number,
-		category: Slug | '' = ''
+		path: Slug | '' = ''
 	) {
-		this.url = buildUrl(this.slug, category);
+		this.url = buildUrl(this.slug, path);
 	}
 }
 

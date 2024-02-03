@@ -61,3 +61,21 @@ export interface PageCarousel {
 		items: ItemImage[];
 	};
 }
+
+export interface ContentfulRichText {
+	nodeType: string;
+	content?: ContentfulRichText[];
+	value?: string;
+	data?: {
+		target?: {
+			sys: {
+				id: string;
+				linkType: string;
+				type: string;
+			};
+		};
+	};
+	marks?: {
+		type: string;
+	}[];
+}
