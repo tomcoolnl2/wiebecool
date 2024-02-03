@@ -24,6 +24,8 @@ import {
 	NavigationResponse,
 	PageType,
 	SeoMetaData,
+	Sitemap,
+	SitemapResponse,
 	Slug,
 	SysID,
 } from '@/model';
@@ -39,6 +41,7 @@ import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
 import CollectionPageBySlugQuery from '@/graphql/CollectionPageBySlug.gql';
 import DetailPagesByTagIDs from '@/graphql/DetailPagesByTagIDs.gql';
 import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
+import SiteMapQuery from '@/graphql/Sitemap.gql';
 
 /**
  * Represents an error specific to Contentful-related operations.
@@ -266,4 +269,24 @@ export async function fetchContactPage(): Promise<ContactPage> {
 		fetchAddress(),
 	]);
 	return { ...contactPage, type: PageType.ContactPage, artist, address };
+}
+
+/**
+ * Fetches all main  pages from Contentful
+ * @returns {Promise<Sitemap>} A promise resolving to the fetched pages data.
+ */
+export async function fetchSitemap(): Promise<Sitemap> {
+	const {
+		homePageCollection: {
+			items: [homePage],
+		},
+		aboutPageCollection: { items: aboutPages },
+		collectionPageCollection: { items: collectionPages },
+		detailPageCollection: { items: detailPages },
+		contactPageCollection: {
+			items: [contactPage],
+		},
+	} = await fetchContentfulData<SitemapResponse>(SiteMapQuery);
+
+	return { homePage, aboutPages, collectionPages, detailPages, contactPage };
 }

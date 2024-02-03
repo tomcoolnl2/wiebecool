@@ -1,9 +1,9 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { DetailPageResponse, ItemImage, PageType, ReWriteRule, SchemaType, Slug } from '@/model';
+import { ItemImage, PageType, ReWriteRule, SchemaType, Slug } from '@/model';
 import { fetchDetailPage, fetchSeoMetaDataBySlug, generateSchema } from '@/lib';
-import { baseUrl, ensureLeadingSlash, fetchContentfulData, processRichText } from '@/lib';
+import { baseUrl, ensureLeadingSlash, processRichText } from '@/lib';
 import { ContactDetails, SchemaTag, SectionContainer, SectionTitle } from '@/components';
 import '@/css/pages/detail-page.css';
 
@@ -14,10 +14,8 @@ type PageProps = {
 };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-	//
 	const slug = ensureLeadingSlash(params.slug[0]);
 	const seoMetaData = await fetchSeoMetaDataBySlug(slug as Slug);
-
 	return {
 		...seoMetaData,
 		alternates: {
@@ -29,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function DetailPage({ params }: PageProps) {
 	const slug = ensureLeadingSlash(params.slug[0]);
 	const detailPage = await fetchDetailPage(slug as Slug);
-	const detailPageImg = detailPage.imageCollection.items[0] as ItemImage;
+	const detailPageImg = detailPage.imageCollection.items[0];
 	const jsonLd = generateSchema(detailPage, SchemaType.SCULPTURE, detailPageImg);
 	return (
 		<SectionContainer name={'detail'}>

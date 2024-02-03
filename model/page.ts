@@ -1,22 +1,8 @@
 import { Document } from '@contentful/rich-text-types';
-import { SysID } from '@/model/navigation';
+import { SitemapItemResponse, SysID } from '@/model';
 import { PortfolioCards, TextBlock } from '@/components';
 
 export type RichText = Document & { json: any };
-
-export interface SitemapItem {
-	url: URL;
-	lastModified: string;
-	changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
-	priority: number;
-}
-
-export interface SitemapItemResponse {
-	slug: Slug;
-	sys: {
-		publishedAt: string;
-	};
-}
 
 export enum PageType {
 	HomePage = 'HomePage',
@@ -157,3 +143,18 @@ export interface ContactPage extends BasePage {
 export type PageData = HomePage | AboutPage | CollectionPage | DetailPage | ContactPage;
 
 export type ContentData = Address;
+
+export interface SitemapItem {
+	url: string;
+	lastModified: string;
+	changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
+	priority: number;
+}
+
+export interface Sitemap {
+	homePage: SitemapItemResponse;
+	aboutPages: SitemapItemResponse[];
+	collectionPages: SitemapItemResponse[];
+	detailPages: SitemapItemResponse[];
+	contactPage: SitemapItemResponse;
+}

@@ -9,6 +9,7 @@ import {
 	CollectionPage,
 	DetailCollectionItem,
 	DetailPage,
+	Slug,
 } from './';
 
 export interface MetaDataResponse {
@@ -69,4 +70,19 @@ export interface DetailPageBySlugResponse {
 
 export interface ContactPageResponse {
 	contactPage: ContactPage;
+}
+
+export interface SitemapItemResponse {
+	slug: Slug;
+	sys: {
+		publishedAt: string;
+	};
+}
+
+export interface SitemapResponse {
+	homePageCollection: { items: [SitemapItemResponse] };
+	aboutPageCollection: { items: SitemapItemResponse[] };
+	collectionPageCollection: { items: SitemapItemResponse[] };
+	detailPageCollection: { items: SitemapItemResponse[] };
+	contactPageCollection: { items: [SitemapItemResponse] };
 }
