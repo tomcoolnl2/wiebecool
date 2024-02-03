@@ -1,4 +1,5 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { Document } from '@contentful/rich-text-types';
 import { Slug } from '@/model';
 
@@ -45,6 +46,15 @@ export function generateGoogleMapsAddress(address: string): string {
  */
 export function processRichText(rawRichText: Document): React.ReactNode {
 	return documentToReactComponents(rawRichText);
+}
+
+/**
+ * Processes Contentful rich text and converts it into React components.
+ * @param {Document} rawRichText The raw rich text document from Contentful.
+ * @returns {string} The plain string representation generated from rich text.
+ */
+export function processPlainText(rawRichText: Document): string {
+	return documentToPlainTextString(rawRichText);
 }
 
 /**
