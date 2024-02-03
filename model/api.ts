@@ -1,4 +1,4 @@
-import { SeoMetaData, Address, ContactPage, NavigationPageEntry, Artist, HomePage } from './';
+import { SeoMetaData, Address, ContactPage, NavigationPageEntry, Artist, HomePage, AboutPage } from './';
 
 export interface MetaDataResponse {
 	seoMetaData: SeoMetaData;
@@ -23,6 +23,10 @@ export interface AddressResponse {
 
 export interface HomePageResponse {
 	homePage: HomePage;
+}
+
+export interface AboutPageResponse {
+	aboutPage: AboutPage;
 }
 
 export interface DetailPageResponse {

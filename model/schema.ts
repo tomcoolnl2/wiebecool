@@ -2,6 +2,7 @@
 
 export enum SchemaType {
 	HOME_PAGE = 'WebPage',
+	ABOUT_PAGE = 'WebPage',
 	PERSON = 'Person',
 	ARTIST = 'Artist',
 	SCULPTURE = 'Sculpture',
@@ -20,9 +21,10 @@ export interface BaseSchema {
 export interface BasePageSchema {
 	name: string;
 	description: string;
+	url: string;
 }
 
-export interface PersonSchema extends BaseSchema {
+export interface PersonSchema {
 	'@type': SchemaType.PERSON;
 	name: string;
 }
@@ -36,16 +38,24 @@ export interface ArtistSchema extends BaseSchema {
 	};
 }
 
+export interface PersonSchema {
+	'@type': SchemaType.PERSON;
+	name: string;
+	description: string;
+	image?: string;
+	sameAs: string;
+}
+
 export interface HomePageSchema extends BaseSchema {
 	'@type': SchemaType.HOME_PAGE;
 	url: string;
-	about: {
-		'@type': SchemaType.PERSON;
-		name: string;
-		description: string;
-		image?: string;
-		sameAs: string;
-	};
+	about: PersonSchema;
+}
+
+export interface AboutPageSchema extends BaseSchema {
+	'@type': SchemaType.ABOUT_PAGE;
+	url: string;
+	mainEntity: PersonSchema;
 }
 
 export interface SculptureSchema extends BaseSchema {
@@ -75,4 +85,10 @@ export interface ContactPageSchema extends BaseSchema {
 	};
 }
 
-export type Schema = HomePageSchema | ArtistSchema | SculptureSchema | ContactPageSchema | PostalAddressSchema;
+export type Schema =
+	| HomePageSchema
+	| AboutPageSchema
+	| ArtistSchema
+	| SculptureSchema
+	| ContactPageSchema
+	| PostalAddressSchema;

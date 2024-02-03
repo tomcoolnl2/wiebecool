@@ -1,5 +1,8 @@
 import {
+	AboutPage,
+	AboutPageSchema,
 	Address,
+	Artist,
 	BasePageSchema,
 	BaseSchema,
 	ContactPage,
@@ -11,6 +14,7 @@ import {
 	ItemImage,
 	PageData,
 	PageType,
+	PersonSchema,
 	PostalAddressSchema,
 	ReWriteRule,
 	Schema,
@@ -18,6 +22,15 @@ import {
 	SculptureSchema,
 } from '@/model';
 import { buildUrl, creator, locale, processPlainText } from '@/lib';
+
+function generatePersonSchema(data: Artist): PersonSchema {
+	return {
+		'@type': SchemaType.PERSON,
+		name: data.name,
+		description: data.description,
+		sameAs: data.mentions?.join(',') || '',
+	};
+}
 
 export function generateSchema(
 	data: PageData | ContentData,
@@ -37,6 +50,7 @@ export function generateSchema(
 		basePageSchema = {
 			name: data.title || 'Untitled',
 			description: processPlainText(data.description),
+			url: buildUrl(data.slug).href,
 		};
 	}
 
@@ -46,15 +60,18 @@ export function generateSchema(
 			const schema = {
 				...baseSchema,
 				...basePageSchema,
-				url: buildUrl(homePageData.slug).href,
-				about: {
-					'@type': SchemaType.PERSON,
-					name: homePageData.artist.name,
-					description: homePageData.artist.description,
-					sameAs: homePageData.artist.mentions?.join(',') || '',
-				},
+				about: generatePersonSchema(homePageData.artist),
 			};
 			return schema as HomePageSchema;
+		}
+		case SchemaType.ABOUT_PAGE: {
+			const aboutPageData = data as AboutPage;
+			const schema = {
+				...baseSchema,
+				...basePageSchema,
+				mainEntity: generatePersonSchema(aboutPageData.artist),
+			};
+			return schema as AboutPageSchema;
 		}
 		case SchemaType.POSTAL_ADDRESS: {
 			const addressData = data as Address;

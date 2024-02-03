@@ -1,5 +1,6 @@
 import { Document } from '@contentful/rich-text-types';
-import { SysID } from './navigation';
+import { SysID } from '@/model/navigation';
+import { PortfolioCards, TextBlock } from '@/components';
 
 export type RichText = Document & { json: any };
 
@@ -79,7 +80,7 @@ export interface Artist {
 	description: string;
 	telephone: string;
 	email: string;
-	mentions?: string[];
+	mentions: string[];
 }
 
 export interface Address {
@@ -110,6 +111,15 @@ export interface HomePage extends BasePage {
 	artist: Artist;
 }
 
+export interface AboutPage extends BasePage {
+	type: PageType.AboutPage;
+	bannerImage: ItemImage;
+	buildingBlocksCollection: {
+		items: Array<TextBlock | PortfolioCards>;
+	};
+	artist: Artist;
+}
+
 export interface DetailPage extends BasePage {
 	type: PageType.DetailPage;
 	material: string | null;
@@ -127,6 +137,6 @@ export interface ContactPage extends BasePage {
 	submitButtonText: string;
 }
 
-export type PageData = HomePage | DetailPage | ContactPage;
+export type PageData = HomePage | AboutPage | DetailPage | ContactPage;
 
 export type ContentData = Address;

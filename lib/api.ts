@@ -1,6 +1,8 @@
 import { cache } from 'react';
 import { DocumentNode as GraphQLDocumentNode } from 'graphql';
 import {
+	AboutPage,
+	AboutPageResponse,
 	Address,
 	AddressResponse,
 	Artist,
@@ -17,12 +19,14 @@ import {
 	PageType,
 	SysID,
 } from '@/model';
+
 import MetaDataQuery from '@/graphql/MetaData.gql';
 import MainNavigationQuery from '@/graphql/MainNavigation.gql';
 import HomePageQuery from '@/graphql/HomePage.gql';
 import ContactPageQuery from '@/graphql/ContactPage.gql';
 import AddressQuery from '@/graphql/Address.gql';
 import ArtistQuery from '@/graphql/Artist.gql';
+import AboutPageQuery from '@/graphql/AboutPage.gql';
 
 /**
  * Represents an error specific to Contentful-related operations.
@@ -167,7 +171,22 @@ export async function fetchHomePage(): Promise<HomePage> {
 		}),
 		fetchArtist(),
 	]);
+	console.log(artist);
 	return { ...homePage, type: PageType.HomePage, artist };
+}
+
+/**
+ * Fetches about page data from Contentful based on a sys ID.
+ * @returns {Promise<AboutPage>} A promise resolving to the fetched about page data.
+ */
+export async function fetchAboutPage(): Promise<AboutPage> {
+	const [{ aboutPage }, artist] = await Promise.all([
+		await fetchContentfulData<AboutPageResponse>(AboutPageQuery, {
+			sysID: '3LaYVXJtqbtQYH38PqSkeQ',
+		}),
+		fetchArtist(),
+	]);
+	return { ...aboutPage, type: PageType.AboutPage, artist };
 }
 
 /**

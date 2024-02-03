@@ -6,5 +6,6 @@ query Artist($sysID: String!) {
 		description
 		telephone
 		email
+		mentions
 	}
 }
