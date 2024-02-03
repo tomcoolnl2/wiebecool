@@ -35,8 +35,6 @@ export const PortfolioCardsComponent: React.FC<Props> = ({ item }) => {
 		detailPagesCollection: { items: cards = [] },
 	} = item as PortfolioCards;
 
-	console.log(cards);
-
 	return (
 		<aside className="product-cards flex flex-row flex-wrap justify-center md:justify-between gap-0 md:gap-3 items-center mt-8 transition-all duration-300">
 			{cards.map((card: PortfolioCard) => (

@@ -1,7 +1,7 @@
 import { SysID } from './navigation';
 
 export interface SitemapItem {
-	url: string;
+	url: URL;
 	lastModified: string;
 	changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never';
 	priority: number;
@@ -22,7 +22,11 @@ export enum PageType {
 	DetailPage = 'DetailPage',
 }
 
-export const ReWriteRule: { [key in PageType]: Slug } = {
+export type ReWriteRule = {
+	[key in PageType]: Slug;
+};
+
+export const ReWriteRule: ReWriteRule = {
 	[PageType.HomePage]: '/',
 	[PageType.AboutPage]: '/about',
 	[PageType.CollectionPage]: '/collectie',

@@ -1,6 +1,12 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { Slug } from '@/model';
 
+export const baseUrl = 'https://wiebecool.nl';
+
+export function buildUrl(slug: Slug, category: Slug | '' = ''): URL {
+	return new URL(category + slug, baseUrl);
+}
+
 export function detectMobile(): boolean {
 	if (typeof window === 'undefined') {
 		return false;

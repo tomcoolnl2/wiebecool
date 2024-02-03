@@ -1,18 +1,20 @@
 import { MetadataRoute } from 'next';
-import { PageType, ReWriteRule, SitemapItem, SitemapItemResponse } from '@/model';
-import { fetchContentfulData } from '@/lib';
+import { PageType, ReWriteRule, SitemapItem, SitemapItemResponse, Slug } from '@/model';
+import { buildUrl, fetchContentfulData } from '@/lib';
 import SiteMapQuery from '@/graphql/Sitemap.gql';
 
 class SiteMapEntry implements SitemapItem {
-	private readonly baseUrl = 'https://wiebecool.nl';
-	public url: string;
+	//
+	public url: URL;
+
 	constructor(
-		slug: string,
+		public slug: Slug,
 		public lastModified: string,
 		public changeFrequency: SitemapItem['changeFrequency'],
-		public priority: number
+		public priority: number,
+		category: Slug | '' = ''
 	) {
-		this.url = this.baseUrl + slug;
+		this.url = buildUrl(this.slug, category);
 	}
 }
 
@@ -38,12 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
 	const collectionPageEntries = collectionPages.map(
 		(entry: SitemapItemResponse) =>
-			new SiteMapEntry(
-				`${ReWriteRule[PageType.CollectionPage]}${entry.slug}`,
-				entry.sys.publishedAt,
-				'monthly',
-				0.9
-			)
+			new SiteMapEntry(entry.slug, entry.sys.publishedAt, 'monthly', 0.9, ReWriteRule[PageType.CollectionPage])
 	);
 
 	const detailPageEntries = detailPages.map(

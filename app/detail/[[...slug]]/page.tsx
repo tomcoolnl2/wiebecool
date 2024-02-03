@@ -11,11 +11,11 @@ const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
 
 import '@/css/pages/detail-page.css';
 
-type Props = {
+type PageProps = {
 	params: { slug: string };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	//
 	const slug = ensureLeadingSlash(params.slug[0]);
 	const {
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	};
 }
 
-export default async function DetailPage({ params }: Props) {
+export default async function DetailPage({ params }: PageProps) {
 	//
 	const slug = ensureLeadingSlash(params.slug[0]);
 
@@ -41,6 +41,14 @@ export default async function DetailPage({ params }: Props) {
 			items: [detailPage],
 		},
 	} = await fetchContentfulData(DetailPageBySlugQuery, { slug });
+
+	// const jsonLd = {
+	// 	'@context': 'https://schema.org',
+	// 	'@type': 'Product',
+	// 	name: product.name,
+	// 	image: product.image,
+	// 	description: product.description,
+	// };
 
 	const detailPageImg = detailPage.imageCollection.items[0];
 

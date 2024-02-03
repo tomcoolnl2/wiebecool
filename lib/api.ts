@@ -50,7 +50,6 @@ export const fetchContentfulData = cache(async (query: string | DocumentNode, va
 
 		if (!response.ok) {
 			const msg = 'Network response was not ok.';
-			console.log(msg, response);
 			throw new Error(msg);
 		}
 
