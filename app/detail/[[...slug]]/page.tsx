@@ -1,10 +1,8 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
-import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
-import { DetailPageResponse, ItemImage, PageType, ReWriteRule, SchemaType } from '@/model';
-import { generateSchema } from '@/lib';
+import { DetailPageResponse, ItemImage, PageType, ReWriteRule, SchemaType, Slug } from '@/model';
+import { fetchDetailPage, fetchSeoMetaDataBySlug, generateSchema } from '@/lib';
 import { baseUrl, ensureLeadingSlash, fetchContentfulData, processRichText } from '@/lib';
 import { ContactDetails, SchemaTag, SectionContainer, SectionTitle } from '@/components';
 import '@/css/pages/detail-page.css';
@@ -18,34 +16,21 @@ type PageProps = {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
 	//
 	const slug = ensureLeadingSlash(params.slug[0]);
-	const {
-		detailPageCollection: {
-			items: [{ seoMetaData }],
-		},
-	} = await fetchContentfulData(MetaDataBySlugQuery, { slug });
+	const seoMetaData = await fetchSeoMetaDataBySlug(slug as Slug);
 
 	return {
 		...seoMetaData,
 		alternates: {
-			canonical: `${baseUrl}${ReWriteRule[PageType.ContactPage]}${slug}`,
+			canonical: `${baseUrl}${ReWriteRule[PageType.DetailPage]}${slug}`,
 		},
 	};
 }
 
 export default async function DetailPage({ params }: PageProps) {
-	//
 	const slug = ensureLeadingSlash(params.slug[0]);
-
-	const {
-		detailPageCollection: { items },
-	} = await fetchContentfulData(DetailPageBySlugQuery, { slug });
-
-	const detailPage = items[0] as DetailPageResponse;
+	const detailPage = await fetchDetailPage(slug as Slug);
 	const detailPageImg = detailPage.imageCollection.items[0] as ItemImage;
 	const jsonLd = generateSchema(detailPage, SchemaType.SCULPTURE, detailPageImg);
-
-	console.log(jsonLd);
-
 	return (
 		<SectionContainer name={'detail'}>
 			<SchemaTag schema={jsonLd} />

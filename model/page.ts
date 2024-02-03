@@ -120,6 +120,23 @@ export interface AboutPage extends BasePage {
 	artist: Artist;
 }
 
+export interface CollectionPage extends BasePage {
+	type: PageType.CollectionPage;
+	subtitle: string;
+	tags: string[];
+	collection: DetailCollectionItem[];
+}
+
+export interface CollectionPageCollection {
+	collectionPageCollection: {
+		items: CollectionPage[];
+	};
+}
+
+export interface DetailCollectionItem extends SysID, BasePage {
+	imageCollection: ImageCollection;
+}
+
 export interface DetailPage extends BasePage {
 	type: PageType.DetailPage;
 	material: string | null;
@@ -137,6 +154,6 @@ export interface ContactPage extends BasePage {
 	submitButtonText: string;
 }
 
-export type PageData = HomePage | AboutPage | DetailPage | ContactPage;
+export type PageData = HomePage | AboutPage | CollectionPage | DetailPage | ContactPage;
 
 export type ContentData = Address;

@@ -7,16 +7,24 @@ import {
 	AddressResponse,
 	Artist,
 	ArtistResponse,
+	CollectionPage,
+	CollectionPageResponse,
 	ContactDetails,
 	ContactPage,
 	ContactPageResponse,
+	DetailPage,
+	DetailPageBySlugResponse,
+	DetailPageCollectionResponse,
 	HomePage,
 	HomePageResponse,
+	MetaDataBySlugResponse,
 	MetaDataResponse,
 	Navigation,
 	NavigationPageEntry,
 	NavigationResponse,
 	PageType,
+	SeoMetaData,
+	Slug,
 	SysID,
 } from '@/model';
 
@@ -27,6 +35,10 @@ import ContactPageQuery from '@/graphql/ContactPage.gql';
 import AddressQuery from '@/graphql/Address.gql';
 import ArtistQuery from '@/graphql/Artist.gql';
 import AboutPageQuery from '@/graphql/AboutPage.gql';
+import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
+import CollectionPageBySlugQuery from '@/graphql/CollectionPageBySlug.gql';
+import DetailPagesByTagIDs from '@/graphql/DetailPagesByTagIDs.gql';
+import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
 
 /**
  * Represents an error specific to Contentful-related operations.
@@ -107,6 +119,23 @@ export async function fetchSeoMetaData(sysID: string): Promise<MetaDataResponse>
 	return await fetchContentfulData<MetaDataResponse>(MetaDataQuery, { sysID });
 }
 
+/**
+ * Fetches SEO Meta data from Contentful based on a slug.
+ * @param {Slug} slug The Contentful identifier
+ * @returns {Promise<SeoMetaData>} A promise resolving to the fetched seo meta data.
+ */
+export async function fetchSeoMetaDataBySlug(slug: Slug): Promise<SeoMetaData> {
+	const { collectionPageCollection, detailPageCollection } = await fetchContentfulData<MetaDataBySlugResponse>(
+		MetaDataBySlugQuery,
+		{ slug }
+	);
+	const result = [collectionPageCollection, detailPageCollection].filter((collection) => {
+		return collection.items.length;
+	});
+	const { seoMetaData } = result[0].items[0];
+	return seoMetaData;
+}
+
 export const fetchNavigation = async (sysID: string): Promise<Navigation> => {
 	//
 	const {
@@ -171,7 +200,6 @@ export async function fetchHomePage(): Promise<HomePage> {
 		}),
 		fetchArtist(),
 	]);
-	console.log(artist);
 	return { ...homePage, type: PageType.HomePage, artist };
 }
 
@@ -187,6 +215,42 @@ export async function fetchAboutPage(): Promise<AboutPage> {
 		fetchArtist(),
 	]);
 	return { ...aboutPage, type: PageType.AboutPage, artist };
+}
+
+/**
+ * Fetches collection page data from Contentful based on a slug.
+ * @param {Slug} slug The Contentful identifier
+ * @returns {Promise<CollectionPage>} A promise resolving to the fetched about page data.
+ */
+export async function fetchCollectionPage(slug: Slug): Promise<CollectionPage> {
+	const { collectionPageCollection } = await fetchContentfulData<CollectionPageResponse>(CollectionPageBySlugQuery, {
+		slug,
+	});
+	const collectionPage: CollectionPage = {
+		...collectionPageCollection.items[0],
+		type: PageType.CollectionPage,
+	};
+	const tag: string = collectionPage.tags[0].toLowerCase();
+	const {
+		detailPageCollection: { items: collection },
+	} = await fetchContentfulData<DetailPageCollectionResponse>(DetailPagesByTagIDs, {
+		tagIDs: [tag],
+	});
+	return { ...collectionPage, type: PageType.CollectionPage, collection };
+}
+
+/**
+ * Fetches detail/sculpture page data from Contentful based on a slug.
+ * @param {Slug} slug The Contentful identifier
+ * @returns {Promise<DetailPage>} A promise resolving to the fetched detail/sculpture page data.
+ */
+export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
+	const {
+		detailPageCollection: {
+			items: [detailPage],
+		},
+	} = await fetchContentfulData<DetailPageBySlugResponse>(DetailPageBySlugQuery, { slug });
+	return detailPage;
 }
 
 /**

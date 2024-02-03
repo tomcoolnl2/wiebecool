@@ -1,7 +1,27 @@
-import { SeoMetaData, Address, ContactPage, NavigationPageEntry, Artist, HomePage, AboutPage } from './';
+import {
+	SeoMetaData,
+	Address,
+	ContactPage,
+	NavigationPageEntry,
+	Artist,
+	HomePage,
+	AboutPage,
+	CollectionPage,
+	DetailCollectionItem,
+	DetailPage,
+} from './';
 
 export interface MetaDataResponse {
 	seoMetaData: SeoMetaData;
+}
+
+export interface MetaDataBySlugResponse {
+	collectionPageCollection: {
+		items: MetaDataResponse[];
+	};
+	detailPageCollection: {
+		items: MetaDataResponse[];
+	};
 }
 
 export interface NavigationResponse {
@@ -29,11 +49,24 @@ export interface AboutPageResponse {
 	aboutPage: AboutPage;
 }
 
-export interface DetailPageResponse {
-	detailPageCollection: {
-		items: DetailPageResponse[];
+export interface CollectionPageResponse {
+	collectionPageCollection: {
+		items: CollectionPage[];
 	};
 }
+
+export interface DetailPageCollectionResponse {
+	detailPageCollection: {
+		items: DetailCollectionItem[];
+	};
+}
+
+export interface DetailPageBySlugResponse {
+	detailPageCollection: {
+		items: [DetailPage];
+	};
+}
+
 export interface ContactPageResponse {
 	contactPage: ContactPage;
 }

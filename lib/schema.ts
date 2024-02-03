@@ -5,6 +5,8 @@ import {
 	Artist,
 	BasePageSchema,
 	BaseSchema,
+	CollectionPage,
+	CollectionPageSchema,
 	ContactPage,
 	ContactPageSchema,
 	ContentData,
@@ -19,7 +21,9 @@ import {
 	ReWriteRule,
 	Schema,
 	SchemaType,
+	SculptureListItemSchema,
 	SculptureSchema,
+	Slug,
 } from '@/model';
 import { buildUrl, creator, locale, processPlainText } from '@/lib';
 
@@ -72,6 +76,29 @@ export function generateSchema(
 				mainEntity: generatePersonSchema(aboutPageData.artist),
 			};
 			return schema as AboutPageSchema;
+		}
+		case SchemaType.COLLECTION: {
+			const collectionPageData = data as CollectionPage;
+			let path: Slug | '' = '';
+			if (collectionPageData.slug !== ReWriteRule[PageType.DetailPage]) {
+				path = '/collectie';
+			}
+			const schema = {
+				...baseSchema,
+				...basePageSchema,
+				url: buildUrl(collectionPageData.slug, path).href,
+				mainEntity: collectionPageData.collection.map(
+					(detailPage) =>
+						({
+							'@type': SchemaType.SCULPTURE,
+							name: detailPage.title,
+							description: processPlainText(detailPage.description),
+							image: detailPage.imageCollection.items[0].url,
+							url: buildUrl(detailPage.slug, ReWriteRule[PageType.DetailPage]).href,
+						} as SculptureListItemSchema)
+				),
+			};
+			return schema as CollectionPageSchema;
 		}
 		case SchemaType.POSTAL_ADDRESS: {
 			const addressData = data as Address;

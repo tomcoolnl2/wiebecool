@@ -1,7 +1,7 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { Document } from '@contentful/rich-text-types';
-import { Address, PageType, ReWriteRule, Slug } from '@/model';
+import { Address, Slug } from '@/model';
 
 /** The locale of the website */
 export const locale = 'nl-NL';
