@@ -2,8 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '../css/custom.css';
-@import '../css/main.css';
+@import '@/css/custom.css';
+@import '@/css/main.css';
+@import '@/css/components/text-block.css';
 
 @keyframes fadeInLeft {
 	0% {
