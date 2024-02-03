@@ -4,7 +4,7 @@ import Image from 'next/image';
 import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
 import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
 import { DetailPageResponse, ItemImage, PageType, ReWriteRule, SchemaType } from '@/model';
-import { generateSchema } from '../../../lib/schema';
+import { generateSchema } from '@/lib';
 import { baseUrl, ensureLeadingSlash, fetchContentfulData, processRichText } from '@/lib';
 import { ContactDetails, SchemaTag, SectionContainer, SectionTitle } from '@/components';
 import '@/css/pages/detail-page.css';
@@ -42,7 +42,7 @@ export default async function DetailPage({ params }: PageProps) {
 
 	const detailPage = items[0] as DetailPageResponse;
 	const detailPageImg = detailPage.imageCollection.items[0] as ItemImage;
-	const jsonLd = generateSchema(detailPage, detailPageImg, SchemaType.SCULPTURE);
+	const jsonLd = generateSchema(detailPage, SchemaType.SCULPTURE, detailPageImg);
 
 	console.log(jsonLd);
 
@@ -50,7 +50,7 @@ export default async function DetailPage({ params }: PageProps) {
 		<SectionContainer name={'detail'}>
 			<SchemaTag schema={jsonLd} />
 			<div className="container">
-				<div className="detail-page pb-10 pt-24">
+				<div className="detail-page page">
 					<SectionTitle pageName={detailPage.name} title={detailPage.title} />
 					{detailPage.description && (
 						<div className="richt-text-block">{processRichText(detailPage.description.json)}</div>

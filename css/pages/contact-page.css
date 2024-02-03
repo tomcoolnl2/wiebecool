@@ -1,0 +1,4 @@
+.submit-button button {
+    @apply inline-block bg-black text-white transition-all ease-in-out duration-300 pt-2 pb-3 px-10;
+}
+  

@@ -1,14 +1,6 @@
 //
 import { PageType } from '.';
 
-export interface Navigation {
-	title: string;
-	description: string;
-	navigationItemsCollection: {
-		items: NavigationPageEntry[];
-	};
-}
-
 export interface SysID {
 	sys: { id: string };
 }
@@ -24,7 +16,7 @@ export interface NavigationPageEntry {
 	subNavigation: SysID | NavigationPageEntry[] | null;
 }
 
-export interface NavigationResponse {
+export interface Navigation {
 	title: string;
 	navigation: NavigationPageEntry[];
 }

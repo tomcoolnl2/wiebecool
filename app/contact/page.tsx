@@ -1,27 +1,26 @@
 import { Metadata } from 'next';
 import * as React from 'react';
-import { processRichText, fetchContentfulData } from '@/lib';
-import { ContactForm, GoogleMaps, SectionContainer, SectionTitle } from '@/components';
-
-import ContactPageQuery from '@/graphql/ContactPage.gql';
-import MetaDataQuery from '@/graphql/MetaData.gql';
+import { SchemaType } from '@/model';
+import { processRichText, generateSchema, fetchContactPage, fetchAddress, fetchSeoMetaData } from '@/lib';
+import { ContactForm, GoogleMaps, SchemaTag, SectionContainer, SectionTitle } from '@/components';
+import '@/css/pages/contact-page.css';
 
 export async function generateMetadata(): Promise<Metadata> {
-	const { seoMetaData } = await fetchContentfulData(MetaDataQuery, { sysID: '6Giq0hPzdDxxtohDi6kucy' });
+	const { seoMetaData } = await fetchSeoMetaData('6Giq0hPzdDxxtohDi6kucy');
 	return seoMetaData;
 }
 
 export default async function Contact() {
-	const { contactPage } = await fetchContentfulData(ContactPageQuery, { sysID: '68BbqtKbBhg4PwwWHNOB2' });
+	const contactPage = await fetchContactPage();
+	const jsonLd = generateSchema(contactPage, SchemaType.CONTACT_PAGE);
 	return (
 		<SectionContainer name={'contact'}>
+			<SchemaTag schema={jsonLd} />
 			<div className="container">
-				<div className="contact-page pb-10 pt-24">
+				<div className="contact-page page">
 					<SectionTitle pageName={contactPage.name} title={contactPage.title} />
-					<GoogleMaps />
-					<div className="font-montserrat font-medium mb-[25px] border-solid pb-[31px]">
-						{processRichText(contactPage.description.json)}
-					</div>
+					<GoogleMaps address={contactPage.address} />
+					<div className="richt-text-block-border">{processRichText(contactPage.description.json)}</div>
 					<ContactForm buttonText={contactPage.submitButtonText} />
 				</div>
 			</div>

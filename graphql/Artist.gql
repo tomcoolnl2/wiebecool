@@ -1,0 +1,10 @@
+#
+query Artist($sysID: String!) {
+	artist(id: $sysID) {
+		name
+		occupation
+		description
+		telephone
+		email
+	}
+}

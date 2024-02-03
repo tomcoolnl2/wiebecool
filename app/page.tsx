@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import * as React from 'react';
-import { fetchContentfulData, processRichText } from '@/lib';
+import { fetchContentfulData, fetchSeoMetaData, processRichText } from '@/lib';
 import { SectionContainer, SocialMediaLinks, ContactDetails } from '@/components';
 
 import HomePageQuery from '@/graphql/HomePage.gql';
 import MetaDataQuery from '@/graphql/MetaData.gql';
 
 export async function generateMetadata(): Promise<Metadata> {
-	const { seoMetaData } = await fetchContentfulData(MetaDataQuery, { sysID: '70FCDbDpk8iLUWWHAU76Ge' });
+	const { seoMetaData } = await fetchSeoMetaData('70FCDbDpk8iLUWWHAU76Ge');
 	return seoMetaData;
 }
 
@@ -19,7 +19,7 @@ export default async function Home() {
 	return (
 		<SectionContainer name={'home'}>
 			<div className="container">
-				<div className="home-page pb-10 pt-24">
+				<div className="home-page page">
 					<div className="home_content flex items-center">
 						<div className="avatar relative rounded-full inner-border">
 							<Image

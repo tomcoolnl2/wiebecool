@@ -5,20 +5,25 @@ export enum SchemaType {
 	ARTIST = 'Artist',
 	SCULPTURE = 'Sculpture',
 	PLACE = 'Place',
+	CONTACT_PAGE = 'ContactPage',
+	POSTAL_ADDRESS = 'PostalAddress',
 }
 
 export interface BaseSchema {
 	'@context': string;
 	'@type': SchemaType;
+	inLanguage: string;
+}
+
+export interface BasePageSchema {
 	name: string;
 	description: string;
-	image: string;
 	url: string;
-	inLanguage: string;
 }
 
 export interface PersonSchema extends BaseSchema {
 	'@type': SchemaType.PERSON;
+	name: string;
 }
 
 export interface ArtistSchema extends BaseSchema {
@@ -35,6 +40,22 @@ export interface SculptureSchema extends BaseSchema {
 	dateCreated?: string | null;
 	material?: string | null;
 	dimensions?: string | null;
+	image: string;
 }
 
-export type Schema = ArtistSchema | SculptureSchema;
+export interface PostalAddressSchema {
+	'@type': SchemaType.POSTAL_ADDRESS;
+	streetAddress: string;
+	addressLocality: string;
+	postalCode: string;
+	addressCountry: string;
+}
+
+export interface ContactPageSchema extends BaseSchema {
+	'@type': SchemaType.CONTACT_PAGE;
+	address: PostalAddressSchema;
+	telephone: string;
+	email: string;
+}
+
+export type Schema = ArtistSchema | SculptureSchema | ContactPageSchema | PostalAddressSchema;

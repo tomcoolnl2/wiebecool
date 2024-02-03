@@ -1,7 +1,24 @@
 import { cache } from 'react';
 import { DocumentNode as GraphQLDocumentNode } from 'graphql';
-import { NavigationPageEntry, NavigationResponse, SysID } from '@/model/navigation';
+import {
+	Address,
+	AddressResponse,
+	Artist,
+	ArtistResponse,
+	ContactPage,
+	ContactPageResponse,
+	MetaDataResponse,
+	Navigation,
+	NavigationPageEntry,
+	NavigationResponse,
+	PageType,
+	SysID,
+} from '@/model';
+import MetaDataQuery from '@/graphql/MetaData.gql';
 import MainNavigationQuery from '@/graphql/MainNavigation.gql';
+import ContactPageQuery from '@/graphql/ContactPage.gql';
+import AddressQuery from '@/graphql/Address.gql';
+import ArtistQuery from '@/graphql/Artist.gql';
 
 /**
  * Represents an error specific to Contentful-related operations.
@@ -37,7 +54,7 @@ export const preload = (query: string | GraphQLDocumentNode, variables = {}) => 
  * @param {Object} [variables={}] - The variables to be passed with the query.
  * @returns {Promise<Object>} A promise resolving to the fetched data.
  */
-export const fetchContentfulData = cache(async (query: string | GraphQLDocumentNode, variables = {}) => {
+export const fetchContentfulData = cache(async <T>(query: string | GraphQLDocumentNode, variables = {}): Promise<T> => {
 	try {
 		const url = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
 
@@ -73,13 +90,23 @@ export const fetchContentfulData = cache(async (query: string | GraphQLDocumentN
 	}
 });
 
-export const fetchNavigation = async (sysID: string): Promise<NavigationResponse> => {
+/**
+ * Fetches SEO Meta data from Contentful based on a sys ID.
+ * @param {string} sysID The Contentful identifier
+ * @returns {Promise<MetaDataResponse>} A promise resolving to the fetched seo meta data.
+ */
+export async function fetchSeoMetaData(sysID: string): Promise<MetaDataResponse> {
+	return await fetchContentfulData<MetaDataResponse>(MetaDataQuery, { sysID });
+}
+
+export const fetchNavigation = async (sysID: string): Promise<Navigation> => {
+	//
 	const {
 		navigation: {
 			title,
 			navigationItemsCollection: { items: navigation },
 		},
-	} = await fetchContentfulData(MainNavigationQuery, { sysID });
+	} = await fetchContentfulData<NavigationResponse>(MainNavigationQuery, { sysID });
 
 	const promises = navigation.map(async (item: NavigationPageEntry) => {
 		const subNavigation = item.subNavigation as SysID;
@@ -88,6 +115,7 @@ export const fetchNavigation = async (sysID: string): Promise<NavigationResponse
 			item.subNavigation = subNavigationEntries;
 		}
 	});
+
 	await Promise.all(promises);
 
 	return { title, navigation };
@@ -95,9 +123,52 @@ export const fetchNavigation = async (sysID: string): Promise<NavigationResponse
 
 /**
  * Fetches navigation data from Contentful based on a sys ID.
- * @param {string} sysID - The sys ID associated with the navigation.
- * @returns {Promise<NavigationResponse>} A promise resolving to the fetched navigation data.
+ * @returns {Promise<Navigation>} A promise resolving to the fetched navigation data.
  */
-export async function fetchMainNavigation() {
+export async function fetchMainNavigation(): Promise<Navigation> {
 	return await fetchNavigation('5bRsPaSUeUrD7QB5m868iu');
+}
+
+/**
+ * Fetches address data from Contentful based on a sys ID.
+ * @returns {Promise<Artist>} A promise resolving to the fetched address data.
+ */
+export async function fetchArtist(): Promise<Artist> {
+	const { artist } = await fetchContentfulData<ArtistResponse>(ArtistQuery, { sysID: '42dyv6PaMYHTxIQvt5k1BR' });
+	return artist;
+}
+
+/**
+ * Fetches address data from Contentful based on a sys ID.
+ * @returns {Promise<Address>} A promise resolving to the fetched address data.
+ */
+export async function fetchAddress(): Promise<Address> {
+	const { address } = await fetchContentfulData<AddressResponse>(AddressQuery, { sysID: 'VYrkgFK6dR1V81lIJqez2' });
+	return address;
+}
+
+// /**
+//  * Fetches home page data from Contentful based on a sys ID.
+//  * @returns {Promise<ContactPageResponse>} A promise resolving to the fetched contact page data.
+//  */
+// export async function fetchHomePage(): Promise<ContactPage> {
+// 	const { contactPage } = await fetchContentfulData<ContactPageResponse>(ContactPageQuery, {
+// 		sysID: '68BbqtKbBhg4PwwWHNOB2',
+// 	});
+// 	return contactPage;
+// }
+
+/**
+ * Fetches contact page data from Contentful based on a sys ID.
+ * @returns {Promise<ContactPage>} A promise resolving to the fetched contact page data.
+ */
+export async function fetchContactPage(): Promise<ContactPage> {
+	const [{ contactPage }, artist, address] = await Promise.all([
+		await fetchContentfulData<ContactPageResponse>(ContactPageQuery, {
+			sysID: '68BbqtKbBhg4PwwWHNOB2',
+		}),
+		fetchArtist(),
+		fetchAddress(),
+	]);
+	return { ...contactPage, type: PageType.ContactPage, artist, address };
 }

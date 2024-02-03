@@ -49,7 +49,7 @@ export const ContactForm: React.FC<{ buttonText: string }> = ({ buttonText }) =>
 	};
 
 	return (
-		<div className="fields w-full float-left clear-both h-auto">
+		<div className="fields">
 			<form className="contact_form" id="contact_form" onSubmit={(e) => onSubmit(e)}>
 				<div
 					className={error ? 'empty_notice' : 'returnmessage'}

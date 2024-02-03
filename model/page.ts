@@ -39,6 +39,12 @@ export const ReWriteRule: ReWriteRule = {
 
 export type Slug = `/${string}`;
 
+export interface SeoMetaData {
+	title: string;
+	description: string;
+	keywords: string;
+}
+
 export interface ItemImage extends SysID {
 	url: string;
 	title: string;
@@ -65,11 +71,37 @@ export interface PageCarousel {
 	imageCollection: ImageCollection;
 }
 
-export interface DetailPageResponse {
-	description: RichText;
+export interface Artist {
+	name: string;
+	occupation: string;
+	description: string;
+	telephone: string;
+	email: string;
+}
+
+export interface Address {
+	streetAddress: string;
+	zipCode: string;
+	city: string;
+	country: string;
+}
+
+interface BasePage {
+	type: PageType;
 	slug: Slug;
 	name: string;
 	title: string;
+	description: RichText;
+}
+
+export interface ContactPage extends BasePage {
+	type: PageType.ContactPage;
+	artist: Artist;
+	address: Address;
+	submitButtonText: string;
+}
+
+export interface DetailPage extends BasePage {
 	material: string | null;
 	dimensions: string | null;
 	status: string | null;
@@ -77,3 +109,7 @@ export interface DetailPageResponse {
 	imageCollection: ImageCollection;
 	imageCarousel: PageCarousel;
 }
+
+export type PageData = DetailPage | ContactPage;
+
+export type ContentData = Address;

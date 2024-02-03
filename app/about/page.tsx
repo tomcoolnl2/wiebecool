@@ -27,7 +27,7 @@ export default async function About() {
 	return (
 		<SectionContainer name={'about'}>
 			<div className="container">
-				<div className="about-page pb-10 pt-24">
+				<div className="about-page page">
 					<SectionTitle pageName={aboutPage.name} title={aboutPage.title} />
 					<div className="shadow-lg w-full h-80 relative mb-[35px]">
 						<Image src={hero.url} alt={hero.description} fill priority />

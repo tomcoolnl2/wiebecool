@@ -1,7 +1,7 @@
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { Document } from '@contentful/rich-text-types';
-import { Slug } from '@/model';
+import { Address, Slug } from '@/model';
 
 /** The locale of the website */
 export const locale = 'nl-NL';
@@ -42,8 +42,8 @@ export function detectMobile(): boolean {
  * @param {string} address The address to format.
  * @returns {string} The formatted Google Maps address string.
  */
-export function generateGoogleMapsAddress(address: string): string {
-	return address.replace(/ /g, '+');
+export function generateGoogleMapsAddress(address: Address): string {
+	return `${address.streetAddress}+${address.zipCode}+${address.city}+,${address.country}`;
 }
 
 /**

@@ -66,7 +66,7 @@ export default async function CollectionPage({ params }: Props) {
 	return (
 		<SectionContainer name={'collection'}>
 			<div className="container">
-				<div className="collection-page pb-10 pt-24">
+				<div className="collection-page page">
 					<SectionTitle pageName={collectionPage.name} title={collectionPage.title} />
 					{collectionPage.subtitle && <h2 className="mb-5">{collectionPage.subtitle}</h2>}
 					{collectionPage.description && (

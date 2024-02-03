@@ -1,6 +1,7 @@
 #
 query ContactPage($sysID: String!) {
 	contactPage(id: $sysID) {
+		slug
 		name
 		title
 		description {
