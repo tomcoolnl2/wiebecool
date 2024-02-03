@@ -1,6 +1,7 @@
+import * as React from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
-import { Document } from '@contentful/rich-text-types';
+import { Document, INLINES } from '@contentful/rich-text-types';
 import { Address, Slug } from '@/model';
 
 /** The locale of the website */
@@ -52,7 +53,25 @@ export function generateGoogleMapsAddress(address: Address): string {
  * @returns {React.ReactNode} The React components generated from the rich text.
  */
 export function processRichText(rawRichText: Document): React.ReactNode {
-	return documentToReactComponents(rawRichText);
+	const options = {
+		renderNode: {
+			[INLINES.HYPERLINK]: (node: any, children: React.ReactNode) => {
+				let anchorAttrs = {};
+				if (/^https?:\/\//.test(node.data.uri)) {
+					anchorAttrs = {
+						target: '_blank',
+						rel: 'noopener noreferrer',
+					};
+				}
+				return (
+					<a href={node.data.uri} {...anchorAttrs}>
+						{children}
+					</a>
+				);
+			},
+		},
+	};
+	return documentToReactComponents(rawRichText, options);
 }
 
 /**
