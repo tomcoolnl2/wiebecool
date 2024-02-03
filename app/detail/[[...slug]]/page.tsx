@@ -1,15 +1,15 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-
 import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
 import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
-
-import { ensureLeadingSlash, fetchContentfulData, processRichText } from '@/lib';
-import { ContactDetails, SectionContainer, SectionTitle } from '@/components';
-const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
-
+import { DetailPageResponse, ItemImage, PageType, ReWriteRule, SchemaType } from '@/model';
+import { generateSchema } from '../../../lib/schema';
+import { baseUrl, ensureLeadingSlash, fetchContentfulData, processRichText } from '@/lib';
+import { ContactDetails, SchemaTag, SectionContainer, SectionTitle } from '@/components';
 import '@/css/pages/detail-page.css';
+
+const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
 
 type PageProps = {
 	params: { slug: string };
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 	return {
 		...seoMetaData,
 		alternates: {
-			canonical: `https://www.wiebecool.nl/werk${slug}`,
+			canonical: `${baseUrl}${ReWriteRule[PageType.ContactPage]}${slug}`,
 		},
 	};
 }
@@ -37,23 +37,18 @@ export default async function DetailPage({ params }: PageProps) {
 	const slug = ensureLeadingSlash(params.slug[0]);
 
 	const {
-		detailPageCollection: {
-			items: [detailPage],
-		},
+		detailPageCollection: { items },
 	} = await fetchContentfulData(DetailPageBySlugQuery, { slug });
 
-	// const jsonLd = {
-	// 	'@context': 'https://schema.org',
-	// 	'@type': 'Product',
-	// 	name: product.name,
-	// 	image: product.image,
-	// 	description: product.description,
-	// };
+	const detailPage = items[0] as DetailPageResponse;
+	const detailPageImg = detailPage.imageCollection.items[0] as ItemImage;
+	const jsonLd = generateSchema(detailPage, detailPageImg, SchemaType.SCULPTURE);
 
-	const detailPageImg = detailPage.imageCollection.items[0];
+	console.log(jsonLd);
 
 	return (
-		<SectionContainer name={'collection'}>
+		<SectionContainer name={'detail'}>
+			<SchemaTag schema={jsonLd} />
 			<div className="container">
 				<div className="detail-page pb-10 pt-24">
 					<SectionTitle pageName={detailPage.name} title={detailPage.title} />

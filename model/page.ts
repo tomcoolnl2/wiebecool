@@ -1,4 +1,7 @@
+import { Document } from '@contentful/rich-text-types';
 import { SysID } from './navigation';
+
+export type RichText = Document & { json: any };
 
 export interface SitemapItem {
 	url: URL;
@@ -42,6 +45,10 @@ export interface ItemImage extends SysID {
 	description: string;
 }
 
+export interface ImageCollection {
+	items: ItemImage[];
+}
+
 export interface CollectionItems {
 	items: CollectionItem[];
 }
@@ -49,33 +56,24 @@ export interface CollectionItems {
 export interface CollectionItem extends SysID {
 	slug: string;
 	title: string;
-	imageCollection: {
-		items: ItemImage[];
-	};
+	imageCollection: ImageCollection;
 }
 
 export interface PageCarousel {
-	description: any; // TODO
+	description: RichText;
 	showDescription: boolean;
-	imageCollection: {
-		items: ItemImage[];
-	};
+	imageCollection: ImageCollection;
 }
 
-export interface ContentfulRichText {
-	nodeType: string;
-	content?: ContentfulRichText[];
-	value?: string;
-	data?: {
-		target?: {
-			sys: {
-				id: string;
-				linkType: string;
-				type: string;
-			};
-		};
-	};
-	marks?: {
-		type: string;
-	}[];
+export interface DetailPageResponse {
+	description: RichText;
+	slug: Slug;
+	name: string;
+	title: string;
+	material: string | null;
+	dimensions: string | null;
+	status: string | null;
+	creationDate: string | null;
+	imageCollection: ImageCollection;
+	imageCarousel: PageCarousel;
 }

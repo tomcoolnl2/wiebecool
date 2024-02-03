@@ -9,6 +9,13 @@ export const locale = 'nl-NL';
 /** The base URL of the website. */
 export const baseUrl = 'https://wiebecool.nl';
 
+/** Hardcoded. */
+export const creator = {
+	name: 'Wiebe Cool',
+	occupation: 'Beeldhouwer',
+	description: 'Wiebe Cool | Beeldhouwer',
+};
+
 /**
  * Constructs a URL based on the provided slug and path.
  * @param {Slug} slug The slug to append to the URL.
