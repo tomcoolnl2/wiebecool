@@ -2,6 +2,9 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { Document } from '@contentful/rich-text-types';
 import { Slug } from '@/model';
 
+/** The locale of the website */
+export const locale = 'nl-NL';
+
 /** The base URL of the website. */
 export const baseUrl = 'https://wiebecool.nl';
 
@@ -52,7 +55,7 @@ export function processRichText(rawRichText: Document): React.ReactNode {
 export function formatStatus(input: string): string {
 	const price = parseFloat(input);
 	if (!isNaN(price)) {
-		const formattedPrice = price.toLocaleString('nl-NL', { style: 'currency', currency: 'EUR' });
+		const formattedPrice = price.toLocaleString(locale, { style: 'currency', currency: 'EUR' });
 		return formattedPrice;
 	} else {
 		return input;
