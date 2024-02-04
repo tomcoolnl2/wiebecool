@@ -236,13 +236,20 @@
 	}
 
 	.image-container-bordered {
-		@apply border-yellow-600 border-opacity-80 border-2 hover:border-opacity-100;
+		@apply border-curious-blue-500 border-opacity-80 border-2 hover:border-opacity-100;
 	}
 
-	.zoomable-centered-image {
-		@apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 origin-center grayscale hover:grayscale-0 hover:scale-110 transition duration-300;
+	.image-centered {
+		@apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 origin-center;
 	}
 
+	.image-zoomable {
+		@apply hover:scale-110 transition duration-300;
+	}
+
+	.image-grayscale {
+		@apply grayscale hover:grayscale-0 transition duration-300;
+	}
 
 	.contact-details {
 		@apply font-montserrat font-medium mb-6 leading-7 text-center;

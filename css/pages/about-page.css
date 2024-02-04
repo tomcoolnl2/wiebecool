@@ -1,8 +1,8 @@
 
 .hero-banner {
-    @apply relative w-full relative mb-10 aspect-square md:aspect-banner;
+    @apply mb-10 aspect-video md:aspect-banner;
 }
 
 .hero-banner img {
-    @apply absolute
+    @apply min-h-full max-w-none;
 }
