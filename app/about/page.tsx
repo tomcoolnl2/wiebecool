@@ -34,7 +34,7 @@ export default async function About() {
 					{blocks.map((item: RenderComponentItem, i: number) => (
 						<RenderComponent key={i} item={item} />
 					))}
-					<aside className="text-block pt-5 pb-8 mt-8 text-center">
+					<aside className="text-block pt-5 pb-8 mt-8">
 						<ContactDetails />
 					</aside>
 				</div>

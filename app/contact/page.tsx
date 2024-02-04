@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import * as React from 'react';
 import { SchemaType } from '@/model';
-import { processRichText, generateSchema, fetchContactPage, fetchAddress, fetchSeoMetaData } from '@/lib';
+import { processRichText, generateSchema, fetchContactPage, fetchSeoMetaData } from '@/lib';
 import { ContactForm, GoogleMaps, SchemaTag, SectionContainer, SectionTitle } from '@/components';
 import '@/css/pages/contact-page.css';
 
@@ -20,7 +20,7 @@ export default async function Contact() {
 				<div className="contact-page page">
 					<SectionTitle pageName={contactPage.name} title={contactPage.title} />
 					<GoogleMaps address={contactPage.address} />
-					<div className="richt-text-block-border">{processRichText(contactPage.description.json)}</div>
+					<div className="rich-text-block-border">{processRichText(contactPage.description.json)}</div>
 					<ContactForm buttonText={contactPage.submitButtonText} />
 				</div>
 			</div>

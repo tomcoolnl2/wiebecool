@@ -1,7 +1,8 @@
+'use server';
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { ItemImage, PageType, ReWriteRule, SchemaType, Slug } from '@/model';
+import { PageType, ReWriteRule, SchemaType, Slug } from '@/model';
 import { fetchDetailPage, fetchSeoMetaDataBySlug, generateSchema } from '@/lib';
 import { baseUrl, ensureLeadingSlash, processRichText } from '@/lib';
 import { ContactDetails, SchemaTag, SectionContainer, SectionTitle } from '@/components';
@@ -36,7 +37,7 @@ export default async function DetailPage({ params }: PageProps) {
 				<div className="detail-page page">
 					<SectionTitle pageName={detailPage.name} title={detailPage.title} />
 					{detailPage.description && (
-						<div className="richt-text-block">{processRichText(detailPage.description.json)}</div>
+						<div className="rich-text-block">{processRichText(detailPage.description.json)}</div>
 					)}
 					<div className="detail-page-main-image image-container image-container-portrait">
 						<Image
