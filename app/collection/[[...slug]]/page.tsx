@@ -11,7 +11,8 @@ import {
 	generateSchema,
 	processRichText,
 } from '@/lib';
-import { SchemaTag, SectionContainer, SectionTitle } from '@/components';
+import { SchemaTag, SectionContainer, PageHeader } from '@/components';
+import '@/css/pages/collection-page.css';
 
 type Props = {
 	params: { slug: string };
@@ -49,18 +50,24 @@ export default async function CollectionPage({ params }: Props) {
 	const collectionPage = await fetchCollectionPage(slug as Slug);
 	const jsonLd = generateSchema(collectionPage, SchemaType.COLLECTION);
 	return (
-		<SectionContainer name={'collection'}>
+		<SectionContainer>
 			<SchemaTag schema={jsonLd} />
 			<div className="container">
 				<div className="collection-page page">
-					<SectionTitle pageName={collectionPage.name} title={collectionPage.title} />
-					{collectionPage.subtitle && <h2 className="text-xl mb-5">{collectionPage.subtitle}</h2>}
+					<PageHeader
+						pageType={PageType.CollectionPage}
+						title={collectionPage.title}
+						subtitle={collectionPage.subtitle}
+					/>
 					{collectionPage.description && (
 						<div className="rich-text-block">{processRichText(collectionPage.description.json)}</div>
 					)}
 					<div className="collection">
 						{collectionPage.collection.map((item) => (
-							<div key={item.sys.id} className="image-container image-container-bordered aspect-square">
+							<div
+								key={item.sys.id}
+								className="shadow-slate-800 shadow-lg image-container image-container-bordered aspect-square"
+							>
 								{item.imageCollection.items.map((img) => (
 									<Link
 										key={item.sys.id + '-img'}

@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import { Metadata } from 'next';
 import * as React from 'react';
-import { AboutPage, SchemaType } from '@/model';
+import { PageType, SchemaType } from '@/model';
 import { fetchAboutPage, fetchSeoMetaData, generateSchema } from '@/lib';
 import {
 	type RenderComponentItem,
 	RenderComponent,
 	SectionContainer,
 	ContactDetails,
-	SectionTitle,
+	PageHeader,
 	SchemaTag,
 } from '@/components';
 import '@/css/pages/about-page.css';
@@ -24,11 +24,11 @@ export default async function About() {
 	const hero = aboutPage.bannerImage;
 	const blocks = aboutPage.buildingBlocksCollection?.items || [];
 	return (
-		<SectionContainer name={'about'}>
+		<SectionContainer>
 			<SchemaTag schema={jsonLd} />
 			<div className="container">
 				<div className="about-page page">
-					<SectionTitle pageName={aboutPage.name} title={aboutPage.title} />
+					<PageHeader pageType={PageType.AboutPage} title={aboutPage.title} />
 					<div className="hero-banner image-container">
 						<Image
 							src={hero.url}

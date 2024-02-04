@@ -142,14 +142,6 @@ h6 {
 	position: relative;
 }
 
-.collection-page .popup_details {
-	visibility: hidden;
-	position: absolute;
-	z-index: -111;
-	display: none;
-	opacity: 0;
-}
-
 /*----------------------------------------------------*/
 
 /*     MEDIA QUERIES FOR SMALL DEVICES                */
@@ -244,29 +236,11 @@ h6 {
 		font-size: 16px;
 	}
 
-	.section-title .portfolio_filter {
-		padding-top: 48px;
-	}
-
 	.container {
 		padding-left: 20px;
 		padding-right: 20px;
 		padding-top: 0px;
 		padding-bottom: 0px;
-	}
-}
-
-/******** Small Screens *********/
-
-@media (max-width: 768px) {
-
-	.collection-page .portfolio_list {
-		margin: 0px;
-	}
-
-	.collection-page .portfolio_list li {
-		width: 100%;
-		padding-left: 0px;
 	}
 }
 
@@ -320,18 +294,6 @@ body.dark .cursor-outer {
 body.dark .cursor-outer.cursor-hover {
 	opacity: 0;
 }
-
-body.dark .collection-page .portfolio_filter ul li a {
-	--tw-text-opacity: 1;
-	color: rgb(187 187 187 / var(--tw-text-opacity));
-}
-
-body.dark .collection-page .portfolio_filter ul li a:hover {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-
 
 body.dark .contact-page .fields ul li input {
 	border-color: rgba(255, 255, 255, 0.2);

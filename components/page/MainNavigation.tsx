@@ -17,10 +17,10 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 	return (
 		<>
 			<header className="top-bar z-30 absolute top-1 left-0">
-				<Link href="/" className="visually-hidden">
+				<a href="/" className="visually-hidden">
 					<h1>{creator.name}</h1>
 					<h2>{creator.occupation}</h2>
-				</Link>
+				</a>
 				<SocialMediaLinks size="2xl" />
 				<div
 					className={`cursor-pointer hamburger--slider hamburger${isMobileOpen ? ' is-active' : ''}`}
@@ -36,7 +36,7 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 				<Navigation items={navigation} className="navigation" onClick={() => toggleMobile(false)} />
 				<div className="page-footer">
 					<div className="copyright">© {new Date().getFullYear()}</div>
-					<Link href="/sitemap.xml">Sitemap</Link>
+					<a href="/sitemap.xml">Sitemap</a>
 				</div>
 			</nav>
 		</>

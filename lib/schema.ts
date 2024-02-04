@@ -5,6 +5,8 @@ import {
 	Artist,
 	BasePageSchema,
 	BaseSchema,
+	BreadcrumbSchema,
+	Breadcrumbs,
 	CollectionPage,
 	CollectionPageSchema,
 	ContactPage,
@@ -25,7 +27,7 @@ import {
 	SculptureSchema,
 	Slug,
 } from '@/model';
-import { buildUrl, creator, locale, processPlainText } from '@/lib';
+import { baseUrl, buildUrl, creator, locale, processPlainText } from '@/lib';
 
 function generatePersonSchema(data: Artist): PersonSchema {
 	return {
@@ -110,6 +112,31 @@ export function generateSchema(
 				addressCountry: addressData.country,
 			};
 			return schema as PostalAddressSchema;
+		}
+		case SchemaType.BREADCRUMBS: {
+			const { parents, current } = data as Breadcrumbs;
+			const schema = {
+				'@type': SchemaType.BREADCRUMBS,
+				itemListElement: [
+					...parents.map((parent, i) => ({
+						'@type': SchemaType.LIST_ITEM,
+						position: i + 1,
+						item: {
+							'@id': baseUrl + '/' + parent,
+							name: 'Parent',
+						},
+					})),
+					{
+						'@type': SchemaType.LIST_ITEM,
+						position: parents.length + 1,
+						item: {
+							'@id': baseUrl + '/' + parents.join('/') + '/' + current,
+							name: 'Current',
+						},
+					},
+				],
+			};
+			return schema as BreadcrumbSchema;
 		}
 		case SchemaType.SCULPTURE: {
 			const detailPageData = data as DetailPage;

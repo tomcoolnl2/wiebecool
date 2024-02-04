@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { PageType, ReWriteRule, SchemaType, Slug } from '@/model';
 import { fetchDetailPage, fetchSeoMetaDataBySlug, generateSchema } from '@/lib';
 import { baseUrl, ensureLeadingSlash, processRichText } from '@/lib';
-import { ContactDetails, SchemaTag, SectionContainer, SectionTitle } from '@/components';
+import { ContactDetails, SchemaTag, SectionContainer, PageHeader } from '@/components';
 import '@/css/pages/detail-page.css';
 
 const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
@@ -31,11 +31,11 @@ export default async function DetailPage({ params }: PageProps) {
 	const detailPageImg = detailPage.imageCollection.items[0];
 	const jsonLd = generateSchema(detailPage, SchemaType.SCULPTURE, detailPageImg);
 	return (
-		<SectionContainer name={'detail'}>
+		<SectionContainer>
 			<SchemaTag schema={jsonLd} />
 			<div className="container">
 				<div className="detail-page page">
-					<SectionTitle pageName={detailPage.name} title={detailPage.title} />
+					<PageHeader title={detailPage.title} pageType={PageType.DetailPage} />
 					{detailPage.description && (
 						<div className="rich-text-block">{processRichText(detailPage.description.json)}</div>
 					)}

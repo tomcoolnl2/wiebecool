@@ -15,7 +15,7 @@ export default async function Home() {
 	const homePage = await fetchHomePage();
 	const jsonLd = generateSchema(homePage, SchemaType.HOME_PAGE);
 	return (
-		<SectionContainer name={'home'}>
+		<SectionContainer>
 			<SchemaTag schema={jsonLd} />
 			<div className="container">
 				<div className="home-page page">
@@ -33,9 +33,6 @@ export default async function Home() {
 								{homePage.title}
 							</h1>
 							{homePage.subtitle && <h2 className="subtitle font-light mb-4">{homePage.subtitle}</h2>}
-
-							{/* <div className="font-montserrat font-medium max-w-[450px] mb-[25px] border-solid border-[#DFDFDF] border-b pb-[31px]"> */}
-
 							<div className="rich-text-block-border max-w-[450px]">
 								{processRichText(homePage.description.json)}
 							</div>

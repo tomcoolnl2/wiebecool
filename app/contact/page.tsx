@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import * as React from 'react';
-import { SchemaType } from '@/model';
+import { PageType, SchemaType } from '@/model';
 import { processRichText, generateSchema, fetchContactPage, fetchSeoMetaData } from '@/lib';
-import { ContactForm, GoogleMaps, SchemaTag, SectionContainer, SectionTitle } from '@/components';
+import { ContactForm, GoogleMaps, SchemaTag, SectionContainer, PageHeader } from '@/components';
 import '@/css/pages/contact-page.css';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -14,11 +14,11 @@ export default async function Contact() {
 	const contactPage = await fetchContactPage();
 	const jsonLd = generateSchema(contactPage, SchemaType.CONTACT_PAGE);
 	return (
-		<SectionContainer name={'contact'}>
+		<SectionContainer>
 			<SchemaTag schema={jsonLd} />
 			<div className="container">
 				<div className="contact-page page">
-					<SectionTitle pageName={contactPage.name} title={contactPage.title} />
+					<PageHeader title={contactPage.title} pageType={PageType.ContactPage} />
 					<GoogleMaps address={contactPage.address} />
 					<div className="rich-text-block-border">{processRichText(contactPage.description.json)}</div>
 					<ContactForm buttonText={contactPage.submitButtonText} />
