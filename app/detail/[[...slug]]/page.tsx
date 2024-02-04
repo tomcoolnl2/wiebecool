@@ -39,14 +39,13 @@ export default async function DetailPage({ params }: PageProps) {
 					{detailPage.description && (
 						<div className="rich-text-block">{processRichText(detailPage.description.json)}</div>
 					)}
-					<div className="detail-page-main-image image-container aspect-portrait">
+					<div className="detail-page-main-image image-container-borderedcarousel-maon">
 						<Image
 							src={detailPageImg.url + '?w=400'}
 							title={detailPageImg.title}
 							alt={detailPageImg.description}
 							width={400}
 							height={400}
-							className="zoomable-centered-image"
 						/>
 					</div>
 					{detailPage.imageCarousel?.imageCollection && <Carousel {...detailPage.imageCarousel} />}

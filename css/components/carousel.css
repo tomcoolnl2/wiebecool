@@ -9,8 +9,7 @@
 }
 
 .carousel-main {
-    @apply w-[80%] relative;
-    aspect-ratio: 16/10;
+    @apply w-[80%] relative aspect-square;
 }
 
 .carousel-main-slide {
@@ -19,7 +18,7 @@
 
 
 .carousel-main-image {
-    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 origin-center max-w-full max-h-full;
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 origin-center max-w-full min-h-full;
 }
 
 .carousel-slide-description {
