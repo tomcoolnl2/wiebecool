@@ -1,0 +1,8 @@
+
+.hero-banner {
+    @apply relative w-full relative mb-10 aspect-square md:aspect-banner;
+}
+
+.hero-banner img {
+    @apply absolute
+}

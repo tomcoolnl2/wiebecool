@@ -39,7 +39,7 @@ export default async function DetailPage({ params }: PageProps) {
 					{detailPage.description && (
 						<div className="rich-text-block">{processRichText(detailPage.description.json)}</div>
 					)}
-					<div className="detail-page-main-image image-container image-container-portrait">
+					<div className="detail-page-main-image image-container aspect-portrait">
 						<Image
 							src={detailPageImg.url + '?w=400'}
 							title={detailPageImg.title}

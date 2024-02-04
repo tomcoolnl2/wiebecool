@@ -51,10 +51,7 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 					>
 						{imageCollection.items.map((slide) => {
 							return (
-								<SwiperSlide
-									key={slide.sys.id + '-thumb'}
-									className="image-container image-container-square"
-								>
+								<SwiperSlide key={slide.sys.id + '-thumb'} className="image-container aspect-square">
 									<img className="zoomable-centered-image" src={slide.url} alt={slide.title} />
 								</SwiperSlide>
 							);

@@ -60,7 +60,7 @@ export default async function CollectionPage({ params }: Props) {
 					)}
 					<div className="collection">
 						{collectionPage.collection.map((item) => (
-							<div key={item.sys.id} className="image-container image-container-square">
+							<div key={item.sys.id} className="image-container image-container-bordered aspect-square">
 								{item.imageCollection.items.map((img) => (
 									<Link
 										key={item.sys.id + '-img'}

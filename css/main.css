@@ -330,21 +330,6 @@ body.dark .cursor-outer.cursor-hover {
 	opacity: 0;
 }
 
-body.dark .about-page .description .right > ul > li a {
-	--tw-text-opacity: 1;
-	color: rgb(187 187 187 / var(--tw-text-opacity));
-}
-
-body.dark .about-page .description .right > ul > li a:hover {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-body.dark .about-page .description .right > ul > li span {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
 body.dark .collection-page .portfolio_filter ul li a {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
@@ -407,14 +392,6 @@ body.dark .read-more a {
 body.dark .read-more a:before {
 	--tw-bg-opacity: 1;
 	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-body.dark .about-page .about_title {
-	border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-body.dark .about-page .text-block {
-	border-color: rgba(255, 255, 255, 0.1);
 }
 
 body.dark #preloader:before,
