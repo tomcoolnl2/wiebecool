@@ -12,6 +12,7 @@ export const SocialMediaLinks: React.FC<Props> = ({ size = 'sm' }) => {
 			href="https://www.instagram.com/wiebecoolbeeldhouwer/"
 			target="_blank"
 			title="Instagram - Wiebe Cool | Beeldhouwer"
+			rel="noopener noreferrer"
 		>
 			<FontAwesomeIcon icon={faInstagram} size={size} />
 		</a>

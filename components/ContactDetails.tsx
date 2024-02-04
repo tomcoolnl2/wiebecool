@@ -14,7 +14,11 @@ export const ContactDetails: React.FC = async () => {
 			<br />
 			Bezoekadres:
 			<br />
-			<a href={`https://www.google.com/maps/place/${generateGoogleMapsAddress(address)}/`} target="_blank">
+			<a
+				href={`https://www.google.com/maps/place/${generateGoogleMapsAddress(address)}/`}
+				target="_blank"
+				rel="noopener noreferrer"
+			>
 				{address.streetAddress}, {address.zipCode} {address.city}
 			</a>
 		</p>

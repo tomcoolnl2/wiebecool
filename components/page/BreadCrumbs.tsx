@@ -19,7 +19,7 @@ export const BreadCrumbs: React.FC = () => {
 			<SchemaTag schema={jsonLd} />
 			<ol className="list-none">
 				<li className="inline-block">
-					<Link href="/">
+					<Link href="/" title="Home - Wiebe Cool | Beelhouwer">
 						<FontAwesomeIcon icon={faHome} size="xs" />
 					</Link>
 				</li>
