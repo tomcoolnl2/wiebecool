@@ -8,7 +8,11 @@ interface Props {
 
 export const SocialMediaLinks: React.FC<Props> = ({ size = 'sm' }) => {
 	return (
-		<a href="https://www.instagram.com/wiebecoolbeeldhouwer/" target="_blank">
+		<a
+			href="https://www.instagram.com/wiebecoolbeeldhouwer/"
+			target="_blank"
+			title="Instagram - Wiebe Cool | Beeldhouwer"
+		>
 			<FontAwesomeIcon icon={faInstagram} size={size} />
 		</a>
 	);
