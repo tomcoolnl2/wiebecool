@@ -36,7 +36,7 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 				<Navigation items={navigation} className="navigation" onClick={() => toggleMobile(false)} />
 				<div className="page-footer">
 					<div className="copyright">© {new Date().getFullYear()}</div>
-					<Link href="/sitemap.xml">Sitemap</Link>
+					<a href="/sitemap.xml">Sitemap</a>
 				</div>
 			</nav>
 		</>

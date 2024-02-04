@@ -194,9 +194,6 @@
 	aspect-ratio: 1;
 	overflow: hidden;
 }
-.collection-page .portfolio_list li .inner:hover .abs_image {
-	transform: scale(1.1) translateZ(0);
-}
 
 .contact-page .fields ul li input {
 	width: 100%;

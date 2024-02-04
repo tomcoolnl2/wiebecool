@@ -6,6 +6,8 @@ export enum SchemaType {
 	SCULPTURE = 'Sculpture',
 	COLLECTION = 'CollectionPage',
 	CONTACT_PAGE = 'ContactPage',
+	BREADCRUMBS = 'BreadcrumbList',
+	LIST_ITEM = 'ListItem',
 	PERSON = 'Person',
 	ARTIST = 'Artist',
 	PLACE = 'Place',
@@ -23,6 +25,20 @@ export interface BasePageSchema {
 	name: string;
 	description: string;
 	url: string;
+}
+
+export interface BreadcrumbSchema {
+	'@type': SchemaType.BREADCRUMBS;
+	itemListElement: BreadcrumbItemSchema[];
+}
+
+export interface BreadcrumbItemSchema {
+	'@type': SchemaType.LIST_ITEM;
+	position: number;
+	item: {
+		'@id': string;
+		name: 'Parent' | 'Current';
+	};
 }
 
 export interface PersonSchema {
@@ -105,6 +121,7 @@ export type Schema =
 	| HomePageSchema
 	| AboutPageSchema
 	| CollectionPageSchema
+	| BreadcrumbSchema
 	| ArtistSchema
 	| SculptureSchema
 	| ContactPageSchema

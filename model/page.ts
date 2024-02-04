@@ -76,6 +76,11 @@ export interface Address {
 	country: string;
 }
 
+export interface Breadcrumbs {
+	parents: string[];
+	current: string;
+}
+
 export interface ContactDetails {
 	artist: Artist;
 	address: Address;
@@ -142,7 +147,7 @@ export interface ContactPage extends BasePage {
 
 export type PageData = HomePage | AboutPage | CollectionPage | DetailPage | ContactPage;
 
-export type ContentData = Address;
+export type ContentData = Address | Breadcrumbs;
 
 export interface SitemapItem {
 	url: string;
