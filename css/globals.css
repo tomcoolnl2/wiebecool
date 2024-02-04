@@ -4,7 +4,6 @@
 
 @import '@/css/custom.css';
 @import '@/css/main.css';
-@import '@/css/components/text-block.css';
 
 @keyframes fadeInLeft {
 	0% {
@@ -71,12 +70,12 @@
 		animation-duration: .9s;
 		animation-fill-mode: both;
 		animation-name: fadeInLeft;
-	  }
+	}
 
 	.visually-hidden {
 		clip-path: polygon(0 0, 0 0, 0 0, 0 0);
 		position: absolute;
-	  }
+	}
 }
 
 @layer components {
@@ -87,11 +86,6 @@
 
 	.container {
 		max-width: 1024px;
-	}
-
-	.inner-border {
-		outline: 5px solid rgba(255,255,255,.1);
-		outline-offset: 0px;
 	}
 
 	.section-container {
@@ -117,6 +111,15 @@
 
 	.navigation-link {
 		@apply inline-block font-medium font-montserrat hover:text-white;
+	}
+
+
+	.rich-text-block {
+		@apply w-full border-solid mb-10 font-montserrat font-medium leading-7;
+	}
+
+	.rich-text-block-border {
+		@apply rich-text-block border-[#DFDFDF] border-b pb-8;
 	}
 
 	.text-block h3, h4, h5 {
@@ -242,6 +245,10 @@
 
 	.zoomable-centered-image {
 		@apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 origin-center grayscale hover:grayscale-0 hover:scale-110 transition duration-300;
+	}
+
+	.contact-details {
+		@apply font-montserrat font-medium mb-6 leading-7 text-center;
 	}
 
 	.page-footer {

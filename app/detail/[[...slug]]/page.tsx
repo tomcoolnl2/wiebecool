@@ -37,7 +37,7 @@ export default async function DetailPage({ params }: PageProps) {
 				<div className="detail-page page">
 					<SectionTitle pageName={detailPage.name} title={detailPage.title} />
 					{detailPage.description && (
-						<div className="richt-text-block">{processRichText(detailPage.description.json)}</div>
+						<div className="rich-text-block">{processRichText(detailPage.description.json)}</div>
 					)}
 					<div className="detail-page-main-image image-container image-container-portrait">
 						<Image

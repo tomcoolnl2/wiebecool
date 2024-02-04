@@ -20,7 +20,7 @@ export default async function Contact() {
 				<div className="contact-page page">
 					<SectionTitle pageName={contactPage.name} title={contactPage.title} />
 					<GoogleMaps address={contactPage.address} />
-					<div className="richt-text-block-border">{processRichText(contactPage.description.json)}</div>
+					<div className="rich-text-block-border">{processRichText(contactPage.description.json)}</div>
 					<ContactForm buttonText={contactPage.submitButtonText} />
 				</div>
 			</div>

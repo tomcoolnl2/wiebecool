@@ -56,7 +56,7 @@ export default async function CollectionPage({ params }: Props) {
 					<SectionTitle pageName={collectionPage.name} title={collectionPage.title} />
 					{collectionPage.subtitle && <h2 className="mb-5">{collectionPage.subtitle}</h2>}
 					{collectionPage.description && (
-						<div className="richt-text-block">{processRichText(collectionPage.description.json)}</div>
+						<div className="rich-text-block">{processRichText(collectionPage.description.json)}</div>
 					)}
 					<div className="collection">
 						{collectionPage.collection.map((item) => (

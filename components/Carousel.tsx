@@ -17,7 +17,7 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 
 	return (
 		<>
-			{description && <div className="richt-text-block">{processRichText(description.json)}</div>}
+			{description && <div className="rich-text-block">{processRichText(description.json)}</div>}
 			<div className="carousel mb-10">
 				<Swiper
 					style={style}
@@ -27,7 +27,7 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 					modules={[Navigation, Thumbs]}
 					className="carousel-main"
 				>
-					{description && <div className="richt-text-block">{processRichText(description.json)}</div>}
+					{description && <div className="rich-text-block">{processRichText(description.json)}</div>}
 					{imageCollection.items.map((slide) => {
 						return (
 							<SwiperSlide key={slide.sys.id} tag="figure" className="carousel-main-slide">

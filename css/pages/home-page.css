@@ -1,0 +1,74 @@
+
+.home-page .home-content {
+    @apply flex items-center;
+}
+
+.inner-border {
+    outline: 5px solid rgba(255,255,255,.1);
+    outline-offset: 0px;
+}
+
+.home-page .contact-details {
+    @apply text-left;
+}
+
+@media (max-width: 1600px) {
+
+
+	.home-page .avatar {
+		width: 250px;
+	}
+
+	.home-page .details .name {
+		font-size: 48px;
+	}
+
+	.home-page .details .subtitle {
+		font-size: 22px;
+	}
+
+	.home-page .details .\!name {
+		margin-bottom: 10px;
+		font-size: 48px;
+	}
+
+	.home-page .details .job {
+		margin-bottom: 22px;
+	}
+}
+
+@media (max-width: 1040px) {
+
+	.home-page .home-content {
+		flex-direction: column;
+		text-align: center;
+		margin: 70px 0 30px;
+	}
+
+	.home-page .avatar {
+		margin-bottom: 30px;
+	}
+
+	.home-page .details {
+		margin-left: 0px;
+	}
+}
+
+@media (max-width: 768px) {
+	.home-page .details .name {
+		font-size: 30px;
+	}
+
+	.home-page .details .\!name {
+		font-size: 30px;
+	}
+
+	.home-page .avatar {
+		width: 200px;
+	}
+
+    .home-page .contact-details {
+        @apply text-center;
+    }
+}
+
