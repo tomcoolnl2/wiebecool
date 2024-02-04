@@ -1,7 +1,8 @@
+'use server';
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { ItemImage, PageType, ReWriteRule, SchemaType, Slug } from '@/model';
+import { PageType, ReWriteRule, SchemaType, Slug } from '@/model';
 import { fetchDetailPage, fetchSeoMetaDataBySlug, generateSchema } from '@/lib';
 import { baseUrl, ensureLeadingSlash, processRichText } from '@/lib';
 import { ContactDetails, SchemaTag, SectionContainer, SectionTitle } from '@/components';

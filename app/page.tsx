@@ -6,7 +6,7 @@ import { SectionContainer, SocialMediaLinks, ContactDetails, SchemaTag } from '@
 import { SchemaType } from '@/model';
 
 export async function generateMetadata(): Promise<Metadata> {
-	const { seoMetaData } = await fetchSeoMetaData('70FCDbDpk8iLUWWHAU76Ge');
+	const { seoMetaData } = await fetchSeoMetaData('CPkjAJlRTW3qlGNp8CqJm');
 	return seoMetaData;
 }
 
@@ -28,10 +28,10 @@ export default async function Home() {
 							/>
 						</div>
 						<div className="details ml-[80px]">
-							<h1 className="name font-poppins text-[55px] font-extrabold uppercase mb-[14px]">
+							<h1 className="name font-poppins font-light text-[55px] uppercase mb-5">
 								{homePage.title}
 							</h1>
-							{homePage.subtitle && <h2 className="font-poppins subtitle mb-3">{homePage.subtitle}</h2>}
+							{homePage.subtitle && <h2 className="subtitle font-light mb-4">{homePage.subtitle}</h2>}
 							<div className="font-montserrat font-medium max-w-[450px] mb-[25px] border-solid border-[#DFDFDF] border-b pb-[31px]">
 								{processRichText(homePage.description.json)}
 							</div>

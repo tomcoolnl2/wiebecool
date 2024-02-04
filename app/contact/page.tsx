@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import * as React from 'react';
 import { SchemaType } from '@/model';
-import { processRichText, generateSchema, fetchContactPage, fetchAddress, fetchSeoMetaData } from '@/lib';
+import { processRichText, generateSchema, fetchContactPage, fetchSeoMetaData } from '@/lib';
 import { ContactForm, GoogleMaps, SchemaTag, SectionContainer, SectionTitle } from '@/components';
 import '@/css/pages/contact-page.css';
 
