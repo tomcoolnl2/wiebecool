@@ -1,0 +1,8 @@
+
+.hero-banner {
+    @apply mb-10 aspect-video md:aspect-banner;
+}
+
+.hero-banner img {
+    @apply min-h-full max-w-none;
+}

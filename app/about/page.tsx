@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Metadata } from 'next';
 import * as React from 'react';
+import { AboutPage, SchemaType } from '@/model';
 import { fetchAboutPage, fetchSeoMetaData, generateSchema } from '@/lib';
 import {
 	type RenderComponentItem,
@@ -10,7 +11,7 @@ import {
 	SectionTitle,
 	SchemaTag,
 } from '@/components';
-import { AboutPage, SchemaType } from '@/model';
+import '@/css/pages/about-page.css';
 
 export async function generateMetadata(): Promise<Metadata> {
 	const { seoMetaData } = await fetchSeoMetaData('4nI3oprys4FZujusjxmQcz');
@@ -18,23 +19,30 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function About() {
-	const aboutPage: AboutPage = await fetchAboutPage();
+	const aboutPage = await fetchAboutPage();
+	const jsonLd = generateSchema(aboutPage, SchemaType.ABOUT_PAGE);
 	const hero = aboutPage.bannerImage;
 	const blocks = aboutPage.buildingBlocksCollection?.items || [];
-	const jsonLd = generateSchema(aboutPage, SchemaType.ABOUT_PAGE);
 	return (
 		<SectionContainer name={'about'}>
 			<SchemaTag schema={jsonLd} />
 			<div className="container">
 				<div className="about-page page">
 					<SectionTitle pageName={aboutPage.name} title={aboutPage.title} />
-					<div className="shadow-lg w-full h-80 relative mb-[35px]">
-						<Image src={hero.url} alt={hero.description} fill priority />
+					<div className="hero-banner image-container">
+						<Image
+							src={hero.url}
+							alt={hero.description}
+							priority
+							className="image-centered"
+							width={1200}
+							height={500}
+						/>
 					</div>
 					{blocks.map((item: RenderComponentItem, i: number) => (
 						<RenderComponent key={i} item={item} />
 					))}
-					<aside className="text-block pt-5 pb-8 mt-8">
+					<aside>
 						<ContactDetails />
 					</aside>
 				</div>

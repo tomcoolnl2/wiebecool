@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { creator, formatStatus } from '@/lib';
 import { type RenderComponentItem } from './hoc/RenderComponent';
 import { PageType, ReWriteRule } from '@/model';
+import '@/css/components/cards.css';
 
 interface PortFolioImage {
 	url: string;
@@ -44,9 +45,9 @@ export const PortfolioCardsComponent: React.FC<Props> = ({ item }) => {
 					className="product-card cursor-pointer w-full md:w-1/2 max-w-md overflow-hidden shadow-lg relative mb-6"
 				>
 					<a href={`${ReWriteRule[PageType.DetailPage]}${card.slug}`} className="block">
-						<div className="image relative overflow-hidden">
+						<div className="image-container aspect-square">
 							<Image
-								className="w-full"
+								className="image-centered image-zoomable image-grayscale"
 								src={card.imageCollection.items[0].url + '?w=450'}
 								alt={card.imageCollection.items[0].title || creator.description}
 								width={450}

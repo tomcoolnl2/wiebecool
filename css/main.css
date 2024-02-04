@@ -134,15 +134,6 @@ h6 {
 	color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
-.product-cards-full-link {
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-	left: 0px;
-	z-index: 4;
-}
-
 .entry {
 	position: relative;
 }
@@ -330,21 +321,6 @@ body.dark .cursor-outer.cursor-hover {
 	opacity: 0;
 }
 
-body.dark .about-page .description .right > ul > li a {
-	--tw-text-opacity: 1;
-	color: rgb(187 187 187 / var(--tw-text-opacity));
-}
-
-body.dark .about-page .description .right > ul > li a:hover {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-body.dark .about-page .description .right > ul > li span {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
 body.dark .collection-page .portfolio_filter ul li a {
 	--tw-text-opacity: 1;
 	color: rgb(187 187 187 / var(--tw-text-opacity));
@@ -355,15 +331,7 @@ body.dark .collection-page .portfolio_filter ul li a:hover {
 	color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-body.dark .product-card .details .date a {
-	--tw-text-opacity: 1;
-	color: rgb(187 187 187 / var(--tw-text-opacity));
-}
 
-body.dark .product-card .details .date a:hover {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
 
 body.dark .contact-page .fields ul li input {
 	border-color: rgba(255, 255, 255, 0.2);
@@ -407,14 +375,6 @@ body.dark .read-more a {
 body.dark .read-more a:before {
 	--tw-bg-opacity: 1;
 	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-body.dark .about-page .about_title {
-	border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-body.dark .about-page .text-block {
-	border-color: rgba(255, 255, 255, 0.1);
 }
 
 body.dark #preloader:before,

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { PageType, ReWriteRule, NavigationPageEntry, Slug } from '@/model';
 import { ensureLeadingSlash } from '@/lib';
+import React from 'react';
 
 function hrefBuilder(typename: PageType, slug: string): Slug {
 	const formattedSlug: Slug = ensureLeadingSlash(slug);
@@ -25,10 +26,17 @@ interface NavigationLinkProps {
 }
 
 const NavigationLink: React.FC<NavigationLinkProps> = ({ useHrefBuilder, item, slug, path, onClick }) => {
+	//
 	const href = useHrefBuilder ? hrefBuilder(item.page.__typename, slug) : `/${slug}`;
+
+	const currentPage = React.useMemo(
+		() => (!path.length && href === '/') || path.slice(-1)[0] === slug,
+		[path, href, slug]
+	);
+
 	return (
 		<Link
-			className={`navigation-link${path.slice(-1)[0] === slug ? ' text-[#b7950b]' : ' text-gray-300'}`}
+			className={`navigation-link${currentPage ? ' active' : ''}`}
 			href={href}
 			role="link"
 			onClick={() => onClick?.()}

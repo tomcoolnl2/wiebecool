@@ -54,13 +54,13 @@ export default async function CollectionPage({ params }: Props) {
 			<div className="container">
 				<div className="collection-page page">
 					<SectionTitle pageName={collectionPage.name} title={collectionPage.title} />
-					{collectionPage.subtitle && <h2 className="mb-5">{collectionPage.subtitle}</h2>}
+					{collectionPage.subtitle && <h2 className="text-xl mb-5">{collectionPage.subtitle}</h2>}
 					{collectionPage.description && (
 						<div className="rich-text-block">{processRichText(collectionPage.description.json)}</div>
 					)}
 					<div className="collection">
 						{collectionPage.collection.map((item) => (
-							<div key={item.sys.id} className="image-container image-container-square">
+							<div key={item.sys.id} className="image-container image-container-bordered aspect-square">
 								{item.imageCollection.items.map((img) => (
 									<Link
 										key={item.sys.id + '-img'}
@@ -73,7 +73,7 @@ export default async function CollectionPage({ params }: Props) {
 											alt={img.description}
 											width={400}
 											height={400}
-											className="zoomable-centered-image"
+											className="image-centered image-zoomable image-grayscale"
 											priority
 										/>
 									</Link>
