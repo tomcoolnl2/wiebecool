@@ -17,10 +17,10 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 	return (
 		<>
 			<header className="top-bar z-30 absolute top-1 left-0">
-				<a href="/" className="visually-hidden">
+				<Link href="/" className="visually-hidden">
 					<h1>{creator.name}</h1>
 					<h2>{creator.occupation}</h2>
-				</a>
+				</Link>
 				<SocialMediaLinks size="2xl" />
 				<div
 					className={`cursor-pointer hamburger--slider hamburger${isMobileOpen ? ' is-active' : ''}`}
