@@ -1,4 +1,10 @@
+'use client';
+import dynamic from 'next/dynamic';
 import * as React from 'react';
+import { AlertMessage } from '@/model';
+import { sendEmail } from '@/actions';
+
+const Alert = dynamic(() => import('@/components/Alert'), { ssr: false });
 
 interface Props {
 	formIntro: string;
@@ -6,8 +12,18 @@ interface Props {
 }
 
 export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
+	//
+	const [alert, setAlert] = React.useState<AlertMessage | null>(null);
+
+	const sendEmailData = React.useCallback(async (formData: FormData) => {
+		const response = await sendEmail(formData);
+		if (response) {
+			setAlert(response);
+		}
+	}, []);
+
 	return (
-		<form noValidate>
+		<form noValidate action={sendEmailData}>
 			<div className="rich-text-block">{formIntro}</div>
 			<div className="field">
 				<label htmlFor="name">Naam:</label>
@@ -21,8 +37,7 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 				<label htmlFor="message">Bericht:</label>
 				<textarea name="message" id="message" placeholder="Bericht" />
 			</div>
-			{/* Error messages */}
-			{/* Success message */}
+			{alert && <Alert {...alert} />}
 			<div className="submit-button">
 				<button type="submit">{buttonText}</button>
 			</div>
