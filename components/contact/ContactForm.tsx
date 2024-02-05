@@ -22,20 +22,24 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 		}
 	}, []);
 
+	const handleOnChange = React.useCallback(() => {
+		alert && setAlert(null);
+	}, [alert]);
+
 	return (
 		<form noValidate action={sendEmailData}>
 			<div className="rich-text-block">{formIntro}</div>
 			<div className="field">
 				<label htmlFor="name">Naam:</label>
-				<input name="name" id="name" type="text" placeholder="Naam" />
+				<input name="name" id="name" type="text" placeholder="Naam" onChange={handleOnChange} />
 			</div>
 			<div className="field">
 				<label htmlFor="email">Email:</label>
-				<input name="email" id="email" type="email" placeholder="Email" />
+				<input name="email" id="email" type="email" placeholder="Email" onChange={handleOnChange} />
 			</div>
 			<div className="field">
 				<label htmlFor="message">Bericht:</label>
-				<textarea name="message" id="message" placeholder="Bericht" />
+				<textarea name="message" id="message" placeholder="Bericht" onChange={handleOnChange} />
 			</div>
 			{alert && <Alert {...alert} />}
 			<div className="submit-button">
