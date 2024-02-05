@@ -1,4 +1,56 @@
+
+.contact-page form {
+    @apply w-full;
+}
+
+.contact-page .field {
+    @apply mb-8;
+}
+
+.contact-page .field label {
+    @apply block mb-1;
+}
+
+.contact-page input, .contact-page textarea {
+    @apply 
+        w-full 
+        text-white 
+        border 
+        bg-transparent 
+        border-solid 
+        border-[rgba(255,255,255,0.2)] 
+        focus:border 
+        focus:border-solid 
+        focus:border-white;
+}
+
+.contact-page input:focus {
+    outline: none;
+}
+
+.contact-page textarea {
+    @apply h-[120px] resize-none
+}
+
+.contact-page textarea:focus {
+    outline: none;
+}
+
+.contact-details {
+    @apply text-left;
+}
+
 .submit-button button {
-    @apply inline-block bg-black text-white transition-all ease-in-out duration-300 pt-2 pb-3 px-10;
+    @apply 
+        inline-block 
+        bg-buddha-gold-700 
+        hover:bg-buddha-gold-800 
+        text-gray-300 
+        text-shadow-sm 
+        transition-all 
+        ease-in-out 
+        duration-300 
+        py-2 
+        px-10;
 }
   

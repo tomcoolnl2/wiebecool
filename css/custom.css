@@ -195,51 +195,7 @@
 	overflow: hidden;
 }
 
-.contact-page .fields ul li input {
-	width: 100%;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	background-color: transparent;
-}
 
-.contact-page .fields ul li input:focus {
-	outline: none;
-	border: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-.contact-page .fields .last textarea {
-	width: 100%;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	height: 120px;
-	resize: none;
-	margin-bottom: 20px;
-	background-color: transparent;
-}
-
-.contact-page .fields .last textarea:focus {
-	outline: none;
-	border: 1px solid rgba(0, 0, 0, 0.5);
-}
-
-.contact-page .empty_notice {
-	color: #f52225;
-	margin-bottom: 7px;
-	display: none;
-	text-align: left;
-	font-weight: 500;
-}
-
-.contact-page .contact_error {
-	color: #f52225;
-	text-align: left;
-	font-weight: 500;
-}
-
-.contact-page .returnmessage {
-	color: #3a00ff;
-	margin-bottom: 7px;
-	text-align: left;
-	font-weight: 500;
-}
 
 .mobile-menu.opened {
 	right: 0px;

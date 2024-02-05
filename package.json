@@ -13,7 +13,6 @@
     "@contentful/rich-text-plain-text-renderer": "16.0.11",
     "@contentful/rich-text-react-renderer": "15.19.4",
     "@contentful/rich-text-types": "16.3.4",
-    "@emailjs/browser": "3.12.1",
     "@fortawesome/fontawesome-svg-core": "6.5.1",
     "@fortawesome/free-brands-svg-icons": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "6.5.1",

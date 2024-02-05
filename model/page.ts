@@ -142,6 +142,7 @@ export interface ContactPage extends BasePage {
 	type: PageType.ContactPage;
 	artist: Artist;
 	address: Address;
+	formIntro: string;
 	submitButtonText: string;
 }
 

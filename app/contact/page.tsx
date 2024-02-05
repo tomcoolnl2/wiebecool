@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import * as React from 'react';
 import { PageType, SchemaType } from '@/model';
 import { processRichText, generateSchema, fetchContactPage, fetchSeoMetaData } from '@/lib';
-import { ContactForm, GoogleMaps, SchemaTag, SectionContainer, PageHeader } from '@/components';
+import { ContactForm, SchemaTag, SectionContainer, PageHeader, ContactDetails } from '@/components';
 import '@/css/pages/contact-page.css';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -19,9 +19,11 @@ export default async function Contact() {
 			<div className="container">
 				<div className="contact-page page">
 					<PageHeader title={contactPage.title} pageType={PageType.ContactPage} />
-					<GoogleMaps address={contactPage.address} />
-					<div className="rich-text-block-border">{processRichText(contactPage.description.json)}</div>
-					<ContactForm buttonText={contactPage.submitButtonText} />
+					<div className="rich-text-block">{processRichText(contactPage.description.json)}</div>
+					<div className="rich-text-block-border">
+						<ContactDetails />
+					</div>
+					<ContactForm formIntro={contactPage.formIntro} buttonText={contactPage.submitButtonText} />
 				</div>
 			</div>
 		</SectionContainer>
