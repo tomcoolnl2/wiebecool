@@ -2,7 +2,7 @@ import * as React from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { Document, INLINES } from '@contentful/rich-text-types';
-import { Address, Slug } from '@/model';
+import { Address, AlertMessage, Slug } from '@/model';
 
 /** The locale of the website */
 export const locale = 'nl-NL';
@@ -118,4 +118,31 @@ export function ensureLeadingSlash(str: string): Slug {
 export function toLocaleDateString(dateString: string): string {
 	const date = new Date(dateString);
 	return date.toLocaleDateString(locale);
+}
+
+/**
+ * Validates the contact form data.
+ * @param {FormData} formData - The form data containing the email, name, and message.
+ * @returns {AlertMessage} An alert message indicating the validation result.
+ */
+export function validateContactForm(formData: FormData): AlertMessage {
+	//
+	const email = formData.get('email');
+	const name = formData.get('name');
+	const message = formData.get('message');
+
+	if (!name) {
+		return { type: 'error', message: 'Vul een naam in.' };
+	}
+
+	const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	if (!email || typeof email !== 'string' || !emailRegex.test(email)) {
+		return { type: 'error', message: 'Verkeerd email adres.' };
+	}
+
+	if (!message || typeof message !== 'string') {
+		return { type: 'error', message: 'Vul een vraag in.' };
+	}
+
+	return { type: 'success', message: 'Passed.' };
 }
