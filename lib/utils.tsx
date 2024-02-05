@@ -109,3 +109,13 @@ export function ensureLeadingSlash(str: string): Slug {
 	}
 	return str as Slug;
 }
+
+/**
+ * Converts a date string to a localized date string.
+ * @param {string} dateString - The input date string in ISO 8601 format.
+ * @returns {string} The localized date string.
+ */
+export function toLocaleDateString(dateString: string): string {
+	const date = new Date(dateString);
+	return date.toLocaleDateString(locale);
+}

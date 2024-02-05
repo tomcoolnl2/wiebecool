@@ -1,4 +1,24 @@
 
+.detail-page-details-wrapper {
+    @apply flex flex-col md:flex-row md:gap-8;
+}
+
+.detail-page-main-image-wrapper {
+    @apply w-full md:w-[60%];
+}
+
 .detail-page-main-image {
-    @apply max-w-sm mx-auto mb-10;
+    @apply w-full mx-auto mb-10;
+}
+
+.detail-page-details {
+    @apply w-full md:w-72;
+}
+
+.detail-page-details ul {
+    @apply list-none border-solid border-[rgba(255,255,255,0.1)] border-y py-7 mb-10;
+}
+
+.detail-page-details .label {
+    @apply min-w-[90px] mb-2 mr-3 font-bold text-white;
 }

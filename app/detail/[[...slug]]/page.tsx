@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { PageType, ReWriteRule, SchemaType, Slug } from '@/model';
-import { fetchDetailPage, fetchSeoMetaDataBySlug, generateSchema } from '@/lib';
+import { fetchDetailPage, fetchSeoMetaDataBySlug, formatStatus, generateSchema, toLocaleDateString } from '@/lib';
 import { baseUrl, ensureLeadingSlash, processRichText } from '@/lib';
 import { ContactDetails, SchemaTag, SectionContainer, PageHeader } from '@/components';
 import '@/css/pages/detail-page.css';
@@ -39,14 +39,43 @@ export default async function DetailPage({ params }: PageProps) {
 					{detailPage.description && (
 						<div className="rich-text-block">{processRichText(detailPage.description.json)}</div>
 					)}
-					<div className="detail-page-main-image image-container-borderedcarousel-maon">
-						<Image
-							src={detailPageImg.url + '?w=400'}
-							title={detailPageImg.title}
-							alt={detailPageImg.description}
-							width={400}
-							height={400}
-						/>
+					<div className="detail-page-details-wrapper">
+						<div className="detail-page-main-image-wrapper">
+							<div className="detail-page-main-image image-container-bordered">
+								<Image
+									src={detailPageImg.url + '?w=700'}
+									title={detailPageImg.title}
+									alt={detailPageImg.description}
+									width={700}
+									height={700}
+								/>
+							</div>
+						</div>
+						<div className="detail-page-details">
+							<ul>
+								<li>
+									<span className="label">Status:</span>
+									<span>{(detailPage.status && formatStatus(detailPage.status)) ?? '-'}</span>
+								</li>
+								<li>
+									<span className="label">Datum:</span>
+									<span>
+										{(detailPage.creationDate && toLocaleDateString(detailPage.creationDate)) ??
+											'-'}
+									</span>
+								</li>
+								<li>
+									<span className="label">Materiaal:</span>
+									<span>{detailPage.material ?? '-'}</span>
+								</li>
+								{detailPage.dimensions && (
+									<li>
+										<span className="label">Dimensions:</span>
+										<span>{detailPage.dimensions}</span>
+									</li>
+								)}
+							</ul>
+						</div>
 					</div>
 					{detailPage.imageCarousel?.imageCollection && <Carousel {...detailPage.imageCarousel} />}
 					<aside className="text-block pt-5 pb-8 mt-8 text-center">
