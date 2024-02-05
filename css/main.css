@@ -295,40 +295,6 @@ body.dark .cursor-outer.cursor-hover {
 	opacity: 0;
 }
 
-body.dark .contact-page .fields ul li input {
-	border-color: rgba(255, 255, 255, 0.2);
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-body.dark .contact-page .fields .last textarea {
-	border-color: rgba(255, 255, 255, 0.2);
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-body.dark .contact-page .fields .\!last textarea {
-	border-color: rgba(255, 255, 255, 0.2);
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-body.dark .contact-page .fields ul li input:focus {
-	border-color: rgba(255, 255, 255, 1);
-}
-
-body.dark .contact-page .fields .last textarea:focus {
-	border-color: rgba(255, 255, 255, 1);
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-body.dark .contact-page .fields .\!last textarea:focus {
-	border-color: rgba(255, 255, 255, 1);
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
 body.dark .read-more a {
 	--tw-text-opacity: 1;
 	color: rgb(255 255 255 / var(--tw-text-opacity));

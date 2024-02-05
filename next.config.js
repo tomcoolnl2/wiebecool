@@ -4,7 +4,6 @@ const nextConfig = {
 	reactStrictMode: true,
 	experimental: { 
 		webVitalsAttribution: ['CLS', 'LCP'],
-		optimizeCss: true 
 	},
 	images: {
 		remotePatterns: [

@@ -7,6 +7,7 @@ query ContactPage($sysID: String!) {
 		description {
 			json
 		}
+		formIntro
 		submitButtonText
 	}
 }
