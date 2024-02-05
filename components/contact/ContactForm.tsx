@@ -1,5 +1,6 @@
 'use client';
 import dynamic from 'next/dynamic';
+import { useFormStatus } from 'react-dom';
 import * as React from 'react';
 import { AlertMessage } from '@/model';
 import { sendEmail } from '@/actions';
@@ -13,12 +14,17 @@ interface Props {
 
 export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 	//
+	const formRef = React.useRef<HTMLFormElement>(null);
 	const [alert, setAlert] = React.useState<AlertMessage | null>(null);
+	const { pending } = useFormStatus();
 
 	const sendEmailData = React.useCallback(async (formData: FormData) => {
 		const response = await sendEmail(formData);
 		if (response) {
 			setAlert(response);
+			if (response.type === 'success') {
+				formRef.current?.reset();
+			}
 		}
 	}, []);
 
@@ -27,7 +33,7 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 	}, [alert]);
 
 	return (
-		<form noValidate action={sendEmailData}>
+		<form ref={formRef} action={sendEmailData} noValidate>
 			<div className="rich-text-block">{formIntro}</div>
 			<div className="field">
 				<label htmlFor="name">Naam:</label>
@@ -43,7 +49,9 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 			</div>
 			{alert && <Alert {...alert} />}
 			<div className="submit-button">
-				<button type="submit">{buttonText}</button>
+				<button type="submit" disabled={pending}>
+					{buttonText}
+				</button>
 			</div>
 		</form>
 	);

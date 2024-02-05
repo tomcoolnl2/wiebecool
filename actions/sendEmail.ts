@@ -11,11 +11,11 @@ export const sendEmail = async (formData: FormData): Promise<AlertMessage> => {
 	const message = formData.get('message');
 
 	if (!senderEmail || typeof senderEmail !== 'string') {
-		return { type: 'error', message: 'Invalid email' };
+		return { type: 'error', message: 'Verkeerd e-mail adres.' };
 	}
 
-	if (!message || typeof message !== 'string' || message.length > 300) {
-		return { type: 'error', message: 'Invalid message' };
+	if (!message || typeof message !== 'string' || message.length > 3000) {
+		return { type: 'error', message: 'Bericht te lang' };
 	}
 
 	resend.emails.send({
