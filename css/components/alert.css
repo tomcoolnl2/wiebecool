@@ -1,6 +1,6 @@
 
 .alert {
-    @apply p-4 mb-4 text-sm bg-gray-800 ;
+    @apply p-4 mb-6 text-sm bg-gray-800 ;
 }
 
 .alert.error {

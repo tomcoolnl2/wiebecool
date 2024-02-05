@@ -4,6 +4,7 @@ import { useFormStatus } from 'react-dom';
 import * as React from 'react';
 import { AlertMessage } from '@/model';
 import { sendEmail } from '@/actions';
+import { validateContactForm } from '@/lib';
 
 const Alert = dynamic(() => import('@/components/Alert'), { ssr: false });
 
@@ -19,12 +20,17 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 	const { pending } = useFormStatus();
 
 	const sendEmailData = React.useCallback(async (formData: FormData) => {
-		const response = await sendEmail(formData);
-		if (response) {
-			setAlert(response);
-			if (response.type === 'success') {
-				formRef.current?.reset();
-			}
+		// client side validation
+		let alertMessage = validateContactForm(formData);
+		if (alertMessage.type === 'error') {
+			setAlert(alertMessage);
+			return null;
+		}
+		// server side validation
+		alertMessage = await sendEmail(formData);
+		setAlert(alertMessage);
+		if (alertMessage.type === 'success') {
+			formRef.current?.reset();
 		}
 	}, []);
 
@@ -49,7 +55,7 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 			</div>
 			{alert && <Alert {...alert} />}
 			<div className="submit-button">
-				<button type="submit" disabled={pending}>
+				<button type="submit" disabled={pending || !!alert}>
 					{buttonText}
 				</button>
 			</div>
