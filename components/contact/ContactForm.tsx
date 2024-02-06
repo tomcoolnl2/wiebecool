@@ -54,11 +54,9 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 				<textarea name="message" id="message" placeholder="Bericht" onChange={handleOnChange} />
 			</div>
 			{alert && <Alert {...alert} />}
-			<div className="submit-button">
-				<button type="submit" disabled={pending || !!alert}>
-					{buttonText}
-				</button>
-			</div>
+			<button className="button" type="submit" disabled={pending || !!alert}>
+				{buttonText}
+			</button>
 		</form>
 	);
 };
