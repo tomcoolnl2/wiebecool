@@ -112,7 +112,7 @@
 	}
 
 	.page-header {
-		@apply mb-8 md:mb-16;
+		@apply mb-8 md:mb-10;
 	}
 
 	.page-header-title {
