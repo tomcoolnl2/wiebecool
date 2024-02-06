@@ -100,10 +100,6 @@ h6 {
 		left: 70px;
 	}
 
-	.navigation-link {
-		font-size: 16px;
-	}
-
 	.main-content {
 		padding-left: 350px;
 	}
@@ -111,7 +107,14 @@ h6 {
 
 /******** Larger Screens *********/
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
+
+	.container {
+		padding-left: 20px;
+		padding-right: 20px;
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
 	
 	.top-bar {
 		position: absolute;
@@ -165,21 +168,5 @@ h6 {
 	.collection-page,
 	.contact-page {
 		padding-top: 130px;
-	}
-}
-
-/******** Middle Screens *********/
-
-@media (max-width: 1040px) {
-
-	.main-navigation li a {
-		font-size: 16px;
-	}
-
-	.container {
-		padding-left: 20px;
-		padding-right: 20px;
-		padding-top: 0px;
-		padding-bottom: 0px;
 	}
 }

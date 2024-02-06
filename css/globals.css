@@ -129,7 +129,7 @@
 	}
 
 	.navigation-link {
-		@apply text-shadow shadow-slate-800 text-gray-300 hover:text-white;
+		@apply text-base text-shadow shadow-slate-800 text-gray-300 hover:text-white ;
 	}
 
 	.navigation-link.active {
@@ -158,14 +158,30 @@
 	}
 	
 	.hamburger {
-		@apply overflow-visible cursor-pointer ease-linear duration-[0.15s] transition-[opacity,filter] normal-case text-inherit bg-transparent hidden absolute m-0 p-0 border-0 right-4 top-4;
+		@apply 
+			overflow-visible
+			cursor-pointer
+			ease-linear
+			duration-[0.15s]
+			transition-[opacity,filter]
+			normal-case
+			text-inherit
+			bg-transparent
+			block
+			lg:hidden
+			absolute
+			m-0
+			p-0
+			border-0
+			right-4
+			top-4;
 	}
-
+/* 
 	@media (max-width: 1200px) {
 		.hamburger {
 			@apply block;
 		}
-	}
+	} */
 
 	.hamburger.is-active:hover,
 	.hamburger:hover {
