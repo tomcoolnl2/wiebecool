@@ -62,8 +62,12 @@
 	@apply absolute z-[4] inset-0;
 }
 
+.read-more {
+	@apply relative w-full overflow-hidden;
+}
+
 .read-more > span:before {
-	@apply absolute content-[''] bg-[white] w-full h-px origin-[left_center] animate-[read-more-anim] m-auto scale-x-[0.2] left-0 inset-y-0;
+	@apply absolute content-[''] bg-white w-full h-px origin-[left_center] animate-[read-more-anim] m-auto scale-x-[0.2] left-0 inset-y-0;
 	animation-fill-mode: forwards;
 	animation-duration: 0.4s;
 	animation-timing-function: cubic-bezier(0.6, 0.01, 0, 1);
@@ -71,4 +75,4 @@
   
 .read-more > span > span {
 	@apply inline-block relative text-[white] z-[1] transition-[0.6s] duration-[cubic-bezier(0.6,0.01,0,1)] translate-x-[-110%];
-}  
+} 
