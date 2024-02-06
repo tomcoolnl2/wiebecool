@@ -27,7 +27,7 @@
 	
 
 	body {
-		@apply overflow-x-hidden text-gray-300 bg-slate-700 text-base/8;
+		@apply font-mulish overflow-x-hidden text-gray-300 bg-slate-700 text-base/8;
 	}
 
 	body::-webkit-scrollbar {

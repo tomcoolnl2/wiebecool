@@ -38,7 +38,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children })
 
 	return (
 		<html lang={locale}>
-			<body className={`${montserrat.variable} ${mulish.variable} ${poppins.variable} font-mulish`}>
+			<body className={`${montserrat.variable} ${mulish.variable} ${poppins.variable}`}>
 				<PreLoader />
 				<div className="site-wrapper">
 					<MainNavigation title={title} navigation={navigation} />
