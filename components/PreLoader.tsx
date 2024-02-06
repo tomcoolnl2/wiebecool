@@ -1,6 +1,7 @@
 'use client';
 import * as React from 'react';
 import { detectMobile } from '@/lib';
+import '@/css/components/preloader.css';
 
 export const PreLoader = () => {
 	//
@@ -23,8 +24,8 @@ export const PreLoader = () => {
 
 	return (
 		!isMobile && (
-			<div id="preloader" ref={preloaderRef}>
-				<div className="loader_line"></div>
+			<div className="preloader" ref={preloaderRef}>
+				<div className="preloader-line"></div>
 			</div>
 		)
 	);
