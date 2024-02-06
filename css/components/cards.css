@@ -1,78 +1,20 @@
-@keyframes read-more-anim {
-	0% {
-		transform-origin: right center;
-		transform: scaleX(0.2);
-	}
-	70% {
-		transform-origin: right center;
-	}
-	71% {
-		transform-origin: left center;
-		transform: scaleX(1);
-	}
 
-	100% {
-		transform-origin: left center;
-		transform: scaleX(0.2);
-	}
+.cards {
+	@apply mx-auto flex flex-wrap justify-center mb-10
 }
 
-@keyframes read-more-anim-2 {
-	0% {
-		transform-origin: left center;
-		transform: scaleX(0.2);
-	}
-	70% {
-		transform-origin: left center;
-		transform: scaleX(1);
-	}
-	71% {
-		transform-origin: right center;
-	}
-	100% {
-		transform-origin: right center;
-		transform: scaleX(0.2);
-	}
+.card {
+	@apply w-full max-w-sm px-2 mb-8;
 }
 
-.product-cards {
-	@apply m-auto;
+.card-content {
+	@apply p-6 bg-slate-800;
 }
 
-.product-card > a {
-	@apply bg-gray-600;
+.card-title {
+	@apply text-white text-lg font-medium mb-4 w-full truncate;
 }
 
-.product-card:hover .read-more span:before {
-	animation: read-more-anim-2;
-	animation-fill-mode: forwards;
-	animation-duration: 0.4s;
-	animation-timing-function: cubic-bezier(0.6, 0.01, 0, 1);
+.card .button {
+	@apply w-40;
 }
-
-.product-card:hover .read-more span {
-	@apply translate-x-[0%];
-}
-
-.product-card .extra:before {
-	@apply absolute h-px w-full bg-[rgba(255,255,255,0.2)] content-[''] -bottom-3.5;
-}
-
-.product-cards-full-link {
-	@apply absolute z-[4] inset-0;
-}
-
-.read-more {
-	@apply relative w-full overflow-hidden;
-}
-
-.read-more > span:before {
-	@apply absolute content-[''] bg-white w-full h-px origin-[left_center] animate-[read-more-anim] m-auto scale-x-[0.2] left-0 inset-y-0;
-	animation-fill-mode: forwards;
-	animation-duration: 0.4s;
-	animation-timing-function: cubic-bezier(0.6, 0.01, 0, 1);
-}
-  
-.read-more > span > span {
-	@apply inline-block relative text-[white] z-[1] transition-[0.6s] duration-[cubic-bezier(0.6,0.01,0,1)] translate-x-[-110%];
-} 

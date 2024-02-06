@@ -1,6 +1,6 @@
 import { Document } from '@contentful/rich-text-types';
 import { SitemapItemResponse, SysID } from '@/model';
-import { PortfolioCards, TextBlock } from '@/components';
+import { DetailCardSchema, TextBlock } from '@/components';
 
 export type RichText = Document & { json: any };
 
@@ -106,7 +106,7 @@ export interface AboutPage extends BasePage {
 	type: PageType.AboutPage;
 	bannerImage: ItemImage;
 	buildingBlocksCollection: {
-		items: Array<TextBlock | PortfolioCards>;
+		items: Array<TextBlock | DetailCardSchema>;
 	};
 	artist: Artist;
 }

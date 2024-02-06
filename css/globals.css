@@ -186,4 +186,23 @@
 	.page-footer a {
 		@apply ml-2;
 	}
+
+	.button {
+		@apply 
+			inline-block 
+			bg-buddha-gold-700 
+			hover:bg-buddha-gold-800
+			text-gray-300
+			hover:text-white
+			text-shadow-sm 
+			transition-all 
+			ease-in-out 
+			duration-300 
+			py-2 
+			px-10;
+	}
+
+	.button:disabled {
+		@apply pointer-events-none cursor-default opacity-70;
+	}
 }
