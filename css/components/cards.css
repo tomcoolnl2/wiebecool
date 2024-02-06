@@ -1,6 +1,5 @@
-
 .cards {
-	@apply mx-auto flex flex-wrap justify-center mb-10
+	@apply mx-auto flex flex-wrap justify-center mb-10;
 }
 
 .card {

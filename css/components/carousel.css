@@ -1,35 +1,32 @@
-
 @import 'swiper/css';
 @import 'swiper/css/free-mode';
 @import 'swiper/css/navigation';
 @import 'swiper/css/thumbs';
 
 .carousel {
-    
 }
 
 .carousel-main {
-    @apply w-[80%] relative aspect-square;
+	@apply w-[80%] relative aspect-square;
 }
 
 .carousel-main-slide {
-    @apply w-full relative mb-3 bg-gray-700;
+	@apply w-full relative mb-3 bg-gray-700;
 }
 
-
 .carousel-main-image {
-    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 origin-center max-w-full min-h-full;
+	@apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 origin-center max-w-full min-h-full;
 }
 
 .carousel-slide-description {
-    @apply w-full text-white absolute bottom-0 p-5 text-center;
-    background-color: rgba(0, 0, 0, 0.5);
+	@apply w-full text-white absolute bottom-0 p-5 text-center;
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 .carousel-thumbnails {
-    @apply w-[80%] mt-5;
+	@apply w-[80%] mt-5;
 }
 
 .carousel-thumbnails .swiper-slide-thumb-active .zoomable-centered-image {
-    @apply grayscale-0;
+	@apply grayscale-0;
 }

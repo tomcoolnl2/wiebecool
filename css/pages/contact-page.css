@@ -1,19 +1,18 @@
-
 .contact-page form {
-    @apply w-full;
+	@apply w-full;
 }
 
 .contact-page .field {
-    @apply mb-8;
+	@apply mb-8;
 }
 
 .contact-page .field label {
-    @apply block mb-1;
+	@apply block mb-1;
 }
 
-.contact-page input, .contact-page textarea {
-    @apply 
-        w-full 
+.contact-page input,
+.contact-page textarea {
+	@apply w-full 
         text-white 
         border 
         bg-transparent 
@@ -25,17 +24,17 @@
 }
 
 .contact-page input:focus {
-    outline: none;
+	outline: none;
 }
 
 .contact-page textarea {
-    @apply h-[120px] resize-none
+	@apply h-[120px] resize-none;
 }
 
 .contact-page textarea:focus {
-    outline: none;
+	outline: none;
 }
 
 .contact-details {
-    @apply text-left;
+	@apply text-left;
 }

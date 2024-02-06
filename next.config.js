@@ -2,7 +2,7 @@
 
 const nextConfig = {
 	reactStrictMode: true,
-	experimental: { 
+	experimental: {
 		webVitalsAttribution: ['CLS', 'LCP'],
 	},
 	images: {

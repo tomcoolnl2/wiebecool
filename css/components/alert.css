@@ -1,12 +1,11 @@
-
 .alert {
-    @apply p-4 mb-6 text-sm bg-gray-800 ;
+	@apply p-4 mb-6 text-sm bg-gray-800;
 }
 
 .alert.error {
-    @apply text-red-400;
+	@apply text-red-400;
 }
 
 .alert.success {
-    @apply text-green-400;
+	@apply text-green-400;
 }

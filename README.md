@@ -7,6 +7,7 @@ The project uses Node 18.17.0:
 ```bash
 nvm use
 ```
+
 will install the correct version.
 
 Run the development server:
@@ -17,7 +18,6 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
 
 ## Deploy on Vercel
 

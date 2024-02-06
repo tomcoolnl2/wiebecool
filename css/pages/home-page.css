@@ -1,6 +1,5 @@
-
 .home-page .home-content {
-    @apply flex items-center;
+	@apply flex items-center;
 }
 
 .inner-border {
@@ -21,7 +20,6 @@
 }
 
 @media (max-width: 1600px) {
-
 	.home-page .avatar {
 		width: 250px;
 	}
@@ -45,7 +43,6 @@
 }
 
 @media (max-width: 1040px) {
-
 	.home-page .home-content {
 		flex-direction: column;
 		text-align: center;
@@ -74,8 +71,7 @@
 		width: 200px;
 	}
 
-    .home-page .contact-details {
-        @apply text-center;
-    }
+	.home-page .contact-details {
+		@apply text-center;
+	}
 }
-
