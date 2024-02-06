@@ -1,0 +1,24 @@
+
+.mouse-cursor {
+	@apply fixed pointer-events-none rounded-[50%] left-0 top-0;
+	transform: translateZ(0);
+}
+
+.cursor-inner {
+	@apply ml-[-3px] mt-[-3px] w-1.5 h-1.5 z-50 bg-white;
+	transition: 
+		width 0.3s ease-in-out, height 0.3s ease-in-out,
+	 	margin 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.cursor-inner.cursor-hover {
+	@apply w-20 h-20 bg-white opacity-30 -ml-10 -mt-10;
+}
+
+.cursor-outer {
+	@apply ml-[-15px] mt-[-15px] w-[30px] h-[30px] box-border z-50 opacity-50 transition-all duration-[0.08s] ease-[ease-out] border-2 border-solid border-white;
+}
+
+.cursor-outer.cursor-hover {
+	@apply opacity-0;
+}

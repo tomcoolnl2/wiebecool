@@ -38,14 +38,12 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children })
 
 	return (
 		<html lang={locale}>
-			<body className={`dark ${montserrat.variable} ${mulish.variable} ${poppins.variable} font-mulish`}>
+			<body className={`${montserrat.variable} ${mulish.variable} ${poppins.variable}`}>
 				<PreLoader />
 				<div className="site-wrapper">
 					<MainNavigation title={title} navigation={navigation} />
-					<div className="main-content w-full min-h-[100vh] relative bg-[#f8f8f8]">
-						<main className="main-content-inner relative w-full border-solid border-[#ebebeb] border-l min-h-[100vh]">
-							{children}
-						</main>
+					<div className="main-content">
+						<main className="main-content-inner">{children}</main>
 					</div>
 				</div>
 				<Cursor />

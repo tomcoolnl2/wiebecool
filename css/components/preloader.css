@@ -1,0 +1,71 @@
+
+@keyframes lineheight {
+	0% {
+		height: 0%;
+	}
+	100% {
+		height: 100%;
+	}
+}
+
+@keyframes lineround {
+	0% {
+		transform: translateY(-100%);
+	}
+	100% {
+		transform: translateY(200%);
+	}
+}
+
+@keyframes preloadedzero {
+	0% {
+		width: 50%;
+	}
+	100% {
+		width: 0%;
+	}
+}
+
+.preloader {
+    @apply fixed h-screen w-full z-[99999] flex left-0 top-0;
+}
+
+.preloader:before,
+.preloader:after {
+  @apply content-[''] absolute w-6/12 h-full z-[-1] bg-white left-0 top-0;
+  transition: all 0.3s ease 0s;
+}
+
+.preloader:after {
+    @apply left-auto right-0;
+}
+
+.preloader .preloader-line {
+    @apply w-px h-60 relative overflow-hidden m-auto;
+	transition: all 0.8s ease 0s;
+}
+
+.preloader-line:before {
+    @apply content-[''] absolute w-px h-[0%] -translate-y-2/4 bg-black left-0 top-2/4;
+	animation: lineheight 1000ms ease-in-out 0s forwards;
+}
+
+.preloader-line:after {
+    @apply content-[''] absolute w-px h-full bg-gray-300 -translate-y-full left-0 top-0;
+	animation: lineround 1200ms linear 0s infinite;
+    animation-delay: 2000ms;
+}
+
+/*hiding all*/
+.preloaded .preloader-line:after {
+    @apply opacity-0;
+}
+
+.preloaded .preloader-line {
+    @apply opacity-0 h-full;
+}
+
+.preloaded:before,
+.preloaded:after {
+    animation: preloadedzero 300ms ease-in-out 500ms forwards;
+}

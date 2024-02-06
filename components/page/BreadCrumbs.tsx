@@ -24,7 +24,7 @@ export const BreadCrumbs: React.FC = () => {
 					</Link>
 				</li>
 				{path.map((item) => (
-					<li className="breadcrumb-item inline-block">
+					<li key={item} className="breadcrumb-item inline-block">
 						<FontAwesomeIcon icon={faChevronRight} size="2xs" className="arrow" />
 						<Link href={ReWriteRule[PageType.DetailPage]}>{item.replace(/-/g, ' ')}</Link>
 					</li>
