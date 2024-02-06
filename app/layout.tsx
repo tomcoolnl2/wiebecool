@@ -42,8 +42,8 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children })
 				<PreLoader />
 				<div className="site-wrapper">
 					<MainNavigation title={title} navigation={navigation} />
-					<div className="main-content w-full min-h-[100vh] relative">
-						<main className="main-content-inner relative w-full min-h-[100vh]">{children}</main>
+					<div className="main-content">
+						<main className="main-content-inner">{children}</main>
 					</div>
 				</div>
 				<Cursor />

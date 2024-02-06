@@ -10,8 +10,8 @@
         flex 
         lg:items-center 
         
-        w-[200px]
-        md:w-[280px]
+        w-52
+        md:w-72
         lg:w-80
         2xl:w-96
         h-screen 
@@ -24,8 +24,8 @@
         right-0
         lg:right-auto
 
-        translate-x-[200px]
-        md:translate-x-[280px]
+        translate-x-52
+        md:translate-x-72
         transition-transform
         duration-[0.3s]
         lg:translate-x-0
