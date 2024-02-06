@@ -42,7 +42,7 @@ export const PortfolioCardsComponent: React.FC<Props> = ({ item }) => {
 	return (
 		<aside className="cards">
 			{cards.map((card: Card, i) => (
-				<article className="card">
+				<article className="card" key={card.sys.id}>
 					<Link href={`${ReWriteRule[PageType.DetailPage]}${card.slug}`} className="block">
 						<div className="image-container aspect-square">
 							<Image

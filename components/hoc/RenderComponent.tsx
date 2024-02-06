@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { type TextBlock, TextBlockComponent } from '@/components/TextBlock';
-import { type DetailCardSchema, PortfolioCardsComponent } from '@/components/Cards';
+import { type DetailCardSchema, PortfolioCardsComponent } from '@/components/PortfolioCards';
 
 export type RenderComponentItem = TextBlock | DetailCardSchema;
 
