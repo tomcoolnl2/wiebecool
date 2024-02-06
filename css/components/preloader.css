@@ -39,7 +39,7 @@
 
 .preloader:before,
 .preloader:after {
-  @apply content-[''] absolute w-6/12 h-full z-[-1] bg-black left-0 top-0;
+  @apply content-[''] absolute w-6/12 h-full z-[-1] bg-white left-0 top-0;
   transition: all 0.3s ease 0s;
 }
 
@@ -53,12 +53,12 @@
 }
 
 .preloader-line:before {
-    @apply content-[''] absolute w-px h-[0%] -translate-y-2/4 bg-white left-0 top-2/4;
+    @apply content-[''] absolute w-px h-[0%] -translate-y-2/4 bg-black left-0 top-2/4;
 	animation: lineheight 1000ms ease-in-out 0s forwards;
 }
 
 .preloader-line:after {
-    @apply content-[''] absolute w-px h-full bg-slate-800 -translate-y-full left-0 top-0;
+    @apply content-[''] absolute w-px h-full bg-gray-300 -translate-y-full left-0 top-0;
 	animation: lineround 1200ms linear 0s infinite;
     animation-delay: 2000ms;
 }

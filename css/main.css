@@ -304,19 +304,3 @@ body.dark .read-more a:before {
 	--tw-bg-opacity: 1;
 	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
-
-body.dark .preloader:before,
-body.dark .preloader:after {
-	--tw-bg-opacity: 1;
-	background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-body.dark .preloader-line:before {
-	--tw-bg-opacity: 1;
-	background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
-body.dark .preloader-line:after {
-	--tw-bg-opacity: 1;
-	background-color: rgb(204 204 204 / var(--tw-bg-opacity));
-}
