@@ -48,25 +48,8 @@ h6 {
 	font-size: 16px;
 }
 
-
 .site-wrapper {
 	@apply relative min-h-screen w-full;
-}
-
-.main-navigation {
-	@apply absolute w-[350px] items-center px-[70px] py-0 left-0 top-0;
-}
-
-.sub-navigation {
-	@apply ml-3 mt-2;
-}
-
-.sub-navigation li {
-	@apply mb-2;
-}
-
-.sub-navigation .navigation-link {
-	font-size: 95%;
 }
 
 .main-content {
@@ -84,7 +67,6 @@ h6 {
 /******** Bigger Screens *********/
 
 @media (max-width: 1600px) {
-
 	.main-content {
 		padding-left: 350px;
 	}
@@ -93,38 +75,6 @@ h6 {
 /******** Larger Screens *********/
 
 @media (max-width: 1024px) {
-
-	.main-navigation {
-		width: 200px;
-		position: fixed;
-		right: 0;
-		left: auto;
-		transform: translateX(200px);
-		transition: transform .3s;
-		padding: 130px 20px;
-		align-items: start;
-	}
-
-	.main-navigation.mobile-open {
-		transform: translateX(0px);
-	}
-
-	.main-navigation .navigation-link {
-		font-size: 16px;
-	}
-
-	.navigation {
-		text-align: right;
-	}
-
-	.sub-navigation {
-		padding-right: 10px;
-		margin-left: 0;
-	}
-
-	.sub-navigation .navigation-link {
-		font-size: 90%;
-	}
 
 	.main-content {
 		padding-left: 0px;

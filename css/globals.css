@@ -114,20 +114,6 @@
 		@apply text-gray-300 relative top-0.5 md:top-0 mx-1.5 md:mx-2;
 	}
 
-	.main-navigation {
-		@apply shadow-slate-900 shadow-lg flex h-screen z-20 font-medium font-montserrat;
-		background: radial-gradient(circle, rgba(55,65,81,1) 0%, rgba(65,81,105,1) 100%);
-	}
-
-	.navigation-link {
-		@apply text-base text-shadow shadow-slate-800 text-gray-300 hover:text-white ;
-	}
-
-	.navigation-link.active {
-		@apply text-buddha-gold-600;
-	}
-
-
 	.rich-text-block {
 		@apply w-full border-solid mb-10 font-montserrat font-medium leading-7;
 	}
@@ -146,87 +132,6 @@
 
 	.text-block h4 {
 		@apply text-lg text-[lightgray];
-	}
-	
-	.hamburger {
-		@apply 
-			overflow-visible
-			cursor-pointer
-			ease-linear
-			duration-[0.15s]
-			transition-[opacity,filter]
-			normal-case
-			text-inherit
-			bg-transparent
-			block
-			lg:hidden
-			absolute
-			m-0
-			p-0
-			border-0
-			right-4
-			top-4;
-	}
-/* 
-	@media (max-width: 1200px) {
-		.hamburger {
-			@apply block;
-		}
-	} */
-
-	.hamburger.is-active:hover,
-	.hamburger:hover {
-		@apply opacity-100;
-	}
-	
-	.hamburger.is-active .hamburger-inner,
-	.hamburger.is-active .hamburger-inner:after,
-	.hamburger.is-active .hamburger-inner:before {
-		@apply bg-white;
-	}
-
-	.hamburger-box {
-		@apply relative inline-block w-[30px] h-6;
-	}
-
-	.hamburger-inner {
-		@apply block -mt-0.5 top-2/4;
-	}
-
-	.hamburger-inner,
-	.hamburger-inner:after,
-	.hamburger-inner:before {
-		@apply absolute w-[30px] h-0.5 ease-[ease] duration-[0.15s] transition-transform rounded bg-white;
-	}
-
-	.hamburger-inner:after,
-	.hamburger-inner:before {
-		@apply block content-[""];
-	}
-
-	.hamburger-inner:before {
-		@apply -top-2.5;
-	}
-	
-	.hamburger-inner:after {
-		@apply -bottom-2.5;
-	}
-
-	.hamburger--slider .hamburger-inner {
-		@apply top-0.5 before:ease-[ease] before:duration-[0.15s] before:transition-[transform,opacity] before:top-2.5 after:top-5;
-	}
-
-	.hamburger--slider.is-active .hamburger-inner {
-		transform: translate3d(0, 10px, 0) rotate(45deg);
-	}
-
-	.hamburger--slider.is-active .hamburger-inner:before {
-		@apply opacity-0;
-		transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0);
-	}
-
-	.hamburger--slider.is-active .hamburger-inner:after {
-		transform: translate3d(0, -20px, 0) rotate(-90deg);
 	}
 
 	.image-container {
