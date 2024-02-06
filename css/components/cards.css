@@ -1,10 +1,46 @@
+@keyframes read-more-anim {
+	0% {
+		transform-origin: right center;
+		transform: scaleX(0.2);
+	}
+	70% {
+		transform-origin: right center;
+	}
+	71% {
+		transform-origin: left center;
+		transform: scaleX(1);
+	}
 
-.product-cards  {
-    margin: auto;
+	100% {
+		transform-origin: left center;
+		transform: scaleX(0.2);
+	}
+}
+
+@keyframes read-more-anim-2 {
+	0% {
+		transform-origin: left center;
+		transform: scaleX(0.2);
+	}
+	70% {
+		transform-origin: left center;
+		transform: scaleX(1);
+	}
+	71% {
+		transform-origin: right center;
+	}
+	100% {
+		transform-origin: right center;
+		transform: scaleX(0.2);
+	}
+}
+
+.product-cards {
+	@apply m-auto;
 }
 
 .product-card > a {
-	background-color: rgb(73 75 80 / 1)
+	@apply bg-gray-600;
 }
 
 .product-card:hover .read-more span:before {
@@ -15,34 +51,24 @@
 }
 
 .product-card:hover .read-more span {
-	transform: translateX(0%);
+	@apply translate-x-[0%];
 }
 
 .product-card .extra:before {
-	position: absolute;
-	bottom: -14px;
-	height: 1px;
-	width: 100%;
-	background-color: rgba(255, 255, 255, 0.2);
-	--tw-content: '';
-	content: var(--tw-content);
+	@apply absolute h-px w-full bg-[rgba(255,255,255,0.2)] content-[''] -bottom-3.5;
 }
 
 .product-cards-full-link {
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-	left: 0px;
-	z-index: 4;
+	@apply absolute z-[4] inset-0;
 }
 
-body.dark .product-card .details .date a {
-	--tw-text-opacity: 1;
-	color: rgb(187 187 187 / var(--tw-text-opacity));
+.read-more > span:before {
+	@apply absolute content-[''] bg-[white] w-full h-px origin-[left_center] animate-[read-more-anim] m-auto scale-x-[0.2] left-0 inset-y-0;
+	animation-fill-mode: forwards;
+	animation-duration: 0.4s;
+	animation-timing-function: cubic-bezier(0.6, 0.01, 0, 1);
 }
-
-body.dark .product-card .details .date a:hover {
-	--tw-text-opacity: 1;
-	color: rgb(255 255 255 / var(--tw-text-opacity));
-}
+  
+.read-more > span > span {
+	@apply inline-block relative text-[white] z-[1] transition-[0.6s] duration-[cubic-bezier(0.6,0.01,0,1)] translate-x-[-110%];
+}  

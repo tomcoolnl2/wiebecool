@@ -4,16 +4,23 @@
 }
 
 .inner-border {
-    outline: 5px solid rgba(255,255,255,.1);
-    outline-offset: 0px;
+	@apply outline-offset-0;
+	outline: 5px solid rgba(255, 255, 255, 0.1);
 }
 
 .home-page .contact-details {
-    @apply text-left;
+	@apply text-left;
+}
+
+.home-page .avatar {
+	@apply w-[300px] aspect-[1];
+}
+
+.home-page .avatar .image {
+	@apply rounded-[100%];
 }
 
 @media (max-width: 1600px) {
-
 
 	.home-page .avatar {
 		width: 250px;
