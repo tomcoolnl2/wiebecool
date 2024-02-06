@@ -48,16 +48,9 @@ h6 {
 	font-size: 16px;
 }
 
-.container {
-	@apply relative clear-both h-auto w-full max-w-[1070px] mx-auto px-10 py-0;
-}
 
 .site-wrapper {
 	@apply relative min-h-screen w-full;
-}
-
-.top-bar {
-	@apply w-[450px] absolute z-20 pl-[70px] pt-[10vh] left-[100px] top-[250px];
 }
 
 .main-navigation {
@@ -91,14 +84,6 @@ h6 {
 /******** Bigger Screens *********/
 
 @media (max-width: 1600px) {
-	.container {
-		max-width: 968px;
-	}
-
-	.top-bar {
-		width: 224px;
-		left: 70px;
-	}
 
 	.main-content {
 		padding-left: 350px;
@@ -108,21 +93,6 @@ h6 {
 /******** Larger Screens *********/
 
 @media (max-width: 1024px) {
-
-	.container {
-		padding-left: 20px;
-		padding-right: 20px;
-		padding-top: 0px;
-		padding-bottom: 0px;
-	}
-	
-	.top-bar {
-		position: absolute;
-		top: 0;
-		left: 0;
-		padding: 12px 20px;
-		width: 100vw;
-	}
 
 	.main-navigation {
 		width: 200px;

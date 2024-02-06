@@ -4,6 +4,7 @@
 
 @import '@/css/components/cursor.css';
 @import '@/css/components/preloader.css';
+@import '@/css/components/navigation.css';
 @import '@/css/main.css';
 
 @keyframes fadeInLeft {
@@ -26,11 +27,7 @@
 	}
 
 	body {
-		overflow-x: hidden;
-	}
-
-	body.dark {
-		@apply text-gray-300 bg-slate-700;
+		@apply overflow-x-hidden text-gray-300 bg-slate-700;
 	}
 
 	a {
@@ -82,7 +79,7 @@
 	}
 
 	.container {
-		max-width: 1024px;
+		@apply relative clear-both h-auto w-full max-w-screen-md lg:max-w-screen-lg mx-auto px-10 py-0;
 	}
 
 	.section-container {
@@ -91,12 +88,6 @@
 	
 	.section-container::-webkit-scrollbar {
 		@apply w-0;
-	}
-
-	@media (max-width: 1200px) {
-		.section-container {
-			padding-left: 0px;
-		}
 	}
 
 	.page-header {

@@ -16,7 +16,7 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 
 	return (
 		<>
-			<header className="top-bar z-30 absolute top-1 left-0">
+			<header className="top-bar">
 				<Link href="/" className="visually-hidden">
 					<h1>{creator.name}</h1>
 					<h2>{creator.occupation}</h2>

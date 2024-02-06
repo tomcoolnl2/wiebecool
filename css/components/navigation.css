@@ -1,0 +1,11 @@
+
+.top-bar {
+	@apply w-full lg:w-80 z-30 absolute top-1 left-0 pl-5 lg:pl-16 pt-3 lg:pt-[10vh];
+}
+
+
+
+/* hamburger */
+
+
+/* main navigation */
