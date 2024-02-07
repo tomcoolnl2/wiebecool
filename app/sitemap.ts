@@ -28,13 +28,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	);
 
 	const collectionPageEntries = collectionPages.map((entry: SitemapItemResponse) => {
-		return new SiteMapEntry(
-			entry.slug,
-			entry.sys.publishedAt,
-			'monthly',
-			0.9,
-			ReWriteRule[PageType.CollectionPage]
-		);
+		const path = entry.slug === ReWriteRule[PageType.CollectionPage] ? '' : ReWriteRule[PageType.CollectionPage];
+		return new SiteMapEntry(entry.slug, entry.sys.publishedAt, 'monthly', 0.9, path);
 	});
 
 	const detailPageEntries = detailPages.map((entry: SitemapItemResponse) => {
