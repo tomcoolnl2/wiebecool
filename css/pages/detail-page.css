@@ -19,5 +19,5 @@
 }
 
 .detail-page-details .label {
-	@apply min-w-[90px] mb-2 mr-3 font-bold text-white;
+	@apply inline-block w-24 mb-2 mr-3 font-bold text-white;
 }

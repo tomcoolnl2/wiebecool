@@ -70,7 +70,7 @@ export default async function DetailPage({ params }: PageProps) {
 								</li>
 								{detailPage.dimensions && (
 									<li>
-										<span className="label">Dimensions:</span>
+										<span className="label">Dimenties:</span>
 										<span>{detailPage.dimensions}</span>
 									</li>
 								)}
