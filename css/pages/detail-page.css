@@ -3,7 +3,7 @@
 }
 
 .detail-page-main-image-wrapper {
-	@apply w-full md:w-[60%];
+	@apply w-full sm:w-2/3 md:w-1/2 mx-auto md:mx-0;
 }
 
 .detail-page-main-image {
