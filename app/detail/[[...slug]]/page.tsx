@@ -57,13 +57,12 @@ export default async function DetailPage({ params }: PageProps) {
 									<span className="label">Status:</span>
 									<span>{(detailPage.status && formatStatus(detailPage.status)) ?? '-'}</span>
 								</li>
-								<li>
-									<span className="label">Datum:</span>
-									<span>
-										{(detailPage.creationDate && toLocaleDateString(detailPage.creationDate)) ??
-											'-'}
-									</span>
-								</li>
+								{detailPage.creationDate && (
+									<li>
+										<span className="label">Datum:</span>
+										<span>{toLocaleDateString(detailPage.creationDate) ?? '-'}</span>
+									</li>
+								)}
 								<li>
 									<span className="label">Materiaal:</span>
 									<span>{detailPage.material ?? '-'}</span>
