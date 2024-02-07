@@ -19,7 +19,7 @@ type Props = {
 };
 
 // /work serves as the base for both collections and detail pages
-const collectionBaseUrl = ReWriteRule[PageType.DetailPage];
+const collectionBaseUrl = ReWriteRule[PageType.CollectionPage];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	//
