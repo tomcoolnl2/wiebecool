@@ -23,10 +23,6 @@ const nextConfig = {
 				destination: '/about',
 			},
 			{
-				source: '/werk',
-				destination: '/collection',
-			},
-			{
 				source: '/werk/:slug*',
 				destination: '/detail/:slug*',
 			},

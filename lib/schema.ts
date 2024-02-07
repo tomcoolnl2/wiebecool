@@ -81,10 +81,7 @@ export function generateSchema(
 		}
 		case SchemaType.COLLECTION: {
 			const collectionPageData = data as CollectionPage;
-			let path: Slug | '' = '';
-			if (collectionPageData.slug !== ReWriteRule[PageType.DetailPage]) {
-				path = '/collectie';
-			}
+			let path: Slug = '/collectie';
 			const schema = {
 				...baseSchema,
 				...basePageSchema,

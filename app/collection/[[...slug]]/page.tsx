@@ -18,8 +18,7 @@ type Props = {
 	params: { slug: string };
 };
 
-// /work serves as the base for both collections and detail pages
-const collectionBaseUrl = ReWriteRule[PageType.DetailPage];
+const collectionBaseUrl = ReWriteRule[PageType.CollectionPage];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	//
@@ -27,14 +26,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 	slug = ensureLeadingSlash(slug);
 	const seoMetaData = await fetchSeoMetaDataBySlug(slug as Slug);
 
-	const canonical =
-		slug !== collectionBaseUrl
-			? {
-					alternates: {
-						canonical: `${baseUrl}${ReWriteRule[PageType.CollectionPage]}${slug}`,
-					},
-			  }
-			: {};
+	const canonical = {
+		alternates: {
+			canonical: `${ReWriteRule[PageType.CollectionPage]}${
+				slug === ReWriteRule[PageType.CollectionPage] ? '' : slug
+			}`,
+		},
+	};
 
 	const response = {
 		...seoMetaData,
@@ -71,7 +69,7 @@ export default async function CollectionPage({ params }: Props) {
 								{item.imageCollection.items.map((img) => (
 									<Link
 										key={item.sys.id + '-img'}
-										href={collectionBaseUrl + ensureLeadingSlash(item.slug)}
+										href={ReWriteRule[PageType.DetailPage] + ensureLeadingSlash(item.slug)}
 										title={img.title}
 									>
 										<Image
