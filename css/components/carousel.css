@@ -4,6 +4,7 @@
 @import 'swiper/css/thumbs';
 
 .carousel {
+	@apply mb-10;
 }
 
 .carousel-main {

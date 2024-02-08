@@ -18,7 +18,7 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 	return (
 		<>
 			{description && <div className="rich-text-block">{processRichText(description.json)}</div>}
-			<div className="carousel mb-10">
+			<div className="carousel">
 				<Swiper
 					style={style}
 					spaceBetween={10}
