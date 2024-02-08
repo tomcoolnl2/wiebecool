@@ -62,7 +62,7 @@ export default async function CollectionPage({ params }: Props) {
 					)}
 					<div className="collection">
 						{collectionPage.collection.map((item) => (
-							<div
+							<figure
 								key={item.sys.id}
 								className="shadow-slate-800 shadow-lg image-container image-container-bordered aspect-square"
 							>
@@ -78,12 +78,13 @@ export default async function CollectionPage({ params }: Props) {
 											alt={img.description}
 											width={400}
 											height={400}
-											className="image-centered image-zoomable image-grayscale"
+											className="image-centered image-zoomable"
 											priority
 										/>
+										<figcaption className="image-caption">{item.title}</figcaption>
 									</Link>
 								))}
-							</div>
+							</figure>
 						))}
 					</div>
 				</div>
