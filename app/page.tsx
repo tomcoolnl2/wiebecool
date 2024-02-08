@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
-import * as React from 'react';
+import React from 'react';
 import { SchemaType } from '@/model';
 import { fetchHomePage, fetchSeoMetaData, generateSchema, processRichText } from '@/lib';
 import { SectionContainer, SocialMediaLinks, ContactDetails, SchemaTag } from '@/components';
@@ -20,19 +20,16 @@ export default async function Home() {
 			<div className="container">
 				<div className="home-page page">
 					<div className="home-content">
-						<div className="avatar relative rounded-full inner-border">
-							<Image
-								src={homePage.mugshot.url}
-								alt={homePage.mugshot.description}
-								width={homePage.mugshot.width}
-								height={homePage.mugshot.height}
-							/>
-						</div>
-						<div className="details ml-[80px]">
-							<h1 className="name font-poppins font-light text-[55px] uppercase mb-5">
-								{homePage.title}
-							</h1>
-							{homePage.subtitle && <h2 className="subtitle font-light mb-4">{homePage.subtitle}</h2>}
+						<Image
+							src={homePage.mugshot.url}
+							alt={homePage.mugshot.description}
+							width={homePage.mugshot.width}
+							height={homePage.mugshot.height}
+							className="avatar"
+						/>
+						<div className="content">
+							<h1 className="name">{homePage.title}</h1>
+							{homePage.subtitle && <h2 className="subtitle">{homePage.subtitle}</h2>}
 							<div className="rich-text-block-border max-w-[450px]">
 								{processRichText(homePage.description.json)}
 							</div>

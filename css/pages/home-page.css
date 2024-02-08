@@ -1,10 +1,5 @@
 .home-page .home-content {
-	@apply flex items-center;
-}
-
-.inner-border {
-	@apply outline-offset-0;
-	outline: 5px solid rgba(255, 255, 255, 0.1);
+	@apply flex flex-col md:flex-row items-center md:items-start mt-0 mb-8 text-center;
 }
 
 .home-page .contact-details {
@@ -12,66 +7,22 @@
 }
 
 .home-page .avatar {
-	@apply w-[300px] aspect-[1];
+	@apply outline-offset-0 aspect-square relative rounded-full max-w-48 sm:max-w-64 md:max-w-48 xl:max-w-64 mb-8;
+	outline: 5px solid rgba(255, 255, 255, 0.1);
 }
 
-.home-page .avatar .image {
-	@apply rounded-[100%];
+.home-page .content {
+	@apply md:ml-20 md:text-left;
 }
 
-@media (max-width: 1600px) {
-	.home-page .avatar {
-		width: 250px;
-	}
-
-	.home-page .details .name {
-		font-size: 48px;
-	}
-
-	.home-page .details .subtitle {
-		font-size: 22px;
-	}
-
-	.home-page .details .\!name {
-		margin-bottom: 10px;
-		font-size: 48px;
-	}
-
-	.home-page .details .job {
-		margin-bottom: 22px;
-	}
+.home-page .name {
+	@apply font-poppins font-light text-3xl sm:text-4xl uppercase mb-6 text-shadow-lg shadow-slate-800;
 }
 
-@media (max-width: 1040px) {
-	.home-page .home-content {
-		flex-direction: column;
-		text-align: center;
-		margin: 70px 0 30px;
-	}
-
-	.home-page .avatar {
-		margin-bottom: 30px;
-	}
-
-	.home-page .details {
-		margin-left: 0px;
-	}
+.home-page .subtitle {
+	@apply font-light mb-6 text-xl md:text-2xl;
 }
 
-@media (max-width: 768px) {
-	.home-page .details .name {
-		font-size: 30px;
-	}
-
-	.home-page .details .\!name {
-		font-size: 30px;
-	}
-
-	.home-page .avatar {
-		width: 200px;
-	}
-
-	.home-page .contact-details {
-		@apply text-center;
-	}
+.home-page .contact-details {
+	@apply text-center md:text-left;
 }
