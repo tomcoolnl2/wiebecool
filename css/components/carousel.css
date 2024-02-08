@@ -11,7 +11,7 @@
 }
 
 .carousel-main-slide {
-	@apply w-full relative mb-3 bg-gray-700;
+	@apply w-full relative mb-3 bg-slate-700;
 }
 
 .carousel-main-image {
@@ -19,14 +19,13 @@
 }
 
 .carousel-slide-description {
-	@apply w-full text-white absolute bottom-0 p-5 text-center;
-	background-color: rgba(0, 0, 0, 0.5);
+	@apply w-full text-white absolute bottom-0 p-5 text-center bg-slate-800/50;
 }
 
 .carousel-thumbnails {
 	@apply w-[80%] mt-5;
 }
 
-.carousel-thumbnails .swiper-slide-thumb-active .zoomable-centered-image {
+.carousel-thumbnails .swiper-slide-thumb-active img {
 	@apply grayscale-0;
 }

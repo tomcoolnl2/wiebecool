@@ -164,8 +164,12 @@
 		@apply relative overflow-hidden;
 	}
 
+	.image-container .image-caption {
+		@apply truncate absolute bottom-0 w-full text-white bg-slate-800/30 px-3 text-center;
+	}
+
 	.image-container-bordered {
-		@apply border-curious-blue-600 border-opacity-80 border-2 hover:border-opacity-100;
+		@apply border-curious-blue-700 border-opacity-80 border-2 hover:border-opacity-100;
 	}
 
 	.image-centered {
