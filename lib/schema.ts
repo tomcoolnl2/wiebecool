@@ -146,7 +146,7 @@ export function generateSchema(
 				...basePageSchema,
 				url: buildUrl(detailPageData.slug, ReWriteRule[PageType.DetailPage]).href,
 				image,
-				artist: {
+				creator: {
 					'@type': SchemaType.PERSON,
 					name: artist.name,
 				},
