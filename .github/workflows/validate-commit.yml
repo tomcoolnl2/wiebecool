@@ -17,27 +17,27 @@ jobs:
             - name: Validate Commit Message
               uses: webiny/action-conventional-commits@v1.1.0
 
-    # cypress-run:
-    #     runs-on: ubuntu-22.04
-    #     name: Run Cypress Tests
-    #     needs: validate-commit-message
-    #     steps:
-    #         - name: Checkout Repository
-    #           uses: actions/checkout@v4
-    #         - name: Cypress run
-    #           uses: cypress-io/github-action@v6
-    #           with:
-    #               group: 'Cypress Tests'
-    #               browser: chrome
-    #               build: npm run build
-    #               start: npm start
-    #               wait-on: 'http://localhost:3000'
-    #           env:
-    #               CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-    #               CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
-    #               RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-    #               RESEND_EMAIL: ${{ secrets.RESEND_EMAIL }}
-    #               CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY}}
+    cypress-run:
+        runs-on: ubuntu-22.04
+        name: Run Cypress Tests
+        needs: validate-commit-message
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+            - name: Cypress run
+              uses: cypress-io/github-action@v6
+              with:
+                  group: 'Cypress Tests'
+                  browser: chrome
+                  build: npm run build
+                  start: npm start
+                  wait-on: 'http://localhost:3000'
+              env:
+                  CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+                  CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+                  RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+                  RESEND_EMAIL: ${{ secrets.RESEND_EMAIL }}
+                  CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY}}
 
     # test:
     #     runs-on: ubuntu-22.04
