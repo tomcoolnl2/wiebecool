@@ -1,12 +1,11 @@
 'use client';
 import * as React from 'react';
-import { detectMobile } from '@/lib';
+import { useDetectMobile } from '@/hooks';
 
 export const PreLoader = () => {
 	//
 	const preloaderRef = React.useRef<HTMLDivElement | null>(null);
-	const isMobile: boolean = React.useMemo(() => detectMobile(), []);
-
+	const isMobile = useDetectMobile();
 	React.useEffect(() => {
 		const preloader = preloaderRef.current;
 		if (preloader) {

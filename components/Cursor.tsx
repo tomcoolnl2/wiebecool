@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { detectMobile } from '@/lib/utils';
+import { useDetectMobile } from '@/hooks';
 
 interface CursorPosition {
 	x: number;
@@ -9,7 +9,8 @@ interface CursorPosition {
 
 export const Cursor: React.FC = () => {
 	//
-	if (detectMobile()) {
+	const isMobile = useDetectMobile();
+	if (isMobile) {
 		return null;
 	}
 

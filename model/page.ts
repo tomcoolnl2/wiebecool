@@ -18,7 +18,7 @@ export type ReWriteRule = {
 
 export const ReWriteRule: ReWriteRule = {
 	[PageType.HomePage]: '/',
-	[PageType.AboutPage]: '/about',
+	[PageType.AboutPage]: '/over-mij',
 	[PageType.CollectionPage]: '/collectie',
 	[PageType.ContactPage]: '/contact',
 	[PageType.DetailPage]: '/werk',

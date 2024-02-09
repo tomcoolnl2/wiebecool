@@ -54,17 +54,16 @@ export default async function CollectionPage({ params }: Props) {
 			<SchemaTag schema={jsonLd} />
 			<div className="container">
 				<div className="collection-page page">
-					<PageHeader
-						pageType={PageType.CollectionPage}
-						title={collectionPage.title}
-						subtitle={collectionPage.subtitle}
-					/>
+					<PageHeader title={collectionPage.title} subtitle={collectionPage.subtitle} />
 					{collectionPage.description && (
 						<div className="rich-text-block">{processRichText(collectionPage.description.json)}</div>
 					)}
 					<div className="collection">
 						{collectionPage.collection.map((item) => (
-							<figure key={item.sys.id} className="collection-item">
+							<figure
+								key={item.sys.id}
+								className="collection-item image-container image-container-bordered"
+							>
 								{item.imageCollection.items.map((img) => (
 									<Link
 										key={item.sys.id + '-img'}

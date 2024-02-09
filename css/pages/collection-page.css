@@ -3,6 +3,6 @@
 }
 
 .collection-page .collection-item {
-	@apply shadow-slate-800 shadow-lg aspect-square image-container image-container-bordered;
+	@apply shadow-slate-800 shadow-lg aspect-square;
 }
 

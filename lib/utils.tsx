@@ -28,17 +28,6 @@ export function buildUrl(slug: Slug, path: Slug | '' = ''): URL {
 }
 
 /**
- * Detects if the current environment is a mobile device.
- * @returns {boolean} True if the environment is a mobile device, false otherwise.
- */
-export function detectMobile(): boolean {
-	if (typeof window === 'undefined') {
-		return false;
-	}
-	return window.navigator && /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(window.navigator.userAgent);
-}
-
-/**
  * Generates a Google Maps address string.
  * @param {string} address The address to format.
  * @returns {string} The formatted Google Maps address string.
