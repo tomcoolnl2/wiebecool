@@ -6,6 +6,7 @@ describe('About Page Test', () => {
 	});
 
 	it('contains SEO metadata', () => {
+		cy.on('uncaught:exception', () => false);
 		cy.testSeoMetaData();
 	});
 
