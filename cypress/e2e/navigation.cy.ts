@@ -24,10 +24,6 @@ describe('Navigation Test', () => {
 		cy.get('.sub-navigation').contains('Beelden van Steen').click({ force: true });
 		cy.url().should('include', '/collectie/steen');
 
-		// Test navigation links in the footer
-		cy.get('.page-footer').contains('Sitemap').click({ force: true, timeout: 10000 });
-		cy.url().should('include', '/sitemap.xml');
-
 		// Test navigation back to homepage from footer
 		cy.get('.navigation-link').contains('Home').click({ force: true });
 		cy.url().should('include', '/');

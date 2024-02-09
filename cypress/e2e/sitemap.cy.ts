@@ -29,7 +29,6 @@ describe('Sitemap Test', () => {
 				'https://wiebecool.nl/collectie/hout',
 				'https://wiebecool.nl/werk/poes',
 				'https://wiebecool.nl/werk/ijsbeer',
-				// Add more URLs as needed
 				'https://wiebecool.nl/contact',
 			]);
 		});
