@@ -8,11 +8,8 @@
     "start": "next start -p 4000",
     "lint": "next lint",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,html,css,scss,json,md}'",
-    "cypress:open": "cypress open",
     "e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --e2e\"",
-    "e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
-    "component": "cypress open --component",
-    "component:headless": "cypress run --component"
+    "e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\""
   },
   "dependencies": {
     "@contentful/rich-text-plain-text-renderer": "16.0.11",
