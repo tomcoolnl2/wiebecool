@@ -2,8 +2,7 @@
 describe('About Page Test', () => {
 	//
 	beforeEach(() => {
-		cy.on('uncaught:exception', () => false); // React errors on CI build
-		cy.visit('/over-mij');
+		cy.visit('/about');
 	});
 
 	it('contains SEO metadata', () => {
