@@ -14,6 +14,9 @@ import {
 import { SchemaTag, SectionContainer, PageHeader } from '@/components';
 import '@/css/pages/collection-page.css';
 
+// https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
+export const revalidate = 3600; // 1hr
+
 type Props = {
 	params: { slug: string };
 };
