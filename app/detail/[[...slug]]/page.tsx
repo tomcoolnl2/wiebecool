@@ -46,6 +46,7 @@ export default async function DetailPage({ params }: PageProps) {
 									src={detailPageImg.url + '?w=700'}
 									title={detailPageImg.title}
 									alt={detailPageImg.description}
+									priority
 									width={700}
 									height={700}
 								/>
