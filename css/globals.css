@@ -130,6 +130,10 @@
 		@apply font-semibold font-montserrat mb-3;
 	}
 
+	.breadcrumb-item {
+		@apply inline-block;
+	}
+
 	.breadcrumb-item.current a {
 		@apply text-gray-300 pointer-events-none;
 	}

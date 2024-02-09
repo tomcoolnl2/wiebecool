@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Metadata } from 'next';
 import { Montserrat, Mulish, Poppins } from 'next/font/google';
-import { creator, fetchMainNavigation, locale } from '@/lib';
+import { artist, fetchMainNavigation, locale } from '@/lib';
 import { PreLoader, MainNavigation, Cursor, Background } from '@/components';
 
 import { config } from '@fortawesome/fontawesome-svg-core';
@@ -26,9 +26,9 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-	title: creator.description,
-	description: creator.description,
-	applicationName: creator.description,
+	title: artist.description,
+	description: artist.description,
+	applicationName: artist.description,
 	referrer: 'origin',
 };
 
