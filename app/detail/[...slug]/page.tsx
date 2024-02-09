@@ -1,8 +1,9 @@
 'use server';
 import { Metadata } from 'next';
+import { headers } from 'next/headers';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { PageType, ReWriteRule, SchemaType, Slug } from '@/model';
+import { PageParams, PageType, ReWriteRule, SchemaType, Slug } from '@/model';
 import { fetchDetailPage, fetchSeoMetaDataBySlug, formatStatus, generateSchema, toLocaleDateString } from '@/lib';
 import { baseUrl, ensureLeadingSlash, processRichText } from '@/lib';
 import { ContactDetails, SchemaTag, SectionContainer, PageHeader } from '@/components';
@@ -10,11 +11,7 @@ import '@/css/pages/detail-page.css';
 
 const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
 
-type PageProps = {
-	params: { slug: string };
-};
-
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
 	const slug = ensureLeadingSlash(params.slug[0]);
 	const seoMetaData = await fetchSeoMetaDataBySlug(slug as Slug);
 	return {
@@ -25,17 +22,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 	};
 }
 
-export default async function DetailPage({ params }: PageProps) {
+export default async function DetailPage({ params }: PageParams) {
 	const slug = ensureLeadingSlash(params.slug[0]);
 	const detailPage = await fetchDetailPage(slug as Slug);
 	const detailPageImg = detailPage.imageCollection.items[0];
 	const jsonLd = generateSchema(detailPage, SchemaType.SCULPTURE, detailPageImg);
+	const path = ReWriteRule[PageType.DetailPage] + slug;
 	return (
 		<SectionContainer>
 			<SchemaTag schema={jsonLd} />
 			<div className="container">
 				<div className="detail-page page">
-					<PageHeader title={detailPage.title} />
+					<PageHeader title={detailPage.title} path={path} />
 					{detailPage.description && (
 						<div className="rich-text-block">{processRichText(detailPage.description.json)}</div>
 					)}
@@ -46,6 +44,7 @@ export default async function DetailPage({ params }: PageProps) {
 									src={detailPageImg.url + '?w=700'}
 									title={detailPageImg.title}
 									alt={detailPageImg.description}
+									priority
 									width={700}
 									height={700}
 								/>

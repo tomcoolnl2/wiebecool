@@ -2,6 +2,10 @@ import { Document } from '@contentful/rich-text-types';
 import { SitemapItemResponse, SysID } from '@/model';
 import { DetailCardSchema, TextBlock } from '@/components';
 
+export interface PageParams {
+	params: { slug: string };
+}
+
 export type RichText = Document & { json: any };
 
 export enum PageType {

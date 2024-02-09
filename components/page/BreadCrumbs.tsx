@@ -1,19 +1,14 @@
-'use client';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { faHome, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { PageType, ReWriteRule, SchemaType } from '@/model';
 import { artist, generateSchema } from '@/lib';
 import { SchemaTag } from '@/components';
 
-export const BreadCrumbs: React.FC = () => {
-	const path = usePathname().split('/').filter(Boolean);
-	if (!path.length) {
-		return;
-	}
-	const lastItem = path.pop();
-	const jsonLd = generateSchema({ parents: path, current: lastItem! }, SchemaType.BREADCRUMBS);
+export const BreadCrumbs: React.FC<{ path: string }> = ({ path }) => {
+	const crumbs = path.split('/').filter(Boolean);
+	const current = crumbs.pop();
+	const jsonLd = generateSchema({ parents: crumbs, current: current! }, SchemaType.BREADCRUMBS);
 	return (
 		<nav aria-label="breadcrumbs">
 			<SchemaTag schema={jsonLd} />
@@ -23,17 +18,17 @@ export const BreadCrumbs: React.FC = () => {
 						<FontAwesomeIcon icon={faHome} size="xs" />
 					</Link>
 				</li>
-				{path.map((item) => (
-					<li key={item} className="breadcrumb-item">
+				{crumbs.map((crumb) => (
+					<li key={crumb} className="breadcrumb-item">
 						<FontAwesomeIcon icon={faChevronRight} size="2xs" className="arrow" />
-						<Link href={ReWriteRule[PageType.CollectionPage]}>{item.replace(/-/g, ' ')}</Link>
+						<Link href={ReWriteRule[PageType.CollectionPage]}>{crumb.replace(/-/g, ' ')}</Link>
 					</li>
 				))}
-				{lastItem && (
+				{current && (
 					<li className="breadcrumb-item current">
 						<FontAwesomeIcon icon={faChevronRight} size="2xs" className="arrow" />
-						<a href={`/${lastItem}`} aria-current="location">
-							{lastItem.replace(/-/g, ' ')}
+						<a href={`/${current}`} aria-current="location">
+							{current.replace(/-/g, ' ')}
 						</a>
 					</li>
 				)}

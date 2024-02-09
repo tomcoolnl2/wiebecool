@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
+import { headers } from 'next/headers';
 import * as React from 'react';
-import { SchemaType } from '@/model';
+import { PageType, ReWriteRule, SchemaType } from '@/model';
 import { processRichText, generateSchema, fetchContactPage, fetchSeoMetaData } from '@/lib';
 import { ContactForm, SchemaTag, SectionContainer, PageHeader, ContactDetails } from '@/components';
 import '@/css/pages/contact-page.css';
@@ -11,6 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Contact() {
+	const path = headers().get('next-url') || ReWriteRule[PageType.ContactPage];
 	const contactPage = await fetchContactPage();
 	const jsonLd = generateSchema(contactPage, SchemaType.CONTACT_PAGE);
 	return (
@@ -18,7 +20,7 @@ export default async function Contact() {
 			<SchemaTag schema={jsonLd} />
 			<div className="container">
 				<div className="contact-page page">
-					<PageHeader title={contactPage.title} />
+					<PageHeader title={contactPage.title} path={path} />
 					<div className="rich-text-block">{processRichText(contactPage.description.json)}</div>
 					<div className="rich-text-block-border">
 						<ContactDetails />

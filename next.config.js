@@ -32,6 +32,20 @@ const nextConfig = {
 			},
 		];
 	},
+	async redirects() {
+		return [
+			{
+				source: '/about',
+				destination: '/over-mij',
+				permanent: true,
+			},
+			{
+				source: '/werk',
+				destination: '/collectie',
+				permanent: true,
+			},
+		];
+	},
 	webpack: (config) => {
 		config.module.rules.push({
 			test: /\.(graphql|gql)$/,

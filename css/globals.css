@@ -139,7 +139,7 @@
 	}
 
 	.breadcrumb-item .arrow {
-		@apply text-gray-300 relative top-0.5 md:top-0 mx-1.5 md:mx-2;
+		@apply text-gray-300 relative top-0.5 md:top-[2px] mx-1.5 md:mx-2;
 	}
 
 	.rich-text-block {
@@ -147,7 +147,7 @@
 	}
 
 	.rich-text-block-border {
-		@apply rich-text-block border-[#DFDFDF] border-b pb-8;
+		@apply rich-text-block border-gray-300 border-b pb-8;
 	}
 
 	.text-block h3,

@@ -3,5 +3,5 @@
 }
 
 .hero-banner img {
-	@apply min-h-full max-w-none;
+	@apply min-h-full max-w-none w-auto h-auto;
 }
