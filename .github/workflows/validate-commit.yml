@@ -27,7 +27,7 @@ jobs:
             - name: Cypress run
               uses: cypress-io/github-action@v6
               with:
-                  build: npm run build && npm start
+                  build: cd .. && npm run build && npm run start
 
     # test:
     #     runs-on: ubuntu-22.04
