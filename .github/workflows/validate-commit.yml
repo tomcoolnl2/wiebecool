@@ -11,7 +11,7 @@ jobs:
         runs-on: ubuntu-22.04
         steps:
             - name: Checkout Repository
-              uses: actions/checkout@v2
+              uses: actions/checkout@v4
               with:
                   fetch-depth: 0
             - name: Validate Commit Message
@@ -19,7 +19,7 @@ jobs:
 
     cypress-run:
         runs-on: ubuntu-22.04
-        name: Run e2e Tests (Headless)
+        name: Run Cypress Tests
         needs: validate-commit-message
         steps:
             - name: Checkout Repository
@@ -27,9 +27,12 @@ jobs:
             - name: Cypress run
               uses: cypress-io/github-action@v6
               with:
+                  record: true
+                  parallel: true
+                  group: 'Cypress Tests'
                   browser: chrome
-                  build: yarn build
-                  start: yarn start
+                  build: npm run build
+                  start: npm start
                   wait-on: 'http://localhost:3000'
               env:
                   CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
