@@ -2,11 +2,7 @@ import * as React from 'react';
 import { PageType } from '@/model';
 import { BreadCrumbs } from '@/components/page/BreadCrumbs';
 
-export const PageHeader: React.FC<{ pageType: PageType; title: string; subtitle?: string }> = ({
-	pageType,
-	title,
-	subtitle,
-}) => {
+export const PageHeader: React.FC<{ title: string; subtitle?: string }> = ({ title, subtitle }) => {
 	return (
 		<div className="page-header">
 			<BreadCrumbs />

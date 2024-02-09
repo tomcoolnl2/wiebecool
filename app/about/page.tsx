@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Metadata } from 'next';
 import * as React from 'react';
-import { PageType, SchemaType } from '@/model';
+import { SchemaType } from '@/model';
 import { fetchAboutPage, fetchSeoMetaData, generateSchema } from '@/lib';
 import {
 	type RenderComponentItem,
@@ -28,7 +28,7 @@ export default async function About() {
 			<SchemaTag schema={jsonLd} />
 			<div className="container">
 				<div className="about-page page">
-					<PageHeader pageType={PageType.AboutPage} title={aboutPage.title} />
+					<PageHeader title={aboutPage.title} />
 					<div className="hero-banner image-container">
 						<Image
 							src={hero.url}

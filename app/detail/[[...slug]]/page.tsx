@@ -35,7 +35,7 @@ export default async function DetailPage({ params }: PageProps) {
 			<SchemaTag schema={jsonLd} />
 			<div className="container">
 				<div className="detail-page page">
-					<PageHeader title={detailPage.title} pageType={PageType.DetailPage} />
+					<PageHeader title={detailPage.title} />
 					{detailPage.description && (
 						<div className="rich-text-block">{processRichText(detailPage.description.json)}</div>
 					)}
