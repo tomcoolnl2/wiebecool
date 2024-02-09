@@ -20,6 +20,7 @@ jobs:
     cypress-run:
         runs-on: ubuntu-22.04
         name: Run e2e Tests
+        needs: validate-commit-message
         steps:
             - name: Checkout
               uses: actions/checkout@v4
