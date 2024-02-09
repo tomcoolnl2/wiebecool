@@ -1,37 +1,38 @@
 /// <reference types="cypress" />
-// ***********************************************
-// This example commands.ts shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-//
-// declare global {
-//   namespace Cypress {
-//     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
-//     }
-//   }
-// }
+
+declare namespace Cypress {
+	interface Chainable<Subject> {
+		/**
+		 * Test the Seo Meta Data for a Page
+		 * @example
+		 * cy.testSeoMetaData()
+		 */
+		testSeoMetaData(): Chainable<void>;
+
+		/**
+		 * Test the Seo Meta Data for a Page
+		 * @example
+		 * cy.testSeoMetaData()
+		 */
+		testSchemaMetaData(): Chainable<void>;
+	}
+}
+
+Cypress.Commands.add('testSeoMetaData', () => {
+	cy.title().should('exist');
+	cy.title().should('not.be.empty');
+
+	cy.get('head meta[name="description"]').should('exist');
+	cy.get('head meta[name="description"]').then((description) => {
+		expect(description.attr('content')).not.to.be.empty;
+	});
+
+	cy.get('head meta[name="keywords"]').should('exist');
+	cy.get('head meta[name="keywords"]').then((keywords) => {
+		expect(keywords.attr('content')).not.to.be.empty;
+	});
+});
+
+Cypress.Commands.add('testSchemaMetaData', () => {
+	cy.get('script[type="application/ld+json"]').should('exist');
+});

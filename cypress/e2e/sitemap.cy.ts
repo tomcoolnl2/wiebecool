@@ -1,6 +1,7 @@
 //
 describe('Sitemap Test', () => {
-	it('Loads and validates the sitemap XML file', () => {
+	//
+	it('loads and validates the sitemap XML file', () => {
 		// Visit the sitemap URL
 		cy.request({
 			url: '/sitemap.xml',
@@ -11,7 +12,6 @@ describe('Sitemap Test', () => {
 			},
 		}).then((response) => {
 			// Parse XML response
-			// console.log('RESPONSE', response);
 			const xml = Cypress.$.parseXML(response.body);
 			const urls = Cypress.$(xml)
 				.find('url loc')

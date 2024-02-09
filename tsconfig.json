@@ -18,11 +18,12 @@
 				"name": "next"
 			}
 		],
+		"baseUrl": "./",
 		"paths": {
 			"@/*": ["./*"]
 		}
 	},
 	"types": ["react/next"],
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "cypress"],
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
 	"exclude": ["node_modules"]
 }

@@ -1,6 +1,7 @@
 //
 describe('Navigation Test', () => {
-	it('Navigates between all pages seamlessly', () => {
+	//
+	it('navigates between all pages seamlessly', () => {
 		// Visit the homepage
 		cy.visit('/');
 
@@ -27,5 +28,19 @@ describe('Navigation Test', () => {
 		// Test navigation back to homepage from footer
 		cy.get('.navigation-link').contains('Home').click({ force: true });
 		cy.url().should('include', '/');
+	});
+
+	it('should display navigation above breakpoint', () => {
+		// Set viewport size to a size above the breakpoint
+		cy.viewport(1100, 600);
+		cy.visit('/');
+		cy.get('.main-navigation').should('be.visible');
+	});
+
+	it('should hide navigation beneath breakpoint', () => {
+		// Set viewport size to a size below the breakpoint
+		cy.viewport(700, 600); // Adjust the width and height as needed
+		cy.visit('/');
+		cy.get('.main-navigation').should('not.be.visible');
 	});
 });
