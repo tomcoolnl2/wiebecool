@@ -1,7 +1,8 @@
 import Image from 'next/image';
+import { headers } from 'next/headers';
 import { Metadata } from 'next';
 import * as React from 'react';
-import { SchemaType } from '@/model';
+import { PageType, ReWriteRule, SchemaType } from '@/model';
 import { fetchAboutPage, fetchSeoMetaData, generateSchema } from '@/lib';
 import {
 	type RenderComponentItem,
@@ -19,6 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function About() {
+	const path = headers().get('next-url') || ReWriteRule[PageType.AboutPage];
 	const aboutPage = await fetchAboutPage();
 	const jsonLd = generateSchema(aboutPage, SchemaType.ABOUT_PAGE);
 	const hero = aboutPage.bannerImage;
@@ -28,7 +30,7 @@ export default async function About() {
 			<SchemaTag schema={jsonLd} />
 			<div className="container">
 				<div className="about-page page">
-					<PageHeader title={aboutPage.title} />
+					<PageHeader title={aboutPage.title} path={path} />
 					<div className="hero-banner image-container">
 						<Image
 							src={hero.url}
