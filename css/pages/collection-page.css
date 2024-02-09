@@ -1,3 +1,8 @@
 .collection-page .collection {
 	@apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center;
 }
+
+.collection-page .collection-item {
+	@apply shadow-slate-800 shadow-lg aspect-square image-container image-container-bordered;
+}
+

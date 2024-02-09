@@ -27,7 +27,7 @@ import {
 	SculptureSchema,
 	Slug,
 } from '@/model';
-import { baseUrl, buildUrl, creator, locale, processPlainText } from '@/lib';
+import { baseUrl, buildUrl, artist, locale, processPlainText } from '@/lib';
 
 function generatePersonSchema(data: Artist): PersonSchema {
 	return {
@@ -146,9 +146,9 @@ export function generateSchema(
 				...basePageSchema,
 				url: buildUrl(detailPageData.slug, ReWriteRule[PageType.DetailPage]).href,
 				image,
-				creator: {
+				artist: {
 					'@type': SchemaType.PERSON,
-					name: creator.name,
+					name: artist.name,
 				},
 				...(dateCreated ? { dateCreated } : {}),
 				...(material ? { material } : {}),

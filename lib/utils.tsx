@@ -11,7 +11,7 @@ export const locale = 'nl-NL';
 export const baseUrl = 'https://wiebecool.nl';
 
 /** Hardcoded. */
-export const creator = {
+export const artist = {
 	name: 'Wiebe Cool',
 	occupation: 'Beeldhouwer',
 	description: 'Wiebe Cool | Beeldhouwer',

@@ -4,7 +4,6 @@ import Image from 'next/image';
 import * as React from 'react';
 import { PageType, ReWriteRule, SchemaType, Slug } from '@/model';
 import {
-	baseUrl,
 	ensureLeadingSlash,
 	fetchCollectionPage,
 	fetchSeoMetaDataBySlug,
@@ -65,10 +64,7 @@ export default async function CollectionPage({ params }: Props) {
 					)}
 					<div className="collection">
 						{collectionPage.collection.map((item) => (
-							<figure
-								key={item.sys.id}
-								className="shadow-slate-800 shadow-lg image-container image-container-bordered aspect-square"
-							>
+							<figure key={item.sys.id} className="collection-item">
 								{item.imageCollection.items.map((img) => (
 									<Link
 										key={item.sys.id + '-img'}

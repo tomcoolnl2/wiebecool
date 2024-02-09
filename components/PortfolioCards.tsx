@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { creator } from '@/lib';
+import { artist } from '@/lib';
 import { type RenderComponentItem } from './hoc/RenderComponent';
 import { PageType, ReWriteRule, SysID } from '@/model';
 import '@/css/components/cards.css';
@@ -48,7 +48,7 @@ export const PortfolioCardsComponent: React.FC<Props> = ({ item }) => {
 							<Image
 								className="image-centered image-zoomable image-grayscale"
 								src={card.imageCollection.items[0].url + '?w=450'}
-								alt={card.imageCollection.items[0].title || creator.description}
+								alt={card.imageCollection.items[0].title || artist.description}
 								width={450}
 								height={450}
 							/>
