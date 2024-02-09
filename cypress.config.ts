@@ -1,7 +1,7 @@
 import { defineConfig } from 'cypress';
 
 export default defineConfig({
-	projectId: 'wiebecool',
+	projectId: 'nhah3u',
 	e2e: {
 		baseUrl: 'http://localhost:3000',
 		excludeSpecPattern: '*/*/**/spec.cy.ts',
