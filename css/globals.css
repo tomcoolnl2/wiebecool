@@ -147,7 +147,7 @@
 	}
 
 	.rich-text-block-border {
-		@apply rich-text-block border-[#DFDFDF] border-b pb-8;
+		@apply rich-text-block border-gray-300 border-b pb-8;
 	}
 
 	.text-block h3,
