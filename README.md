@@ -25,7 +25,6 @@ The app is deployed to using the [Vercel Platform](https://vercel.com/new?utm_me
 
 The `develop` branch is deployed [here](https://wiebecool-git-develop-tom-cools-projects.vercel.app/)
 
-
 ## Environment variables
 
 We use environment variables to hide access keys for Contentful and Resend (and more).
@@ -36,19 +35,18 @@ The same keys are set within the Environment Variables for Vercel deployments.
 To be able to run Cypress e2e tests, e.g. the access keys for Contenful are also set in the Github Repository.
 
 This means, that if 1 key changes, it has to be updated in these locations:
+
 1. The `env.local` file
 2. Vercels' Environment variabels
 3. Github Repository Secrets
-
 
 ## Cypress e2e Testing
 
 ### Locally
 
-- Run either `npm run e2e` to start Cypress in a GUI and manually run tests on `http://localhost:3000`
-- Or run `npm run e2e:headless` to run all tests in the background using `http://localhost:3000`
+-   Run either `npm run e2e` to start Cypress in a GUI and manually run tests on `http://localhost:3000`
+-   Or run `npm run e2e:headless` to run all tests in the background using `http://localhost:3000`
 
 ### CI
 
-- A CI is setup through a Github Action that runs Cypress e2e test on evey push, except the `main` branch
-
+-   A CI is setup through a Github Action that runs Cypress e2e test on evey push, except the `main` branch
