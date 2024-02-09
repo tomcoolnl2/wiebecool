@@ -2,11 +2,11 @@
 describe('About Page Test', () => {
 	//
 	beforeEach(() => {
+		cy.on('uncaught:exception', () => false); // React errors on CI build
 		cy.visit('/over-mij');
 	});
 
 	it('contains SEO metadata', () => {
-		cy.on('uncaught:exception', () => false);
 		cy.testSeoMetaData();
 	});
 
