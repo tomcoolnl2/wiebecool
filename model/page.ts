@@ -1,6 +1,6 @@
 import { Document } from '@contentful/rich-text-types';
-import { SitemapItemResponse, SysID } from '@/model';
-import { PortfolioCardResponse, TextBlock } from '@/components';
+import { PortfolioCardResponse, SitemapItemResponse, SysID } from '@/model';
+import { TextBlock } from '@/components';
 
 export interface PageParams {
 	params: { slug: string };
@@ -56,6 +56,14 @@ export interface CollectionItem extends SysID {
 	slug: string;
 	title: string;
 	imageCollection: ImageCollection;
+}
+
+export interface PortfolioCard extends SysID {
+	slug: string;
+	title: string;
+	imageCollection: {
+		items: ItemImage[];
+	};
 }
 
 export interface PageCarousel {

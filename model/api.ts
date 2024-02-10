@@ -10,6 +10,7 @@ import {
 	DetailCollectionItem,
 	DetailPage,
 	Slug,
+	PortfolioCard,
 } from './';
 
 export interface AlertMessage {
@@ -45,6 +46,13 @@ export interface ArtistResponse {
 
 export interface AddressResponse {
 	address: Address;
+}
+
+export interface PortfolioCardResponse {
+	__typename: 'PortfolioCards';
+	detailPagesCollection: {
+		items: PortfolioCard[];
+	};
 }
 
 export interface HomePageResponse {

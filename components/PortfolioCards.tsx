@@ -1,23 +1,8 @@
 import * as React from 'react';
-import { ItemImage, PageType, ReWriteRule, SysID } from '@/model';
+import { PageType, PortfolioCard, PortfolioCardResponse, ReWriteRule } from '@/model';
 import { Card } from '@/components';
 import { type RenderComponentItem } from './hoc/RenderComponent';
 import '@/css/components/portfolio-cards.css';
-
-interface PortfolioCard extends SysID {
-	slug: string;
-	title: string;
-	imageCollection: {
-		items: ItemImage[];
-	};
-}
-
-export interface PortfolioCardResponse {
-	__typename: 'PortfolioCards';
-	detailPagesCollection: {
-		items: PortfolioCard[];
-	};
-}
 
 interface Props {
 	item: RenderComponentItem;
