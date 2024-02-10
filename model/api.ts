@@ -18,6 +18,14 @@ export interface AlertMessage {
 	message: string;
 }
 
+// Contentful collection sorting options
+export enum SortOrder {
+	PUBLISHED_FIRST_ASC = 'sys_firstPublishedAt_ASC', // default
+	PUBLISHED_FIRST_DESC = 'sys_firstPublishedAt_DESC',
+	PAGE_TITLE_ASC = 'title_ASC',
+	PAGE_TITLE_DESC = 'title_DESC',
+}
+
 export interface MetaDataResponse {
 	seoMetaData: SeoMetaData;
 }

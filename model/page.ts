@@ -126,6 +126,7 @@ export interface CollectionPage extends BasePage {
 	type: PageType.CollectionPage;
 	subtitle: string;
 	tags: string[];
+	sortingEnabled: boolean;
 	collection: DetailCollectionItem[];
 }
 

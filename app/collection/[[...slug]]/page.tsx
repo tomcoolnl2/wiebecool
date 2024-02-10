@@ -1,6 +1,4 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
 import * as React from 'react';
 import { PageParams, PageType, ReWriteRule, SchemaType, Slug } from '@/model';
 import {
@@ -10,7 +8,7 @@ import {
 	generateSchema,
 	processRichText,
 } from '@/lib';
-import { SchemaTag, SectionContainer, PageHeader, Card } from '@/components';
+import { SchemaTag, SectionContainer, PageHeader, Card, DropDown } from '@/components';
 import '@/css/pages/collection-page.css';
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
@@ -45,6 +43,12 @@ export default async function CollectionPage({ params }: PageParams) {
 					<PageHeader title={collectionPage.title} path={path} subtitle={collectionPage.subtitle} />
 					{collectionPage.description && (
 						<div className="rich-text-block">{processRichText(collectionPage.description.json)}</div>
+					)}
+					{collectionPage.sortingEnabled && (
+						<form className="collection-options">
+							<input type="hidden" value={collectionPage.tags} />
+							<DropDown />
+						</form>
 					)}
 					<nav className="collection">
 						{collectionPage.collection.map((item) => {

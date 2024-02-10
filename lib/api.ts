@@ -27,6 +27,7 @@ import {
 	Sitemap,
 	SitemapResponse,
 	Slug,
+	SortOrder,
 	SysID,
 } from '@/model';
 
@@ -242,16 +243,21 @@ export async function fetchCollectionPage(slug: Slug): Promise<CollectionPage> {
 	const { collectionPageCollection } = await fetchContentfulData<CollectionPageResponse>(CollectionPageBySlugQuery, {
 		slug,
 	});
+
 	const collectionPage: CollectionPage = {
 		...collectionPageCollection.items[0],
 		type: PageType.CollectionPage,
 	};
-	const tag: string = collectionPage.tags[0].toLowerCase();
+
+	const tag = collectionPage.tags[0].toLowerCase();
+
 	const {
 		detailPageCollection: { items: collection },
 	} = await fetchContentfulData<DetailPageCollectionResponse>(DetailPagesByTagIDs, {
 		tagIDs: [tag],
+		order: SortOrder.PUBLISHED_FIRST_DESC,
 	});
+
 	return { ...collectionPage, type: PageType.CollectionPage, collection };
 }
 

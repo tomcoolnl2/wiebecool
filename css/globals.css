@@ -143,7 +143,7 @@
 	}
 
 	.image-container {
-		@apply relative overflow-hidden;
+		@apply relative overflow-hidden rounded-md;
 	}
 
 	.image-container .image-caption {
