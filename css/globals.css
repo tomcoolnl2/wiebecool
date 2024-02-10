@@ -197,7 +197,7 @@
 	}
 
 	.card {
-		@apply aspect-square w-full max-w-sm mx-2 mb-8 shadow-slate-800 shadow-lg;
+		@apply aspect-square w-full max-w-sm shadow-slate-800 shadow-lg mx-auto;
 	}
 	
 	.card-image {

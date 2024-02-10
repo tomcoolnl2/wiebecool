@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PageType, PortfolioCard, PortfolioCardResponse, ReWriteRule } from '@/model';
+import { type PortfolioCard, type PortfolioCardResponse, ReWriteRule, PageType } from '@/model';
 import { Card } from '@/components';
 import { type RenderComponentItem } from './hoc/RenderComponent';
 import '@/css/components/portfolio-cards.css';
@@ -8,7 +8,7 @@ interface Props {
 	item: RenderComponentItem;
 }
 
-export const PortfolioCardsComponent: React.FC<Props> = ({ item }) => {
+export const PortfolioCards: React.FC<Props> = ({ item }) => {
 	//
 	const { detailPagesCollection } = item as PortfolioCardResponse;
 	const cards = detailPagesCollection.items || [];

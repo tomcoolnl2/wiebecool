@@ -1,5 +1,5 @@
-import { Document } from '@contentful/rich-text-types';
-import type { PortfolioCardResponse, TextBlockResponse, SitemapItemResponse, SysID } from '@/model';
+import type { Document } from '@contentful/rich-text-types';
+import type { PortfolioCardResponse, SitemapItemResponse, SysID, TextBlockResponse } from '@/model';
 
 export interface PageParams {
 	params: { slug: string };

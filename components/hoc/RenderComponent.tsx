@@ -1,6 +1,8 @@
 import * as React from 'react';
-import type { PortfolioCardResponse, TextBlockResponse } from '@/model';
-import { TextBlockComponent, PortfolioCardsComponent } from '@/components';
+import type { TextBlockResponse, PortfolioCardResponse } from '@/model';
+// imprting components separately to avoid circular dependencies
+import { TextBlock as TextBlockComponent } from '@/components/TextBlock';
+import { PortfolioCards as PortfolioCardsComponent } from '@/components/PortfolioCards';
 
 export type RenderComponentItem = TextBlockResponse | PortfolioCardResponse;
 
