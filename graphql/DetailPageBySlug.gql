@@ -33,6 +33,8 @@ query DetailPageBySlug($slug: String!) {
 						url
 						title
 						description
+						width
+						height
 					}
 				}
 			}

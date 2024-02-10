@@ -1,5 +1,6 @@
 'use client';
 import * as React from 'react';
+import Image from 'next/image';
 import { Swiper, SwiperSlide, SwiperClass } from 'swiper/react';
 import { Navigation, Thumbs } from 'swiper/modules';
 import { PageCarousel } from '@/model';
@@ -31,7 +32,13 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 					{imageCollection.items.map((slide) => {
 						return (
 							<SwiperSlide key={slide.sys.id} tag="figure" className="carousel-main-slide">
-								<img className="carousel-main-image" src={slide.url} alt={slide.title} />
+								<Image
+									className="carousel-main-image"
+									src={slide.url}
+									alt={slide.title}
+									width={slide.width}
+									height={slide.height}
+								/>
 								{showDescription && slide.description && (
 									<figcaption className="carousel-slide-description">{slide.description}</figcaption>
 								)}
@@ -52,7 +59,13 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 						{imageCollection.items.map((slide) => {
 							return (
 								<SwiperSlide key={slide.sys.id + '-thumb'} className="image-container aspect-square">
-									<img className="image-grayscale image-zoomable" src={slide.url} alt={slide.title} />
+									<Image
+										className="image-grayscale image-zoomable"
+										src={slide.url}
+										alt={slide.title}
+										width={200}
+										height={200}
+									/>
 								</SwiperSlide>
 							);
 						})}
