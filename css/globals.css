@@ -181,7 +181,7 @@
 	}
 
 	.image-zoomable {
-		@apply hover:scale-110 transition duration-300;
+		@apply hover:scale-110 transition duration-500;
 	}
 
 	.image-grayscale {
