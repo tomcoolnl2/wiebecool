@@ -90,7 +90,7 @@
 	}
 
 	.main-content {
-		background: linear-gradient(-70deg, rgba(72, 81, 99, 1) 0%, rgba(58, 60, 62, 1) 50%, rgba(52, 54, 58, 1) 100%);
+		background: linear-gradient(-70deg, rgb(72, 81, 99) 0%, rgb(58, 60, 62) 50%, rgb(52, 54, 58) 100%);
 		@apply w-full min-h-screen relative pl-0 lg:pl-80 2xl:pl-96;
 	}
 

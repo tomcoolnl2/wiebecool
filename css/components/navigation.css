@@ -1,5 +1,7 @@
 .top-bar {
-	@apply bg-slate-700 
+        background: radial-gradient(circle, rgb(47, 55, 68) 0%, rgb(52, 54, 58) 100%);
+        /* background: rgb(52, 54, 58); */
+	@apply
         lg:bg-transparent
         shadow-slate-800 
         lg:shadow-transparent
@@ -20,7 +22,7 @@
 }
 
 .main-navigation {
-	background: radial-gradient(circle, rgba(55, 65, 81, 1) 0%, rgba(65, 81, 105, 1) 100%);
+	background: radial-gradient(circle, rgb(55, 65, 81) 0%, rgb(65, 81, 105) 100%);
 	align-items: flex-start;
 	@apply flex 
         lg:items-center 
