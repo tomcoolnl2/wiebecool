@@ -5,3 +5,7 @@
 .collection-page .collection-item {
 	@apply shadow-slate-800 shadow-lg aspect-square;
 }
+
+.collection-page .collection-item img {
+	filter: brightness(75%) saturate(140%);
+}
