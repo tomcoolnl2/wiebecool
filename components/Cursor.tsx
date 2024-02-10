@@ -11,10 +11,6 @@ interface CursorPosition {
 export const Cursor: React.FC = () => {
 	//
 	const isMobile = useDetectMobile();
-	if (isMobile) {
-		return null;
-	}
-
 	const cursorOuter = React.useRef<HTMLDivElement>(null);
 	const cursorInner = React.useRef<HTMLDivElement>(null);
 	const [cursorPosition, setCursorPosition] = React.useState<CursorPosition>({ x: 0, y: 0 });
@@ -62,9 +58,11 @@ export const Cursor: React.FC = () => {
 	}, [cursorInner, cursorOuter, handleMouseMove]);
 
 	return (
-		<>
-			<div ref={cursorOuter} className={`mouse-cursor cursor-outer${hoverClassName}`} style={{ transform }} />
-			<div ref={cursorInner} className={`mouse-cursor cursor-inner${hoverClassName}`} style={{ transform }} />
-		</>
+		!isMobile && (
+			<>
+				<div ref={cursorOuter} className={`mouse-cursor cursor-outer${hoverClassName}`} style={{ transform }} />
+				<div ref={cursorInner} className={`mouse-cursor cursor-inner${hoverClassName}`} style={{ transform }} />
+			</>
+		)
 	);
 };
