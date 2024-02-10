@@ -10,7 +10,7 @@ import {
 	generateSchema,
 	processRichText,
 } from '@/lib';
-import { SchemaTag, SectionContainer, PageHeader } from '@/components';
+import { SchemaTag, SectionContainer, PageHeader, Card } from '@/components';
 import '@/css/pages/collection-page.css';
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
@@ -46,33 +46,14 @@ export default async function CollectionPage({ params }: PageParams) {
 					{collectionPage.description && (
 						<div className="rich-text-block">{processRichText(collectionPage.description.json)}</div>
 					)}
-					<div className="collection">
-						{collectionPage.collection.map((item) => (
-							<figure
-								key={item.sys.id}
-								className="collection-item image-container image-container-bordered"
-							>
-								{item.imageCollection.items.map((img) => (
-									<Link
-										key={item.sys.id + '-img'}
-										href={ReWriteRule[PageType.DetailPage] + ensureLeadingSlash(item.slug)}
-										title={img.title}
-									>
-										<Image
-											src={img.url + '?w=300'}
-											title={img.title}
-											alt={img.description}
-											width={400}
-											height={400}
-											className="image-centered image-zoomable"
-											priority
-										/>
-										<figcaption className="image-caption">{item.title}</figcaption>
-									</Link>
-								))}
-							</figure>
-						))}
-					</div>
+					<nav className="collection">
+						{collectionPage.collection.map((item) => {
+							const { id } = item.sys;
+							const img = item.imageCollection.items[0];
+							const href = ReWriteRule[PageType.DetailPage] + ensureLeadingSlash(item.slug);
+							return <Card key={id} id={id} href={href} title={item.title} img={img} />;
+						})}
+					</nav>
 				</div>
 			</div>
 		</SectionContainer>

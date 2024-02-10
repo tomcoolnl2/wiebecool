@@ -49,7 +49,7 @@
 
 	q,
 	blockquote {
-		@apply italic text-center max-w-[800px] grid mt-6 mx-auto;
+		@apply italic text-center max-w-[800px] grid mt-6 mx-auto text-white;
 	}
 
 	input,
@@ -147,7 +147,7 @@
 	}
 
 	.image-container .image-caption {
-		@apply truncate absolute bottom-0 w-full text-white bg-slate-800/30 px-3 text-center;
+		@apply truncate absolute bottom-0 w-full text-white bg-slate-800/40 px-3 text-center;
 	}
 
 	.image-container-bordered {
@@ -194,5 +194,17 @@
 
 	.button:disabled {
 		@apply pointer-events-none cursor-default opacity-70;
+	}
+
+	.card {
+		@apply aspect-square w-full max-w-sm mx-2 mb-8 shadow-slate-800 shadow-lg;
+	}
+	
+	.card-image {
+		filter: brightness(90%) saturate(140%);
+	}
+
+	.card-title {
+		@apply text-white text-lg font-medium mb-4 w-full truncate;
 	}
 }

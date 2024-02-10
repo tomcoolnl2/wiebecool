@@ -1,10 +1,16 @@
 import * as React from 'react';
 import { fetchContactDetails, generateGoogleMapsAddress } from '@/lib';
+import { SocialMediaLinks } from '@/components';
 
-export const ContactDetails: React.FC = async () => {
+export const ContactDetails: React.FC<{ showInsta?: boolean }> = async ({ showInsta = false }) => {
 	const { artist, address } = await fetchContactDetails();
 	return (
-		<p className="contact-details">
+		<aside className="contact-details">
+			{showInsta && (
+				<div className="mb-10">
+					<SocialMediaLinks size="2xl" />
+				</div>
+			)}
 			Wanneer je meer wilt weten:
 			<br />
 			<a href={`tel:${artist.telephone}`}>{artist.telephone}</a>
@@ -19,6 +25,6 @@ export const ContactDetails: React.FC = async () => {
 			>
 				{address.streetAddress}, {address.zipCode} {address.city}
 			</a>
-		</p>
+		</aside>
 	);
 };

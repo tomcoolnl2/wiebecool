@@ -4,6 +4,7 @@ export * from './page';
 
 export * from './Alert';
 export * from './Background';
+export * from './Card';
 // export * from './Carousel';
 export * from './ContactDetails';
 export * from './Cursor';

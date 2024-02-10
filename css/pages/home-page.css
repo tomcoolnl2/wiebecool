@@ -1,5 +1,5 @@
 .home-page .home-content {
-	@apply flex flex-col md:flex-row items-center md:items-start mt-0 mb-8 text-center;
+	@apply flex flex-col md:flex-row items-center md:items-start mt-0 mb-8;
 }
 
 .home-page .contact-details {
@@ -16,11 +16,11 @@
 }
 
 .home-page .name {
-	@apply font-poppins font-light text-3xl sm:text-4xl uppercase mb-6 text-shadow-lg shadow-slate-800;
+	@apply font-poppins font-light text-3xl sm:text-4xl uppercase mb-6 text-shadow-lg shadow-slate-800 text-center;
 }
 
 .home-page .subtitle {
-	@apply font-light mb-6 text-xl md:text-2xl;
+	@apply font-light mb-6 text-xl md:text-2xl text-center;
 }
 
 .home-page .contact-details {

@@ -73,9 +73,7 @@ export default async function DetailPage({ params }: PageParams) {
 									</li>
 								)}
 							</ul>
-							<aside>
-								<ContactDetails />
-							</aside>
+							<ContactDetails />
 						</div>
 					</div>
 					{detailPage.imageCarousel?.imageCollection && <Carousel {...detailPage.imageCarousel} />}
