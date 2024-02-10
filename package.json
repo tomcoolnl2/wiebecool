@@ -1,6 +1,6 @@
 {
 	"name": "wiebecool",
-	"version": "0.1.66",
+	"version": "0.1.666",
 	"private": true,
 	"scripts": {
 		"dev": "next dev",
