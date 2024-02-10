@@ -1,6 +1,5 @@
 import { Document } from '@contentful/rich-text-types';
-import { PortfolioCardResponse, SitemapItemResponse, SysID } from '@/model';
-import { TextBlock } from '@/components';
+import type { PortfolioCardResponse, TextBlockResponse, SitemapItemResponse, SysID } from '@/model';
 
 export interface PageParams {
 	params: { slug: string };
@@ -118,7 +117,7 @@ export interface AboutPage extends BasePage {
 	type: PageType.AboutPage;
 	bannerImage: ItemImage;
 	buildingBlocksCollection: {
-		items: Array<TextBlock | PortfolioCardResponse>;
+		items: Array<TextBlockResponse | PortfolioCardResponse>;
 	};
 	artist: Artist;
 }

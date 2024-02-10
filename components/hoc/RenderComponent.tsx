@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { type TextBlock, TextBlockComponent } from '@/components/TextBlock';
-import { type PortfolioCardResponse, PortfolioCardsComponent } from '@/components/PortfolioCards';
+import type { PortfolioCardResponse, TextBlockResponse } from '@/model';
+import { TextBlockComponent, PortfolioCardsComponent } from '@/components';
 
-export type RenderComponentItem = TextBlock | PortfolioCardResponse;
+export type RenderComponentItem = TextBlockResponse | PortfolioCardResponse;
 
 interface ComponentMap {
 	[key: string]: React.ComponentType<{ item: RenderComponentItem }>;
