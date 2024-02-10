@@ -43,6 +43,31 @@ const config: Config = {
 				banner: '16 / 6',
 				portrait: '9 / 16',
 			},
+			animation: {
+				'fade-in-left': 'fadeInLeft 0.9s both',
+				'line-height': 'lineHeight 1000ms ease-in-out 0s forwards',
+				'line-round': 'lineRound 1200ms linear 0s infinite',
+				'preloaded-zero': 'preloadedZero 300ms ease-in-out 500ms forwards',
+			},
+			keyframes: {
+				fadeInLeft: {
+					'0%': { opacity: '0', transform: 'translate3d(-50%, 0, 0)' },
+					'60%': { opacity: '0' },
+					'100%': { opacity: '1', transform: 'none' },
+				},
+				lineHeight: {
+					'0%': { height: '0%' },
+					'100%': { height: '100%' },
+				},
+				lineRound: {
+					'0%': { transform: 'translateY(-100%)' },
+					'100%': { transform: 'translateY(200%)' },
+				},
+				preloadedZero: {
+					'0%': { width: '50%' },
+					'100%': { width: '0%' },
+				},
+			},
 		},
 	},
 	plugins: [
