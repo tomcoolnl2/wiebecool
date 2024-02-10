@@ -1,8 +1,8 @@
 .hero-banner {
-	@apply mb-10 aspect-video md:aspect-banner;
+	@apply mb-10 aspect-video md:aspect-banner shadow-slate-800 shadow-lg;
 }
 
 .hero-banner img {
 	filter: brightness(80%) saturate(150%);
-	@apply min-h-full max-w-none w-auto h-auto;
+	@apply min-h-full max-w-none w-auto h-auto ;
 }
