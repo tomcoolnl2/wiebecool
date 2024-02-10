@@ -38,7 +38,7 @@ export const Cursor: React.FC = () => {
 
 		const links = document.querySelectorAll('a');
 		const pointers = document.querySelectorAll('.cursor-pointer');
-		const triggers = [...links, ...pointers];
+		const triggers = [...links, ...pointers].filter((trigger) => !trigger.classList.contains('cursor-default'));
 
 		const handleMouseEnter = () => setIsHovered(true);
 		const handleMouseLeave = () => setIsHovered(false);

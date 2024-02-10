@@ -31,7 +31,11 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 					{description && <div className="rich-text-block">{processRichText(description.json)}</div>}
 					{imageCollection.items.map((slide) => {
 						return (
-							<SwiperSlide key={slide.sys.id} tag="figure" className="carousel-main-slide">
+							<SwiperSlide
+								key={slide.sys.id}
+								tag="figure"
+								className="carousel-main-slide image-container-bordered"
+							>
 								<Image
 									className="carousel-main-image"
 									src={slide.url}
@@ -48,13 +52,20 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 				</Swiper>
 				{imageCollection.items.length > 1 && (
 					<Swiper
-						style={style}
 						onSwiper={setThumbsSwiper}
 						spaceBetween={10}
-						slidesPerView={4.25}
+						slidesPerView={2.2}
 						watchSlidesProgress={true}
 						modules={[Navigation, Thumbs]}
 						className="carousel-thumbnails"
+						breakpoints={{
+							640: {
+								slidesPerView: 3.2,
+							},
+							1024: {
+								slidesPerView: 4.2,
+							},
+						}}
 					>
 						{imageCollection.items.map((slide) => {
 							return (
@@ -63,8 +74,8 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 										className="image-grayscale image-zoomable"
 										src={slide.url}
 										alt={slide.title}
-										width={200}
-										height={200}
+										width={300}
+										height={300}
 									/>
 								</SwiperSlide>
 							);
