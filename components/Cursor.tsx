@@ -30,7 +30,7 @@ export const Cursor: React.FC = () => {
 
 	React.useEffect(() => {
 		//
-		if (!cursorInner.current || !cursorOuter.current) {
+		if (!isMobile || !cursorInner.current || !cursorOuter.current) {
 			return;
 		}
 
@@ -55,7 +55,7 @@ export const Cursor: React.FC = () => {
 				trigger.removeEventListener('mouseleave', handleMouseLeave);
 			});
 		};
-	}, [cursorInner, cursorOuter, handleMouseMove]);
+	}, [isMobile, cursorInner, cursorOuter, handleMouseMove]);
 
 	return (
 		!isMobile && (
