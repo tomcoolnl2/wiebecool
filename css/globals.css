@@ -188,6 +188,7 @@
 			transition-all 
 			ease-in-out 
 			duration-500 
+			rounded
 			py-2 
 			px-10;
 	}

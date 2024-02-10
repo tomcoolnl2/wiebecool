@@ -14,6 +14,7 @@
 .contact-page textarea {
 	@apply w-full 
         text-white 
+        rounded
         border 
         bg-transparent 
         border-solid 

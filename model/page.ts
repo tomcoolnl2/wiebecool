@@ -2,7 +2,8 @@ import type { Document } from '@contentful/rich-text-types';
 import type { PortfolioCardResponse, SitemapItemResponse, SysID, TextBlockResponse } from '@/model';
 
 export interface PageParams {
-	params: { slug: string };
+	params?: { slug: string };
+	searchParams?: any;
 }
 
 export type RichText = Document & { json: any };

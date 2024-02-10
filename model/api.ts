@@ -18,13 +18,19 @@ export interface AlertMessage {
 	message: string;
 }
 
-// Contentful collection sorting options
-export enum SortOrder {
-	PUBLISHED_FIRST_ASC = 'sys_firstPublishedAt_ASC', // default
-	PUBLISHED_FIRST_DESC = 'sys_firstPublishedAt_DESC',
-	PAGE_TITLE_ASC = 'title_ASC',
-	PAGE_TITLE_DESC = 'title_DESC',
+export enum OrderType {
+	PUBLISHED_FIRST_DESC = 'newest', // default
+	PUBLISHED_FIRST_ASC = 'oldest',
+	PAGE_TITLE_DESC = 'z-a',
+	PAGE_TITLE_ASC = 'a-z',
 }
+
+export const OrderTypeMap: { [key in OrderType]: string } = {
+	[OrderType.PUBLISHED_FIRST_DESC]: 'sys_firstPublishedAt_DESC',
+	[OrderType.PUBLISHED_FIRST_ASC]: 'sys_firstPublishedAt_ASC',
+	[OrderType.PAGE_TITLE_DESC]: 'title_DESC',
+	[OrderType.PAGE_TITLE_ASC]: 'title_ASC',
+};
 
 export interface MetaDataResponse {
 	seoMetaData: SeoMetaData;

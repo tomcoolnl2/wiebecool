@@ -1,12 +1,11 @@
-export * from './contact';
 export * from './hoc';
 export * from './page';
 
 export * from './Alert';
 export * from './Background';
 export * from './Card';
-// export * from './Carousel';
 export * from './ContactDetails';
+export * from './ContactForm';
 export * from './Cursor';
 export * from './DropDown';
 export * from './Navigation';

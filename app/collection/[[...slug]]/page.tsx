@@ -30,10 +30,10 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 	return response;
 }
 
-export default async function CollectionPage({ params }: PageParams) {
+export default async function CollectionPage({ params, searchParams }: PageParams) {
 	const slug = ensureLeadingSlash(params?.slug?.[0] || collectionBaseUrl);
 	const path = slug === collectionBaseUrl ? collectionBaseUrl : collectionBaseUrl + slug;
-	const collectionPage = await fetchCollectionPage(slug as Slug);
+	const collectionPage = await fetchCollectionPage(slug as Slug, searchParams.order);
 	const jsonLd = generateSchema(collectionPage, SchemaType.COLLECTION);
 	return (
 		<SectionContainer>
@@ -45,19 +45,22 @@ export default async function CollectionPage({ params }: PageParams) {
 						<div className="rich-text-block">{processRichText(collectionPage.description.json)}</div>
 					)}
 					{collectionPage.sortingEnabled && (
-						<form className="collection-options">
-							<input type="hidden" value={collectionPage.tags} />
-							<DropDown />
-						</form>
+						<div className="collection-options">
+							<DropDown order={searchParams.order || null} />
+						</div>
 					)}
-					<nav className="collection">
+					<ul className="collection">
 						{collectionPage.collection.map((item) => {
 							const { id } = item.sys;
 							const img = item.imageCollection.items[0];
 							const href = ReWriteRule[PageType.DetailPage] + ensureLeadingSlash(item.slug);
-							return <Card key={id} id={id} href={href} title={item.title} img={img} />;
+							return (
+								<li key={id}>
+									<Card id={id} href={href} title={item.title} img={img} />
+								</li>
+							);
 						})}
-					</nav>
+					</ul>
 				</div>
 			</div>
 		</SectionContainer>

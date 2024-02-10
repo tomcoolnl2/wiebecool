@@ -1,29 +1,33 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '@/css/components/dropdown.css';
-import { SortOrder } from '@/model';
+import { OrderType } from '@/model';
 import { useClickOutside } from '@/hooks';
+import '@/css/components/dropdown.css';
 
 interface DropDownOption {
 	name: string;
-	value: SortOrder;
+	value: OrderType;
 }
 
-const dateSorting = [
-	{ name: 'Oudste', value: SortOrder.PUBLISHED_FIRST_ASC },
-	{ name: 'Nieuwste', value: SortOrder.PUBLISHED_FIRST_DESC },
-];
-const nameSorting = [
-	{ name: 'A-Z', value: SortOrder.PAGE_TITLE_ASC },
-	{ name: 'Z-A', value: SortOrder.PAGE_TITLE_DESC },
+const dateSortingOptions: DropDownOption[] = [
+	{ name: 'Nieuwste', value: OrderType.PUBLISHED_FIRST_DESC },
+	{ name: 'Oudste', value: OrderType.PUBLISHED_FIRST_ASC },
 ];
 
-export const DropDown: React.FC = () => {
+const nameSortingOptions: DropDownOption[] = [
+	{ name: 'A-Z', value: OrderType.PAGE_TITLE_ASC },
+	{ name: 'Z-A', value: OrderType.PAGE_TITLE_DESC },
+];
+
+const allSortingOptions: DropDownOption[] = [...dateSortingOptions, ...nameSortingOptions];
+
+export const DropDown: React.FC<{ order: OrderType | null }> = ({ order }) => {
 	//
+	const [sortOrderOption, setSortOrderOption] = React.useState<DropDownOption>(dateSortingOptions[0]);
 	const [dropDownIsOpen, setDropDownIsOpen] = React.useState<boolean>(false);
-	const [sortOption, setSortOption] = React.useState<DropDownOption>(dateSorting[1]);
 
 	const closeDropDown = React.useCallback(() => {
 		setDropDownIsOpen(false);
@@ -33,16 +37,16 @@ export const DropDown: React.FC = () => {
 		setDropDownIsOpen(!dropDownIsOpen);
 	}, [dropDownIsOpen]);
 
-	const handleDropDownItemClick = React.useCallback(
-		(value: SortOrder) => {
-			const option = [...dateSorting, ...nameSorting].find((o) => o.value === value);
-			if (option) {
-				setSortOption(option);
+	React.useEffect(() => {
+		if (order) {
+			const sortingOrder = allSortingOptions.find((option) => option.value === order);
+			if (sortingOrder) {
+				setSortOrderOption(sortingOrder);
 			}
-			closeDropDown();
-		},
-		[closeDropDown]
-	);
+		} else {
+			setSortOrderOption(dateSortingOptions[0]);
+		}
+	}, [order]);
 
 	const listRef = React.useRef<HTMLDivElement>(null);
 	const element = useClickOutside<HTMLDivElement>(listRef, closeDropDown);
@@ -58,7 +62,7 @@ export const DropDown: React.FC = () => {
 				aria-haspopup="true"
 				onClick={toggleDropDown}
 			>
-				{sortOption.name}
+				{sortOrderOption.name}
 				<FontAwesomeIcon icon={faChevronDown} size="xs" />
 			</button>
 			<div
@@ -69,18 +73,18 @@ export const DropDown: React.FC = () => {
 				aria-labelledby="menu-button"
 				tabIndex={-1}
 			>
-				{[nameSorting, dateSorting].map((list, i) => (
+				{[dateSortingOptions, nameSortingOptions].map((list, i) => (
 					<div key={`list-${i}`} className="py-1" role="none">
 						{list.map(({ name, value }) => (
-							<a
+							<Link
 								key={name}
-								href="#"
+								href={`?order=${value}`}
 								role="menuitem"
 								tabIndex={-1}
-								onClick={() => handleDropDownItemClick(value)}
+								onClick={closeDropDown}
 							>
 								{name}
-							</a>
+							</Link>
 						))}
 					</div>
 				))}
