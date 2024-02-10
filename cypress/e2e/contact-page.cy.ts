@@ -53,7 +53,7 @@ describe('Contact Page Tests', () => {
 	it('should display error messages for empty message', () => {
 		// Fill out the form with valid input data
 		cy.get('input[name="name"]').type('John Doe');
-		cy.get('input[name="email"]').type('john@example.com');
+		cy.get('input[name="email"]').type('test@email.com');
 		// Submit the form with invalid input data (e.g., without filling out all required fields)
 		cy.get('button[type="submit"]').click();
 		// Assert that error messages are displayed for each invalid input
@@ -63,7 +63,7 @@ describe('Contact Page Tests', () => {
 	it('should submit the contact form with valid inputs', () => {
 		// Fill out the form with valid input data
 		cy.get('input[name="name"]').type('John Doe');
-		cy.get('input[name="email"]').type('john@example.com');
+		cy.get('input[name="email"]').type('test@email.com');
 		cy.get('textarea[name="message"]').type('This is a test message');
 		// Submit the form
 		cy.get('button[type="submit"]').click();
