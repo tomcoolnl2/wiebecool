@@ -8,9 +8,9 @@ import {
 	type RenderComponentItem,
 	RenderComponent,
 	SectionContainer,
-	ContactDetails,
 	PageHeader,
 	SchemaTag,
+	ContactDetails,
 } from '@/components';
 import '@/css/pages/about-page.css';
 
@@ -44,9 +44,7 @@ export default async function About() {
 					{blocks.map((item: RenderComponentItem, i: number) => (
 						<RenderComponent key={i} item={item} />
 					))}
-					<aside>
-						<ContactDetails />
-					</aside>
+					<ContactDetails showInsta />
 				</div>
 			</div>
 		</SectionContainer>

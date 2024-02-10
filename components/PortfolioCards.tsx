@@ -1,38 +1,16 @@
 import * as React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { artist } from '@/lib';
+import { type PortfolioCard, type PortfolioCardResponse, ReWriteRule, PageType } from '@/model';
+import { Card } from '@/components';
 import { type RenderComponentItem } from './hoc/RenderComponent';
-import { PageType, ReWriteRule, SysID } from '@/model';
-import '@/css/components/cards.css';
-
-interface PortFolioImage {
-	url: string;
-	title: string | null;
-}
-
-interface Card extends SysID {
-	slug: string;
-	title: string;
-	imageCollection: {
-		items: PortFolioImage[];
-	};
-}
-
-export interface DetailCardSchema {
-	__typename: 'PortfolioCards';
-	detailPagesCollection: {
-		items: Card[];
-	};
-}
+import '@/css/components/portfolio-cards.css';
 
 interface Props {
 	item: RenderComponentItem;
 }
 
-export const PortfolioCardsComponent: React.FC<Props> = ({ item }) => {
+export const PortfolioCards: React.FC<Props> = ({ item }) => {
 	//
-	const { detailPagesCollection } = item as DetailCardSchema;
+	const { detailPagesCollection } = item as PortfolioCardResponse;
 	const cards = detailPagesCollection.items || [];
 
 	if (!cards.length) {
@@ -40,26 +18,13 @@ export const PortfolioCardsComponent: React.FC<Props> = ({ item }) => {
 	}
 
 	return (
-		<aside className="cards">
-			{cards.map((card: Card, i) => (
-				<article className="card" key={card.sys.id}>
-					<Link href={`${ReWriteRule[PageType.DetailPage]}${card.slug}`} className="block">
-						<div className="card-image image-container aspect-square">
-							<Image
-								className="image-centered image-zoomable"
-								src={card.imageCollection.items[0].url + '?w=450'}
-								alt={card.imageCollection.items[0].title || artist.description}
-								width={450}
-								height={450}
-							/>
-						</div>
-						<div className="card-content">
-							<h2 className="card-title">{card.title}</h2>
-							<button className="button">Lees meer</button>
-						</div>
-					</Link>
-				</article>
-			))}
+		<aside className="portfolio-cards">
+			{cards.map((card: PortfolioCard, i) => {
+				const { id } = card.sys;
+				const href = ReWriteRule[PageType.DetailPage] + card.slug;
+				const img = card.imageCollection.items[0];
+				return <Card key={id} id={id} href={href} title={card.title} img={img} />;
+			})}
 		</aside>
 	);
 };

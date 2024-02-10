@@ -1,21 +1,16 @@
 import * as React from 'react';
 import { processRichText } from '@/lib';
 import { RenderComponentItem } from '@/components';
-
-export interface TextBlock {
-	__typename: 'TextBlock';
-	description: any;
-	title: string | null;
-}
+import type { TextBlockResponse } from '@/model';
 
 interface Props {
 	item: RenderComponentItem;
 }
 
-export const TextBlockComponent: React.FC<Props> = ({ item }) => {
-	const { title = null, description } = item as TextBlock;
+export const TextBlock: React.FC<Props> = ({ item }) => {
+	const { title = null, description } = item as TextBlockResponse;
 	return (
-		<div className="rich-text-block-border">
+		<div className="rich-text-block">
 			{title && <h3>{title}</h3>}
 			{processRichText(description.json)}
 		</div>

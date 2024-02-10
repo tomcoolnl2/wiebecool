@@ -6,3 +6,7 @@
 	filter: brightness(80%) saturate(150%);
 	@apply min-h-full max-w-none w-auto h-auto ;
 }
+
+.contact-details {
+	@apply text-center;
+}

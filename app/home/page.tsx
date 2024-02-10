@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import React from 'react';
 import { SchemaType } from '@/model';
-import { fetchHomePage, fetchHomePageSeoMetaData, fetchSeoMetaData, generateSchema, processRichText } from '@/lib';
-import { SectionContainer, SocialMediaLinks, ContactDetails, SchemaTag } from '@/components';
+import { fetchHomePage, fetchHomePageSeoMetaData, generateSchema, processRichText } from '@/lib';
+import { SectionContainer, ContactDetails, SchemaTag } from '@/components';
 import '@/css/pages/home-page.css';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -32,10 +32,7 @@ export default async function Home() {
 							<div className="rich-text-block-border max-w-[450px]">
 								{processRichText(homePage.description.json)}
 							</div>
-							<SocialMediaLinks size="2xl" />
-							<br />
-							<br />
-							<ContactDetails />
+							<ContactDetails showInsta />
 						</div>
 					</div>
 				</div>

@@ -1,6 +1,5 @@
-import { Document } from '@contentful/rich-text-types';
-import { SitemapItemResponse, SysID } from '@/model';
-import { DetailCardSchema, TextBlock } from '@/components';
+import type { Document } from '@contentful/rich-text-types';
+import type { PortfolioCardResponse, SitemapItemResponse, SysID, TextBlockResponse } from '@/model';
 
 export interface PageParams {
 	params: { slug: string };
@@ -58,6 +57,14 @@ export interface CollectionItem extends SysID {
 	imageCollection: ImageCollection;
 }
 
+export interface PortfolioCard extends SysID {
+	slug: string;
+	title: string;
+	imageCollection: {
+		items: ItemImage[];
+	};
+}
+
 export interface PageCarousel {
 	description: RichText;
 	showDescription: boolean;
@@ -110,7 +117,7 @@ export interface AboutPage extends BasePage {
 	type: PageType.AboutPage;
 	bannerImage: ItemImage;
 	buildingBlocksCollection: {
-		items: Array<TextBlock | DetailCardSchema>;
+		items: Array<TextBlockResponse | PortfolioCardResponse>;
 	};
 	artist: Artist;
 }

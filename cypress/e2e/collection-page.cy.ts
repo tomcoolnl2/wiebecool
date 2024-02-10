@@ -26,6 +26,6 @@ describe('Collection Page Tests', () => {
 	});
 
 	it('should ensure correct display of sculptures', () => {
-		cy.get('.collection-item').should('have.length.greaterThan', 0);
+		cy.get('.card').should('have.length.greaterThan', 0);
 	});
 });
