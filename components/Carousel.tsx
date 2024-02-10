@@ -59,12 +59,8 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 						modules={[Navigation, Thumbs]}
 						className="carousel-thumbnails"
 						breakpoints={{
-							640: {
-								slidesPerView: 3.2,
-							},
-							1024: {
-								slidesPerView: 4.2,
-							},
+							640: { slidesPerView: 3.2 },
+							1024: { slidesPerView: 4.2 },
 						}}
 					>
 						{imageCollection.items.map((slide) => {

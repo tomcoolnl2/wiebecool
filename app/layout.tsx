@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Metadata } from 'next';
 import { Montserrat, Mulish, Poppins } from 'next/font/google';
-import { artist, fetchMainNavigation, locale } from '@/lib';
+import { artist, baseUrl, fetchMainNavigation, locale } from '@/lib';
 import { PreLoader, MainNavigation, Cursor, Background } from '@/components';
 
 import { config } from '@fortawesome/fontawesome-svg-core';
@@ -26,10 +26,14 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+	metadataBase: new URL(baseUrl),
 	title: artist.description,
 	description: artist.description,
 	applicationName: artist.description,
 	referrer: 'origin',
+	openGraph: {
+		images: '/opengraph-image.jpg',
+	},
 };
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children }) => {

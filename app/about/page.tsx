@@ -31,7 +31,7 @@ export default async function About() {
 			<div className="container">
 				<div className="about-page page">
 					<PageHeader title={aboutPage.title} path={path} />
-					<div className="hero-banner image-container">
+					<div className="hero-banner image-container image-container-bordered">
 						<Image
 							src={hero.url}
 							alt={hero.description}

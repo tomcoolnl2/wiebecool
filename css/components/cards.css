@@ -1,13 +1,18 @@
 .cards {
-	@apply mx-auto flex flex-wrap justify-center mb-10;
+	@apply mx-auto flex flex-wrap justify-center md:mb-10;
 }
 
 .card {
-	@apply w-full max-w-sm px-2 mb-8;
+	@apply w-full max-w-sm mx-2 mb-8 shadow-slate-800 shadow-lg;
+}
+
+.card-image {
+	filter: brightness(75%) saturate(140%);
+	@apply border-2 border-slate-700;
 }
 
 .card-content {
-	@apply p-6 bg-slate-800;
+	@apply p-6 bg-slate-700;
 }
 
 .card-title {

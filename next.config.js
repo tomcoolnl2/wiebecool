@@ -19,6 +19,10 @@ const nextConfig = {
 	async rewrites() {
 		return [
 			{
+				source: '/',
+				destination: '/home',
+			},
+			{
 				source: '/over-mij',
 				destination: '/about',
 			},
@@ -34,6 +38,11 @@ const nextConfig = {
 	},
 	async redirects() {
 		return [
+			{
+				source: '/home',
+				destination: '/',
+				permanent: true,
+			},
 			{
 				source: '/about',
 				destination: '/over-mij',
