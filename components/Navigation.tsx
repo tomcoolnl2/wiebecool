@@ -56,7 +56,7 @@ const NavigationItem: React.FC<NavigationItemProps> = ({ item, onClick, useHrefB
 	const path = usePathname().split('/').filter(Boolean);
 	const slug = item.page.slug.replace('/', '');
 	return (
-		<li className="mb-5 w-full">
+		<li className="navigation-item">
 			<NavigationLink useHrefBuilder={useHrefBuilder} item={item} slug={slug} path={path} onClick={onClick} />
 			{item.subNavigation instanceof Array && (
 				<Navigation items={item.subNavigation} className="sub-navigation" useHrefBuilder onClick={onClick} />

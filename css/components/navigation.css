@@ -68,6 +68,10 @@
 	@apply text-right lg:text-left;
 }
 
+.navigation-item {
+        @apply mb-4 w-full;
+}
+
 .navigation-link {
 	@apply text-base text-shadow shadow-slate-800 text-gray-300 hover:text-white;
 }
