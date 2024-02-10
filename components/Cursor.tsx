@@ -30,7 +30,7 @@ export const Cursor: React.FC = () => {
 
 	React.useEffect(() => {
 		//
-		if (!isMobile || !cursorInner.current || !cursorOuter.current) {
+		if (isMobile || !cursorInner.current || !cursorOuter.current) {
 			return;
 		}
 
