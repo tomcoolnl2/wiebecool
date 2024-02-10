@@ -1,8 +1,7 @@
 .top-bar {
         background: radial-gradient(circle, rgb(47, 55, 68) 0%, rgb(52, 54, 58) 100%);
-        /* background: rgb(52, 54, 58); */
 	@apply
-        lg:bg-transparent
+        lg:bg-none
         shadow-slate-800 
         lg:shadow-transparent
         shadow
@@ -74,7 +73,7 @@
 }
 
 .navigation-link.active {
-	@apply text-buddha-gold-600;
+	@apply text-buddha-gold-600 hover:cursor-default;
 }
 
 .sub-navigation {
