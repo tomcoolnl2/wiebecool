@@ -7,7 +7,7 @@ describe('Detail Page Tests', () => {
 
 	it('should allow users to access individual sculpture detail pages', () => {
 		// Click on an artwork to access its detail page
-		cy.get('.collection-item a').first().click({ force: true });
+		cy.get('.card a').first().click({ force: true });
 		cy.url().should('include', '/werk');
 	});
 
@@ -21,7 +21,7 @@ describe('Detail Page Tests', () => {
 
 	it('should test the display of sculpture details', () => {
 		// Access an individual artwork detail page
-		cy.get('.collection-item a').first().click({ force: true });
+		cy.get('.card a').first().click({ force: true });
 		// Test if it loads correctly
 		cy.get('.page-header').should('be.visible');
 		cy.get('nav[aria-label="breadcrumbs"]').should('be.visible');
