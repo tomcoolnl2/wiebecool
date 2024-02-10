@@ -48,7 +48,7 @@
 	}
 
 	a[href^='tel:'] {
-		@apply text-curious-blue-500 hover:text-curious-blue-600;
+		@apply text-amber-600 hover:text-amber-700;
 	}
 
 	a > svg {
@@ -173,7 +173,7 @@
 	}
 
 	.image-container-bordered {
-		@apply border-curious-blue-700 border-opacity-80 border-2 hover:border-opacity-100;
+		@apply border-amber-600 border-opacity-80 border-2 hover:border-opacity-100;
 	}
 
 	.image-centered {
