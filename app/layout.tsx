@@ -47,11 +47,11 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children })
 				<div className="site-wrapper">
 					<MainNavigation title={title} navigation={navigation} />
 					<div className="main-content">
+						<Background />
 						<main className="main-content-inner">{children}</main>
 					</div>
 				</div>
 				<Cursor />
-				<Background />
 			</body>
 		</html>
 	);

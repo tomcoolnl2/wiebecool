@@ -73,12 +73,12 @@ export default async function DetailPage({ params }: PageParams) {
 									</li>
 								)}
 							</ul>
+							<aside>
+								<ContactDetails />
+							</aside>
 						</div>
 					</div>
 					{detailPage.imageCarousel?.imageCollection && <Carousel {...detailPage.imageCarousel} />}
-					<aside className="text-block pt-5 pb-8 mt-8 text-center">
-						<ContactDetails />
-					</aside>
 				</div>
 			</div>
 		</SectionContainer>

@@ -17,7 +17,7 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 	return (
 		<>
 			<header className="top-bar">
-				<Link href="/" className="visually-hidden">
+				<Link href="/" className="sr-only">
 					<h1>{artist.name}</h1>
 					<h2>{artist.occupation}</h2>
 				</Link>
@@ -32,7 +32,7 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 				</div>
 			</header>
 			<nav className={`main-navigation${isMobileOpen ? ' mobile-open' : ''}`}>
-				<h1 className="visually-hidden">{title}</h1>
+				<h1 className="sr-only">{title}</h1>
 				<Navigation items={navigation} className="navigation" onClick={() => toggleMobile(false)} />
 				<div className="page-footer">
 					<div className="copyright">© {new Date().getFullYear()}</div>
