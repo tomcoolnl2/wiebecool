@@ -8,11 +8,11 @@
 }
 
 .carousel-main {
-	@apply w-[80%] relative aspect-square;
+	@apply relative w-full md:w-[80%] aspect-3/4 md:aspect-square;
 }
 
 .carousel-main-slide {
-	@apply w-full relative mb-3 bg-slate-700;
+	@apply w-full relative mb-3;
 }
 
 .carousel-main-image {
@@ -20,7 +20,7 @@
 }
 
 .carousel-slide-description {
-	@apply w-full text-white absolute bottom-0 p-5 text-center bg-slate-800/50;
+	@apply w-full text-white absolute bottom-0 p-1 md:p-5 text-center bg-slate-800/50;
 }
 
 .carousel-thumbnails {
