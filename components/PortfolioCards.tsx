@@ -44,9 +44,9 @@ export const PortfolioCardsComponent: React.FC<Props> = ({ item }) => {
 			{cards.map((card: Card, i) => (
 				<article className="card" key={card.sys.id}>
 					<Link href={`${ReWriteRule[PageType.DetailPage]}${card.slug}`} className="block">
-						<div className="image-container aspect-square">
+						<div className="card-image image-container aspect-square">
 							<Image
-								className="image-centered image-zoomable image-grayscale"
+								className="image-centered image-zoomable"
 								src={card.imageCollection.items[0].url + '?w=450'}
 								alt={card.imageCollection.items[0].title || artist.description}
 								width={450}
