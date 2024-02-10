@@ -2,13 +2,12 @@ import { Metadata } from 'next';
 import Image from 'next/image';
 import React from 'react';
 import { SchemaType } from '@/model';
-import { fetchHomePage, fetchSeoMetaData, generateSchema, processRichText } from '@/lib';
+import { fetchHomePage, fetchHomePageSeoMetaData, fetchSeoMetaData, generateSchema, processRichText } from '@/lib';
 import { SectionContainer, SocialMediaLinks, ContactDetails, SchemaTag } from '@/components';
 import '@/css/pages/home-page.css';
 
 export async function generateMetadata(): Promise<Metadata> {
-	const { seoMetaData } = await fetchSeoMetaData('CPkjAJlRTW3qlGNp8CqJm');
-	return seoMetaData;
+	return await fetchHomePageSeoMetaData();
 }
 
 export default async function Home() {

@@ -187,9 +187,22 @@ export async function fetchAddress(): Promise<Address> {
 	return address;
 }
 
+/**
+ * Fetches home page data from Contentful based on a sys ID.
+ * @returns {Promise<ContactDetails>} A promise resolving to the fetched contact details.
+ */
 export async function fetchContactDetails(): Promise<ContactDetails> {
 	const [artist, address] = await Promise.all([fetchArtist(), fetchAddress()]);
 	return { artist, address };
+}
+
+/**
+ * Fetches SEO Meta data from Contentful for the Home Page.
+ * @returns {Promise<SeoMetaData>} A promise resolving to the fetched seo meta data for the Home Page.
+ */
+export async function fetchHomePageSeoMetaData(): Promise<SeoMetaData> {
+	const { seoMetaData } = await fetchSeoMetaData('CPkjAJlRTW3qlGNp8CqJm');
+	return seoMetaData;
 }
 
 /**
