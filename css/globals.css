@@ -62,7 +62,7 @@
 
 	q,
 	blockquote {
-		@apply italic text-center max-w-[800px] grid my-6 m-auto;
+		@apply italic text-center max-w-[800px] grid mt-6 mx-auto;
 	}
 
 	input,
@@ -103,7 +103,7 @@
 	}
 
 	.container {
-		@apply relative clear-both h-auto w-full max-w-screen-md lg:max-w-screen-lg mx-auto px-10 py-0;
+		@apply relative clear-both h-auto w-full max-w-screen-md lg:max-w-screen-lg mx-auto px-5 sm:px-10 py-0;
 	}
 
 	.section-container {
