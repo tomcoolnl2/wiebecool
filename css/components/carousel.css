@@ -16,7 +16,7 @@
 }
 
 .carousel-main-image {
-	@apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 origin-center max-w-full min-h-full;
+	@apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 origin-center max-w-full min-h-full w-auto h-auto;
 }
 
 .carousel-slide-description {

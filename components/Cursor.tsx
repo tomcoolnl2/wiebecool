@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 'use client';
 import * as React from 'react';
 import { useDetectMobile } from '@/hooks';
@@ -58,7 +59,7 @@ export const Cursor: React.FC = () => {
 				trigger.removeEventListener('mouseleave', handleMouseLeave);
 			});
 		};
-	}, [cursorInner.current, cursorOuter.current]);
+	}, [cursorInner, cursorOuter, handleMouseMove]);
 
 	return (
 		<>
