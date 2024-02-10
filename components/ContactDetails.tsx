@@ -7,9 +7,7 @@ export const ContactDetails: React.FC = async () => {
 		<p className="contact-details">
 			Wanneer je meer wilt weten:
 			<br />
-			<a href={`tel:${artist.telephone}`} target="_blank">
-				{artist.telephone}
-			</a>
+			<a href={`tel:${artist.telephone}`}>{artist.telephone}</a>
 			<br />
 			<br />
 			Bezoekadres:
