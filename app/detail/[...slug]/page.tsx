@@ -39,7 +39,7 @@ export default async function DetailPage({ params }: PageParams) {
 					)}
 					<div className="detail-page-details-wrapper">
 						<div className="detail-page-main-image-wrapper">
-							<div className="detail-page-main-image image-container-bordered">
+							<div className="detail-page-main-image image-container image-container-bordered">
 								<Image
 									src={detailPageImg.url + '?w=700'}
 									title={detailPageImg.title}

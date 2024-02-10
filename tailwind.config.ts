@@ -44,12 +44,17 @@ const config: Config = {
 				portrait: '9 / 16',
 			},
 			animation: {
+				'fade-out': 'fadeOut 300ms ease-in-out 500ms forwards',
 				'fade-in-left': 'fadeInLeft 0.9s both',
 				'line-height': 'lineHeight 1000ms ease-in-out 0s forwards',
 				'line-round': 'lineRound 1200ms linear 0s infinite',
 				'preloaded-zero': 'preloadedZero 300ms ease-in-out 500ms forwards',
 			},
 			keyframes: {
+				fadeOut: {
+					'0%': { opacity: '1' },
+					'100%': { opacity: '0' },
+				},
 				fadeInLeft: {
 					'0%': { opacity: '0', transform: 'translate3d(-50%, 0, 0)' },
 					'60%': { opacity: '0' },

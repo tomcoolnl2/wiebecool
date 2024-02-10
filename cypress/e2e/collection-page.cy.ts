@@ -28,4 +28,18 @@ describe('Collection Page Tests', () => {
 	it('should ensure correct display of sculptures', () => {
 		cy.get('.card').should('have.length.greaterThan', 0);
 	});
+
+	it('should ensure correct display of sculptures and test URL params', () => {
+		//
+		cy.get('.dropdown-list a[href="?order=z-a"]').click({ force: true });
+		cy.url().should('include', '/collectie?order=z-a');
+
+		cy.url().then((url) => {
+			const searchParams = new URLSearchParams(new URL(url).search);
+			const orderParam = searchParams.get('order');
+			expect(orderParam).to.eq('z-a');
+		});
+
+		cy.get('.card').should('have.length.greaterThan', 0);
+	});
 });

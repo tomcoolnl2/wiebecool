@@ -1,33 +1,35 @@
 import { cache } from 'react';
 import { DocumentNode as GraphQLDocumentNode } from 'graphql';
 import {
-	AboutPage,
-	AboutPageResponse,
-	Address,
-	AddressResponse,
-	Artist,
-	ArtistResponse,
-	CollectionPage,
-	CollectionPageResponse,
-	ContactDetails,
-	ContactPage,
-	ContactPageResponse,
-	DetailPage,
-	DetailPageBySlugResponse,
-	DetailPageCollectionResponse,
-	HomePage,
-	HomePageResponse,
-	MetaDataBySlugResponse,
-	MetaDataResponse,
-	Navigation,
-	NavigationPageEntry,
-	NavigationResponse,
+	type AboutPage,
+	type AboutPageResponse,
+	type Address,
+	type AddressResponse,
+	type Artist,
+	type ArtistResponse,
+	type CollectionPage,
+	type CollectionPageResponse,
+	type ContactDetails,
+	type ContactPage,
+	type ContactPageResponse,
+	type DetailPage,
+	type DetailPageBySlugResponse,
+	type DetailPageCollectionResponse,
+	type HomePage,
+	type HomePageResponse,
+	type MetaDataBySlugResponse,
+	type MetaDataResponse,
+	type Navigation,
+	type NavigationPageEntry,
+	type NavigationResponse,
+	type SeoMetaData,
+	type Sitemap,
+	type SitemapResponse,
+	type Slug,
+	type SysID,
+	OrderType,
+	OrderTypeMap,
 	PageType,
-	SeoMetaData,
-	Sitemap,
-	SitemapResponse,
-	Slug,
-	SysID,
 } from '@/model';
 
 import MetaDataQuery from '@/graphql/MetaData.gql';
@@ -236,22 +238,32 @@ export async function fetchAboutPage(): Promise<AboutPage> {
 /**
  * Fetches collection page data from Contentful based on a slug.
  * @param {Slug} slug The Contentful identifier
+ * @param {OrderType} slug The sorting param
  * @returns {Promise<CollectionPage>} A promise resolving to the fetched about page data.
  */
-export async function fetchCollectionPage(slug: Slug): Promise<CollectionPage> {
+export async function fetchCollectionPage(
+	slug: Slug,
+	sortOrder = OrderType.PUBLISHED_FIRST_DESC
+): Promise<CollectionPage> {
+	//
 	const { collectionPageCollection } = await fetchContentfulData<CollectionPageResponse>(CollectionPageBySlugQuery, {
 		slug,
 	});
+
 	const collectionPage: CollectionPage = {
 		...collectionPageCollection.items[0],
 		type: PageType.CollectionPage,
 	};
-	const tag: string = collectionPage.tags[0].toLowerCase();
+
+	const tag = collectionPage.tags[0].toLowerCase();
+
 	const {
 		detailPageCollection: { items: collection },
 	} = await fetchContentfulData<DetailPageCollectionResponse>(DetailPagesByTagIDs, {
 		tagIDs: [tag],
+		order: OrderTypeMap[sortOrder],
 	});
+
 	return { ...collectionPage, type: PageType.CollectionPage, collection };
 }
 

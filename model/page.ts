@@ -3,6 +3,7 @@ import type { PortfolioCardResponse, SitemapItemResponse, SysID, TextBlockRespon
 
 export interface PageParams {
 	params: { slug: string };
+	searchParams?: any;
 }
 
 export type RichText = Document & { json: any };
@@ -126,6 +127,7 @@ export interface CollectionPage extends BasePage {
 	type: PageType.CollectionPage;
 	subtitle: string;
 	tags: string[];
+	sortingEnabled: boolean;
 	collection: DetailCollectionItem[];
 }
 

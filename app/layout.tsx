@@ -37,9 +37,7 @@ export const metadata: Metadata = {
 };
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children }) => {
-	//
 	const { title, navigation } = await fetchMainNavigation();
-
 	return (
 		<html lang={locale}>
 			<body className={`${montserrat.variable} ${mulish.variable} ${poppins.variable}`}>

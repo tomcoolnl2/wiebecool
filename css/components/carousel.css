@@ -12,7 +12,7 @@
 }
 
 .carousel-main-slide {
-	@apply w-full relative mb-3;
+	@apply w-full relative mb-3 rounded-md;
 }
 
 .carousel-main-image {

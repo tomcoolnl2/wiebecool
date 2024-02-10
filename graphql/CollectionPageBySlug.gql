@@ -9,6 +9,7 @@ query CollectionPageBySlug($slug: String!) {
 				json
 			}
 			tags
+			sortingEnabled
 		}
 	}
 }
