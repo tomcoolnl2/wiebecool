@@ -1,6 +1,6 @@
 
 .dropdown {
-    @apply relative top-[1px] inline-block text-left;
+    @apply relative top-[1px] inline-block text-left text-sm;
 }
 
 .dropdown-label {

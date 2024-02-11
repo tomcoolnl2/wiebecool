@@ -38,6 +38,12 @@ query DetailPageBySlug($slug: String!) {
 					}
 				}
 			}
+			contentfulMetadata {
+				tags {
+					id
+					name
+				}
+			}
 		}
 	}
 }

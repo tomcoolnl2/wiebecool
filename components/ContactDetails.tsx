@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { fetchContactDetails, generateGoogleMapsAddress } from '@/lib';
-import { SocialMediaLinks } from '@/components';
+import { ShareInstagram } from '@/components';
 
 export const ContactDetails: React.FC<{ showInsta?: boolean }> = async ({ showInsta = false }) => {
 	const { artist, address } = await fetchContactDetails();
@@ -8,7 +8,7 @@ export const ContactDetails: React.FC<{ showInsta?: boolean }> = async ({ showIn
 		<aside className="contact-details">
 			{showInsta && (
 				<div className="mb-10">
-					<SocialMediaLinks size="2xl" />
+					<ShareInstagram size="2xl" />
 				</div>
 			)}
 			Wanneer je meer wilt weten:

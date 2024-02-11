@@ -19,6 +19,15 @@ export const artist = {
 };
 
 /**
+ * Constructs a string with the first char to capitalize
+ * @param {string} str The string to capitalize.
+ * @returns {string} The capitalized string
+ */
+export function capitalize(str: string): string {
+	return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+/**
  * Constructs a URL based on the provided slug and path.
  * @param {Slug} slug The slug to append to the URL.
  * @param {Slug} [path=''] The optional path to prepend to the slug.

@@ -11,4 +11,5 @@ export * from './DropDown';
 export * from './Navigation';
 export * from './PreLoader';
 export * from './SchemaTag';
-export * from './SocialMediaLinks';
+export * from './ShareInstagram';
+export * from './ShareSocials';

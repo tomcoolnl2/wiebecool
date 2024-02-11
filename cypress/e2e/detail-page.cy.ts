@@ -29,5 +29,6 @@ describe('Detail Page Tests', () => {
 		cy.get('.detail-page-main-image').should('exist');
 		cy.get('.detail-page-details').should('exist');
 		cy.get('.contact-details').should('exist');
+		cy.get('.share-socials').should('exist');
 	});
 });
