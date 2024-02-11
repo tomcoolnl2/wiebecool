@@ -120,6 +120,9 @@ export interface HomePage extends BasePage {
 	title: string;
 	subtitle: string;
 	mugshot: ItemImage;
+	buildingBlocksCollection: {
+		items: Array<PortfolioCardResponse>;
+	};
 	artist: Artist;
 }
 

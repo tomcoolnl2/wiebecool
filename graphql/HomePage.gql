@@ -13,5 +13,27 @@ query HomePage($sysID: String!) {
 		description {
 			json
 		}
+		buildingBlocksCollection {
+			items {
+				__typename
+				... on PortfolioCards {
+					detailPagesCollection {
+						items {
+							sys {
+								id
+							}
+							slug
+							title
+							imageCollection(limit: 1) {
+								items {
+									url
+									title
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }

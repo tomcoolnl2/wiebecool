@@ -28,7 +28,7 @@ export const ContactDetails: React.FC<Props> = async ({
 			)}
 			{showCTAs && (
 				<div className="contact-details-ctas">
-					<h3>Interesse gewekt?</h3>
+					<h3>Meer weten?</h3>
 					<ul>
 						<li>
 							<FontAwesomeIcon icon={faPhoneSquare} size={'lg'} />
