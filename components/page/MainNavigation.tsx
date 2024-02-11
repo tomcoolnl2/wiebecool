@@ -3,7 +3,7 @@ import Link from 'next/link';
 import * as React from 'react';
 import { NavigationPageEntry } from '@/model';
 import { artist } from '@/lib';
-import { Navigation, SocialMediaLinks } from '@/components';
+import { Navigation, ShareInstagram } from '@/components';
 
 interface MainNavigation {
 	title: string;
@@ -21,7 +21,7 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 					<h1>{artist.name}</h1>
 					<h2>{artist.occupation}</h2>
 				</Link>
-				<SocialMediaLinks size="2xl" />
+				<ShareInstagram size="2xl" />
 				<div
 					className={`cursor-pointer hamburger--slider hamburger${isMobileOpen ? ' is-active' : ''}`}
 					onClick={() => toggleMobile(!isMobileOpen)}

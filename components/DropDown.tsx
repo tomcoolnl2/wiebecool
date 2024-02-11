@@ -78,7 +78,7 @@ export const DropDown: React.FC<{ order: OrderType | null }> = ({ order }) => {
 						{list.map(({ name, value }) => (
 							<Link
 								key={name}
-								href={`?order=${value}`}
+								href={`?${new URLSearchParams({ order: value })}`}
 								role="menuitem"
 								tabIndex={-1}
 								onClick={closeDropDown}

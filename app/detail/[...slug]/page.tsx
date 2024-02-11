@@ -1,12 +1,18 @@
 'use server';
 import { Metadata } from 'next';
-import { headers } from 'next/headers';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { PageParams, PageType, ReWriteRule, SchemaType, Slug } from '@/model';
-import { fetchDetailPage, fetchSeoMetaDataBySlug, formatStatus, generateSchema, toLocaleDateString } from '@/lib';
+import {
+	capitalize,
+	fetchDetailPage,
+	fetchSeoMetaDataBySlug,
+	formatStatus,
+	generateSchema,
+	toLocaleDateString,
+} from '@/lib';
 import { baseUrl, ensureLeadingSlash, processRichText } from '@/lib';
-import { ContactDetails, SchemaTag, SectionContainer, PageHeader } from '@/components';
+import { ContactDetails, SchemaTag, SectionContainer, PageHeader, ShareSocials } from '@/components';
 import '@/css/pages/detail-page.css';
 
 const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
@@ -28,6 +34,7 @@ export default async function DetailPage({ params }: PageParams) {
 	const detailPageImg = detailPage.imageCollection.items[0];
 	const jsonLd = generateSchema(detailPage, SchemaType.SCULPTURE, detailPageImg);
 	const path = ReWriteRule[PageType.DetailPage] + slug;
+	const tags = detailPage.contentfulMetadata.tags?.map((tag) => capitalize(tag.name));
 	return (
 		<SectionContainer>
 			<SchemaTag schema={jsonLd} />
@@ -72,6 +79,14 @@ export default async function DetailPage({ params }: PageParams) {
 										<span>{detailPage.dimensions}</span>
 									</li>
 								)}
+								<li>
+									<ShareSocials
+										title={detailPage.title}
+										url={`${baseUrl}${path}`}
+										media={detailPageImg.url}
+										tags={[detailPage.material || '']}
+									/>
+								</li>
 							</ul>
 							<ContactDetails />
 						</div>

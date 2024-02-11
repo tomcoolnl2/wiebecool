@@ -3,7 +3,7 @@ import type { PortfolioCardResponse, SitemapItemResponse, SysID, TextBlockRespon
 
 export interface PageParams {
 	params: { slug: string };
-	searchParams?: any;
+	searchParams?: { [key: string]: string | string[] | undefined };
 }
 
 export type RichText = Document & { json: any };
@@ -64,6 +64,15 @@ export interface PortfolioCard extends SysID {
 	imageCollection: {
 		items: ItemImage[];
 	};
+}
+
+export interface Tag {
+	id: string;
+	name: string;
+}
+
+export interface ContentfulMetaData {
+	tags: Tag[];
 }
 
 export interface PageCarousel {
@@ -149,6 +158,7 @@ export interface DetailPage extends BasePage {
 	creationDate: string | null;
 	imageCollection: ImageCollection;
 	imageCarousel: PageCarousel;
+	contentfulMetadata: ContentfulMetaData;
 }
 
 export interface ContactPage extends BasePage {

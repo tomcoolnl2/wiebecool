@@ -6,7 +6,7 @@ interface Props {
 	size?: FontAwesomeIconProps['size'];
 }
 
-export const SocialMediaLinks: React.FC<Props> = ({ size = 'sm' }) => {
+export const ShareInstagram: React.FC<Props> = ({ size = 'sm' }) => {
 	return (
 		<a
 			href="https://www.instagram.com/wiebecoolbeeldhouwer/"

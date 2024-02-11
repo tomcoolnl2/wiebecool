@@ -1,0 +1,8 @@
+
+.share-socials {
+    @apply mt-4
+}
+
+.share-socials button {
+    @apply inline-block mr-4;
+}
