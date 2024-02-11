@@ -34,7 +34,6 @@ export default async function Home() {
 								{processRichText(homePage.description.json)}
 							</div>
 							<ContactDetails showInsta={false} showAddress={false} />
-
 							{blocks.map((item: RenderComponentItem, i: number) => (
 								<RenderComponent key={i} item={item} />
 							))}
