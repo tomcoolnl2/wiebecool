@@ -16,8 +16,8 @@ export const Card: React.FC<Props> = ({ id, href, title, img }) => {
 			<Link key={id + '-img'} href={href} title={img.title}>
 				<Image
 					src={img.url + '?w=300'}
-					title={img.title}
-					alt={img.description}
+					title={title}
+					alt={img.description || title}
 					width={img.width || 400}
 					height={img.height || 400}
 					className="card-image image-centered image-zoomable"
