@@ -3,7 +3,6 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { Document, INLINES } from '@contentful/rich-text-types';
 import { Address, AlertMessage, Slug } from '@/model';
-import { ReadonlyHeaders } from 'next/dist/server/web/spec-extension/adapters/headers';
 
 /** The locale of the website */
 export const locale = 'nl-NL';
