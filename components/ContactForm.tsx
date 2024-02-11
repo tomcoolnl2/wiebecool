@@ -13,11 +13,43 @@ interface Props {
 	buttonText: string;
 }
 
+const formId = '#form';
+
 export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 	//
 	const formRef = React.useRef<HTMLFormElement>(null);
 	const [alert, setAlert] = React.useState<AlertMessage | null>(null);
 	const { pending } = useFormStatus();
+
+	const scrollFormIntoView = React.useCallback(() => {
+		formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+	}, [formRef]);
+
+	const onClickHandler = React.useCallback(
+		(e: Event) => {
+			e.preventDefault();
+			scrollFormIntoView();
+		},
+		[scrollFormIntoView]
+	);
+
+	React.useEffect(() => {
+		if (window.location.hash === formId) {
+			scrollFormIntoView();
+		}
+	}, [scrollFormIntoView]);
+
+	React.useEffect(() => {
+		const trigger = document.querySelector(`a[href="${formId}"`);
+		if (trigger) {
+			trigger.addEventListener('click', onClickHandler);
+		}
+		return () => {
+			if (trigger) {
+				trigger.addEventListener('click', onClickHandler);
+			}
+		};
+	}, [onClickHandler]);
 
 	const sendEmailData = React.useCallback(async (formData: FormData) => {
 		// client side validation
@@ -39,7 +71,7 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 	}, [alert]);
 
 	return (
-		<form ref={formRef} action={sendEmailData} noValidate>
+		<form id="form" ref={formRef} action={sendEmailData} noValidate>
 			<div className="rich-text-block">{formIntro}</div>
 			<div className="field">
 				<label htmlFor="name">Naam:</label>
