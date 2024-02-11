@@ -58,7 +58,7 @@ export default async function DetailPage({ params }: PageParams) {
 							</div>
 						</div>
 						<div className="detail-page-details">
-							<ul>
+							<ul className="detail-page-detail-list">
 								<li>
 									<span className="label">Status:</span>
 									<span>{(detailPage.status && formatStatus(detailPage.status)) ?? '-'}</span>
@@ -84,11 +84,11 @@ export default async function DetailPage({ params }: PageParams) {
 										title={detailPage.title}
 										url={`${baseUrl}${path}`}
 										media={detailPageImg.url}
-										tags={[detailPage.material || '']}
+										tags={[detailPage.material || '', ...tags]}
 									/>
 								</li>
 							</ul>
-							<ContactDetails />
+							<ContactDetails subject={detailPage.title} showAddress={false} />
 						</div>
 					</div>
 					{detailPage.imageCarousel?.imageCollection && <Carousel {...detailPage.imageCarousel} />}

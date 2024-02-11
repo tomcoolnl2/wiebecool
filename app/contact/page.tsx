@@ -23,7 +23,7 @@ export default async function Contact() {
 					<PageHeader title={contactPage.title} path={path} />
 					<div className="rich-text-block">{processRichText(contactPage.description.json)}</div>
 					<div className="rich-text-block-border">
-						<ContactDetails />
+						<ContactDetails showCTAs={false} showInsta />
 					</div>
 					<ContactForm formIntro={contactPage.formIntro} buttonText={contactPage.submitButtonText} />
 				</div>
