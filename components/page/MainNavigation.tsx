@@ -4,6 +4,7 @@ import * as React from 'react';
 import { NavigationPageEntry } from '@/model';
 import { artist } from '@/lib';
 import { Navigation, ShareInstagram } from '@/components';
+import { useClickOutside } from '@/hooks';
 
 interface MainNavigation {
 	title: string;
@@ -13,6 +14,9 @@ interface MainNavigation {
 export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) => {
 	//
 	const [isMobileOpen, toggleMobile] = React.useState<boolean>(false);
+	const closeMobileNavigation = React.useCallback(() => toggleMobile(false), []);
+	const navRef = React.useRef<HTMLElement>(null);
+	const navElement = useClickOutside<HTMLElement>(navRef, closeMobileNavigation);
 
 	return (
 		<>
@@ -31,9 +35,9 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 					</div>
 				</div>
 			</header>
-			<nav className={`main-navigation${isMobileOpen ? ' mobile-open' : ''}`}>
+			<nav ref={navRef} className={`main-navigation${isMobileOpen ? ' mobile-open' : ''}`}>
 				<h1 className="sr-only">{title}</h1>
-				<Navigation items={navigation} className="navigation" onClick={() => toggleMobile(false)} />
+				<Navigation items={navigation} className="navigation" onClick={closeMobileNavigation} />
 				<div className="page-footer">
 					<div className="copyright">© {new Date().getFullYear()}</div>
 					<a href="/sitemap.xml">Sitemap</a>
