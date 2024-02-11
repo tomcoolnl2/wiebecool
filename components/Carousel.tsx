@@ -31,11 +31,7 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 					{description && <div className="rich-text-block">{processRichText(description.json)}</div>}
 					{imageCollection.items.map((slide) => {
 						return (
-							<SwiperSlide
-								key={slide.sys.id}
-								tag="figure"
-								className="carousel-main-slide image-container-bordered"
-							>
+							<SwiperSlide key={slide.sys.id} tag="figure" className="carousel-main-slide">
 								<Image
 									className="carousel-main-image"
 									src={slide.url}
