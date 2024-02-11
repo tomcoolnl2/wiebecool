@@ -1,6 +1,9 @@
 query DetailPageBySlug($slug: String!) {
 	detailPageCollection(where: { slug: $slug }, limit: 1) {
 		items {
+			sys {
+				id
+			}
 			slug
 			title
 			description {

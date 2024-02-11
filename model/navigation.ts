@@ -1,9 +1,5 @@
 //
-import { PageType } from '.';
-
-export interface SysID {
-	sys: { id: string };
-}
+import { PageType, type SysID } from '@/model';
 
 interface PageEntry extends SysID {
 	__typename: PageType;

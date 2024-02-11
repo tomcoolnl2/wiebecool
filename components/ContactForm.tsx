@@ -12,7 +12,7 @@ const Alert = dynamic(() => import('@/components/Alert'), { ssr: false });
 const formId = '#form';
 
 function prefabMessage(subject: string): string {
-	return `Hallo Wiebe,\nIk heb een vraag over het beeld genaamd "${subject}"...`.trim();
+	return `Hallo Wiebe,\nIk heb een vraag over "${subject}"...`.trim();
 }
 interface Props {
 	formIntro: string;

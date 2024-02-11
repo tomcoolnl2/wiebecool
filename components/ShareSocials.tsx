@@ -37,7 +37,8 @@ export const ShareSocials: React.FC<Props> = ({
 }) => {
 	const hashtags = prepareHashTags([artist.name, artist.occupation, ...tags]);
 	return (
-		<div className="share-socials">
+		<aside className="share-socials">
+			<h3>Delen:</h3>
 			{showFacebook && (
 				<FacebookShareButton url={url} quote={title} hashtag={hashtags.join(' #') || undefined}>
 					<FontAwesomeIcon icon={faFacebookSquare} size={'lg'} />
@@ -53,6 +54,6 @@ export const ShareSocials: React.FC<Props> = ({
 					<FontAwesomeIcon icon={faPinterestSquare} size={'lg'} />
 				</PinterestShareButton>
 			)}
-		</div>
+		</aside>
 	);
 };

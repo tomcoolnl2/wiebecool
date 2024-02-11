@@ -56,6 +56,10 @@
 	textarea {
 		@apply px-2.5 py-1.5;
 	}
+
+	hr {
+		@apply border-[rgba(255,255,255,0.1)];
+	}
 }
 
 /* @layer utilities {
@@ -121,11 +125,11 @@
 	}
 
 	.rich-text-block {
-		@apply w-full border-solid mb-10 font-montserrat font-medium leading-7;
+		@apply w-full border-solid mb-8 font-montserrat font-medium leading-7;
 	}
 
 	.rich-text-block-border {
-		@apply rich-text-block border-gray-300 border-b pb-8;
+		@apply rich-text-block border-[rgba(255,255,255,0.1)] border-b pb-8;
 	}
 
 	.text-block h3,
@@ -190,6 +194,10 @@
 
 	.button:disabled {
 		@apply pointer-events-none cursor-default opacity-70;
+	}
+
+	.detail-cards-collection  {
+		@apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center;
 	}
 
 	.card {

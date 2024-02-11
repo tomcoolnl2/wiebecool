@@ -15,7 +15,7 @@
 }
 
 .detail-page-details .detail-page-detail-list {
-	@apply list-none border-solid border-[rgba(255,255,255,0.1)] border-y py-5 md:py-7 mb-10;
+	@apply list-none border-solid border-[rgba(255,255,255,0.1)] border-y py-5 md:py-7 mb-7;
 }
 
 .detail-page-details .label {
@@ -24,4 +24,8 @@
 
 .contact-details {
 	@apply text-left;
+}
+
+.cross-selling {
+	@apply mt-8;
 }

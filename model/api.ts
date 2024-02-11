@@ -13,6 +13,10 @@ import {
 	PortfolioCard,
 } from './';
 
+export interface SysID {
+	sys: { id: string };
+}
+
 export interface AlertMessage {
 	type: 'success' | 'error';
 	message: string;

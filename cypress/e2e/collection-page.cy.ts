@@ -22,7 +22,7 @@ describe('Collection Page Tests', () => {
 		cy.get('nav[aria-label="breadcrumbs"]').should('exist');
 		cy.get('.rich-text-block').should('exist');
 		cy.get('.rich-text-block').should('exist');
-		cy.get('.collection').should('exist');
+		cy.get('.detail-cards-collection').should('exist');
 	});
 
 	it('should ensure correct display of sculptures', () => {
