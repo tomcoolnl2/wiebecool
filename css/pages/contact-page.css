@@ -39,3 +39,7 @@
 .contact-details {
 	@apply text-left;
 }
+
+.recaptcha {
+        @apply mb-6;
+}

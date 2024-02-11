@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import * as React from 'react';
 import { ItemImage } from '@/model';
+import { artist } from '@/lib';
 
 interface Props {
 	id: string;
@@ -17,7 +18,7 @@ export const Card: React.FC<Props> = ({ id, href, title, img }) => {
 				<Image
 					src={img.url + '?w=300'}
 					title={img.title}
-					alt={img.description}
+					alt={img.description || artist.description}
 					width={img.width || 400}
 					height={img.height || 400}
 					className="card-image image-centered image-zoomable"

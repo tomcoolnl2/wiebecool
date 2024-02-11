@@ -2,6 +2,7 @@ import { defineConfig } from 'cypress';
 
 export default defineConfig({
 	projectId: 'nhah3u',
+	chromeWebSecurity: false,
 	e2e: {
 		baseUrl: 'http://localhost:3000',
 		excludeSpecPattern: '*/*/**/spec.cy.ts',
