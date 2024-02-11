@@ -79,16 +79,14 @@ export default async function DetailPage({ params }: PageParams) {
 										<span>{detailPage.dimensions}</span>
 									</li>
 								)}
-								<li>
-									<ShareSocials
-										title={detailPage.title}
-										url={`${baseUrl}${path}`}
-										media={detailPageImg.url}
-										tags={[detailPage.material || '', ...tags]}
-									/>
-								</li>
 							</ul>
 							<ContactDetails subject={detailPage.title} showAddress={false} />
+							<ShareSocials
+								title={detailPage.title}
+								url={`${baseUrl}${path}`}
+								media={detailPageImg.url}
+								tags={[detailPage.material || '', ...tags]}
+							/>
 						</div>
 					</div>
 					{detailPage.imageCarousel?.imageCollection && <Carousel {...detailPage.imageCarousel} />}
