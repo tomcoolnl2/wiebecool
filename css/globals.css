@@ -54,7 +54,7 @@
 
 	input,
 	textarea {
-		@apply p-2.5;
+		@apply px-2.5 py-1.5;
 	}
 }
 
@@ -165,11 +165,6 @@
 	.image-grayscale {
 		@apply grayscale hover:grayscale-0 transition duration-500;
 	}
-
-	.contact-details {
-		@apply font-montserrat font-medium mb-6 leading-7 text-center;
-	}
-
 	.page-footer {
 		@apply absolute flex bottom-2 right-5 z-20 text-[12px];
 	}
@@ -207,5 +202,33 @@
 
 	.card-title {
 		@apply text-white text-lg font-medium mb-4 w-full truncate;
+	}
+
+	.contact-details {
+		@apply font-montserrat font-medium mb-6 leading-7 text-center;
+	}
+
+	.contact-details .insta {
+		@apply mb-8;
+	}
+
+	.contact-details .contact-details-ctas {
+		@apply mb-8;
+	}
+	
+	.contact-details .contact-details-ctas ul {
+		@apply mt-4;
+	}
+
+	.contact-details .contact-details-ctas li {
+		@apply relative pl-7;
+	}
+
+	.contact-details .contact-details-ctas a {
+		@apply text-sm;
+	}
+
+	.contact-details .contact-details-ctas svg {
+		@apply absolute top-1/2 left-0 -translate-y-1/2;
 	}
 }
