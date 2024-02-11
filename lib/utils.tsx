@@ -2,7 +2,7 @@ import * as React from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { Document, INLINES } from '@contentful/rich-text-types';
-import { Address, AlertMessage, Slug } from '@/model';
+import { Address, AlertMessage, Slug, Tag } from '@/model';
 
 /** The locale of the website */
 export const locale = 'nl-NL';
@@ -43,6 +43,19 @@ export function buildUrl(slug: Slug, path: Slug | '' = ''): URL {
  */
 export function generateGoogleMapsAddress(address: Address): string {
 	return `${address.streetAddress}+${address.zipCode}+${address.city}+,${address.country}`;
+}
+
+/**
+ * Takes a string and turns it into a Tag format
+ * @param {string} str The string to format
+ * @returns {Tag} The formatted Tag.
+ */
+export function convertStringToTag(str: string): Tag {
+	const tag = str.toLowerCase();
+	return {
+		id: tag,
+		name: capitalize(tag),
+	} as Tag;
 }
 
 /**

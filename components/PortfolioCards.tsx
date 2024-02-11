@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { type PortfolioCard, type PortfolioCardResponse, ReWriteRule, PageType } from '@/model';
+import { type PortfolioCardResponse, ReWriteRule, PageType } from '@/model';
 import { Card } from '@/components';
 import { type RenderComponentItem } from './hoc/RenderComponent';
 import '@/css/components/portfolio-cards.css';
@@ -19,7 +19,7 @@ export const PortfolioCards: React.FC<Props> = ({ item }) => {
 
 	return (
 		<aside className="portfolio-cards">
-			{cards.map((card: PortfolioCard, i) => {
+			{cards.map((card) => {
 				const { id } = card.sys;
 				const href = ReWriteRule[PageType.DetailPage] + card.slug;
 				const img = card.imageCollection.items[0];

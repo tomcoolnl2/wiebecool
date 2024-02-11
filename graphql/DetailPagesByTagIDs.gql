@@ -1,6 +1,11 @@
 #
-query DetailPagesByTagIDs($tagIDs: [String]!, $order: [DetailPageOrder]!) {
-	detailPageCollection(where: { contentfulMetadata: { tags: { id_contains_all: $tagIDs } } }, order: $order) {
+query DetailPagesByTagIDs($tagIDs: [String]!, $order: [DetailPageOrder]!, $limit: Int, $skipId: String) {
+	detailPageCollection(
+		where: { contentfulMetadata: { tags: { id_contains_all: $tagIDs } }, sys: { id_not: $skipId } }
+		order: $order
+		limit: $limit
+	) {
+		total
 		items {
 			sys {
 				id

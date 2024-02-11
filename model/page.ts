@@ -140,7 +140,7 @@ export interface CollectionPage extends BasePage {
 	subtitle: string;
 	tags: string[];
 	sortingEnabled: boolean;
-	collection: DetailCollectionItem[];
+	cards: DetailCollectionItem[];
 }
 
 export interface CollectionPageCollection {
@@ -153,7 +153,7 @@ export interface DetailCollectionItem extends SysID, BasePage {
 	imageCollection: ImageCollection;
 }
 
-export interface DetailPage extends BasePage {
+export interface DetailPage extends BasePage, SysID {
 	type: PageType.DetailPage;
 	material: string | null;
 	dimensions: string | null;
@@ -162,6 +162,7 @@ export interface DetailPage extends BasePage {
 	imageCollection: ImageCollection;
 	imageCarousel: PageCarousel;
 	contentfulMetadata: ContentfulMetaData;
+	cards: DetailCollectionItem[];
 }
 
 export interface ContactPage extends BasePage {

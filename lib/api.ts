@@ -7,6 +7,7 @@ import {
 	type AddressResponse,
 	type Artist,
 	type ArtistResponse,
+	type DetailCollectionItem,
 	type CollectionPage,
 	type CollectionPageResponse,
 	type ContactDetails,
@@ -241,10 +242,7 @@ export async function fetchAboutPage(): Promise<AboutPage> {
  * @param {OrderType} slug The sorting param
  * @returns {Promise<CollectionPage>} A promise resolving to the fetched about page data.
  */
-export async function fetchCollectionPage(
-	slug: Slug,
-	sortOrder = OrderType.PUBLISHED_FIRST_DESC
-): Promise<CollectionPage> {
+export async function fetchCollectionPage(slug: Slug, sortOrder: OrderType | null): Promise<CollectionPage> {
 	//
 	const { collectionPageCollection } = await fetchContentfulData<CollectionPageResponse>(CollectionPageBySlugQuery, {
 		slug,
@@ -256,15 +254,28 @@ export async function fetchCollectionPage(
 	};
 
 	const tag = collectionPage.tags[0].toLowerCase();
+	const cards = await fetchDetailPagesByTagIDs(tag, sortOrder ?? OrderType.PUBLISHED_FIRST_DESC);
 
+	return { ...collectionPage, type: PageType.CollectionPage, cards };
+}
+
+export async function fetchDetailPagesByTagIDs(
+	tag: string,
+	sortOrder = OrderType.PUBLISHED_FIRST_DESC,
+	limit: number = 0, // 0 = all
+	skipId: string | null = null
+): Promise<DetailCollectionItem[]> {
+	//
 	const {
-		detailPageCollection: { items: collection },
+		detailPageCollection: { items: cards },
 	} = await fetchContentfulData<DetailPageCollectionResponse>(DetailPagesByTagIDs, {
 		tagIDs: [tag],
 		order: OrderTypeMap[sortOrder],
+		limit,
+		skipId,
 	});
 
-	return { ...collectionPage, type: PageType.CollectionPage, collection };
+	return cards;
 }
 
 /**
@@ -278,7 +289,14 @@ export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
 			items: [detailPage],
 		},
 	} = await fetchContentfulData<DetailPageBySlugResponse>(DetailPageBySlugQuery, { slug });
-	return detailPage;
+
+	const tagAll = 'portfolio';
+	const tag = detailPage.contentfulMetadata.tags.filter((tag) => tag.id !== tagAll);
+	console.log(tag);
+	const skipId = detailPage.sys.id;
+	const cards = await fetchDetailPagesByTagIDs(tag[0].id, OrderType.PUBLISHED_FIRST_ASC, 3, skipId);
+	//
+	return { ...detailPage, cards };
 }
 
 /**

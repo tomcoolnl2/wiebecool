@@ -4,6 +4,7 @@ export * from './page';
 export * from './Alert';
 export * from './Background';
 export * from './Card';
+export * from './DetailCardsCollection';
 export * from './ContactDetails';
 export * from './ContactForm';
 export * from './Cursor';

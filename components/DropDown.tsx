@@ -24,7 +24,7 @@ const nameSortingOptions: DropDownOption[] = [
 
 const allSortingOptions: DropDownOption[] = [...dateSortingOptions, ...nameSortingOptions];
 
-export const DropDown: React.FC<{ order: OrderType | null }> = ({ order }) => {
+export const DropDown: React.FC<{ sortOrder: OrderType | null }> = ({ sortOrder }) => {
 	//
 	const [sortOrderOption, setSortOrderOption] = React.useState<DropDownOption>(dateSortingOptions[0]);
 	const [dropDownIsOpen, setDropDownIsOpen] = React.useState<boolean>(false);
@@ -38,15 +38,15 @@ export const DropDown: React.FC<{ order: OrderType | null }> = ({ order }) => {
 	}, [dropDownIsOpen]);
 
 	React.useEffect(() => {
-		if (order) {
-			const sortingOrder = allSortingOptions.find((option) => option.value === order);
+		if (sortOrder) {
+			const sortingOrder = allSortingOptions.find((option) => option.value === sortOrder);
 			if (sortingOrder) {
 				setSortOrderOption(sortingOrder);
 			}
 		} else {
 			setSortOrderOption(dateSortingOptions[0]);
 		}
-	}, [order]);
+	}, [sortOrder]);
 
 	const listRef = React.useRef<HTMLDivElement>(null);
 	const element = useClickOutside<HTMLDivElement>(listRef, closeDropDown);

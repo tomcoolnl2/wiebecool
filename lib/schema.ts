@@ -86,7 +86,7 @@ export function generateSchema(
 				...baseSchema,
 				...basePageSchema,
 				url: buildUrl(collectionPageData.slug, path).href,
-				mainEntity: collectionPageData.collection.map(
+				mainEntity: collectionPageData.cards.map(
 					(detailPage) =>
 						({
 							'@type': SchemaType.SCULPTURE,
