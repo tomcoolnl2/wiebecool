@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import * as React from 'react';
 import { OrderType, PageParams, PageType, ReWriteRule, SchemaType, Slug } from '@/model';
 import {
-	convertStringToTag,
 	ensureLeadingSlash,
 	fetchCollectionPage,
 	fetchSeoMetaDataBySlug,

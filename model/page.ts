@@ -138,8 +138,8 @@ export interface AboutPage extends BasePage {
 export interface CollectionPage extends BasePage {
 	type: PageType.CollectionPage;
 	subtitle: string;
-	tags: string[];
 	sortingEnabled: boolean;
+	contentfulMetadata: ContentfulMetaData;
 	cards: DetailCollectionItem[];
 }
 

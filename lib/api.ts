@@ -253,7 +253,7 @@ export async function fetchCollectionPage(slug: Slug, sortOrder: OrderType | nul
 		type: PageType.CollectionPage,
 	};
 
-	const tags = collectionPage.tags.map((tag) => tag.toLowerCase());
+	const tags = collectionPage.contentfulMetadata.tags.map((tag) => tag.id);
 	const cards = await fetchDetailPagesByTagIDs(tags, sortOrder ?? OrderType.PUBLISHED_FIRST_DESC);
 
 	return { ...collectionPage, type: PageType.CollectionPage, cards };
@@ -298,7 +298,7 @@ export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
 		},
 	} = await fetchContentfulData<DetailPageBySlugResponse>(DetailPageBySlugQuery, { slug });
 
-	let tags: string[] = [defaultCollectionTag]; /// fallback
+	let tags: string[] = [];
 	if (detailPage.relatedItemsTags?.length) {
 		tags = detailPage.relatedItemsTags.map((tag) => tag.toLowerCase());
 	}

@@ -49,19 +49,6 @@ export function generateGoogleMapsAddress(address: Address): string {
 }
 
 /**
- * Takes a string and turns it into a Tag format
- * @param {string} str The string to format
- * @returns {Tag} The formatted Tag.
- */
-export function convertStringToTag(str: string): Tag {
-	const tag = str.toLowerCase();
-	return {
-		id: tag,
-		name: capitalize(tag),
-	} as Tag;
-}
-
-/**
  * Processes Contentful rich text and converts it into React components.
  * @param {Document} rawRichText The raw rich text document from Contentful.
  * @returns {React.ReactNode} The React components generated from the rich text.
