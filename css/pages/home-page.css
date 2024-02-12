@@ -2,9 +2,6 @@
 	@apply flex flex-col md:flex-row items-center md:items-start mt-0 mb-8;
 }
 
-.home-page .contact-details {
-	@apply text-left;
-}
 
 .home-page .avatar {
 	@apply outline-offset-0 aspect-square relative rounded-full max-w-48 sm:max-w-64 md:max-w-48 xl:max-w-64 mb-8;
@@ -24,7 +21,7 @@
 }
 
 .home-page .contact-details {
-	@apply text-center md:text-left;
+	@apply text-left;
 }
 
 .home-page .portfolio-cards {
