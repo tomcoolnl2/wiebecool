@@ -8,8 +8,13 @@ query CollectionPageBySlug($slug: String!) {
 			description {
 				json
 			}
-			tags
 			sortingEnabled
+			contentfulMetadata {
+				tags {
+					id
+					name
+				}
+			}
 		}
 	}
 }
