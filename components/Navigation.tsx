@@ -22,7 +22,7 @@ interface NavigationLinkProps {
 	slug: string;
 	path: string[];
 	useHrefBuilder: boolean;
-	onClick?: () => void;
+	onClick?: (event: Event) => void;
 }
 
 const NavigationLink: React.FC<NavigationLinkProps> = ({ useHrefBuilder, item, slug, path, onClick }) => {
@@ -39,7 +39,7 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ useHrefBuilder, item, s
 			className={`navigation-link${currentPage ? ' active cursor-default' : ''}`}
 			href={href}
 			role="link"
-			onClick={() => onClick?.()}
+			onClick={(e) => onClick?.(e as unknown as Event)}
 		>
 			{item.name}
 		</Link>
@@ -49,7 +49,7 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ useHrefBuilder, item, s
 interface NavigationItemProps {
 	item: NavigationPageEntry;
 	useHrefBuilder: boolean;
-	onClick?: () => void;
+	onClick?: (event: Event) => void;
 }
 
 const NavigationItem: React.FC<NavigationItemProps> = ({ item, onClick, useHrefBuilder }) => {
@@ -69,7 +69,7 @@ interface NavigationProps {
 	items: NavigationPageEntry[];
 	className?: string | { [key: string]: boolean };
 	useHrefBuilder?: boolean;
-	onClick?: () => void;
+	onClick?: (event: Event) => void;
 }
 
 export const Navigation: React.FC<NavigationProps> = ({ items, useHrefBuilder = false, className = '', onClick }) => {

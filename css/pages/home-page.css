@@ -1,9 +1,6 @@
+
 .home-page .home-content {
 	@apply flex flex-col md:flex-row items-center md:items-start mt-0 mb-8;
-}
-
-.home-page .contact-details {
-	@apply text-left;
 }
 
 .home-page .avatar {
@@ -24,7 +21,7 @@
 }
 
 .home-page .contact-details {
-	@apply text-center md:text-left;
+	@apply text-left;
 }
 
 .home-page .portfolio-cards {
