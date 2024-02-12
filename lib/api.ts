@@ -304,7 +304,7 @@ export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
 	}
 
 	const skipId = detailPage.sys.id;
-	const cards = tags ? await fetchDetailPagesByTagIDs(tags, OrderType.PUBLISHED_FIRST_ASC, 4, skipId) : [];
+	const cards = await fetchDetailPagesByTagIDs(tags, OrderType.PUBLISHED_FIRST_ASC, 4, skipId);
 
 	return { ...detailPage, cards };
 }
