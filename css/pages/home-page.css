@@ -26,3 +26,7 @@
 .home-page .contact-details {
 	@apply text-center md:text-left;
 }
+
+.home-page .portfolio-cards {
+	@apply mt-6;
+}
