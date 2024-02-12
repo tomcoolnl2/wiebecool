@@ -41,6 +41,7 @@ query DetailPageBySlug($slug: String!) {
 					}
 				}
 			}
+			relatedItemsTags
 			contentfulMetadata {
 				tags {
 					id

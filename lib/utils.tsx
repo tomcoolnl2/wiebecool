@@ -17,6 +17,9 @@ export const artist = {
 	description: 'Wiebe Cool | Beeldhouwer',
 };
 
+/** Hardcoded. */
+export const defaultCollectionTag = 'portfolio';
+
 /**
  * Constructs a string with the first char to capitalize
  * @param {string} str The string to capitalize.

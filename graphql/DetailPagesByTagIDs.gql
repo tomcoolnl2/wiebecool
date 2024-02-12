@@ -1,7 +1,7 @@
 #
 query DetailPagesByTagIDs($tagIDs: [String]!, $order: [DetailPageOrder]!, $limit: Int, $skipId: String) {
 	detailPageCollection(
-		where: { contentfulMetadata: { tags: { id_contains_all: $tagIDs } }, sys: { id_not: $skipId } }
+		where: { contentfulMetadata: { tags: { id_contains_some: $tagIDs } }, sys: { id_not: $skipId } }
 		order: $order
 		limit: $limit
 	) {

@@ -97,7 +97,7 @@
 	}
 
 	.page-header {
-		@apply mb-8 md:mb-10;
+		@apply mb-8;
 	}
 
 	.page-header-title {
@@ -198,6 +198,10 @@
 
 	.detail-cards-collection  {
 		@apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-center;
+	}
+
+	.detail-cards-collection-4 .detail-cards-collection {
+		@apply md:grid-cols-4;
 	}
 
 	.card {

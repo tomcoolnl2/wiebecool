@@ -98,11 +98,15 @@ export default async function DetailPage({ params }: PageParams) {
 						</div>
 					</div>
 					{detailPage.imageCarousel?.imageCollection && <Carousel {...detailPage.imageCarousel} />}
-					<hr />
-					<aside className="cross-selling">
-						<h3 className="page-header-subtitle">Anderen bekeken ook:</h3>
-						<DetailCardsCollection cards={detailPage.cards} />
-					</aside>
+					{detailPage.cards.length && detailPage.cards.length > 1 ? (
+						<>
+							<hr />
+							<aside className="related-items detail-cards-collection-4">
+								<h3 className="page-header-subtitle">Anderen bekeken ook:</h3>
+								<DetailCardsCollection cards={detailPage.cards} omitWhen={2} />
+							</aside>
+						</>
+					) : null}
 				</div>
 			</div>
 		</SectionContainer>
