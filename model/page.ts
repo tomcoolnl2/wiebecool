@@ -162,6 +162,7 @@ export interface DetailPage extends BasePage, SysID {
 	imageCollection: ImageCollection;
 	imageCarousel: PageCarousel;
 	contentfulMetadata: ContentfulMetaData;
+	relatedItemsTags: string[];
 	cards: DetailCollectionItem[];
 }
 

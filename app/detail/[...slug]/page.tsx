@@ -101,7 +101,7 @@ export default async function DetailPage({ params }: PageParams) {
 					{detailPage.cards.length && detailPage.cards.length > 1 ? (
 						<>
 							<hr />
-							<aside className="cross-selling">
+							<aside className="related-items detail-cards-collection-4">
 								<h3 className="page-header-subtitle">Anderen bekeken ook:</h3>
 								<DetailCardsCollection cards={detailPage.cards} omitWhen={2} />
 							</aside>

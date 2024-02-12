@@ -1,5 +1,17 @@
 import { cache } from 'react';
 import { DocumentNode as GraphQLDocumentNode } from 'graphql';
+import MetaDataQuery from '@/graphql/MetaData.gql';
+import MainNavigationQuery from '@/graphql/MainNavigation.gql';
+import HomePageQuery from '@/graphql/HomePage.gql';
+import ContactPageQuery from '@/graphql/ContactPage.gql';
+import AddressQuery from '@/graphql/Address.gql';
+import ArtistQuery from '@/graphql/Artist.gql';
+import AboutPageQuery from '@/graphql/AboutPage.gql';
+import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
+import CollectionPageBySlugQuery from '@/graphql/CollectionPageBySlug.gql';
+import DetailPagesByTagIDs from '@/graphql/DetailPagesByTagIDs.gql';
+import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
+import SiteMapQuery from '@/graphql/Sitemap.gql';
 import {
 	type AboutPage,
 	type AboutPageResponse,
@@ -32,19 +44,7 @@ import {
 	OrderTypeMap,
 	PageType,
 } from '@/model';
-
-import MetaDataQuery from '@/graphql/MetaData.gql';
-import MainNavigationQuery from '@/graphql/MainNavigation.gql';
-import HomePageQuery from '@/graphql/HomePage.gql';
-import ContactPageQuery from '@/graphql/ContactPage.gql';
-import AddressQuery from '@/graphql/Address.gql';
-import ArtistQuery from '@/graphql/Artist.gql';
-import AboutPageQuery from '@/graphql/AboutPage.gql';
-import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
-import CollectionPageBySlugQuery from '@/graphql/CollectionPageBySlug.gql';
-import DetailPagesByTagIDs from '@/graphql/DetailPagesByTagIDs.gql';
-import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
-import SiteMapQuery from '@/graphql/Sitemap.gql';
+import { defaultCollectionTag } from '@/lib';
 
 /**
  * Represents an error specific to Contentful-related operations.
@@ -253,14 +253,22 @@ export async function fetchCollectionPage(slug: Slug, sortOrder: OrderType | nul
 		type: PageType.CollectionPage,
 	};
 
-	const tag = collectionPage.tags[0].toLowerCase();
-	const cards = await fetchDetailPagesByTagIDs(tag, sortOrder ?? OrderType.PUBLISHED_FIRST_DESC);
+	const tags = collectionPage.tags.map((tag) => tag.toLowerCase());
+	const cards = await fetchDetailPagesByTagIDs(tags, sortOrder ?? OrderType.PUBLISHED_FIRST_DESC);
 
 	return { ...collectionPage, type: PageType.CollectionPage, cards };
 }
 
+/**
+ * Fetches detail pages based on tag IDs.
+ * @param {string[]} tags - Array of tag IDs to filter detail pages.
+ * @param {OrderType} [sortOrder=OrderType.PUBLISHED_FIRST_DESC] - Sort order for the fetched detail pages.
+ * @param {number} [limit=0] - Maximum number of detail pages to fetch. Default is 0 (fetch all).
+ * @param {string | null} [skipId=null] - ID of the detail page to skip fetching.
+ * @returns {Promise<DetailCollectionItem[]>} - A promise that resolves to an array of DetailCollectionItem objects representing the fetched detail pages.
+ */
 export async function fetchDetailPagesByTagIDs(
-	tag: string,
+	tags: string[],
 	sortOrder = OrderType.PUBLISHED_FIRST_DESC,
 	limit: number = 0, // 0 = all
 	skipId: string | null = null
@@ -269,7 +277,7 @@ export async function fetchDetailPagesByTagIDs(
 	const {
 		detailPageCollection: { items: cards },
 	} = await fetchContentfulData<DetailPageCollectionResponse>(DetailPagesByTagIDs, {
-		tagIDs: [tag],
+		tagIDs: tags,
 		order: OrderTypeMap[sortOrder],
 		limit,
 		skipId,
@@ -290,12 +298,14 @@ export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
 		},
 	} = await fetchContentfulData<DetailPageBySlugResponse>(DetailPageBySlugQuery, { slug });
 
-	const tagAll = 'portfolio';
-	const tag = detailPage.contentfulMetadata.tags.filter((tag) => tag.id !== tagAll);
-	console.log(tag);
+	let tags: string[] = [defaultCollectionTag]; /// fallback
+	if (detailPage.relatedItemsTags?.length) {
+		tags = detailPage.relatedItemsTags.map((tag) => tag.toLowerCase());
+	}
+
 	const skipId = detailPage.sys.id;
-	const cards = await fetchDetailPagesByTagIDs(tag[0].id, OrderType.PUBLISHED_FIRST_ASC, 3, skipId);
-	//
+	const cards = tags ? await fetchDetailPagesByTagIDs(tags, OrderType.PUBLISHED_FIRST_ASC, 4, skipId) : [];
+
 	return { ...detailPage, cards };
 }
 
