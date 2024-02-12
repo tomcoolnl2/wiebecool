@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export type UseClickOutsideProps = (event: MouseEvent) => void;
+export type UseClickOutsideProps = (event: Event) => void;
 
 export const useClickOutside = <T extends HTMLElement>(
 	ref: React.RefObject<T>,
@@ -9,7 +9,6 @@ export const useClickOutside = <T extends HTMLElement>(
 	//
 	React.useEffect(() => {
 		const maybeHandler = (event: MouseEvent) => {
-			console.log;
 			if (ref.current && !ref.current.contains(event.target as Node)) {
 				handler(event);
 			}

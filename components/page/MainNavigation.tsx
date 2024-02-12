@@ -14,9 +14,16 @@ interface MainNavigation {
 export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) => {
 	//
 	const [isMobileOpen, toggleMobile] = React.useState<boolean>(false);
-	const closeMobileNavigation = React.useCallback(() => toggleMobile(false), []);
+
+	const closeOnOutsideClick = React.useCallback((event: Event) => {
+		const target = event.target as HTMLElement;
+		if (!target.classList.contains('hamburger-inner')) {
+			toggleMobile(false);
+		}
+	}, []);
+
 	const navRef = React.useRef<HTMLElement>(null);
-	const navElement = useClickOutside<HTMLElement>(navRef, closeMobileNavigation);
+	const navElement = useClickOutside<HTMLElement>(navRef, closeOnOutsideClick);
 
 	return (
 		<>
@@ -37,7 +44,7 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 			</header>
 			<nav ref={navRef} className={`main-navigation${isMobileOpen ? ' mobile-open' : ''}`}>
 				<h1 className="sr-only">{title}</h1>
-				<Navigation items={navigation} className="navigation" onClick={closeMobileNavigation} />
+				<Navigation items={navigation} className="navigation" onClick={closeOnOutsideClick} />
 				<div className="page-footer">
 					<div className="copyright">© {new Date().getFullYear()}</div>
 					<a href="/sitemap.xml">Sitemap</a>
