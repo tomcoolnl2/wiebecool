@@ -45,13 +45,13 @@ describe('Collection Page Tests', () => {
 
 	it('should update the "order" URL params', () => {
 		//
-		cy.get('a[href="?order=z-a"]').click({ force: true });
-		cy.url().should('include', '/collectie?order=z-a');
+		cy.get('a[href="?order=a-z"]').click({ force: true });
+		cy.url().should('include', '/collectie?order=a-z');
 
 		cy.url().then((url) => {
 			const searchParams = new URLSearchParams(new URL(url).search);
 			const orderParam = searchParams.get('order');
-			expect(orderParam).to.eq('z-a');
+			expect(orderParam).to.eq('a-z');
 		});
 
 		cy.get('.card').should('have.length.greaterThan', 0);
@@ -59,17 +59,17 @@ describe('Collection Page Tests', () => {
 
 	it('should update the "filter" and "order" URL params', () => {
 		//
-		cy.get('.collection-order-item a[href="?order=z-a"]').click({ force: true });
+		cy.get('.collection-order-item a[href="?order=a-z"]').click({ force: true });
 		// filter links should be updated with the order in the params
-		cy.get('.collection-filter-item a[href="?order=z-a&filter=steen"]').click({ force: true });
+		cy.get('.collection-filter-item a[href="?order=a-z&filter=steen"]').click({ force: true });
 
-		cy.url().should('include', '/collectie?order=z-a&filter=steen');
+		cy.url().should('include', '/collectie?order=a-z&filter=steen');
 
 		cy.url().then((url) => {
 			const searchParams = new URLSearchParams(new URL(url).search);
 			const orderParam = searchParams.get('order');
 			const filterParam = searchParams.get('filter');
-			expect(orderParam).to.eq('z-a');
+			expect(orderParam).to.eq('a-z');
 			expect(filterParam).to.eq('steen');
 		});
 
@@ -78,12 +78,12 @@ describe('Collection Page Tests', () => {
 
 	it("should remove 'filter' URL param when selecting 'All' from the filter", () => {
 		//
-		cy.get('.collection-order-item a[href="?order=z-a"]').click({ force: true });
-		cy.get('.collection-filter-item a[href="?order=z-a&filter=steen"]').click({ force: true });
+		cy.get('.collection-order-item a[href="?order=a-z"]').click({ force: true });
+		cy.get('.collection-filter-item a[href="?order=a-z&filter=steen"]').click({ force: true });
 
 		cy.get('.collection-filter-item a').contains('All').click({ force: true });
 
-		cy.location('search').should('contain', 'order=z-a');
+		cy.location('search').should('contain', 'order=a-z');
 		cy.location('search').should('not.contain', 'filter=steen');
 
 		cy.get('.card').should('have.length.greaterThan', 0);
@@ -91,12 +91,12 @@ describe('Collection Page Tests', () => {
 
 	it("should remove 'order' and 'filter' URL params when selecting 'All' from the filter", () => {
 		//
-		cy.get('.collection-order-item a[href="?order=z-a"]').click({ force: true });
-		cy.get('.collection-filter-item a[href="?order=z-a&filter=steen"]').click({ force: true });
+		cy.get('.collection-order-item a[href="?order=a-z"]').click({ force: true });
+		cy.get('.collection-filter-item a[href="?order=a-z&filter=steen"]').click({ force: true });
 
 		cy.get('.collection-order-reset a[href="/collectie"]').click({ force: true });
 
-		cy.location('search').should('not.contain', 'order=z-a');
+		cy.location('search').should('not.contain', 'order=a-z');
 		cy.location('search').should('not.contain', 'filter=steen');
 
 		cy.get('.card').should('have.length.greaterThan', 0);
