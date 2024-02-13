@@ -9,7 +9,6 @@ export * from './DetailCardsCollection';
 export * from './ContactDetails';
 export * from './ContactForm';
 export * from './Cursor';
-export * from './DropDown';
 export * from './Navigation';
 export * from './PreLoader';
 export * from './SchemaTag';

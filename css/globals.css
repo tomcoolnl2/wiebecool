@@ -151,7 +151,7 @@
 	}
 
 	.image-container .image-caption {
-		@apply truncate absolute bottom-0 w-full text-white bg-slate-800/40 px-3 text-center;
+		@apply truncate absolute bottom-0 w-full text-white bg-slate-800/60 px-3 text-center;
 	}
 
 	.image-container-bordered {
