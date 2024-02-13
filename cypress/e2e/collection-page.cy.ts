@@ -31,13 +31,13 @@ describe('Collection Page Tests', () => {
 
 	it('should ensure correct display of sculptures and test URL params', () => {
 		//
-		cy.get('.dropdown-list a[href="?order=z-a"]').click({ force: true });
-		cy.url().should('include', '/collectie?order=z-a');
+		cy.get('a[href="?filter=steen"]').click({ force: true });
+		cy.url().should('include', '/collectie?filter=steen');
 
 		cy.url().then((url) => {
 			const searchParams = new URLSearchParams(new URL(url).search);
-			const orderParam = searchParams.get('order');
-			expect(orderParam).to.eq('z-a');
+			const orderParam = searchParams.get('filter');
+			expect(orderParam).to.eq('steen');
 		});
 
 		cy.get('.card').should('have.length.greaterThan', 0);

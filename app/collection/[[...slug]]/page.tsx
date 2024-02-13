@@ -8,8 +8,9 @@ import {
 	generateSchema,
 	processRichText,
 } from '@/lib';
-import { SchemaTag, SectionContainer, PageHeader, DropDown, DetailCardsCollection } from '@/components';
+import { SchemaTag, SectionContainer, PageHeader, DetailCardsCollection, CollectionControls } from '@/components';
 import '@/css/pages/collection-page.css';
+import Link from 'next/link';
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
 export const revalidate = 3600; // 1hr
@@ -33,9 +34,16 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 export default async function CollectionPage({ params, searchParams }: PageParams) {
 	const slug = ensureLeadingSlash(params?.slug?.[0] || collectionBaseUrl);
 	const path = slug === collectionBaseUrl ? collectionBaseUrl : collectionBaseUrl + slug;
-	const sortOrder = (searchParams?.order as OrderType) || null;
+	const sortOrder = (searchParams?.order as OrderType) ?? null;
 	const collectionPage = await fetchCollectionPage(slug as Slug, sortOrder);
 	const jsonLd = generateSchema(collectionPage, SchemaType.COLLECTION);
+
+	const filter = searchParams?.filter ?? null;
+	let cards = collectionPage.cards.filter((card) => card.contentfulMetadata.tags.find((tag) => tag.id === filter));
+	if (!cards.length) {
+		cards = collectionPage.cards;
+	}
+
 	return (
 		<SectionContainer>
 			<SchemaTag schema={jsonLd} />
@@ -45,13 +53,16 @@ export default async function CollectionPage({ params, searchParams }: PageParam
 					{collectionPage.description && (
 						<div className="rich-text-block">{processRichText(collectionPage.description.json)}</div>
 					)}
-					{collectionPage.sortingEnabled && (
-						<div className="collection-options">
-							<DropDown sortOrder={sortOrder || null} />
-						</div>
-					)}
+					{collectionPage.sortingEnabled || collectionPage.filteringEnabled ? (
+						<CollectionControls
+							path={path}
+							tags={collectionPage.contentfulMetadata.tags ?? []}
+							sortOrder={sortOrder}
+							filter={filter as string}
+						/>
+					) : null}
 					<section>
-						<DetailCardsCollection cards={collectionPage.cards} />
+						<DetailCardsCollection cards={cards} />
 					</section>
 				</div>
 			</div>

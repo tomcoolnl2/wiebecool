@@ -9,6 +9,7 @@ query CollectionPageBySlug($slug: String!) {
 				json
 			}
 			sortingEnabled
+			filteringEnabled
 			contentfulMetadata {
 				tags {
 					id

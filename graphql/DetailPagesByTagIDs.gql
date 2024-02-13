@@ -19,6 +19,12 @@ query DetailPagesByTagIDs($tagIDs: [String]!, $order: [DetailPageOrder]!, $limit
 					description
 				}
 			}
+			contentfulMetadata {
+				tags {
+					id
+					name
+				}
+			}
 		}
 	}
 }
