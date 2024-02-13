@@ -1,13 +1,16 @@
 
-.collection-options {
-	background: radial-gradient(circle, rgb(47, 55, 68) 0%, rgb(52, 54, 58) 100%);
-	@apply 
-	flex 
-	flex-col 
-	items-end 
-	shadow-slate-800 
-	shadow
-	rounded
-	p-2 
-	mb-4;
+.collection-controls {
+	@apply relative p-2 pr-10 mb-2;
+}
+
+.collection-filter-item {
+	@apply inline-block;
+}
+
+.collection-filter-item a {
+	@apply text-base text-shadow shadow-slate-800 text-gray-300 hover:text-white mr-4 inline;
+}
+
+.collection-filter-item a.active {
+	@apply text-buddha-gold-600;
 }

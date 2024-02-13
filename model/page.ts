@@ -139,6 +139,7 @@ export interface CollectionPage extends BasePage {
 	type: PageType.CollectionPage;
 	subtitle: string;
 	sortingEnabled: boolean;
+	filteringEnabled: boolean;
 	contentfulMetadata: ContentfulMetaData;
 	cards: DetailCollectionItem[];
 }
@@ -150,6 +151,7 @@ export interface CollectionPageCollection {
 }
 
 export interface DetailCollectionItem extends SysID, BasePage {
+	contentfulMetadata: ContentfulMetaData;
 	imageCollection: ImageCollection;
 }
 
