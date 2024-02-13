@@ -17,7 +17,6 @@ function formatSearchParams(order: OrderType | null, filter: string | null): str
 	if (filter) {
 		params.set('filter', filter);
 	}
-	console.log('?' + params.toString());
 	const searchParams = params.toString();
 	return searchParams ? '?' + searchParams : '';
 }
