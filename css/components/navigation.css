@@ -77,7 +77,7 @@
 }
 
 .navigation-link.active {
-	@apply text-buddha-gold-600 hover:cursor-default;
+	@apply text-buddha-gold-600 pointer-events-none;
 }
 
 .sub-navigation {

@@ -36,7 +36,7 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ useHrefBuilder, item, s
 
 	return (
 		<Link
-			className={`navigation-link${currentPage ? ' active cursor-default' : ''}`}
+			className={`navigation-link${currentPage ? ' active' : ''}`}
 			href={href}
 			role="link"
 			onClick={(e) => onClick?.(e as unknown as Event)}

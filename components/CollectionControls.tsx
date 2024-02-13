@@ -27,6 +27,7 @@ interface Props {
 	sortOrder: OrderType | null;
 	filter: string | null;
 	sortingEnabled: boolean;
+	sortingDisabled: boolean;
 	filteringEnabled: boolean;
 }
 
@@ -36,6 +37,7 @@ export const CollectionControls: React.FC<Props> = ({
 	sortOrder,
 	filter,
 	sortingEnabled,
+	sortingDisabled,
 	filteringEnabled,
 }) => (
 	<nav role="navigation" className="collection-controls">
@@ -44,7 +46,7 @@ export const CollectionControls: React.FC<Props> = ({
 				<li className="collection-filter-item">
 					<Link
 						href={path + formatSearchParams(sortOrder, null)}
-						className={filter === null ? ' active cursor-default' : ''}
+						className={filter === null ? ' active' : ''}
 						scroll={false}
 					>
 						All
@@ -54,7 +56,7 @@ export const CollectionControls: React.FC<Props> = ({
 					<li key={tag.id} className="collection-filter-item">
 						<Link
 							href={formatSearchParams(sortOrder, tag.id)}
-							className={tag.id === filter ? ' active cursor-default' : ''}
+							className={tag.id === filter ? ' active' : ''}
 							scroll={false}
 						>
 							{tag.name}
@@ -64,19 +66,19 @@ export const CollectionControls: React.FC<Props> = ({
 			</ul>
 		) : null}
 		{sortingEnabled && (
-			<div className="collection-order-item">
-				{sortOrder === OrderType.PAGE_TITLE_DESC ? (
-					<Link href={formatSearchParams(OrderType.PAGE_TITLE_ASC, filter)} scroll={false}>
+			<div className={`collection-order-item${sortingDisabled ? ' disabled' : ''}`}>
+				{sortOrder === OrderType.PAGE_TITLE_ASC ? (
+					<Link href={formatSearchParams(OrderType.PAGE_TITLE_DESC, filter)} scroll={false}>
 						<FontAwesomeIcon icon={faSortAlphaDesc} />
 					</Link>
 				) : (
-					<Link href={formatSearchParams(OrderType.PAGE_TITLE_DESC, filter)} scroll={false}>
+					<Link href={formatSearchParams(OrderType.PAGE_TITLE_ASC, filter)} scroll={false}>
 						<FontAwesomeIcon icon={faSortAlphaAsc} />
 					</Link>
 				)}
 			</div>
 		)}
-		{sortingEnabled || filteringEnabled ? (
+		{sortingEnabled ? (
 			<div className="collection-order-reset">
 				<Link href={path} scroll={false}>
 					<FontAwesomeIcon icon={faFilterCircleXmark} />
