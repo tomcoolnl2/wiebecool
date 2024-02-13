@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { ReWriteRule, PageType, DetailCollectionItem } from '@/model';
-import { Card } from '@/components';
+import { Card, CardMotion } from '@/components';
 import { ensureLeadingSlash } from '@/lib';
+import { randomUUID } from 'crypto';
 
 interface Props {
 	cards: DetailCollectionItem[];
@@ -21,8 +22,10 @@ export const DetailCardsCollection: React.FC<Props> = async ({ cards, omitWhen =
 				const href = ReWriteRule[PageType.DetailPage] + ensureLeadingSlash(card.slug);
 				const img = card.imageCollection.items[0];
 				return (
-					<li key={id}>
-						<Card id={id} href={href} title={card.title} img={img} />
+					<li key={randomUUID()}>
+						<CardMotion>
+							<Card id={id} href={href} title={card.title} img={img} />
+						</CardMotion>
 					</li>
 				);
 			})}

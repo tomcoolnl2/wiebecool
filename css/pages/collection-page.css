@@ -16,11 +16,15 @@
 }
 
 .collection-filter-item a.active {
-	@apply text-amber-500;
+	@apply text-amber-500 pointer-events-none;
 }
 
 .collection-order-item {
 	@apply absolute right-6 bottom-2;
+}
+
+.collection-order-item.disabled a {
+	@apply pointer-events-none opacity-50;
 }
 
 .collection-order-reset {
