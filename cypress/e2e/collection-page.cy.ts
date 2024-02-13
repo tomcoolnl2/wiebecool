@@ -36,8 +36,8 @@ describe('Collection Page Tests', () => {
 
 		cy.url().then((url) => {
 			const searchParams = new URLSearchParams(new URL(url).search);
-			const orderParam = searchParams.get('order');
-			expect(orderParam).to.eq('z-a');
+			const orderParam = searchParams.get('filter');
+			expect(orderParam).to.eq('steen');
 		});
 
 		cy.get('.card').should('have.length.greaterThan', 0);
