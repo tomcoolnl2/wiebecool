@@ -31,8 +31,8 @@ describe('Collection Page Tests', () => {
 
 	it('should ensure correct display of sculptures and test URL params', () => {
 		//
-		cy.get('.dropdown-list a[href="?order=z-a"]').click({ force: true });
-		cy.url().should('include', '/collectie?order=z-a');
+		cy.get('.dropdown-list a[href="?filter=steen"]').click({ force: true });
+		cy.url().should('include', '/collectie?filter=steen');
 
 		cy.url().then((url) => {
 			const searchParams = new URLSearchParams(new URL(url).search);
