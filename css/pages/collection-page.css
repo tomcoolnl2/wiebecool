@@ -1,6 +1,6 @@
 
 .collection-controls {
-	@apply relative p-2 pr-10 mb-2;
+	@apply relative py-2 pr-10 mb-2;
 }
 
 .collection-filter-item {
@@ -8,9 +8,21 @@
 }
 
 .collection-filter-item a {
-	@apply text-base text-shadow shadow-slate-800 text-gray-300 hover:text-white mr-4 inline;
+	@apply text-base text-shadow shadow-slate-800 hover:text-gray-300 text-white mr-4 inline;
+}
+
+.collection-filter-item:last-child a {
+	@apply mr-0;
 }
 
 .collection-filter-item a.active {
-	@apply text-buddha-gold-600;
+	@apply text-amber-500;
+}
+
+.collection-order-item {
+	@apply absolute right-6 bottom-2;
+}
+
+.collection-order-reset {
+	@apply absolute right-0 bottom-2;
 }

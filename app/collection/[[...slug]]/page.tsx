@@ -53,12 +53,14 @@ export default async function CollectionPage({ params, searchParams }: PageParam
 					{collectionPage.description && (
 						<div className="rich-text-block">{processRichText(collectionPage.description.json)}</div>
 					)}
-					{collectionPage.sortingEnabled || collectionPage.filteringEnabled ? (
+					{collectionPage.filteringEnabled || collectionPage.filteringEnabled ? (
 						<CollectionControls
 							path={path}
 							tags={collectionPage.contentfulMetadata.tags ?? []}
 							sortOrder={sortOrder}
 							filter={filter as string}
+							sortingEnabled={collectionPage.sortingEnabled}
+							filteringEnabled={collectionPage.filteringEnabled}
 						/>
 					) : null}
 					<section>
