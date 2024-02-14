@@ -21,12 +21,10 @@ export const CookieBar: React.FC = () => {
 	}
 
 	return (
-		<div className="cookie-bar-overlay">
-			<div className="cookie-bar">
-				<button className="button mx-auto" onClick={acceptCookie}>
-					Accepteer Cookies
-				</button>
-			</div>
+		<div className="cookie-bar">
+			<button className="button mx-auto" onClick={acceptCookie}>
+				Accepteer Cookies
+			</button>
 		</div>
 	);
 };

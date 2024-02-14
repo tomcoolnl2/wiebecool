@@ -67,6 +67,11 @@
 } */
 
 @layer components {
+
+	.cookie-bar {
+		@apply fixed bottom-0 left-0 right-0 flex items-center justify-between px-4 py-4 bg-gray-800;
+	}
+	
 	.site-wrapper {
 		@apply relative min-h-screen w-full;
 	}
