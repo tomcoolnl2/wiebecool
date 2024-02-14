@@ -206,7 +206,7 @@
 	}
 
 	.detail-cards-collection-4 .detail-cards-collection {
-		@apply md:grid-cols-4;
+		@apply sm:grid-cols-4;
 	}
 
 	.card {

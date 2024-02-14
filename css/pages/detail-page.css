@@ -1,3 +1,4 @@
+
 .detail-page-details-wrapper {
 	@apply flex flex-col xs:flex-row xs:gap-4 sm:gap-8;
 }

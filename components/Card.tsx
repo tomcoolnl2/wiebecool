@@ -18,11 +18,12 @@ export const Card: React.FC<Props> = ({ id, href, title, img, size = 300 }) => {
 				<Image
 					src={`${img.url}?w=${size}&h=${size}&fm=jpg&fl=progressive`}
 					title={title}
-					alt={img.description || title}
+					alt={img.title || title}
 					width={img.width || size}
 					height={img.height || size}
 					className="card-image image-centered image-zoomable"
-					priority
+					quality={80}
+					loading="lazy"
 				/>
 				<figcaption className="image-caption">{title}</figcaption>
 			</Link>
