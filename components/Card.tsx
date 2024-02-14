@@ -15,7 +15,7 @@ export const Card: React.FC<Props> = ({ id, href, title, img }) => {
 		<figure key={id} className="card image-container image-container-bordered">
 			<Link key={id + '-img'} href={href} title={img.title}>
 				<Image
-					src={img.url}
+					src={img.url + '?w=300&fm=jpg&fl=progressive'}
 					title={title}
 					alt={img.description || title}
 					width={img.width || 400}

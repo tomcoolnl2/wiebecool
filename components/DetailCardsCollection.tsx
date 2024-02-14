@@ -23,6 +23,7 @@ export const DetailCardsCollection: React.FC<Props> = async ({ cards, omitWhen =
 				const img = card.imageCollection.items[0];
 				return (
 					<li key={randomUUID()}>
+						{/* randomUUID key on re-render makes sure animations will work on all items when a collection updates */}
 						<CardMotion delay={delay} card={<Card id={id} href={href} title={card.title} img={img} />} />
 					</li>
 				);
