@@ -8,18 +8,19 @@ interface Props {
 	href: string;
 	title: string;
 	img: ItemImage;
+	size: number;
 }
 
-export const Card: React.FC<Props> = ({ id, href, title, img }) => {
+export const Card: React.FC<Props> = ({ id, href, title, img, size = 300 }) => {
 	return (
 		<figure key={id} className="card image-container image-container-bordered">
 			<Link key={id + '-img'} href={href} title={img.title}>
 				<Image
-					src={img.url + '?w=300&fm=jpg&fl=progressive'}
+					src={`${img.url}?w=${size}&h=${size}&fm=jpg&fl=progressive`}
 					title={title}
 					alt={img.description || title}
-					width={img.width || 400}
-					height={img.height || 400}
+					width={img.width || size}
+					height={img.height || size}
 					className="card-image image-centered image-zoomable"
 					priority
 				/>
