@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import { hasCookie, setCookie } from 'cookies-next';
-import '@/css/components/cookie-bar.css';
 
 export const CookieBar: React.FC = () => {
 	//
