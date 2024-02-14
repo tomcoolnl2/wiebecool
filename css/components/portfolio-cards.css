@@ -1,5 +1,5 @@
 .portfolio-cards {
-	@apply grid grid-cols-1 sm:grid-cols-2 gap-4 justify-center place-items-center mb-10;
+	@apply grid grid-cols-1 xs:grid-cols-2 gap-4 justify-center place-items-center mb-10;
 }
 
 .portfolio-cards .card {
