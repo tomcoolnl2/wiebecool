@@ -74,19 +74,17 @@ export default async function DetailPage({ params }: PageParams) {
 								{detailPage.creationDate && (
 									<li>
 										<span className="label">Datum:</span>
-										<span className="inline-block">
-											{toLocaleDateString(detailPage.creationDate) ?? '-'}
-										</span>
+										<span>{toLocaleDateString(detailPage.creationDate)}</span>
 									</li>
 								)}
 								<li>
 									<span className="label">Materiaal:</span>
-									<span className="inline-block">{detailPage.material ?? '-'}</span>
+									<span>{detailPage.material ?? '-'}</span>
 								</li>
 								{detailPage.dimensions && (
 									<li>
 										<span className="label">Afmetingen:</span>
-										<span className="inline-block">{detailPage.dimensions}</span>
+										<span>{detailPage.dimensions}</span>
 									</li>
 								)}
 							</ul>

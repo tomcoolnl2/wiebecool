@@ -64,10 +64,10 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 								<SwiperSlide key={slide.sys.id + '-thumb'} className="image-container aspect-square">
 									<Image
 										className="image-grayscale image-zoomable"
-										src={slide.url}
+										src={`${slide.url}?w=${170}&h=${170}&fm=jpg&fl=progressive&fit=thumb`}
 										alt={slide.title}
-										width={300}
-										height={300}
+										width={170}
+										height={170}
 									/>
 								</SwiperSlide>
 							);
