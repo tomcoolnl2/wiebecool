@@ -23,10 +23,7 @@ export const DetailCardsCollection: React.FC<Props> = async ({ cards, omitWhen =
 				const img = card.imageCollection.items[0];
 				return (
 					<li key={randomUUID()}>
-						<CardMotion
-							delay={delay}
-							card={<Card id={id} href={href} title={card.title} img={img} />}
-						></CardMotion>
+						<CardMotion delay={delay} card={<Card id={id} href={href} title={card.title} img={img} />} />
 					</li>
 				);
 			})}
