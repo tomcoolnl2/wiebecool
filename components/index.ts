@@ -6,6 +6,7 @@ export * from './Background';
 export * from './Card';
 export * from './CardMotion';
 export * from './CollectionControls';
+export * from './CookieBar';
 export * from './DetailCardsCollection';
 export * from './ContactDetails';
 export * from './ContactForm';

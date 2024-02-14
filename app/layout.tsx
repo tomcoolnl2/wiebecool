@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Metadata } from 'next';
 import { Montserrat, Mulish, Poppins } from 'next/font/google';
 import { artist, baseUrl, fetchMainNavigation, locale } from '@/lib';
-import { PreLoader, MainNavigation, Cursor, Background } from '@/components';
+import { PreLoader, MainNavigation, Cursor, Background, CookieBar } from '@/components';
 
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -49,6 +49,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children })
 						<main className="main-content-inner">{children}</main>
 					</div>
 				</div>
+				<CookieBar />
 				<Cursor />
 			</body>
 		</html>

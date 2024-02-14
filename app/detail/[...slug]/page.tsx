@@ -74,7 +74,7 @@ export default async function DetailPage({ params }: PageParams) {
 								{detailPage.creationDate && (
 									<li>
 										<span className="label">Datum:</span>
-										<span>{toLocaleDateString(detailPage.creationDate) ?? '-'}</span>
+										<span>{toLocaleDateString(detailPage.creationDate)}</span>
 									</li>
 								)}
 								<li>

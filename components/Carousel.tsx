@@ -34,7 +34,7 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 							<SwiperSlide key={slide.sys.id} tag="figure" className="carousel-main-slide">
 								<Image
 									className="carousel-main-image"
-									src={slide.url}
+									src={`${slide.url}?w=${500}&fm=jpg&fl=progressive`}
 									alt={slide.title}
 									width={slide.width}
 									height={slide.height}
@@ -64,10 +64,10 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 								<SwiperSlide key={slide.sys.id + '-thumb'} className="image-container aspect-square">
 									<Image
 										className="image-grayscale image-zoomable"
-										src={slide.url}
+										src={`${slide.url}?w=${170}&h=${170}&fm=jpg&fl=progressive&fit=thumb`}
 										alt={slide.title}
-										width={300}
-										height={300}
+										width={170}
+										height={170}
 									/>
 								</SwiperSlide>
 							);

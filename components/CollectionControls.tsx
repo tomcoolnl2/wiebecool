@@ -40,7 +40,7 @@ export const CollectionControls: React.FC<Props> = ({
 	sortingDisabled,
 	filteringEnabled,
 }) => (
-	<nav role="navigation" className="collection-controls">
+	<nav role="navigation" className={`collection-controls${sortingEnabled ? ' with-sorting' : ''}`}>
 		{filteringEnabled ? (
 			<ul>
 				<li className="collection-filter-item">
@@ -65,25 +65,25 @@ export const CollectionControls: React.FC<Props> = ({
 				))}
 			</ul>
 		) : null}
-		{sortingEnabled && (
-			<div className={`collection-order-item${sortingDisabled ? ' disabled' : ''}`}>
-				{sortOrder === OrderType.PAGE_TITLE_ASC ? (
-					<Link href={formatSearchParams(OrderType.PAGE_TITLE_DESC, filter)} scroll={false}>
-						<FontAwesomeIcon icon={faSortAlphaDesc} />
-					</Link>
-				) : (
-					<Link href={formatSearchParams(OrderType.PAGE_TITLE_ASC, filter)} scroll={false}>
-						<FontAwesomeIcon icon={faSortAlphaAsc} />
-					</Link>
-				)}
-			</div>
-		)}
 		{sortingEnabled ? (
-			<div className="collection-order-reset">
-				<Link href={path} scroll={false}>
-					<FontAwesomeIcon icon={faFilterCircleXmark} />
-				</Link>
-			</div>
+			<>
+				<div className={`collection-order-item${sortingDisabled ? ' disabled' : ''}`}>
+					{sortOrder === OrderType.PAGE_TITLE_ASC ? (
+						<Link href={formatSearchParams(OrderType.PAGE_TITLE_DESC, filter)} scroll={false}>
+							<FontAwesomeIcon icon={faSortAlphaDesc} />
+						</Link>
+					) : (
+						<Link href={formatSearchParams(OrderType.PAGE_TITLE_ASC, filter)} scroll={false}>
+							<FontAwesomeIcon icon={faSortAlphaAsc} />
+						</Link>
+					)}
+				</div>
+				<div className="collection-order-reset">
+					<Link href={path} scroll={false}>
+						<FontAwesomeIcon icon={faFilterCircleXmark} />
+					</Link>
+				</div>
+			</>
 		) : null}
 	</nav>
 );

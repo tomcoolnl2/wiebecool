@@ -12,8 +12,6 @@
 		py-2 
 		px-5
 		sm:px-10
-		pr-16
-		sm:pr-20
 		
 		mb-4
 		md:mb-0
@@ -26,6 +24,10 @@
         shadow-slate-800 
         md:shadow-transparent
         shadow
+}
+
+.collection-controls.with-sorting {
+	@apply pr-16 sm:pr-20;
 }
 
 .collection-filter-item {
