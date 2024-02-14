@@ -14,18 +14,19 @@ export const DetailCardsCollection: React.FC<Props> = async ({ cards, omitWhen =
 	if (!cards.length || (omitWhen !== null && cards.length < omitWhen)) {
 		return null;
 	}
-
 	return (
 		<ul className="detail-cards-collection">
-			{cards.map((card) => {
+			{cards.map((card, i) => {
+				const delay = 0.25 + (i / (cards.length - 1)) * 0.75;
 				const { id } = card.sys;
 				const href = ReWriteRule[PageType.DetailPage] + ensureLeadingSlash(card.slug);
 				const img = card.imageCollection.items[0];
 				return (
 					<li key={randomUUID()}>
-						<CardMotion>
-							<Card id={id} href={href} title={card.title} img={img} />
-						</CardMotion>
+						<CardMotion
+							delay={delay}
+							card={<Card id={id} href={href} title={card.title} img={img} />}
+						></CardMotion>
 					</li>
 				);
 			})}
