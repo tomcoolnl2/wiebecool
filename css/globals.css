@@ -72,8 +72,7 @@
 	}
 
 	.main-content {
-		background: linear-gradient(-70deg, rgb(72, 81, 99) 0%, rgb(58, 60, 62) 50%, rgb(52, 54, 58) 100%);
-		@apply w-full min-h-screen relative pl-0 lg:pl-80 2xl:pl-96;
+		@apply bg-main-gradient w-full min-h-screen relative pl-0 lg:pl-80 2xl:pl-96;
 	}
 
 	.main-content-inner {
@@ -200,7 +199,7 @@
 		@apply 
 			grid
 			grid-cols-1
-			sm:grid-cols-2
+			xs:grid-cols-2
 			md:grid-cols-3
 			gap-4 
 			min-h-[304px]; /*  min-h of 1 row to avoid page jumping between fltering/sorting */

@@ -12,7 +12,19 @@ const config: Config = {
 		'./app/**/*.{js,ts,jsx,tsx,mdx}',
 	],
 	theme: {
+		screens: {
+			xs: '420px',
+			sm: '640px',
+			md: '768px',
+			lg: '1024px',
+			xl: '1280px',
+			'2xl': '1536px',
+		},
 		extend: {
+			backgroundImage: {
+				'main-gradient':
+					'linear-gradient(-70deg, rgb(72, 81, 99) 0%, rgb(58, 60, 62) 50%, rgb(52, 54, 58) 100%)',
+			},
 			textShadow: {
 				sm: '0 1px 2px var(--tw-shadow-color)',
 				DEFAULT: '0 2px 4px var(--tw-shadow-color)',

@@ -1,6 +1,29 @@
 
 .collection-controls {
-	@apply relative py-2 pr-10 mb-2;
+	@apply 
+		sticky 
+		top-[50px]
+		md:relative 
+		md:top-0 
+		z-20 
+
+		py-2 
+		px-5
+		sm:px-10
+		pr-16
+		sm:pr-20
+		
+		mb-4
+		md:mb-0
+		-mx-5
+		sm:-mx-10
+		
+		bg-gradient-to-b from-slate-700 to-slate-700
+		md:bg-gradient-to-b md:from-transparent md:to-transparent
+
+        shadow-slate-800 
+        md:shadow-transparent
+        shadow
 }
 
 .collection-filter-item {
@@ -20,7 +43,7 @@
 }
 
 .collection-order-item {
-	@apply absolute right-6 bottom-2;
+	@apply absolute right-12 sm:right-16 bottom-2;
 }
 
 .collection-order-item.disabled a {
@@ -28,5 +51,10 @@
 }
 
 .collection-order-reset {
-	@apply absolute right-0 bottom-2;
+	@apply absolute right-5 sm:right-10 bottom-2;
+}
+
+.collection-order-reset svg,
+.collection-order-item svg {
+	@apply text-gray-300;
 }
