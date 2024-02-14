@@ -21,7 +21,7 @@ export default async function Home() {
 				<div className="home-page page">
 					<div className="home-content">
 						<Image
-							src={homePage.mugshot.url}
+							src={homePage.mugshot.url + '?w=256&h=256'}
 							alt={homePage.mugshot.description}
 							width={homePage.mugshot.width}
 							height={homePage.mugshot.height}
