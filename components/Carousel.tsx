@@ -34,7 +34,7 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 							<SwiperSlide key={slide.sys.id} tag="figure" className="carousel-main-slide">
 								<Image
 									className="carousel-main-image"
-									src={slide.url}
+									src={`${slide.url}?w=${500}&fm=jpg&fl=progressive`}
 									alt={slide.title}
 									width={slide.width}
 									height={slide.height}
