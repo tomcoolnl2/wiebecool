@@ -16,13 +16,13 @@ export const Card: React.FC<Props> = ({ id, href, title, img, size = 300 }) => {
 		<figure key={id} className="card image-container image-container-bordered">
 			<Link key={id + '-img'} href={href} title={img.title}>
 				<Image
-					src={`${img.url}?w=${size}&h=${size}&fm=jpg&fl=progressive`}
+					src={`${img.url}?w=${size}&h=${size}&fm=jpg&fl=progressive&fit=thumb`}
 					title={title}
 					alt={img.title || title}
-					width={img.width || size}
-					height={img.height || size}
+					width={size}
+					height={size}
 					className="card-image image-centered image-zoomable"
-					quality={80}
+					quality={75}
 					loading="lazy"
 				/>
 				<figcaption className="image-caption">{title}</figcaption>
