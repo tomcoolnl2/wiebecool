@@ -118,7 +118,10 @@ export function ensureLeadingSlash(str: string): Slug {
  */
 export function toLocaleDateString(dateString: string): string {
 	const date = new Date(dateString);
-	return date.toLocaleDateString(locale);
+	const formattedDate = date.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
+	const parts = formattedDate.split(' ');
+	const capitalizedMonth = parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
+	return `${parts[0]} ${capitalizedMonth} ${parts[2]}`;
 }
 
 /**
