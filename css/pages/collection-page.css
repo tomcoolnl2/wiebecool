@@ -5,7 +5,9 @@
 		top-[50px]
 		md:relative 
 		md:top-0 
+		
 		z-20 
+		min-h-12
 
 		py-2 
 		px-5
