@@ -8,7 +8,7 @@ interface Props {
 	href: string;
 	title: string;
 	img: ItemImage;
-	size: number;
+	size?: number;
 }
 
 export const Card: React.FC<Props> = ({ id, href, title, img, size = 300 }) => {

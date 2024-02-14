@@ -33,12 +33,12 @@ export default async function About() {
 					<PageHeader title={aboutPage.title} path={path} />
 					<div className="hero-banner image-container image-container-bordered">
 						<Image
-							src={hero.url}
+							src={hero.url + '?w=950&h=350'}
 							alt={hero.description}
 							priority
 							className="image-centered"
-							width={1200}
-							height={500}
+							width={944}
+							height={350}
 						/>
 					</div>
 					{blocks.map((item: RenderComponentItem, i: number) => (
