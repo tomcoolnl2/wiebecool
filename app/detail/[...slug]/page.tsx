@@ -56,7 +56,7 @@ export default async function DetailPage({ params }: PageParams) {
 						<div className="detail-page-main-image-wrapper">
 							<div className="detail-page-main-image image-container image-container-bordered">
 								<Image
-									src={detailPageImg.url + '?w=700'}
+									src={detailPageImg.url + '?w=620&fm=jpg&fl=progressive'}
 									title={detailPageImg.title}
 									alt={detailPageImg.description}
 									priority

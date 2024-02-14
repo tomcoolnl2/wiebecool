@@ -1,9 +1,9 @@
 .detail-page-details-wrapper {
-	@apply flex flex-col md:flex-row md:gap-8;
+	@apply flex flex-col xs:flex-row xs:gap-4 sm:gap-8;
 }
 
 .detail-page-main-image-wrapper {
-	@apply w-full sm:w-2/3 md:w-2/3 mx-auto md:mx-0;
+	@apply w-full xs:w-2/3 mx-auto md:mx-0;
 }
 
 .detail-page-main-image {
@@ -11,7 +11,7 @@
 }
 
 .detail-page-details {
-	@apply w-full md:w-72;
+	@apply w-full xs:w-60 sm:w-72;
 }
 
 .detail-page-details .detail-page-detail-list {
