@@ -54,7 +54,22 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: '/Werk', // old pages
+				source: '/Missie',
+				destination: '/over-mij',
+				permanent: true,
+			},
+			{
+				source: '/Werk/Portret-van-Sarah/',
+				destination: '/werk/portret-van-sarah',
+				permanent: true,
+			},
+			{
+				source: '/Werk/Hout',
+				destination: '/collectie/hout',
+				permanent: true,
+			},
+			{
+				source: '/Werk', // other old pages
 				destination: '/collectie',
 				permanent: true,
 			},

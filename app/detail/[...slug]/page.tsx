@@ -1,8 +1,8 @@
-'use server';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { PageParams, PageType, ReWriteRule, SchemaType, Slug } from '@/model';
+import { DetailPage, PageParams, PageType, ReWriteRule, SchemaType, Slug } from '@/model';
 import {
 	capitalize,
 	fetchDetailPage,
@@ -25,24 +25,37 @@ import '@/css/pages/detail-page.css';
 const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
 
 export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
-	const slug = ensureLeadingSlash(params.slug[0]);
-	const seoMetaData = await fetchSeoMetaDataBySlug(slug as Slug);
-	return {
-		...seoMetaData,
-		alternates: {
-			canonical: `${baseUrl}${ReWriteRule[PageType.DetailPage]}${slug}`,
-		},
-	};
+	try {
+		const slug = ensureLeadingSlash(params.slug[0]);
+		const seoMetaData = await fetchSeoMetaDataBySlug(slug as Slug);
+		return {
+			...seoMetaData,
+			alternates: {
+				canonical: `${baseUrl}${ReWriteRule[PageType.DetailPage]}${slug}`,
+			},
+		};
+	} catch (error) {
+		notFound();
+	}
 }
 
 export default async function DetailPage({ params }: PageParams) {
+	//
 	const slug = ensureLeadingSlash(params.slug[0]);
-	const detailPage = await fetchDetailPage(slug as Slug);
+
+	let detailPage: DetailPage;
+	try {
+		detailPage = await fetchDetailPage(slug as Slug);
+	} catch (error) {
+		notFound();
+	}
+
 	const detailPageImg = detailPage.imageCollection.items[0];
 	const jsonLd = generateSchema(detailPage, SchemaType.SCULPTURE, detailPageImg);
 	const path = ReWriteRule[PageType.DetailPage] + slug;
 	const tags = detailPage.contentfulMetadata.tags;
 	const hashtags = tags.map((tag) => capitalize(tag.name));
+
 	return (
 		<SectionContainer>
 			<SchemaTag schema={jsonLd} />

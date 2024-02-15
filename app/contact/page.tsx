@@ -1,20 +1,32 @@
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { headers } from 'next/headers';
 import * as React from 'react';
-import { PageType, ReWriteRule, SchemaType } from '@/model';
+import { ContactPage, PageType, ReWriteRule, SchemaType } from '@/model';
 import { processRichText, generateSchema, fetchContactPage, fetchSeoMetaData } from '@/lib';
 import { ContactForm, SchemaTag, SectionContainer, PageHeader, ContactDetails } from '@/components';
 import '@/css/pages/contact-page.css';
 
 export async function generateMetadata(): Promise<Metadata> {
-	const { seoMetaData } = await fetchSeoMetaData('6Giq0hPzdDxxtohDi6kucy');
-	return seoMetaData;
+	try {
+		const { seoMetaData } = await fetchSeoMetaData('6Giq0hPzdDxxtohDi6kucy');
+		return seoMetaData;
+	} catch (error) {
+		notFound();
+	}
 }
 
 export default async function Contact() {
+	//
+	let contactPage: ContactPage;
+	try {
+		contactPage = await fetchContactPage();
+	} catch (error) {
+		notFound();
+	}
 	const path = headers().get('next-url') || ReWriteRule[PageType.ContactPage];
-	const contactPage = await fetchContactPage();
 	const jsonLd = generateSchema(contactPage, SchemaType.CONTACT_PAGE);
+
 	return (
 		<SectionContainer>
 			<SchemaTag schema={jsonLd} />
