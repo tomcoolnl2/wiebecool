@@ -10,7 +10,6 @@ interface Props {
 }
 
 export const DetailCardsCollection: React.FC<Props> = async ({ cards, omitWhen = null }) => {
-	//
 	if (!cards.length || (omitWhen !== null && cards.length < omitWhen)) {
 		return null;
 	}

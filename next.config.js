@@ -53,6 +53,11 @@ const nextConfig = {
 				destination: '/collectie',
 				permanent: true,
 			},
+			{
+				source: '/Werk', // old pages
+				destination: '/collectie',
+				permanent: true,
+			},
 		];
 	},
 	webpack: (config) => {
