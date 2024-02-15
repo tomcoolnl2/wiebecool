@@ -1,8 +1,9 @@
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
 import { headers } from 'next/headers';
 import { Metadata } from 'next';
 import * as React from 'react';
-import { PageType, ReWriteRule, SchemaType } from '@/model';
+import { AboutPage, PageType, ReWriteRule, SchemaType } from '@/model';
 import { fetchAboutPage, fetchSeoMetaData, generateSchema } from '@/lib';
 import {
 	type RenderComponentItem,
@@ -15,16 +16,28 @@ import {
 import '@/css/pages/about-page.css';
 
 export async function generateMetadata(): Promise<Metadata> {
-	const { seoMetaData } = await fetchSeoMetaData('4nI3oprys4FZujusjxmQcz');
-	return seoMetaData;
+	try {
+		const { seoMetaData } = await fetchSeoMetaData('4nI3oprys4FZujusjxmQcz');
+		return seoMetaData;
+	} catch (error) {
+		notFound();
+	}
 }
 
 export default async function About() {
+	//
+	let aboutPage: AboutPage;
+	try {
+		aboutPage = await fetchAboutPage();
+	} catch (error) {
+		notFound();
+	}
+
 	const path = headers().get('next-url') || ReWriteRule[PageType.AboutPage];
-	const aboutPage = await fetchAboutPage();
 	const jsonLd = generateSchema(aboutPage, SchemaType.ABOUT_PAGE);
 	const hero = aboutPage.bannerImage;
 	const blocks = aboutPage.buildingBlocksCollection?.items || [];
+
 	return (
 		<SectionContainer>
 			<SchemaTag schema={jsonLd} />

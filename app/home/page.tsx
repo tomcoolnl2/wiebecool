@@ -1,17 +1,29 @@
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import React from 'react';
-import { SchemaType } from '@/model';
+import { HomePage, SchemaType } from '@/model';
 import { fetchHomePage, fetchHomePageSeoMetaData, generateSchema, processRichText } from '@/lib';
 import { SectionContainer, ContactDetails, SchemaTag, type RenderComponentItem, RenderComponent } from '@/components';
 import '@/css/pages/home-page.css';
 
 export async function generateMetadata(): Promise<Metadata> {
-	return await fetchHomePageSeoMetaData();
+	try {
+		return await fetchHomePageSeoMetaData();
+	} catch (error) {
+		notFound();
+	}
 }
 
 export default async function Home() {
-	const homePage = await fetchHomePage();
+	//
+	let homePage: HomePage;
+	try {
+		homePage = await fetchHomePage();
+	} catch (error) {
+		notFound();
+	}
+
 	const jsonLd = generateSchema(homePage, SchemaType.HOME_PAGE);
 	const blocks = homePage.buildingBlocksCollection?.items || [];
 	return (
