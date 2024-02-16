@@ -1,4 +1,6 @@
+//
 describe('CookieBar', () => {
+	//
 	beforeEach(() => {
 		cy.visit('/');
 	});
