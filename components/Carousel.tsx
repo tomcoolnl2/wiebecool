@@ -34,10 +34,12 @@ export const Carousel: React.FC<PageCarousel> = ({ description, showDescription,
 							<SwiperSlide key={slide.sys.id} tag="figure" className="carousel-main-slide">
 								<Image
 									className="carousel-main-image"
-									src={`${slide.url}?w=${500}&fm=jpg&fl=progressive`}
+									src={`${slide.url}?w=500`}
 									alt={slide.title}
-									width={slide.width}
-									height={slide.height}
+									width={500}
+									height={500}
+									quality={80}
+									loading="lazy"
 								/>
 								{showDescription && slide.description && (
 									<figcaption className="carousel-slide-description">{slide.description}</figcaption>
