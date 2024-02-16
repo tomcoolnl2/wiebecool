@@ -10,7 +10,8 @@
 		"lint": "next lint",
 		"e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --e2e\"",
 		"e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
-		"format": "prettier --write './**/*.{js,jsx,ts,tsx,html,css,scss,json,md}'"
+		"format": "prettier --write './**/*.{js,jsx,ts,tsx,html,css,scss,json,md}'",
+		"analyze": "ANALYZE=true npm run build"
 	},
 	"dependencies": {
 		"@contentful/rich-text-plain-text-renderer": "16.0.11",
@@ -20,6 +21,7 @@
 		"@fortawesome/free-brands-svg-icons": "^6.5.1",
 		"@fortawesome/free-solid-svg-icons": "6.5.1",
 		"@fortawesome/react-fontawesome": "0.2.0",
+		"@next/bundle-analyzer": "14.1.0",
 		"classnames": "2.5.1",
 		"cookies-next": "4.1.1",
 		"framer-motion": "11.0.5",
