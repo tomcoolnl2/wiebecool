@@ -43,9 +43,6 @@ jobs:
         name: Run Cypress Tests
         runs-on: ubuntu-22.04
         needs: eslint
-        container:
-            image: cypress/browsers:node-20.9.0-chrome-118.0.5993.88-1-ff-118.0.2-edge-118.0.2088.46-1
-            options: --user 1001
         strategy:
             # when one test fails, DO NOT cancel the other
             # containers, because this will kill Cypress processes
@@ -53,8 +50,8 @@ jobs:
             # https://github.com/cypress-io/github-action/issues/48
             fail-fast: false
             matrix:
-                # run 3 copies of the current job in parallel
-                containers: [1, 2, 3]
+                # run 5 copies of the current job in parallel
+                containers: [1, 2, 3, 4, 5]
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v4
