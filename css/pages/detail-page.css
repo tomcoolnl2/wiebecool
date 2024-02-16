@@ -1,10 +1,10 @@
 
 .detail-page-details-wrapper {
-	@apply flex flex-col xs:flex-row xs:gap-4 sm:gap-8;
+	@apply flex flex-col sm:flex-row sm:gap-4 md:gap-8;
 }
 
 .detail-page-main-image-wrapper {
-	@apply w-full xs:w-2/3 mx-auto md:mx-0;
+	@apply w-full sm:w-2/3 mx-auto md:mx-0;
 }
 
 .detail-page-main-image {
