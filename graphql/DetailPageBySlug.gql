@@ -11,6 +11,7 @@ query DetailPageBySlug($slug: String!) {
 			}
 			material
 			dimensions
+			price
 			status
 			creationDate
 			imageCollection(limit: 1) {

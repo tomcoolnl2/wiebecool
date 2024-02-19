@@ -160,6 +160,7 @@ export interface DetailPage extends BasePage, SysID {
 	material: string | null;
 	dimensions: string | null;
 	status: string | null;
+	price: string;
 	creationDate: string | null;
 	imageCollection: ImageCollection;
 	imageCarousel: PageCarousel;

@@ -7,7 +7,7 @@ import {
 	capitalize,
 	fetchDetailPage,
 	fetchSeoMetaDataBySlug,
-	formatStatus,
+	formatPrice,
 	generateSchema,
 	toLocaleDateString,
 } from '@/lib';
@@ -80,10 +80,18 @@ export default async function DetailPage({ params }: PageParams) {
 						</div>
 						<div className="detail-page-details">
 							<ul className="detail-page-detail-list">
-								<li>
-									<span className="label">Status:</span>
-									<span>{(detailPage.status && formatStatus(detailPage.status)) ?? '-'}</span>
-								</li>
+								{detailPage.status && (
+									<li>
+										<span className="label">Status:</span>
+										<span>{detailPage.status}</span>
+									</li>
+								)}
+								{detailPage.price && (
+									<li>
+										<span className="label">Prijs:</span>
+										<span>{(detailPage.price && formatPrice(detailPage.price)) ?? '-'}</span>
+									</li>
+								)}
 								{detailPage.creationDate && (
 									<li>
 										<span className="label">Datum:</span>

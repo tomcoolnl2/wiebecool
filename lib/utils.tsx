@@ -89,7 +89,7 @@ export function processPlainText(rawRichText: Document): string {
  * @param {string} input The input string to format.
  * @returns {string} The formatted price string.
  */
-export function formatStatus(input: string): string {
+export function formatPrice(input: string): string {
 	const price = parseFloat(input);
 	if (!isNaN(price)) {
 		const formattedPrice = price.toLocaleString(locale, { style: 'currency', currency: 'EUR' });
