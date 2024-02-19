@@ -44,7 +44,6 @@ import {
 	OrderTypeMap,
 	PageType,
 } from '@/model';
-import { defaultCollectionTag } from '@/lib';
 
 /**
  * Represents an error specific to Contentful-related operations.
