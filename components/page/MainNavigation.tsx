@@ -1,6 +1,8 @@
 'use client';
 import Link from 'next/link';
 import * as React from 'react';
+import { faSitemap } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavigationPageEntry } from '@/model';
 import { artist } from '@/lib';
 import { Navigation, ShareInstagram } from '@/components';
@@ -47,7 +49,9 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 				<Navigation items={navigation} className="navigation" onClick={closeOnOutsideClick} />
 				<div className="page-footer">
 					<div className="copyright">© {new Date().getFullYear()}</div>
-					<a href="/sitemap.xml">Sitemap</a>
+					<a href="/sitemap.xml" title="Sitemap">
+						<FontAwesomeIcon icon={faSitemap} size={'sm'} />
+					</a>
 				</div>
 			</nav>
 		</>
