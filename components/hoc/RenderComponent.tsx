@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { TextBlockResponse, PortfolioCardResponse } from '@/model';
-// imprting components separately to avoid circular dependencies
+// importing components separately to avoid circular dependencies
 import { TextBlock as TextBlockComponent } from '@/components/TextBlock';
 import { PortfolioCards as PortfolioCardsComponent } from '@/components/PortfolioCards';
 
