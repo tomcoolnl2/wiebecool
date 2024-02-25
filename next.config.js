@@ -72,11 +72,6 @@ const nextConfig = {
 				destination: '/collectie/hout',
 				permanent: true,
 			},
-			{
-				source: '/Werk', // other old pages
-				destination: '/collectie',
-				permanent: true,
-			},
 		];
 	},
 	webpack: (config) => {
