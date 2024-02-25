@@ -63,11 +63,6 @@ const nextConfig = {
 				permanent: true,
 			},
 			{
-				source: '/Werk/Portret-van-Sarah',
-				destination: '/werk/portret-van-sarah',
-				permanent: true,
-			},
-			{
 				source: '/Werk/Hout',
 				destination: '/collectie/hout',
 				permanent: true,
