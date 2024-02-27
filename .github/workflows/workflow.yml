@@ -48,7 +48,7 @@ jobs:
         needs: eslint
         strategy:
             matrix:
-                shard: [1, 2, 3, 4]
+                shard: [1, 2, 3]
         steps:
             - uses: actions/checkout@v4
             - uses: actions/setup-node@v4
@@ -70,7 +70,7 @@ jobs:
             # https://github.com/cypress-io/github-action/issues/48
             fail-fast: false
             matrix:
-                containers: [1, 2, 3, 4]
+                containers: [1, 2, 3]
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v4
