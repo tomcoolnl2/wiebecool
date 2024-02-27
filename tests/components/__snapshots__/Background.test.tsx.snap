@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Background Snapshot Test matches the snapshot 1`] = `
+<div>
+  <div
+    class="bg"
+  >
+    <div
+      class="bg-overlay"
+    />
+    <div
+      class="bg-overlay"
+    />
+    <div
+      class="bg-overlay"
+    />
+    <div
+      class="bg-overlay"
+    />
+  </div>
+</div>
+`;

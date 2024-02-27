@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Snapshot Test matches the snapshot 1`] = `
+<div>
+  <figure
+    class="card image-container image-container-bordered"
+  >
+    <a
+      href="https://example.com"
+      title="Example Image"
+    >
+      <img
+        alt="Example Image"
+        class="card-image image-centered image-zoomable"
+        data-nimg="1"
+        decoding="async"
+        height="300"
+        loading="lazy"
+        src="/_next/image?url=https%3A%2F%2Fexample.com%2Fimage.jpg%3Fw%3D300%26h%3D300%26fm%3Djpg%26fl%3Dprogressive%26fit%3Dthumb&w=640&q=75"
+        srcset="/_next/image?url=https%3A%2F%2Fexample.com%2Fimage.jpg%3Fw%3D300%26h%3D300%26fm%3Djpg%26fl%3Dprogressive%26fit%3Dthumb&w=384&q=75 1x, /_next/image?url=https%3A%2F%2Fexample.com%2Fimage.jpg%3Fw%3D300%26h%3D300%26fm%3Djpg%26fl%3Dprogressive%26fit%3Dthumb&w=640&q=75 2x"
+        style="color: transparent;"
+        title="Example Card"
+        width="300"
+      />
+      <figcaption
+        class="image-caption"
+      >
+        Example Card
+      </figcaption>
+    </a>
+  </figure>
+</div>
+`;

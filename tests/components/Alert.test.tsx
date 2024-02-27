@@ -5,8 +5,8 @@ import { Alert } from '@/components';
 
 describe('Alert Snapshot Test', () => {
 	it('matches the snapshot', () => {
-		const tree = render(<Alert type="success" message="Test Message" />);
-		expect(tree).toMatchSnapshot();
+		const container = render(<Alert type="success" message="Test Message" />);
+		expect(container).toMatchSnapshot();
 	});
 });
 
