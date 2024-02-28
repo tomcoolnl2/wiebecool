@@ -1,4 +1,3 @@
-import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import {
 	baseUrl,
 	capitalize,
