@@ -14,3 +14,11 @@ jest.mock('react', () => {
 		cache: testCache,
 	};
 });
+
+jest.mock('@contentful/rich-text-react-renderer', () => ({
+	documentToReactComponents: jest.fn(),
+}));
+
+jest.mock('@contentful/rich-text-plain-text-renderer', () => ({
+	documentToPlainTextString: jest.fn(),
+}));

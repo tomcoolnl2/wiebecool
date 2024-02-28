@@ -2,24 +2,7 @@ import Link from 'next/link';
 import { faSortAlphaAsc, faSortAlphaDesc, faFilterCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { OrderType, type Tag } from '@/model';
-
-/**
- * Formats search parameters based on the provided order and filter values.
- * @param {OrderType | null} order - The order parameter value.
- * @param {string | null} filter - The filter parameter value.
- * @returns {string} The formatted search parameters string.
- */
-function formatSearchParams(order: OrderType | null, filter: string | null): string {
-	const params = new URLSearchParams();
-	if (order) {
-		params.set('order', order);
-	}
-	if (filter) {
-		params.set('filter', filter);
-	}
-	const searchParams = params.toString();
-	return searchParams ? '?' + searchParams : '';
-}
+import { formatSearchParams } from '@/lib';
 
 interface Props {
 	path: string;

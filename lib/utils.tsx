@@ -2,7 +2,7 @@ import * as React from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { Document, INLINES } from '@contentful/rich-text-types';
-import { Address, AlertMessage, Slug, Tag } from '@/model';
+import { Address, AlertMessage, OrderType, Slug, Tag } from '@/model';
 
 /** The locale of the website */
 export const locale = 'nl-NL';
@@ -89,7 +89,11 @@ export function processPlainText(rawRichText: Document): string {
 export function formatPrice(input: string): string {
 	const price = parseFloat(input);
 	if (!isNaN(price)) {
-		const formattedPrice = price.toLocaleString(locale, { style: 'currency', currency: 'EUR' });
+		const formattedPrice = price.toLocaleString(locale, {
+			style: 'currency',
+			currency: 'EUR',
+			minimumFractionDigits: 2,
+		});
 		return formattedPrice;
 	} else {
 		return input;
@@ -146,4 +150,22 @@ export function validateContactForm(formData: FormData): AlertMessage {
 	}
 
 	return { type: 'success', message: 'Passed.' };
+}
+
+/**
+ * Formats search parameters based on the provided order and filter values.
+ * @param {OrderType | null} order - The order parameter value.
+ * @param {string | null} filter - The filter parameter value.
+ * @returns {string} The formatted search parameters string.
+ */
+export function formatSearchParams(order: OrderType | null, filter: string | null): string {
+	const params = new URLSearchParams();
+	if (order) {
+		params.set('order', order);
+	}
+	if (filter) {
+		params.set('filter', filter);
+	}
+	const searchParams = params.toString();
+	return searchParams ? '?' + searchParams : '';
 }
