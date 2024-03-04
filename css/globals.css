@@ -132,6 +132,10 @@
 		@apply w-full border-solid mb-8 font-montserrat font-medium leading-7;
 	}
 
+	.rich-text-block p {
+		@apply mb-3;
+	}
+
 	.rich-text-block-border {
 		@apply rich-text-block border-[rgba(255,255,255,0.1)] border-b pb-8;
 	}
