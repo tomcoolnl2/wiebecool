@@ -76,12 +76,12 @@ describe('Collection Page Tests', () => {
 		cy.get('.card').should('have.length.greaterThan', 0);
 	});
 
-	it("should remove 'filter' URL param when selecting 'All' from the filter", () => {
+	it("should remove 'filter' URL param when selecting 'Alles' from the filter", () => {
 		//
 		cy.get('.collection-order-item a[href="?order=a-z"]').click({ force: true });
 		cy.get('.collection-filter-item a[href="?order=a-z&filter=steen"]').click({ force: true });
 
-		cy.get('.collection-filter-item a').contains('All').click({ force: true });
+		cy.get('.collection-filter-item a').contains('Alles').click({ force: true });
 
 		cy.location('search').should('contain', 'order=a-z');
 		cy.location('search').should('not.contain', 'filter=steen');
@@ -89,7 +89,7 @@ describe('Collection Page Tests', () => {
 		cy.get('.card').should('have.length.greaterThan', 0);
 	});
 
-	it("should remove 'order' and 'filter' URL params when selecting 'All' from the filter", () => {
+	it("should remove 'order' and 'filter' URL params when selecting 'Alles' from the filter", () => {
 		//
 		cy.get('.collection-order-item a[href="?order=a-z"]').click({ force: true });
 		cy.get('.collection-filter-item a[href="?order=a-z&filter=steen"]').click({ force: true });
