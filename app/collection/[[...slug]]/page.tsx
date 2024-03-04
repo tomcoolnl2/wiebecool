@@ -56,7 +56,7 @@ export default async function CollectionPage({ params, searchParams }: PageParam
 		cards = collectionPage.cards;
 	}
 
-	if (!filter && !sortOrder) {
+	if (!sortOrder) {
 		cards = cards.sort((a, b) => {
 			if (a.priority && !b.priority) {
 				return -1; // a comes before b
