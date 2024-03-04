@@ -49,7 +49,7 @@ export const CollectionControls: React.FC<Props> = ({
 						className={filter === null ? ' active' : ''}
 						scroll={false}
 					>
-						All
+						Alles
 					</Link>
 				</li>
 				{tags.map((tag) => (

@@ -12,6 +12,7 @@ query DetailPagesByTagIDs($tagIDs: [String]!, $order: [DetailPageOrder]!, $limit
 			}
 			slug
 			title
+			priority
 			imageCollection(limit: 1) {
 				items {
 					url
