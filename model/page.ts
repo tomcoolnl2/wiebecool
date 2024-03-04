@@ -151,6 +151,7 @@ export interface CollectionPageCollection {
 }
 
 export interface DetailCollectionItem extends SysID, BasePage {
+	priority: boolean;
 	contentfulMetadata: ContentfulMetaData;
 	imageCollection: ImageCollection;
 }

@@ -56,6 +56,18 @@ export default async function CollectionPage({ params, searchParams }: PageParam
 		cards = collectionPage.cards;
 	}
 
+	if (!filter && !sortOrder) {
+		cards = cards.sort((a, b) => {
+			if (a.priority && !b.priority) {
+				return -1; // a comes before b
+			} else if (!a.priority && b.priority) {
+				return 1; // b comes before a
+			} else {
+				return 0; // leave them unchanged
+			}
+		});
+	}
+
 	return (
 		<SectionContainer>
 			<SchemaTag schema={jsonLd} />
