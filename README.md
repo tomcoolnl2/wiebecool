@@ -2,9 +2,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-The project uses Node 18.17.0:
+The project uses Node 20.17.0:
 
 ```bash
+nvm install v20.17.0
 nvm use
 ```
 
@@ -24,6 +25,46 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 The app is deployed to using the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
 
 The `develop` branch is deployed [here](https://wiebecool-git-develop-tom-cools-projects.vercel.app/)
+
+### Steps to merge `develop` into `main` with a tag
+
+1. Ensure you are on the `develop` branch:
+```bash
+git checkout develop
+```
+
+2. Pull the latest changes for develop:
+```bash
+git pull origin develop
+```
+
+3. Switch to the main branch:
+```bash
+git checkout main
+```
+
+4. Pull the latest changes for main:
+```bash
+git pull origin main
+```
+
+5. Merge develop into main:
+```bash
+git merge develop
+```
+(Optional) Resolve any merge conflicts if necessary.
+
+6. Create a tag for the release (replace v1.0.0 with the version number or tag you want):
+```bash
+git tag -a v1.0.0 -m "Release v1.0.0"
+```
+Also update the version in the `package.json`.
+
+7. Push the main branch and the tag to the remote repository:
+```bash
+git push origin main
+git push origin v1.0.0
+```
 
 ## Environment variables
 

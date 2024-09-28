@@ -1,7 +1,15 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import * as React from 'react';
-import { CollectionPage, OrderType, PageParams, PageType, ReWriteRule, SchemaType, Slug } from '@/model';
+import {
+	type CollectionPage,
+	type OrderType,
+	type PageParams,
+	PageType,
+	ReWriteRule,
+	SchemaType,
+	type Slug,
+} from '@/model';
 import {
 	ensureLeadingSlash,
 	fetchCollectionPage,
