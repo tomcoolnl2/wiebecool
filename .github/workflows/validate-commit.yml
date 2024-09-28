@@ -69,10 +69,11 @@ jobs:
                   start: npm start
                   wait-on: 'http://localhost:3000'
               env:
+                  NEXT_PUBLIC_EMAILJS_SERVICE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}
+                  NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+                  NEXT_PUBLIC_EMAILJS_USER_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_USER_ID }}
                   CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
                   CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
-                  RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-                  RESEND_EMAIL: ${{ secrets.RESEND_EMAIL }}
                   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY}}
 
     # test:

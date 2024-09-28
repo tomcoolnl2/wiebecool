@@ -1,9 +1,9 @@
 'use client';
+import emailjs from 'emailjs-com';
 import dynamic from 'next/dynamic';
 import { useFormStatus } from 'react-dom';
 import * as React from 'react';
 import { AlertMessage } from '@/model';
-import { sendEmail } from '@/actions';
 import { validateContactForm } from '@/lib';
 import { useSearchParams } from 'next/navigation';
 
@@ -64,27 +64,47 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 		};
 	}, [onClickHandler]);
 
-	const sendEmailData = React.useCallback(async (formData: FormData) => {
-		// client side validation
+	const handleOnChange = React.useCallback(() => {
+		alert && setAlert(null);
+	}, [alert]);
+
+	const handleSubmit = React.useCallback((e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+
+		const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
+		const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
+		const userID = process.env.NEXT_PUBLIC_EMAILJS_USER_ID || '';
+
+		const formData = new FormData(formRef.current ?? undefined);
+
 		let alertMessage = validateContactForm(formData);
 		if (alertMessage.type === 'error') {
 			setAlert(alertMessage);
 			return null;
 		}
-		// server side validation
-		alertMessage = await sendEmail(formData);
-		setAlert(alertMessage);
-		if (alertMessage.type === 'success') {
-			formRef.current?.reset();
-		}
+
+		emailjs
+			.send(
+				serviceID,
+				templateID,
+				{
+					from_name: formData.get('name'),
+					from_email: formData.get('email'),
+					message: formData.get('message'),
+				},
+				userID
+			)
+			.then((result) => {
+				setAlert({ type: 'success', message: 'Bericht verstuurd. Bedankt!' });
+			})
+			.catch((error) => {
+				setAlert({ type: 'success', message: 'Er ging iets mis!' });
+				console.error('Error sending email:', error);
+			});
 	}, []);
 
-	const handleOnChange = React.useCallback(() => {
-		alert && setAlert(null);
-	}, [alert]);
-
 	return (
-		<form id="form" ref={formRef} action={sendEmailData} noValidate>
+		<form id="form" ref={formRef} onSubmit={handleSubmit} noValidate>
 			<div className="rich-text-block">{formIntro}</div>
 			<div className="field">
 				<label htmlFor="name">Naam:</label>
