@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { DetailPage, PageParams, PageType, ReWriteRule, SchemaType, Slug } from '@/model';
+import { type DetailPage, type PageParams, PageType, ReWriteRule, SchemaType, type Slug } from '@/model';
 import {
 	capitalize,
 	fetchDetailPage,

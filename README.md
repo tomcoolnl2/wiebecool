@@ -2,9 +2,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-The project uses Node 18.17.0:
+The project uses Node 20.17.0:
 
 ```bash
+nvm install v20.17.0
 nvm use
 ```
 
