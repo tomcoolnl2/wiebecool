@@ -83,6 +83,10 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 			return null;
 		}
 
+		if (formData.get('email') === 'test@email.com') {
+			return null;
+		}
+
 		emailjs
 			.send(
 				serviceID,

@@ -57,10 +57,6 @@ jobs:
               uses: actions/checkout@v4
               with:
                   fetch-depth: 0
-            - name: Clear Cypress Cache
-              run: |
-                  rm -rf ~/.cache/Cypress
-                  npm ci
             - name: Run Cypress Tests
               uses: cypress-io/github-action@v6
               with:
