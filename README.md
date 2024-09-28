@@ -26,6 +26,46 @@ The app is deployed to using the [Vercel Platform](https://vercel.com/new?utm_me
 
 The `develop` branch is deployed [here](https://wiebecool-git-develop-tom-cools-projects.vercel.app/)
 
+### Steps to merge `develop` into `main` with a tag
+
+1. Ensure you are on the `develop` branch:
+```bash
+git checkout develop
+```
+
+2. Pull the latest changes for develop:
+```bash
+git pull origin develop
+```
+
+3. Switch to the main branch:
+```bash
+git checkout main
+```
+
+4. Pull the latest changes for main:
+```bash
+git pull origin main
+```
+
+5. Merge develop into main:
+```bash
+git merge develop
+```
+(Optional) Resolve any merge conflicts if necessary.
+
+6. Create a tag for the release (replace v1.0.0 with the version number or tag you want):
+```bash
+git tag -a v1.0.0 -m "Release v1.0.0"
+```
+Also update the versions in the `package.json`.
+
+7. Push the main branch and the tag to the remote repository:
+```bash
+git push origin main
+git push origin v1.0.0
+```
+
 ## Environment variables
 
 We use environment variables to hide access keys for Contentful and Resend (and more).
