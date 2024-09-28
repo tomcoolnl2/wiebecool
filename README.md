@@ -58,7 +58,7 @@ git merge develop
 ```bash
 git tag -a v1.0.0 -m "Release v1.0.0"
 ```
-Also update the versions in the `package.json`.
+Also update the version in the `package.json`.
 
 7. Push the main branch and the tag to the remote repository:
 ```bash
