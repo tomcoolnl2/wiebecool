@@ -69,6 +69,6 @@ describe('Contact Page Tests', () => {
 		cy.get('button[type="submit"]').click();
 		// Assert that the form submission is successful
 		cy.wait(1000);
-		cy.contains('Bericht verstuurd.').should('be.visible');
+		cy.contains('Bericht verstuurd. Bedankt!').should('be.visible');
 	});
 });
