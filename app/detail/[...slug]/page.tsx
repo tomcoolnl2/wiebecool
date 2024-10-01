@@ -66,7 +66,7 @@ export default async function DetailPage({ params }: PageParams) {
 						<div className="rich-text-block">{processRichText(detailPage.description.json)}</div>
 					)}
 					<div className="detail-page-details-wrapper">
-						<div className="detail-page-main-image-wrapper">
+						<figure className="detail-page-main-image-wrapper">
 							<div className="detail-page-main-image image-container image-container-bordered">
 								<Image
 									src={detailPageImg.url + '?w=620&fm=jpg&fl=progressive'}
@@ -77,7 +77,15 @@ export default async function DetailPage({ params }: PageParams) {
 									height={700}
 								/>
 							</div>
-						</div>
+							{detailPage.mainImageAuthor?.name ? (
+								<figcaption className="image-author">
+									Foto:&nbsp;
+									<a href={detailPage.mainImageAuthor.url} target="_blank" rel="noopener noreferrer">
+										{detailPage.mainImageAuthor.name}
+									</a>
+								</figcaption>
+							) : null}
+						</figure>
 						<div className="detail-page-details">
 							<ul className="detail-page-detail-list">
 								{detailPage.status && (

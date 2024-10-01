@@ -4,11 +4,15 @@
 }
 
 .detail-page-main-image-wrapper {
-	@apply w-full sm:w-2/3 mx-auto md:mx-0;
+	@apply w-full sm:w-2/3 mx-auto md:mx-0 mb-10;
 }
 
 .detail-page-main-image {
-	@apply w-full mx-auto mb-10;
+	@apply w-full mx-auto mb-1;
+}
+
+.detail-page-main-image-wrapper .image-author {
+	@apply text-sm;
 }
 
 .detail-page-details {

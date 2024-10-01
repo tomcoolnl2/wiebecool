@@ -24,6 +24,10 @@ query DetailPageBySlug($slug: String!) {
 					description
 				}
 			}
+			mainImageAuthor {
+				name
+				url
+			}
 			imageCarousel {
 				description {
 					json
