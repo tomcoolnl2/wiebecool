@@ -48,6 +48,11 @@ export interface ImageCollection {
 	items: ItemImage[];
 }
 
+export interface ImageAuthor {
+	name: string;
+	url: string;
+}
+
 export interface CollectionItems {
 	items: CollectionItem[];
 }
@@ -164,6 +169,7 @@ export interface DetailPage extends BasePage, SysID {
 	price: string;
 	creationDate: string | null;
 	imageCollection: ImageCollection;
+	mainImageAuthor?: ImageAuthor;
 	imageCarousel: PageCarousel;
 	contentfulMetadata: ContentfulMetaData;
 	relatedItemsTags: string[];
