@@ -105,7 +105,7 @@
 	}
 
 	.page-header-title {
-		@apply font-extrabold font-montserrat text-4xl mt-4 mb-8 text-shadow shadow-slate-900;
+		@apply font-extrabold font-montserrat text-4xl mt-4 mb-8 text-shadow shadow-slate-800;
 	}
 
 	.page-header-subtitle {
