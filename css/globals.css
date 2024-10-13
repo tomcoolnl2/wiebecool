@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '@/css/components/cursor.css';
-@import '@/css/components/preloader.css';
-@import '@/css/components/navigation.css';
+@import '@/css/components/index.css';
 
 
 @layer base {
@@ -58,15 +56,19 @@
 	}
 
 	hr {
-		@apply border-[rgba(255,255,255,0.1)];
+		@apply border-primary-color;
 	}
 }
 
-/* @layer utilities {
-
-} */
+@layer utilities {
+	.border-primary-color {
+		/* border-color: rgba(255,255,255,0.1); */
+		border-color: rgb(111, 106, 190);
+	}
+}
 
 @layer components {
+
 
 	.cookie-bar {
 		@apply z-50 fixed bottom-0 left-0 right-0 flex items-center justify-between px-4 py-4 bg-gray-800;
@@ -137,7 +139,7 @@
 	}
 
 	.rich-text-block-border {
-		@apply rich-text-block border-[rgba(255,255,255,0.1)] border-b pb-8;
+		@apply rich-text-block border-primary-color border-b pb-8;
 	}
 
 	.text-block h3,

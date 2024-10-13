@@ -1,6 +1,6 @@
 
 .share-socials {
-    @apply py-6 border-solid border-[rgba(255,255,255,0.1)] border-t;
+    @apply py-6 border-solid border-primary-color border-t;
 }
 
 .share-socials button {
