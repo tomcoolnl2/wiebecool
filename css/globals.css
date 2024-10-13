@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '@/css/components/index.css';
+@import '@/css/components/_index.css';
 
 
 @layer base {
@@ -62,8 +62,7 @@
 
 @layer utilities {
 	.border-primary-color {
-		/* border-color: rgba(255,255,255,0.1); */
-		border-color: rgb(111, 106, 190);
+		border-color: rgba(255,255,255,0.1);
 	}
 }
 

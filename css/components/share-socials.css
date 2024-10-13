@@ -1,6 +1,6 @@
 
 .share-socials {
-    @apply py-6 border-solid border-primary-color border-t;
+    @apply py-6 border-solid border-white border-opacity-10 border-t;
 }
 
 .share-socials button {
