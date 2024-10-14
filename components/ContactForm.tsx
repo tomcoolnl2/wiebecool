@@ -6,6 +6,7 @@ import * as React from 'react';
 import { AlertMessage } from '@/model';
 import { validateContactForm } from '@/lib';
 import { useSearchParams } from 'next/navigation';
+import { Button } from './Button';
 
 const Alert = dynamic(() => import('@/components/Alert'), { ssr: false });
 
@@ -134,9 +135,9 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 				/>
 			</div>
 			{alert && <Alert {...alert} />}
-			<button className="button" type="submit" disabled={pending || !!alert}>
+			<Button type="submit" disabled={pending || !!alert}>
 				{buttonText}
-			</button>
+			</Button>
 		</form>
 	);
 };

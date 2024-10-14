@@ -11,7 +11,9 @@
 		"e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --e2e\"",
 		"e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
 		"format": "prettier --write './**/*.{js,jsx,ts,tsx,html,css,scss,json,md}'",
-		"analyze": "ANALYZE=true npm run build"
+		"analyze": "ANALYZE=true npm run build",
+		"storybook": "storybook dev -p 6006",
+		"build-storybook": "storybook build"
 	},
 	"dependencies": {
 		"@contentful/rich-text-plain-text-renderer": "16.2.10",
@@ -35,6 +37,15 @@
 		"swiper": "11.1.14"
 	},
 	"devDependencies": {
+		"@chromatic-com/storybook": "^1.9.0",
+		"@storybook/addon-essentials": "^8.3.5",
+		"@storybook/addon-interactions": "^8.3.5",
+		"@storybook/addon-links": "^8.3.5",
+		"@storybook/addon-onboarding": "^8.3.5",
+		"@storybook/blocks": "^8.3.5",
+		"@storybook/nextjs": "^8.3.5",
+		"@storybook/react": "^8.3.5",
+		"@storybook/test": "^8.3.5",
 		"@types/node": "22.7.4",
 		"@types/react": "18.3.10",
 		"@types/react-dom": "18.3.0",
@@ -42,10 +53,12 @@
 		"cypress": "13.15.0",
 		"eslint": "8.56.0",
 		"eslint-config-next": "14.2.13",
+		"eslint-plugin-storybook": "^0.9.0",
 		"graphql-tag": "2.12.6",
 		"postcss": "8.4.47",
 		"rimraf": "6.0.1",
 		"start-server-and-test": "2.0.8",
+		"storybook": "^8.3.5",
 		"tailwindcss": "3.4.13",
 		"typescript": "5.6.2"
 	}

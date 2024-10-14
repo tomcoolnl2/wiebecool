@@ -24,6 +24,13 @@
 		}
 	},
 	"types": ["react/next"],
-	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		"stories/Page.stories.back",
+		"stories/Header.stories.back"
+	],
 	"exclude": ["node_modules"]
 }
