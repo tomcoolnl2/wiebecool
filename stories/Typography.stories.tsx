@@ -16,7 +16,6 @@ export const Headings: Story = {
 	render: () => (
 		<div>
 			<h1 className="page-header-title">This is a Page Title</h1>
-			<h1>This is an H1 heading</h1>
 			<h2>This is an H2 heading</h2>
 			<h3>This is an H3 heading</h3>
 			<h4>This is an H4 heading</h4>
