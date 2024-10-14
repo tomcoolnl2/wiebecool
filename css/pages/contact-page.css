@@ -18,7 +18,8 @@
         border 
         bg-transparent 
         border-solid 
-        border-[rgba(255,255,255,0.2)] 
+        border-white 
+        border-opacity-20
         focus:border 
         focus:border-solid 
         focus:border-white;
