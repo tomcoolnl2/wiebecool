@@ -1,4 +1,5 @@
 {
+    "version": 2,
     "builds": [
         {
             "src": "package.json",
@@ -6,8 +7,13 @@
         },
         {
             "src": "storybook-static/**/*",
-            "use": "@vercel/static",
-            "dest": "/storybook"
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/storybook/(.*)",
+            "dest": "/storybook-static/$1"
         }
     ]
 }
