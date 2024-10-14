@@ -3,6 +3,7 @@ export * from './page';
 
 export * from './Alert';
 export * from './Background';
+export * from './Button';
 export * from './Card';
 export * from './CardMotion';
 export * from './CollectionControls';
