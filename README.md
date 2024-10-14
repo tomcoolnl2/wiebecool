@@ -20,6 +20,14 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Run Storybook locally
+
+```bash
+npm run storybook
+```
+
+Open [http://localhost:6006](http://localhost:6006) with your browser to see the interactive design system.
+
 ## Deploy on Vercel
 
 The app is deployed to using the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
