@@ -1,9 +1,12 @@
-name: Validate Commit and Run Tests
+name: Run Tests
 
 on:
     push:
         branches-ignore:
             - main
+concurrency:
+    group: main-workflow
+    cancel-in-progress: true
 
 jobs:
     eslint:
@@ -61,21 +64,3 @@ jobs:
                   CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
                   CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
                   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY}}
-
-    # test:
-    #     runs-on: ubuntu-22.04
-    #     needs: validate-commit-message
-    #     steps:
-    #         - name: Checkout Repository
-    #           uses: actions/checkout@v2
-
-    #         - name: Set Up Node.js
-    #           uses: actions/setup-node@v4
-    #           with:
-    #               node-version: 20.17.0
-
-    #         - name: Install Dependencies
-    #           run: npm ci
-
-    #         - name: Run Jest Tests
-    #           run: npm test
