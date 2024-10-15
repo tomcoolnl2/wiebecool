@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { Button } from '../components/Button';
 
+// Meta configuration for the Button component
 const meta = {
 	title: 'Components/Button',
 	component: Button,
