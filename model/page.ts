@@ -120,8 +120,7 @@ interface BasePage {
 	description: RichText;
 }
 
-export interface HomePage extends BasePage {
-	type: PageType.HomePage;
+export interface HomePageContent extends Omit<BasePage, 'type'> {
 	title: string;
 	subtitle: string;
 	mugshot: ItemImage;
@@ -129,6 +128,14 @@ export interface HomePage extends BasePage {
 		items: Array<PortfolioCardResponse>;
 	};
 	artist: Artist;
+	address: Address;
+}
+
+export interface HomePage {
+	type: PageType.HomePage;
+	content: HomePageContent;
+	artist: Artist;
+	address: Address;
 }
 
 export interface AboutPage extends BasePage {
@@ -184,7 +191,7 @@ export interface ContactPage extends BasePage {
 	submitButtonText: string;
 }
 
-export type PageData = HomePage | AboutPage | CollectionPage | DetailPage | ContactPage;
+export type PageData = HomePageContent | AboutPage | CollectionPage | DetailPage | ContactPage;
 
 export type ContentData = Address | Breadcrumbs;
 

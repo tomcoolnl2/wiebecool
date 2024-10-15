@@ -13,7 +13,7 @@ import {
 	ContactPageSchema,
 	ContentData,
 	DetailPage,
-	HomePage,
+	HomePageContent,
 	HomePageSchema,
 	ItemImage,
 	PageData,
@@ -62,7 +62,7 @@ export function generateSchema(
 
 	switch (schemaType) {
 		case SchemaType.HOME_PAGE: {
-			const homePageData = data as HomePage;
+			const homePageData = data as HomePageContent;
 			const schema = {
 				...baseSchema,
 				...basePageSchema,

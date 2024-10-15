@@ -10,6 +10,7 @@ export * from './CollectionControls';
 export * from './CookieBar';
 export * from './DetailCardsCollection';
 export * from './ContactDetails';
+export * from './ContactDetailsV2';
 export * from './ContactForm';
 export * from './Cursor';
 export * from './Navigation';

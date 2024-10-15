@@ -1,6 +1,7 @@
 #
-query HomePage($sysID: String!) {
-	homePage(id: $sysID) {
+
+query HomePageData($homePageSysID: String!, $artistSysID: String!, $addressSysID: String!) {
+	homePage(id: $homePageSysID) {
 		slug
 		title
 		subtitle
@@ -35,5 +36,19 @@ query HomePage($sysID: String!) {
 				}
 			}
 		}
+	}
+	artist(id: $artistSysID) {
+		name
+		occupation
+		description
+		telephone
+		email
+		mentions
+	}
+	address(id: $addressSysID) {
+		streetAddress
+		zipCode
+		city
+		country
 	}
 }

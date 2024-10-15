@@ -44,25 +44,7 @@ import {
 	OrderTypeMap,
 	PageType,
 } from '@/model';
-
-/**
- * Represents an error specific to Contentful-related operations.
- * @class
- * @extends Error
- */
-export class ContentfulError extends Error {
-	/**
-	 * Creates an instance of ContentfulError.
-	 * @param {string} message - The error message.
-	 * @param {number} status - The status code associated with the error. Default is 500.
-	 */
-	constructor(message: string, public status: number = 500) {
-		super(message);
-		this.name = this.constructor.name;
-		this.message = `Contentful: ${this.status}: ${message}`;
-		Object.setPrototypeOf(this, ContentfulError.prototype);
-	}
-}
+import { ContentfulError } from './error';
 
 /**
  * Preloads data by fetching from Contentful.
@@ -208,22 +190,21 @@ export async function fetchHomePageSeoMetaData(): Promise<SeoMetaData> {
 }
 
 /**
- * Fetches home page data from Contentful based on a sys ID.
- * @returns {Promise<HomePage>} A promise resolving to the fetched home page data.
+ * Fetches home page data from Contentful.
+ * @returns {Promise<HomePage>} A promise resolving to the fetched Home page Data.
  */
 export async function fetchHomePage(): Promise<HomePage> {
-	const [{ homePage }, artist] = await Promise.all([
-		await fetchContentfulData<HomePageResponse>(HomePageQuery, {
-			sysID: '7bjsm9rIwR5janeyF5XK2n',
-		}),
-		fetchArtist(),
-	]);
-	return { ...homePage, type: PageType.HomePage, artist };
+	const { homePage, ...pageComponents } = await fetchContentfulData<HomePageResponse>(HomePageQuery, {
+		homePageSysID: '7bjsm9rIwR5janeyF5XK2n',
+		artistSysID: '42dyv6PaMYHTxIQvt5k1BR',
+		addressSysID: 'VYrkgFK6dR1V81lIJqez2',
+	});
+	return { type: PageType.HomePage, content: homePage, ...pageComponents };
 }
 
 /**
- * Fetches about page data from Contentful based on a sys ID.
- * @returns {Promise<AboutPage>} A promise resolving to the fetched about page data.
+ * Fetches about page data from Contentful.
+ * @returns {Promise<AboutPage>} A promise resolving to the fetched About Page data.
  */
 export async function fetchAboutPage(): Promise<AboutPage> {
 	const [{ aboutPage }, artist] = await Promise.all([

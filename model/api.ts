@@ -11,6 +11,7 @@ import {
 	DetailPage,
 	Slug,
 	PortfolioCard,
+	HomePageContent,
 } from './';
 
 export interface SysID {
@@ -80,7 +81,9 @@ export interface PortfolioCardResponse {
 }
 
 export interface HomePageResponse {
-	homePage: HomePage;
+	homePage: HomePageContent;
+	artist: Artist;
+	address: Address;
 }
 
 export interface AboutPageResponse {
