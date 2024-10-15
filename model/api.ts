@@ -17,8 +17,13 @@ export interface SysID {
 	sys: { id: string };
 }
 
+export enum AlertMessageType {
+	SUCCESS = 'success',
+	ERROR = 'error',
+}
+
 export interface AlertMessage {
-	type: 'success' | 'error';
+	type: AlertMessageType;
 	message: string;
 }
 

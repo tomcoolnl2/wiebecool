@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 
-export interface Props {
+interface Props {
 	size?: 'small' | 'medium' | 'large';
 	checked?: boolean;
 	disabled?: boolean;

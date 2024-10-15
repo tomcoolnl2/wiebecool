@@ -2,7 +2,7 @@ import * as React from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { Document, INLINES } from '@contentful/rich-text-types';
-import { Address, AlertMessage, Slug, Tag } from '@/model';
+import { Address, AlertMessage, AlertMessageType, Slug } from '@/model';
 
 /** The locale of the website */
 export const locale = 'nl-NL';
@@ -133,17 +133,17 @@ export function validateContactForm(formData: FormData): AlertMessage {
 	const message = formData.get('message');
 
 	if (!name) {
-		return { type: 'error', message: 'Vul een naam in.' };
+		return { type: AlertMessageType.ERROR, message: 'Vul een naam in.' };
 	}
 
 	const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	if (!email || typeof email !== 'string' || !emailRegex.test(email)) {
-		return { type: 'error', message: 'Verkeerd email adres.' };
+		return { type: AlertMessageType.ERROR, message: 'Verkeerd email adres.' };
 	}
 
 	if (!message || typeof message !== 'string') {
-		return { type: 'error', message: 'Vul een vraag in.' };
+		return { type: AlertMessageType.ERROR, message: 'Vul een vraag in.' };
 	}
 
-	return { type: 'success', message: 'Passed.' };
+	return { type: AlertMessageType.SUCCESS, message: 'Passed.' };
 }
