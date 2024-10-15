@@ -25,7 +25,7 @@ export default async function Contact() {
 		notFound();
 	}
 	const path = headers().get('next-url') || ReWriteRule[PageType.ContactPage];
-	const jsonLd = generateSchema(contactPage, SchemaType.CONTACT_PAGE);
+	const jsonLd = generateSchema({ content: contactPage }, SchemaType.CONTACT_PAGE);
 
 	return (
 		<SectionContainer>

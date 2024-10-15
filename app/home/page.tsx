@@ -25,7 +25,7 @@ export default async function Home() {
 		notFound();
 	}
 
-	const jsonLd = generateSchema({ ...content, artist }, SchemaType.HOME_PAGE);
+	const jsonLd = generateSchema({ content, artist }, SchemaType.HOME_PAGE);
 	const blocks = content.buildingBlocksCollection?.items || [];
 	return (
 		<SectionContainer>

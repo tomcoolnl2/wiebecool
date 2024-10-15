@@ -127,8 +127,6 @@ export interface HomePageContent extends Omit<BasePage, 'type'> {
 	buildingBlocksCollection: {
 		items: Array<PortfolioCardResponse>;
 	};
-	artist: Artist;
-	address: Address;
 }
 
 export interface HomePage {
@@ -138,13 +136,19 @@ export interface HomePage {
 	address: Address;
 }
 
-export interface AboutPage extends BasePage {
+export interface AboutPageContent extends Omit<BasePage, 'type'> {
 	type: PageType.AboutPage;
 	bannerImage: ItemImage;
 	buildingBlocksCollection: {
 		items: Array<TextBlockResponse | PortfolioCardResponse>;
 	};
+}
+
+export interface AboutPage {
+	type: PageType.AboutPage;
+	content: AboutPageContent;
 	artist: Artist;
+	address: Address;
 }
 
 export interface CollectionPage extends BasePage {
@@ -191,9 +195,9 @@ export interface ContactPage extends BasePage {
 	submitButtonText: string;
 }
 
-export type PageData = HomePageContent | AboutPage | CollectionPage | DetailPage | ContactPage;
+export type PageData = HomePageContent | AboutPageContent | CollectionPage | DetailPage | ContactPage;
 
-export type ContentData = Address | Breadcrumbs;
+export type ContentData = Artist | Address | Breadcrumbs;
 
 export interface SitemapItem {
 	url: string;

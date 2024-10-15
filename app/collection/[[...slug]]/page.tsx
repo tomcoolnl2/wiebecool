@@ -56,7 +56,7 @@ export default async function CollectionPage({ params, searchParams }: PageParam
 		notFound();
 	}
 
-	const jsonLd = generateSchema(collectionPage, SchemaType.COLLECTION);
+	const jsonLd = generateSchema({ content: collectionPage }, SchemaType.COLLECTION);
 
 	const filter = searchParams?.filter ?? null;
 	let cards = collectionPage.cards.filter((card) => card.contentfulMetadata.tags.find((tag) => tag.id === filter));

@@ -51,7 +51,7 @@ export default async function DetailPage({ params }: PageParams) {
 	}
 
 	const detailPageImg = detailPage.imageCollection.items[0];
-	const jsonLd = generateSchema(detailPage, SchemaType.SCULPTURE, detailPageImg);
+	const jsonLd = generateSchema({ content: detailPage }, SchemaType.SCULPTURE, detailPageImg);
 	const path = ReWriteRule[PageType.DetailPage] + slug;
 	const tags = detailPage.contentfulMetadata.tags;
 	const hashtags = tags.map((tag) => capitalize(tag.name));

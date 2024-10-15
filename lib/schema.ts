@@ -1,5 +1,4 @@
 import {
-	AboutPage,
 	AboutPageSchema,
 	Address,
 	Artist,
@@ -13,7 +12,6 @@ import {
 	ContactPageSchema,
 	ContentData,
 	DetailPage,
-	HomePageContent,
 	HomePageSchema,
 	ItemImage,
 	PageData,
@@ -27,7 +25,7 @@ import {
 	SculptureSchema,
 	Slug,
 } from '@/model';
-import { baseUrl, buildUrl, artist, locale, processPlainText } from '@/lib';
+import { baseUrl, buildUrl, locale, processPlainText } from '@/lib';
 
 function generatePersonSchema(data: Artist): PersonSchema {
 	return {
@@ -39,7 +37,7 @@ function generatePersonSchema(data: Artist): PersonSchema {
 }
 
 export function generateSchema(
-	data: PageData | ContentData,
+	{ content, artist }: { content: PageData | ContentData; artist?: Artist },
 	schemaType: SchemaType,
 	img: ItemImage | null = null
 ): Schema {
@@ -51,36 +49,34 @@ export function generateSchema(
 	};
 
 	let basePageSchema = {} as BasePageSchema;
-	if ('type' in data) {
+	if ('type' in content) {
 		// true if data === PageData
 		basePageSchema = {
-			name: data.title || 'Untitled',
-			description: processPlainText(data.description),
-			url: buildUrl(data.slug).href,
+			name: content.title || 'Untitled',
+			description: processPlainText(content.description),
+			url: buildUrl(content.slug).href,
 		};
 	}
 
 	switch (schemaType) {
 		case SchemaType.HOME_PAGE: {
-			const homePageData = data as HomePageContent;
 			const schema = {
 				...baseSchema,
 				...basePageSchema,
-				about: generatePersonSchema(homePageData.artist),
+				about: generatePersonSchema(artist!),
 			};
 			return schema as HomePageSchema;
 		}
 		case SchemaType.ABOUT_PAGE: {
-			const aboutPageData = data as AboutPage;
 			const schema = {
 				...baseSchema,
 				...basePageSchema,
-				mainEntity: generatePersonSchema(aboutPageData.artist),
+				mainEntity: generatePersonSchema(artist!),
 			};
 			return schema as AboutPageSchema;
 		}
 		case SchemaType.COLLECTION: {
-			const collectionPageData = data as CollectionPage;
+			const collectionPageData = content as CollectionPage;
 			let path: Slug = '/collectie';
 			const schema = {
 				...baseSchema,
@@ -100,7 +96,7 @@ export function generateSchema(
 			return schema as CollectionPageSchema;
 		}
 		case SchemaType.POSTAL_ADDRESS: {
-			const addressData = data as Address;
+			const addressData = content as Address;
 			const schema = {
 				'@type': SchemaType.POSTAL_ADDRESS,
 				streetAddress: addressData.streetAddress,
@@ -111,7 +107,7 @@ export function generateSchema(
 			return schema as PostalAddressSchema;
 		}
 		case SchemaType.BREADCRUMBS: {
-			const { parents, current } = data as Breadcrumbs;
+			const { parents, current } = content as Breadcrumbs;
 			const schema = {
 				'@type': SchemaType.BREADCRUMBS,
 				itemListElement: [
@@ -136,7 +132,7 @@ export function generateSchema(
 			return schema as BreadcrumbSchema;
 		}
 		case SchemaType.SCULPTURE: {
-			const detailPageData = data as DetailPage;
+			const detailPageData = content as DetailPage;
 			const dateCreated = detailPageData.creationDate ?? null;
 			const material = detailPageData.material ?? null;
 			const dimensions = detailPageData.dimensions ?? null;
@@ -148,7 +144,7 @@ export function generateSchema(
 				image,
 				creator: {
 					'@type': SchemaType.PERSON,
-					name: artist.name,
+					name: artist!.name,
 				},
 				...(dateCreated ? { dateCreated } : {}),
 				...(material ? { material } : {}),
@@ -157,7 +153,7 @@ export function generateSchema(
 			return schema as SculptureSchema;
 		}
 		case SchemaType.CONTACT_PAGE: {
-			const contactPageData = data as ContactPage;
+			const contactPageData = content as ContactPage;
 			const schema = {
 				...baseSchema,
 				...basePageSchema,

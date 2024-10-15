@@ -45,6 +45,7 @@ import {
 	PageType,
 } from '@/model';
 import { ContentfulError } from './error';
+import { ContentfulSysID as CFSysID } from './sysid';
 
 /**
  * Preloads data by fetching from Contentful.
@@ -185,7 +186,7 @@ export async function fetchContactDetails(): Promise<ContactDetails> {
  * @returns {Promise<SeoMetaData>} A promise resolving to the fetched seo meta data for the Home Page.
  */
 export async function fetchHomePageSeoMetaData(): Promise<SeoMetaData> {
-	const { seoMetaData } = await fetchSeoMetaData('CPkjAJlRTW3qlGNp8CqJm');
+	const { seoMetaData } = await fetchSeoMetaData(CFSysID.homePage.seoMetaData);
 	return seoMetaData;
 }
 
@@ -195,9 +196,9 @@ export async function fetchHomePageSeoMetaData(): Promise<SeoMetaData> {
  */
 export async function fetchHomePage(): Promise<HomePage> {
 	const { homePage, ...pageComponents } = await fetchContentfulData<HomePageResponse>(HomePageQuery, {
-		homePageSysID: '7bjsm9rIwR5janeyF5XK2n',
-		artistSysID: '42dyv6PaMYHTxIQvt5k1BR',
-		addressSysID: 'VYrkgFK6dR1V81lIJqez2',
+		homePageSysID: CFSysID.homePage.id,
+		artistSysID: CFSysID.artist.id,
+		addressSysID: CFSysID.address.id,
 	});
 	return { type: PageType.HomePage, content: homePage, ...pageComponents };
 }
@@ -207,13 +208,12 @@ export async function fetchHomePage(): Promise<HomePage> {
  * @returns {Promise<AboutPage>} A promise resolving to the fetched About Page data.
  */
 export async function fetchAboutPage(): Promise<AboutPage> {
-	const [{ aboutPage }, artist] = await Promise.all([
-		await fetchContentfulData<AboutPageResponse>(AboutPageQuery, {
-			sysID: '3LaYVXJtqbtQYH38PqSkeQ',
-		}),
-		fetchArtist(),
-	]);
-	return { ...aboutPage, type: PageType.AboutPage, artist };
+	const { aboutPage, ...pageComponents } = await fetchContentfulData<AboutPageResponse>(AboutPageQuery, {
+		aboutPageSysID: CFSysID.aboutPage.id,
+		artistSysID: CFSysID.artist.id,
+		addressSysID: CFSysID.address.id,
+	});
+	return { type: PageType.AboutPage, content: aboutPage, ...pageComponents };
 }
 
 /**

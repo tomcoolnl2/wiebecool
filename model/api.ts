@@ -4,14 +4,13 @@ import {
 	ContactPage,
 	NavigationPageEntry,
 	Artist,
-	HomePage,
-	AboutPage,
+	HomePageContent,
+	AboutPageContent,
 	CollectionPage,
 	DetailCollectionItem,
 	DetailPage,
 	Slug,
 	PortfolioCard,
-	HomePageContent,
 } from './';
 
 export interface SysID {
@@ -87,7 +86,9 @@ export interface HomePageResponse {
 }
 
 export interface AboutPageResponse {
-	aboutPage: AboutPage;
+	aboutPage: AboutPageContent;
+	artist: Artist;
+	address: Address;
 }
 
 export interface CollectionPageResponse {
