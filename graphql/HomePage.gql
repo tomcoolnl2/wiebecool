@@ -1,12 +1,11 @@
 #
-
-query HomePageData($seoMetaDataSysID: String!, $homePageSysID: String!, $artistSysID: String!, $addressSysID: String!) {
-	seoMetaData(id: $seoMetaDataSysID) {
-		title
-		description
-		keywords
-	}
+query HomePageData($homePageSysID: String!, $artistSysID: String!, $addressSysID: String!) {
 	homePage(id: $homePageSysID) {
+		seoMetaData {
+			title
+			description
+			keywords
+		}
 		slug
 		title
 		subtitle

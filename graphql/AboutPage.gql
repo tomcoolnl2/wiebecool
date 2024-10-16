@@ -1,11 +1,11 @@
 #
-query AboutPageQuery($seoMetaDataSysID: String!, $aboutPageSysID: String!, $artistSysID: String!, $addressSysID: String!) {
-	seoMetaData(id: $seoMetaDataSysID) {
-		title
-		description
-		keywords
-	}
+query AboutPageQuery($aboutPageSysID: String!, $artistSysID: String!, $addressSysID: String!) {
 	aboutPage(id: $aboutPageSysID) {
+		seoMetaData {
+			title
+			description
+			keywords
+		}
 		slug
 		title
 		name

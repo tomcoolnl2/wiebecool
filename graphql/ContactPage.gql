@@ -1,11 +1,11 @@
 #
-query ContactPage($seoMetaDataSysID: String!, $contactPageSysID: String!, $artistSysID: String!, $addressSysID: String!) {
-	seoMetaData(id: $seoMetaDataSysID) {
-		title
-		description
-		keywords
-	}
+query ContactPage($contactPageSysID: String!, $artistSysID: String!, $addressSysID: String!) {
 	contactPage(id: $contactPageSysID) {
+		seoMetaData {
+			title
+			description
+			keywords
+		}
 		slug
 		name
 		title

@@ -80,14 +80,12 @@ export interface PortfolioCardResponse {
 }
 
 export interface HomePageResponse {
-	seoMetaData: SeoMetaData;
 	homePage: HomePageContent;
 	artist: Artist;
 	address: Address;
 }
 
 export interface AboutPageResponse {
-	seoMetaData: SeoMetaData;
 	aboutPage: AboutPageContent;
 	artist: Artist;
 	address: Address;
@@ -114,7 +112,6 @@ export interface DetailPageBySlugResponse {
 }
 
 export interface ContactPageResponse {
-	seoMetaData: SeoMetaData;
 	contactPage: ContactPageContent;
 	artist: Artist;
 	address: Address;

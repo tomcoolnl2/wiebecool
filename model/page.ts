@@ -115,6 +115,7 @@ export interface ContactDetails {
 interface BasePage {
 	type: PageType;
 	slug: Slug;
+	seoMetaData: SeoMetaData;
 	name: string;
 	title: string;
 	description: RichText;

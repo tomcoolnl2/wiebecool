@@ -152,27 +152,18 @@ export async function fetchMainNavigation(): Promise<Navigation> {
 }
 
 /**
- * Fetches SEO Meta data from Contentful for the Home Page.
- * @returns {Promise<SeoMetaData>} A promise resolving to the fetched seo meta data for the Home Page.
- */
-export async function fetchHomePageSeoMetaData(): Promise<SeoMetaData> {
-	const { seoMetaData } = await fetchSeoMetaData(cfids.homePage.seoMetaData);
-	return seoMetaData;
-}
-
-/**
  * Fetches home page data from Contentful.
  * @returns {Promise<HomePage>} A promise resolving to the fetched Home page Data.
  */
 export async function fetchHomePage(): Promise<HomePage> {
 	const { homePage, ...pageComponents } = await fetchContentfulData<HomePageResponse>(HomePageQuery, {
-		seoMetaDataSysID: cfids.homePage.seoMetaData,
 		homePageSysID: cfids.homePage.id,
 		artistSysID: cfids.artist.id,
 		addressSysID: cfids.address.id,
 	});
+	const seoMetaData = homePage.seoMetaData;
 	const content = { ...homePage, type: PageType.HomePage };
-	return { content, ...pageComponents };
+	return { content, ...pageComponents, seoMetaData };
 }
 
 /**
@@ -181,13 +172,13 @@ export async function fetchHomePage(): Promise<HomePage> {
  */
 export async function fetchAboutPage(): Promise<AboutPage> {
 	const { aboutPage, ...pageComponents } = await fetchContentfulData<AboutPageResponse>(AboutPageQuery, {
-		seoMetaDataSysID: cfids.aboutPage.seoMetaData,
 		aboutPageSysID: cfids.aboutPage.id,
 		artistSysID: cfids.artist.id,
 		addressSysID: cfids.address.id,
 	});
+	const seoMetaData = aboutPage.seoMetaData;
 	const content = { ...aboutPage, type: PageType.AboutPage };
-	return { content, ...pageComponents };
+	return { content, ...pageComponents, seoMetaData };
 }
 
 /**
@@ -273,13 +264,13 @@ export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
  */
 export async function fetchContactPage(): Promise<ContactPage> {
 	const { contactPage, ...pageComponents } = await fetchContentfulData<ContactPageResponse>(ContactPageQuery, {
-		seoMetaDataSysID: cfids.contactPage.seoMetaData,
 		contactPageSysID: cfids.contactPage.id,
 		artistSysID: cfids.artist.id,
 		addressSysID: cfids.address.id,
 	});
+	const seoMetaData = contactPage.seoMetaData;
 	const content = { ...contactPage, type: PageType.ContactPage };
-	return { content, ...pageComponents };
+	return { content, ...pageComponents, seoMetaData };
 }
 
 /**
