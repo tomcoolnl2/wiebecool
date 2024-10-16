@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useFetchData } from '@/hooks';
 import { PageType, ReWriteRule, SchemaType } from '@/model';
 import { fetchAboutPage, generateSchema } from '@/lib';
-import { type RenderComponentItem, RenderComponent, SectionContainer, PageHeader, SchemaTag, ContactDetailsV2 } from '@/components';
+import { type RenderComponentItem, RenderComponent, SectionContainer, PageHeader, SchemaTag, ContactDetails } from '@/components';
 import '@/css/pages/about-page.css';
 
 export async function generateMetadata() {
@@ -30,7 +30,7 @@ export default async function About() {
 					{blocks.map((item: RenderComponentItem, i: number) => (
 						<RenderComponent key={i} item={item} />
 					))}
-					<ContactDetailsV2 showInsta showAddress={false} content={{ artist, address }} />
+					<ContactDetails showInsta showAddress={false} content={{ artist, address }} />
 				</div>
 			</div>
 		</SectionContainer>

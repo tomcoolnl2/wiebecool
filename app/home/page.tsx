@@ -3,7 +3,7 @@ import React from 'react';
 import { useFetchData } from '@/hooks';
 import { SchemaType } from '@/model';
 import { fetchHomePage, generateSchema, processRichText } from '@/lib';
-import { type RenderComponentItem, SectionContainer, ContactDetailsV2, SchemaTag, RenderComponent } from '@/components';
+import { type RenderComponentItem, SectionContainer, ContactDetails, SchemaTag, RenderComponent } from '@/components';
 import '@/css/pages/home-page.css';
 
 export async function generateMetadata() {
@@ -32,7 +32,7 @@ export default async function Home() {
 							<h1 className="name">{content.title}</h1>
 							{content.subtitle && <h2 className="subtitle">{content.subtitle}</h2>}
 							<div className="rich-text-block-border max-w-[450px]">{processRichText(content.description.json)}</div>
-							<ContactDetailsV2 showInsta={false} showAddress={false} content={{ artist, address }} />
+							<ContactDetails showInsta={false} showAddress={false} content={{ artist, address }} />
 							<hr />
 							<br />
 							<h3>Nieuwste werk:</h3>

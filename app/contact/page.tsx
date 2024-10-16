@@ -3,7 +3,7 @@ import * as React from 'react';
 import { useFetchData } from '@/hooks';
 import { PageType, ReWriteRule, SchemaType } from '@/model';
 import { processRichText, generateSchema, fetchContactPage } from '@/lib';
-import { ContactForm, SchemaTag, SectionContainer, PageHeader, ContactDetailsV2 } from '@/components';
+import { ContactForm, SchemaTag, SectionContainer, PageHeader, ContactDetails } from '@/components';
 import '@/css/pages/contact-page.css';
 
 export async function generateMetadata() {
@@ -23,7 +23,7 @@ export default async function Contact() {
 					<PageHeader title={content.title} path={path} />
 					<div className="rich-text-block">{processRichText(content.description.json)}</div>
 					<div className="rich-text-block-border">
-						<ContactDetailsV2 showCTAs={false} showInsta content={{ artist, address }} />
+						<ContactDetails showCTAs={false} showInsta content={{ artist, address }} />
 					</div>
 					<ContactForm formIntro={content.formIntro} buttonText={content.submitButtonText} />
 				</div>

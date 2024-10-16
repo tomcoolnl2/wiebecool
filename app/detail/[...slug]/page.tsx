@@ -1,12 +1,11 @@
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useFetchData } from '@/hooks';
-import { type DetailPage, type PageParams, PageType, ReWriteRule, SchemaType, type Slug } from '@/model';
-import { capitalize, fetchDetailPage, fetchSeoMetaDataBySlug, formatPrice, generateSchema, toLocaleDateString } from '@/lib';
+import { type DetailPage, type PageParams, PageType, ReWriteRule, SchemaType } from '@/model';
+import { capitalize, fetchDetailPage, formatPrice, generateSchema, toLocaleDateString } from '@/lib';
 import { baseUrl, ensureLeadingSlash, processRichText } from '@/lib';
-import { ContactDetailsV2, SchemaTag, SectionContainer, PageHeader, ShareSocials, DetailCardsCollection } from '@/components';
+import { ContactDetails, SchemaTag, SectionContainer, PageHeader, ShareSocials, DetailCardsCollection } from '@/components';
 import '@/css/pages/detail-page.css';
 
 const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
@@ -14,7 +13,6 @@ const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
 export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
 	const slug = ensureLeadingSlash(params.slug[0]);
 	const { seoMetaData } = await useFetchData(() => fetchDetailPage(slug));
-	console.log(seoMetaData);
 	return {
 		...seoMetaData,
 		alternates: {
@@ -93,7 +91,7 @@ export default async function DetailPage({ params }: PageParams) {
 									</li>
 								)}
 							</ul>
-							<ContactDetailsV2 subject={content.title} showAddress={false} content={{ artist, address }} />
+							<ContactDetails subject={content.title} showAddress={false} content={{ artist, address }} />
 							<ShareSocials
 								title={content.title}
 								url={`${baseUrl}${path}`}
