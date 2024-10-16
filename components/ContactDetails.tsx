@@ -1,23 +1,25 @@
 import * as React from 'react';
 import { faPhoneSquare, faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { fetchContactDetails, generateGoogleMapsAddress } from '@/lib';
+import { generateGoogleMapsAddress } from '@/lib';
 import { ShareInstagram } from '@/components';
+import { Address, Artist } from '@/model';
+
+interface ContactDetailsCOntent {
+	artist: Artist;
+	address: Address;
+}
 
 interface Props {
 	showInsta?: boolean;
 	showAddress?: boolean;
 	showCTAs?: boolean;
 	subject?: string;
+	content: ContactDetailsCOntent;
 }
 
-export const ContactDetails: React.FC<Props> = async ({
-	showInsta = false,
-	showAddress = true,
-	showCTAs = true,
-	subject,
-}) => {
-	const { artist, address } = await fetchContactDetails();
+export const ContactDetails: React.FC<Props> = async ({ showInsta = false, showAddress = true, showCTAs = true, subject, content }) => {
+	const { artist, address } = content;
 	const subjectParams = subject ? `?subject=${encodeURIComponent(subject)}` : '';
 	return (
 		<aside className="contact-details">
@@ -45,11 +47,7 @@ export const ContactDetails: React.FC<Props> = async ({
 				<>
 					{'Bezoekadres:'}
 					<br />
-					<a
-						href={`https://www.google.com/maps/place/${generateGoogleMapsAddress(address)}/`}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
+					<a href={`https://www.google.com/maps/place/${generateGoogleMapsAddress(address)}/`} target="_blank" rel="noopener noreferrer">
 						{address.streetAddress}, {address.zipCode} {address.city}
 					</a>
 				</>

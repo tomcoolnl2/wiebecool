@@ -6,11 +6,7 @@ const config: Config = {
 	future: {
 		hoverOnlyWhenSupported: true,
 	},
-	content: [
-		'./pages/**/*.{js,ts,jsx,tsx,mdx}',
-		'./components/**/*.{js,ts,jsx,tsx,mdx}',
-		'./app/**/*.{js,ts,jsx,tsx,mdx}',
-	],
+	content: ['./pages/**/*.{js,ts,jsx,tsx,mdx}', './components/**/*.{js,ts,jsx,tsx,mdx}', './app/**/*.{js,ts,jsx,tsx,mdx}'],
 	theme: {
 		screens: {
 			xs: '420px',
@@ -22,8 +18,7 @@ const config: Config = {
 		},
 		extend: {
 			backgroundImage: {
-				'main-gradient':
-					'linear-gradient(-70deg, rgb(72, 81, 99) 0%, rgb(58, 60, 62) 50%, rgb(52, 54, 58) 100%)',
+				'main-gradient': 'linear-gradient(-70deg, rgb(72, 81, 99) 0%, rgb(58, 60, 62) 50%, rgb(52, 54, 58) 100%)',
 			},
 			textShadow: {
 				sm: '0 1px 2px var(--tw-shadow-color)',
