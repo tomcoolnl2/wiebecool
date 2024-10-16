@@ -152,33 +152,6 @@ export async function fetchMainNavigation(): Promise<Navigation> {
 }
 
 /**
- * Fetches address data from Contentful based on a sys ID.
- * @returns {Promise<Artist>} A promise resolving to the fetched address data.
- */
-export async function fetchArtist(): Promise<Artist> {
-	const { artist } = await fetchContentfulData<ArtistResponse>(ArtistQuery, { sysID: '42dyv6PaMYHTxIQvt5k1BR' });
-	return artist;
-}
-
-/**
- * Fetches address data from Contentful based on a sys ID.
- * @returns {Promise<Address>} A promise resolving to the fetched address data.
- */
-export async function fetchAddress(): Promise<Address> {
-	const { address } = await fetchContentfulData<AddressResponse>(AddressQuery, { sysID: 'VYrkgFK6dR1V81lIJqez2' });
-	return address;
-}
-
-/**
- * Fetches home page data from Contentful based on a sys ID.
- * @returns {Promise<ContactDetails>} A promise resolving to the fetched contact details.
- */
-export async function fetchContactDetails(): Promise<ContactDetails> {
-	const [artist, address] = await Promise.all([fetchArtist(), fetchAddress()]);
-	return { artist, address };
-}
-
-/**
  * Fetches SEO Meta data from Contentful for the Home Page.
  * @returns {Promise<SeoMetaData>} A promise resolving to the fetched seo meta data for the Home Page.
  */
