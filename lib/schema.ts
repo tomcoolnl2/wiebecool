@@ -1,3 +1,4 @@
+import { baseUrl, buildUrl, locale, processPlainText } from '@/lib';
 import {
 	AboutPageSchema,
 	Address,
@@ -6,15 +7,15 @@ import {
 	BaseSchema,
 	BreadcrumbSchema,
 	Breadcrumbs,
-	CollectionPage,
+	CollectionPageContent,
 	CollectionPageSchema,
 	ContactPageContent,
 	ContactPageSchema,
-	ContentData,
+	ComponentContent,
 	DetailPageContent,
 	HomePageSchema,
 	ItemImage,
-	PageData,
+	PageContent,
 	PageType,
 	PersonSchema,
 	PostalAddressSchema,
@@ -25,22 +26,15 @@ import {
 	SculptureSchema,
 	Slug,
 } from '@/model';
-import { baseUrl, buildUrl, locale, processPlainText } from '@/lib';
 
-function generatePersonSchema(data: Artist): PersonSchema {
-	return {
-		'@type': SchemaType.PERSON,
-		name: data.name,
-		description: data.description,
-		sameAs: data.mentions?.join(',') || '',
-	};
-}
+type SchemaGenerator = {
+	schemaType: SchemaType;
+	content: PageContent | ComponentContent;
+	artist?: Artist | null;
+	img?: ItemImage | null;
+};
 
-export function generateSchema(
-	{ content, artist }: { content: PageData | ContentData; artist?: Artist },
-	schemaType: SchemaType,
-	img: ItemImage | null = null
-): Schema {
+export function generateSchema({ schemaType, content, artist = null, img = null }: SchemaGenerator): Schema {
 	//
 	const baseSchema: BaseSchema = {
 		'@context': 'https://schema.org',
@@ -50,7 +44,6 @@ export function generateSchema(
 
 	let basePageSchema = {} as BasePageSchema;
 	if ('type' in content) {
-		// true if data === PageData
 		basePageSchema = {
 			name: content.title || 'Untitled',
 			description: processPlainText(content.description),
@@ -63,7 +56,7 @@ export function generateSchema(
 			const schema = {
 				...baseSchema,
 				...basePageSchema,
-				about: generatePersonSchema(artist!),
+				about: artist ? generatePersonSchema(artist) : null,
 			};
 			return schema as HomePageSchema;
 		}
@@ -76,7 +69,7 @@ export function generateSchema(
 			return schema as AboutPageSchema;
 		}
 		case SchemaType.COLLECTION: {
-			const collectionPageData = content as CollectionPage;
+			const collectionPageData = content as CollectionPageContent;
 			let path: Slug = '/collectie';
 			const schema = {
 				...baseSchema,
@@ -169,4 +162,13 @@ export function generateSchema(
 		default:
 			throw new Error('Unsupported schema type');
 	}
+}
+
+function generatePersonSchema(data: Artist): PersonSchema {
+	return {
+		'@type': SchemaType.PERSON,
+		name: data.name,
+		description: data.description,
+		sameAs: data.mentions?.join(',') || '',
+	};
 }

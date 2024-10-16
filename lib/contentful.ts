@@ -1,5 +1,8 @@
 //
 export const ContentfulIDs = {
+	nav: {
+		id: '5bRsPaSUeUrD7QB5m868iu',
+	},
 	homePage: {
 		id: '7bjsm9rIwR5janeyF5XK2n',
 		seoMetaData: 'CPkjAJlRTW3qlGNp8CqJm',

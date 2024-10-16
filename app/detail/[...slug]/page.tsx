@@ -27,7 +27,7 @@ export default async function DetailPage({ params }: PageParams) {
 	const { content, artist, address } = await useFetchData(() => fetchDetailPage(slug));
 
 	const detailPageImg = content.imageCollection.items[0];
-	const jsonLd = generateSchema({ content, artist }, SchemaType.SCULPTURE, detailPageImg);
+	const jsonLd = generateSchema({ content, artist, schemaType: SchemaType.SCULPTURE, img: detailPageImg });
 	const path = ReWriteRule[PageType.DetailPage] + slug;
 	const tags = content.contentfulMetadata.tags;
 	const hashtags = tags.map((tag) => capitalize(tag.name));

@@ -148,7 +148,7 @@ export const fetchNavigation = async (sysID: string): Promise<Navigation> => {
  * @returns {Promise<Navigation>} A promise resolving to the fetched navigation data.
  */
 export async function fetchMainNavigation(): Promise<Navigation> {
-	return await fetchNavigation('5bRsPaSUeUrD7QB5m868iu');
+	return await fetchNavigation(cfids.nav.id);
 }
 
 /**
@@ -171,7 +171,8 @@ export async function fetchHomePage(): Promise<HomePage> {
 		artistSysID: cfids.artist.id,
 		addressSysID: cfids.address.id,
 	});
-	return { type: PageType.HomePage, content: homePage, ...pageComponents };
+	const content = { ...homePage, type: PageType.HomePage };
+	return { content, ...pageComponents };
 }
 
 /**
@@ -185,7 +186,8 @@ export async function fetchAboutPage(): Promise<AboutPage> {
 		artistSysID: cfids.artist.id,
 		addressSysID: cfids.address.id,
 	});
-	return { type: PageType.AboutPage, content: aboutPage, ...pageComponents };
+	const content = { ...aboutPage, type: PageType.AboutPage };
+	return { content, ...pageComponents };
 }
 
 /**
@@ -196,19 +198,17 @@ export async function fetchAboutPage(): Promise<AboutPage> {
  */
 export async function fetchCollectionPage(slug: Slug, sortOrder: OrderType | null): Promise<CollectionPage> {
 	//
-	const { collectionPageCollection } = await fetchContentfulData<CollectionPageResponse>(CollectionPageBySlugQuery, {
-		slug,
-	});
-
-	const collectionPage: CollectionPage = {
-		...collectionPageCollection.items[0],
-		type: PageType.CollectionPage,
-	};
+	const {
+		collectionPageCollection: {
+			items: [collectionPage],
+		},
+	} = await fetchContentfulData<CollectionPageResponse>(CollectionPageBySlugQuery, { slug });
 
 	const tags = collectionPage.contentfulMetadata.tags.map((tag) => tag.id);
 	const cards = await fetchDetailPagesByTagIDs(tags, sortOrder ?? OrderType.PUBLISHED_FIRST_DESC);
-
-	return { ...collectionPage, type: PageType.CollectionPage, cards };
+	const content = { ...collectionPage, type: PageType.CollectionPage, cards };
+	const seoMetaData = collectionPage.seoMetaData;
+	return { content, seoMetaData };
 }
 
 /**
@@ -262,9 +262,9 @@ export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
 
 	const skipId = detailPage.sys.id;
 	const cards = await fetchDetailPagesByTagIDs(tags, OrderType.PUBLISHED_FIRST_ASC, 4, skipId);
-	const content = { ...detailPage, cards };
+	const content = { ...detailPage, type: PageType.DetailPage, cards };
 	const seoMetaData = detailPage.seoMetaData;
-	return { type: PageType.DetailPage, seoMetaData, content, ...pageComponents };
+	return { seoMetaData, content, ...pageComponents };
 }
 
 /**
@@ -278,7 +278,8 @@ export async function fetchContactPage(): Promise<ContactPage> {
 		artistSysID: cfids.artist.id,
 		addressSysID: cfids.address.id,
 	});
-	return { type: PageType.ContactPage, content: contactPage, ...pageComponents };
+	const content = { ...contactPage, type: PageType.ContactPage };
+	return { content, ...pageComponents };
 }
 
 /**

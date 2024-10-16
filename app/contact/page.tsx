@@ -14,7 +14,7 @@ export async function generateMetadata() {
 export default async function Contact() {
 	const { content, artist, address } = await useFetchData(fetchContactPage);
 	const path = headers().get('next-url') || ReWriteRule[PageType.ContactPage];
-	const jsonLd = generateSchema({ content, artist }, SchemaType.CONTACT_PAGE);
+	const jsonLd = generateSchema({ content, artist, schemaType: SchemaType.CONTACT_PAGE });
 	return (
 		<SectionContainer>
 			<SchemaTag schema={jsonLd} />

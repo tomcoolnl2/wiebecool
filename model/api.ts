@@ -6,7 +6,7 @@ import {
 	Artist,
 	HomePageContent,
 	AboutPageContent,
-	CollectionPage,
+	CollectionPageContent,
 	DetailCollectionItem,
 	DetailPageContent,
 	Slug,
@@ -95,7 +95,7 @@ export interface AboutPageResponse {
 
 export interface CollectionPageResponse {
 	collectionPageCollection: {
-		items: CollectionPage[];
+		items: [CollectionPageContent];
 	};
 }
 

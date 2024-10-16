@@ -120,7 +120,7 @@ interface BasePage {
 	description: RichText;
 }
 
-export interface HomePageContent extends Omit<BasePage, 'type'> {
+export interface HomePageContent extends BasePage {
 	title: string;
 	subtitle: string;
 	mugshot: ItemImage;
@@ -130,14 +130,13 @@ export interface HomePageContent extends Omit<BasePage, 'type'> {
 }
 
 export interface HomePage {
-	type: PageType.HomePage;
 	seoMetaData: SeoMetaData;
 	content: HomePageContent;
 	artist: Artist;
 	address: Address;
 }
 
-export interface AboutPageContent extends Omit<BasePage, 'type'> {
+export interface AboutPageContent extends BasePage {
 	bannerImage: ItemImage;
 	buildingBlocksCollection: {
 		items: Array<TextBlockResponse | PortfolioCardResponse>;
@@ -145,15 +144,23 @@ export interface AboutPageContent extends Omit<BasePage, 'type'> {
 }
 
 export interface AboutPage {
-	type: PageType.AboutPage;
 	seoMetaData: SeoMetaData;
 	content: AboutPageContent;
 	artist: Artist;
 	address: Address;
 }
 
-export interface CollectionPage extends BasePage {
-	type: PageType.CollectionPage;
+export interface CollectionPage {
+	seoMetaData: SeoMetaData;
+	content: CollectionPageContent;
+}
+
+export interface CollectionPageContent extends BasePage {
+	seoMetaData: SeoMetaData;
+	bannerImage: ItemImage;
+	buildingBlocksCollection: {
+		items: Array<TextBlockResponse | PortfolioCardResponse>;
+	};
 	subtitle: string;
 	sortingEnabled: boolean;
 	filteringEnabled: boolean;
@@ -163,7 +170,7 @@ export interface CollectionPage extends BasePage {
 
 export interface CollectionPageCollection {
 	collectionPageCollection: {
-		items: CollectionPage[];
+		items: CollectionPageContent[];
 	};
 }
 
@@ -173,7 +180,7 @@ export interface DetailCollectionItem extends SysID, BasePage {
 	imageCollection: ImageCollection;
 }
 
-export interface DetailPageContent extends Omit<BasePage, 'type'>, SysID {
+export interface DetailPageContent extends BasePage, SysID {
 	seoMetaData: SeoMetaData;
 	material: string | null;
 	dimensions: string | null;
@@ -189,29 +196,27 @@ export interface DetailPageContent extends Omit<BasePage, 'type'>, SysID {
 }
 
 export interface DetailPage {
-	type: PageType.DetailPage;
 	seoMetaData: SeoMetaData;
 	content: DetailPageContent;
 	artist: Artist;
 	address: Address;
 }
 
-export interface ContactPageContent extends Omit<BasePage, 'type'> {
+export interface ContactPageContent extends BasePage {
 	formIntro: string;
 	submitButtonText: string;
 }
 
 export interface ContactPage {
-	type: PageType.ContactPage;
 	seoMetaData: SeoMetaData;
 	content: ContactPageContent;
 	artist: Artist;
 	address: Address;
 }
 
-export type PageData = HomePageContent | AboutPageContent | CollectionPage | DetailPageContent | ContactPageContent;
+export type PageContent = HomePageContent | AboutPageContent | CollectionPageContent | DetailPageContent | ContactPageContent;
 
-export type ContentData = Artist | Address | Breadcrumbs;
+export type ComponentContent = Artist | Address | Breadcrumbs;
 
 export interface SitemapItem {
 	url: string;

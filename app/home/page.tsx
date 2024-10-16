@@ -13,7 +13,7 @@ export async function generateMetadata() {
 
 export default async function Home() {
 	const { content, artist, address } = await useFetchData(fetchHomePage);
-	const jsonLd = generateSchema({ content, artist }, SchemaType.HOME_PAGE);
+	const jsonLd = generateSchema({ content, artist, schemaType: SchemaType.HOME_PAGE });
 	const blocks = content.buildingBlocksCollection?.items || [];
 	return (
 		<SectionContainer>
