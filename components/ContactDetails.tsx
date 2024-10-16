@@ -3,12 +3,19 @@ import { faPhoneSquare, faEnvelopeSquare } from '@fortawesome/free-solid-svg-ico
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fetchContactDetails, generateGoogleMapsAddress } from '@/lib';
 import { ShareInstagram } from '@/components';
+import { Address, Artist } from '@/model';
+
+interface ContactDetailsContent {
+	artist: Artist;
+	address: Address;
+}
 
 interface Props {
 	showInsta?: boolean;
 	showAddress?: boolean;
 	showCTAs?: boolean;
 	subject?: string;
+	content: ContactDetailsContent;
 }
 
 export const ContactDetails: React.FC<Props> = async ({
