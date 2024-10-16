@@ -1,9 +1,8 @@
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { useFetchData } from '@/hooks';
 import { type DetailPage, type PageParams, PageType, ReWriteRule, SchemaType } from '@/model';
-import { capitalize, fetchDetailPage, formatPrice, generateSchema, toLocaleDateString } from '@/lib';
+import { fetchData, capitalize, fetchDetailPage, formatPrice, generateSchema, toLocaleDateString } from '@/lib';
 import { baseUrl, ensureLeadingSlash, processRichText } from '@/lib';
 import { ContactDetails, SchemaTag, SectionContainer, PageHeader, ShareSocials, DetailCardsCollection } from '@/components';
 import '@/css/pages/detail-page.css';
@@ -12,7 +11,7 @@ const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
 
 export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
 	const slug = ensureLeadingSlash(params.slug[0]);
-	const { seoMetaData } = await useFetchData(() => fetchDetailPage(slug));
+	const { seoMetaData } = await fetchData(() => fetchDetailPage(slug));
 	return {
 		...seoMetaData,
 		alternates: {
@@ -24,7 +23,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 export default async function DetailPage({ params }: PageParams) {
 	//
 	const slug = ensureLeadingSlash(params.slug[0]);
-	const { content, artist, address } = await useFetchData(() => fetchDetailPage(slug));
+	const { content, artist, address } = await fetchData(() => fetchDetailPage(slug));
 
 	const detailPageImg = content.imageCollection.items[0];
 	const jsonLd = generateSchema({ content, artist, schemaType: SchemaType.SCULPTURE, img: detailPageImg });

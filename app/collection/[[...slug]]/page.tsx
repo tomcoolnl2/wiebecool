@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
 import * as React from 'react';
-import { useFetchData } from '@/hooks';
 import { type CollectionPage, OrderType, type PageParams, PageType, ReWriteRule, SchemaType } from '@/model';
-import { ensureLeadingSlash, fetchCollectionPage, generateSchema, processRichText } from '@/lib';
+import { fetchData, ensureLeadingSlash, fetchCollectionPage, generateSchema, processRichText } from '@/lib';
 import { SchemaTag, SectionContainer, PageHeader, DetailCardsCollection, CollectionControls } from '@/components';
 import '@/css/pages/collection-page.css';
 
@@ -14,7 +13,7 @@ const collectionBaseUrl = ReWriteRule[PageType.CollectionPage];
 
 export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
 	const slug = ensureLeadingSlash(params?.slug?.[0] || collectionBaseUrl);
-	const { seoMetaData } = await useFetchData(() => fetchCollectionPage(slug, OrderType.PUBLISHED_FIRST_DESC));
+	const { seoMetaData } = await fetchData(() => fetchCollectionPage(slug, OrderType.PUBLISHED_FIRST_DESC));
 	return {
 		...seoMetaData,
 		alternates: {
@@ -28,7 +27,7 @@ export default async function CollectionPage({ params, searchParams }: PageParam
 	const slug = ensureLeadingSlash(params?.slug?.[0] || collectionBaseUrl);
 	const path = slug === collectionBaseUrl ? collectionBaseUrl : collectionBaseUrl + slug;
 	const sortOrder = (searchParams?.order as OrderType) ?? null;
-	const { content } = await useFetchData(() => fetchCollectionPage(slug, OrderType.PAGE_TITLE_ASC));
+	const { content } = await fetchData(() => fetchCollectionPage(slug, OrderType.PAGE_TITLE_ASC));
 	const jsonLd = generateSchema({ content, schemaType: SchemaType.COLLECTION });
 
 	const filter = searchParams?.filter ?? null;

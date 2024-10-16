@@ -1,18 +1,16 @@
 import Image from 'next/image';
 import React from 'react';
-import { useFetchData } from '@/hooks';
 import { SchemaType } from '@/model';
-import { fetchHomePage, generateSchema, processRichText } from '@/lib';
+import { fetchData, fetchHomePage, generateSchema, processRichText } from '@/lib';
 import { type RenderComponentItem, SectionContainer, ContactDetails, SchemaTag, RenderComponent } from '@/components';
 import '@/css/pages/home-page.css';
 
 export async function generateMetadata() {
-	const { seoMetaData } = await useFetchData(fetchHomePage);
-	return seoMetaData;
+	return (await fetchData(fetchHomePage)).seoMetaData;
 }
 
 export default async function Home() {
-	const { content, artist, address } = await useFetchData(fetchHomePage);
+	const { content, artist, address } = await fetchData(fetchHomePage);
 	const jsonLd = generateSchema({ content, artist, schemaType: SchemaType.HOME_PAGE });
 	const blocks = content.buildingBlocksCollection?.items || [];
 	return (

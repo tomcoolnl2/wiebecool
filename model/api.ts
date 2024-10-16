@@ -1,5 +1,4 @@
 import {
-	SeoMetaData,
 	Address,
 	ContactPageContent,
 	NavigationPageEntry,
@@ -35,19 +34,6 @@ export const OrderTypeMap: { [key in OrderType]: string } = {
 	[OrderType.PAGE_TITLE_DESC]: 'title_DESC',
 	[OrderType.PAGE_TITLE_ASC]: 'title_ASC',
 };
-
-export interface MetaDataResponse {
-	seoMetaData: SeoMetaData;
-}
-
-export interface MetaDataBySlugResponse {
-	collectionPageCollection: {
-		items: MetaDataResponse[];
-	};
-	detailPageCollection: {
-		items: MetaDataResponse[];
-	};
-}
 
 export interface NavigationResponse {
 	navigation: {

@@ -1,19 +1,17 @@
 import Image from 'next/image';
 import { headers } from 'next/headers';
 import * as React from 'react';
-import { useFetchData } from '@/hooks';
 import { PageType, ReWriteRule, SchemaType } from '@/model';
-import { fetchAboutPage, generateSchema } from '@/lib';
+import { fetchData, fetchAboutPage, generateSchema } from '@/lib';
 import { type RenderComponentItem, RenderComponent, SectionContainer, PageHeader, SchemaTag, ContactDetails } from '@/components';
 import '@/css/pages/about-page.css';
 
 export async function generateMetadata() {
-	const { seoMetaData } = await useFetchData(fetchAboutPage);
-	return seoMetaData;
+	return (await fetchData(fetchAboutPage)).seoMetaData;
 }
 
 export default async function About() {
-	const { content, artist, address } = await useFetchData(fetchAboutPage);
+	const { content, artist, address } = await fetchData(fetchAboutPage);
 	const path = headers().get('next-url') || ReWriteRule[PageType.AboutPage];
 	const jsonLd = generateSchema({ content, artist, schemaType: SchemaType.ABOUT_PAGE });
 	const hero = content.bannerImage;

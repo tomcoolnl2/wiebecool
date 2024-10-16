@@ -1,18 +1,16 @@
 import { headers } from 'next/headers';
 import * as React from 'react';
-import { useFetchData } from '@/hooks';
 import { PageType, ReWriteRule, SchemaType } from '@/model';
-import { processRichText, generateSchema, fetchContactPage } from '@/lib';
+import { fetchData, processRichText, generateSchema, fetchContactPage } from '@/lib';
 import { ContactForm, SchemaTag, SectionContainer, PageHeader, ContactDetails } from '@/components';
 import '@/css/pages/contact-page.css';
 
 export async function generateMetadata() {
-	const { seoMetaData } = await useFetchData(fetchContactPage);
-	return seoMetaData;
+	return (await fetchData(fetchContactPage)).seoMetaData;
 }
 
 export default async function Contact() {
-	const { content, artist, address } = await useFetchData(fetchContactPage);
+	const { content, artist, address } = await fetchData(fetchContactPage);
 	const path = headers().get('next-url') || ReWriteRule[PageType.ContactPage];
 	const jsonLd = generateSchema({ content, artist, schemaType: SchemaType.CONTACT_PAGE });
 	return (

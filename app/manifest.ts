@@ -1,9 +1,8 @@
 import { MetadataRoute } from 'next';
-import { artist, fetchHomePage } from '@/lib';
-import { useFetchData } from '@/hooks';
+import { fetchData, artist, fetchHomePage } from '@/lib';
 
 export default async function manifest(): Promise<MetadataRoute.Manifest> {
-	const { seoMetaData } = await useFetchData(fetchHomePage);
+	const { seoMetaData } = await fetchData(fetchHomePage);
 	return {
 		name: seoMetaData.title,
 		short_name: artist.description,

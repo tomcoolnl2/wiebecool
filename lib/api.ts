@@ -1,13 +1,10 @@
+import { notFound } from 'next/navigation';
 import { cache } from 'react';
 import { DocumentNode as GraphQLDocumentNode } from 'graphql';
-import MetaDataQuery from '@/graphql/MetaData.gql';
 import MainNavigationQuery from '@/graphql/MainNavigation.gql';
 import HomePageQuery from '@/graphql/HomePage.gql';
 import ContactPageQuery from '@/graphql/ContactPage.gql';
-import AddressQuery from '@/graphql/Address.gql';
-import ArtistQuery from '@/graphql/Artist.gql';
 import AboutPageQuery from '@/graphql/AboutPage.gql';
-import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
 import CollectionPageBySlugQuery from '@/graphql/CollectionPageBySlug.gql';
 import DetailPagesByTagIDs from '@/graphql/DetailPagesByTagIDs.gql';
 import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
@@ -15,14 +12,9 @@ import SiteMapQuery from '@/graphql/Sitemap.gql';
 import {
 	type AboutPage,
 	type AboutPageResponse,
-	type Address,
-	type AddressResponse,
-	type Artist,
-	type ArtistResponse,
 	type DetailCollectionItem,
 	type CollectionPage,
 	type CollectionPageResponse,
-	type ContactDetails,
 	type ContactPage,
 	type ContactPageResponse,
 	type DetailPage,
@@ -30,12 +22,9 @@ import {
 	type DetailPageCollectionResponse,
 	type HomePage,
 	type HomePageResponse,
-	type MetaDataBySlugResponse,
-	type MetaDataResponse,
 	type Navigation,
 	type NavigationPageEntry,
 	type NavigationResponse,
-	type SeoMetaData,
 	type Sitemap,
 	type SitemapResponse,
 	type Slug,
@@ -54,6 +43,23 @@ import { ContentfulIDs as cfids } from './contentful';
  */
 export const preload = (query: string | GraphQLDocumentNode, variables = {}) => {
 	void fetchContentfulData(query, variables);
+};
+
+/**
+ * Fetches data using the provided fetcher function and handles errors.
+ * If an error occurs, it will trigger the `notFound()` function to handle 404 scenarios.
+ * @template T - The type of the data expected to be returned by the fetcher.
+ * @param {() => Promise<T>} fetcher - A function that returns a promise resolving to the data.
+ * @returns {Promise<T>} The fetched data if successful.
+ * @throws Will trigger `notFound()` in case of an error.
+ */
+export const fetchData = async <T>(fetcher: () => Promise<T>): Promise<T> => {
+	try {
+		const data = await fetcher();
+		return data;
+	} catch (error) {
+		notFound();
+	}
 };
 
 /**
@@ -97,29 +103,6 @@ export const fetchContentfulData = cache(async <T>(query: string | GraphQLDocume
 		throw new ContentfulError(`Fetch error: Something went wrong`);
 	}
 });
-
-/**
- * Fetches SEO Meta data from Contentful based on a sys ID.
- * @param {string} sysID The Contentful identifier
- * @returns {Promise<MetaDataResponse>} A promise resolving to the fetched seo meta data.
- */
-export async function fetchSeoMetaData(sysID: string): Promise<MetaDataResponse> {
-	return await fetchContentfulData<MetaDataResponse>(MetaDataQuery, { sysID });
-}
-
-/**
- * Fetches SEO Meta data from Contentful based on a slug.
- * @param {Slug} slug The Contentful identifier
- * @returns {Promise<SeoMetaData>} A promise resolving to the fetched seo meta data.
- */
-export async function fetchSeoMetaDataBySlug(slug: Slug): Promise<SeoMetaData> {
-	const { collectionPageCollection, detailPageCollection } = await fetchContentfulData<MetaDataBySlugResponse>(MetaDataBySlugQuery, { slug });
-	const result = [collectionPageCollection, detailPageCollection].filter((collection) => {
-		return collection.items.length;
-	});
-	const { seoMetaData } = result[0].items[0];
-	return seoMetaData;
-}
 
 export const fetchNavigation = async (sysID: string): Promise<Navigation> => {
 	//
