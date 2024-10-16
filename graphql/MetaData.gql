@@ -1,8 +1,0 @@
-#
-query PageMetaData($sysID: String!) {
-	seoMetaData(id: $sysID) {
-		title
-		description
-		keywords
-	}
-}

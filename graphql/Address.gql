@@ -1,9 +1,0 @@
-#
-query Address($sysID: String!) {
-	address(id: $sysID) {
-		streetAddress
-		zipCode
-		city
-		country
-	}
-}

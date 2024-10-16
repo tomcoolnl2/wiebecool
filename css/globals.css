@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '@/css/components/_index.css';
-
+@import '@/css/components/cursor.css';
+@import '@/css/components/preloader.css';
+@import '@/css/components/navigation.css';
+@import '@/css/components/checkbox.css';
 
 @layer base {
 	* {
@@ -90,14 +92,7 @@
 	}
 }
 
-@layer utilities {
-	.border-primary-color {
-		border-color: rgba(255,255,255,0.1);
-	}
-}
-
 @layer components {
-
 
 	.cookie-bar {
 		@apply z-50 fixed bottom-0 left-0 right-0 flex items-center justify-between px-4 py-4 bg-gray-800;
@@ -287,5 +282,11 @@
 
 	.contact-details .contact-details-ctas svg {
 		@apply absolute top-1/2 left-0 -translate-y-1/2;
+	}
+}
+
+@layer utilities {
+	.border-primary-color {
+		border-color: rgba(255,255,255,0.1);
 	}
 }
