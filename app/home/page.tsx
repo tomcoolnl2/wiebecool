@@ -1,30 +1,18 @@
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import React from 'react';
-import { HomePage, SchemaType } from '@/model';
-import { fetchHomePage, fetchHomePageSeoMetaData, generateSchema, processRichText } from '@/lib';
-import { SectionContainer, ContactDetailsV2, SchemaTag, type RenderComponentItem, RenderComponent } from '@/components';
+import { useFetchData } from '@/hooks';
+import { SchemaType } from '@/model';
+import { fetchHomePage, generateSchema, processRichText } from '@/lib';
+import { type RenderComponentItem, SectionContainer, ContactDetailsV2, SchemaTag, RenderComponent } from '@/components';
 import '@/css/pages/home-page.css';
 
-export async function generateMetadata(): Promise<Metadata> {
-	try {
-		return await fetchHomePageSeoMetaData();
-	} catch (error) {
-		notFound();
-	}
+export async function generateMetadata() {
+	const { seoMetaData } = await useFetchData(fetchHomePage);
+	return seoMetaData;
 }
 
 export default async function Home() {
-	//
-	let content, artist, address;
-	try {
-		const data: HomePage = await fetchHomePage();
-		({ content, artist, address } = data);
-	} catch (error) {
-		notFound();
-	}
-
+	const { content, artist, address } = await useFetchData(fetchHomePage);
 	const jsonLd = generateSchema({ content, artist }, SchemaType.HOME_PAGE);
 	const blocks = content.buildingBlocksCollection?.items || [];
 	return (
@@ -43,9 +31,7 @@ export default async function Home() {
 						<div className="content">
 							<h1 className="name">{content.title}</h1>
 							{content.subtitle && <h2 className="subtitle">{content.subtitle}</h2>}
-							<div className="rich-text-block-border max-w-[450px]">
-								{processRichText(content.description.json)}
-							</div>
+							<div className="rich-text-block-border max-w-[450px]">{processRichText(content.description.json)}</div>
 							<ContactDetailsV2 showInsta={false} showAddress={false} content={{ artist, address }} />
 							<hr />
 							<br />

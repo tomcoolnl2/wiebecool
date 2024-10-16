@@ -131,13 +131,13 @@ export interface HomePageContent extends Omit<BasePage, 'type'> {
 
 export interface HomePage {
 	type: PageType.HomePage;
+	seoMetaData: SeoMetaData;
 	content: HomePageContent;
 	artist: Artist;
 	address: Address;
 }
 
 export interface AboutPageContent extends Omit<BasePage, 'type'> {
-	type: PageType.AboutPage;
 	bannerImage: ItemImage;
 	buildingBlocksCollection: {
 		items: Array<TextBlockResponse | PortfolioCardResponse>;
@@ -146,6 +146,7 @@ export interface AboutPageContent extends Omit<BasePage, 'type'> {
 
 export interface AboutPage {
 	type: PageType.AboutPage;
+	seoMetaData: SeoMetaData;
 	content: AboutPageContent;
 	artist: Artist;
 	address: Address;
@@ -187,15 +188,20 @@ export interface DetailPage extends BasePage, SysID {
 	cards: DetailCollectionItem[];
 }
 
-export interface ContactPage extends BasePage {
-	type: PageType.ContactPage;
-	artist: Artist;
-	address: Address;
+export interface ContactPageContent extends Omit<BasePage, 'type'> {
 	formIntro: string;
 	submitButtonText: string;
 }
 
-export type PageData = HomePageContent | AboutPageContent | CollectionPage | DetailPage | ContactPage;
+export interface ContactPage {
+	type: PageType.ContactPage;
+	seoMetaData: SeoMetaData;
+	content: ContactPageContent;
+	artist: Artist;
+	address: Address;
+}
+
+export type PageData = HomePageContent | AboutPageContent | CollectionPage | DetailPage | ContactPageContent;
 
 export type ContentData = Artist | Address | Breadcrumbs;
 

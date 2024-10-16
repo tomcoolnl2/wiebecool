@@ -1,6 +1,11 @@
 #
 
-query HomePageData($homePageSysID: String!, $artistSysID: String!, $addressSysID: String!) {
+query HomePageData($seoMetaDataSysID: String!, $homePageSysID: String!, $artistSysID: String!, $addressSysID: String!) {
+	seoMetaData(id: $seoMetaDataSysID) {
+		title
+		description
+		keywords
+	}
 	homePage(id: $homePageSysID) {
 		slug
 		title

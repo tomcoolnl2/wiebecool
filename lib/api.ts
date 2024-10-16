@@ -113,10 +113,7 @@ export async function fetchSeoMetaData(sysID: string): Promise<MetaDataResponse>
  * @returns {Promise<SeoMetaData>} A promise resolving to the fetched seo meta data.
  */
 export async function fetchSeoMetaDataBySlug(slug: Slug): Promise<SeoMetaData> {
-	const { collectionPageCollection, detailPageCollection } = await fetchContentfulData<MetaDataBySlugResponse>(
-		MetaDataBySlugQuery,
-		{ slug }
-	);
+	const { collectionPageCollection, detailPageCollection } = await fetchContentfulData<MetaDataBySlugResponse>(MetaDataBySlugQuery, { slug });
 	const result = [collectionPageCollection, detailPageCollection].filter((collection) => {
 		return collection.items.length;
 	});
@@ -196,6 +193,7 @@ export async function fetchHomePageSeoMetaData(): Promise<SeoMetaData> {
  */
 export async function fetchHomePage(): Promise<HomePage> {
 	const { homePage, ...pageComponents } = await fetchContentfulData<HomePageResponse>(HomePageQuery, {
+		seoMetaDataSysID: CFSysID.homePage.seoMetaData,
 		homePageSysID: CFSysID.homePage.id,
 		artistSysID: CFSysID.artist.id,
 		addressSysID: CFSysID.address.id,
@@ -209,6 +207,7 @@ export async function fetchHomePage(): Promise<HomePage> {
  */
 export async function fetchAboutPage(): Promise<AboutPage> {
 	const { aboutPage, ...pageComponents } = await fetchContentfulData<AboutPageResponse>(AboutPageQuery, {
+		seoMetaDataSysID: CFSysID.aboutPage.seoMetaData,
 		aboutPageSysID: CFSysID.aboutPage.id,
 		artistSysID: CFSysID.artist.id,
 		addressSysID: CFSysID.address.id,
@@ -294,14 +293,13 @@ export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
  * @returns {Promise<ContactPage>} A promise resolving to the fetched contact page data.
  */
 export async function fetchContactPage(): Promise<ContactPage> {
-	const [{ contactPage }, artist, address] = await Promise.all([
-		await fetchContentfulData<ContactPageResponse>(ContactPageQuery, {
-			sysID: '68BbqtKbBhg4PwwWHNOB2',
-		}),
-		fetchArtist(),
-		fetchAddress(),
-	]);
-	return { ...contactPage, type: PageType.ContactPage, artist, address };
+	const { contactPage, ...pageComponents } = await fetchContentfulData<ContactPageResponse>(ContactPageQuery, {
+		seoMetaDataSysID: CFSysID.contactPage.seoMetaData,
+		contactPageSysID: CFSysID.contactPage.id,
+		artistSysID: CFSysID.artist.id,
+		addressSysID: CFSysID.address.id,
+	});
+	return { type: PageType.ContactPage, content: contactPage, ...pageComponents };
 }
 
 /**

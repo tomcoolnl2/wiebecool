@@ -8,7 +8,7 @@ import {
 	Breadcrumbs,
 	CollectionPage,
 	CollectionPageSchema,
-	ContactPage,
+	ContactPageContent,
 	ContactPageSchema,
 	ContentData,
 	DetailPage,
@@ -153,15 +153,15 @@ export function generateSchema(
 			return schema as SculptureSchema;
 		}
 		case SchemaType.CONTACT_PAGE: {
-			const contactPageData = content as ContactPage;
+			const contactPageData = content as ContactPageContent;
 			const schema = {
 				...baseSchema,
 				...basePageSchema,
 				url: buildUrl(contactPageData.slug).href,
 				contactPoint: {
 					'@type': SchemaType.CONTACT_POINT,
-					telephone: contactPageData.artist.telephone,
-					email: contactPageData.artist.email,
+					telephone: artist!.telephone,
+					email: artist!.email,
 				},
 			};
 			return schema as ContactPageSchema;
