@@ -1,27 +1,15 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import * as React from 'react';
-import {
-	type CollectionPage,
-	type OrderType,
-	type PageParams,
-	PageType,
-	ReWriteRule,
-	SchemaType,
-	type Slug,
-} from '@/model';
-import {
-	ensureLeadingSlash,
-	fetchCollectionPage,
-	fetchSeoMetaDataBySlug,
-	generateSchema,
-	processRichText,
-} from '@/lib';
+import { useFetchData } from '@/hooks';
+import { type CollectionPage, type OrderType, type PageParams, PageType, ReWriteRule, SchemaType, type Slug } from '@/model';
+import { ensureLeadingSlash, fetchCollectionPage, fetchSeoMetaDataBySlug, generateSchema, processRichText } from '@/lib';
 import { SchemaTag, SectionContainer, PageHeader, DetailCardsCollection, CollectionControls } from '@/components';
 import '@/css/pages/collection-page.css';
 
 // https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
-export const revalidate = 3600; // 1hr
+// turned off because the content is not expected to change frequently
+// export const revalidate = 3600; // 1hr
 
 const collectionBaseUrl = ReWriteRule[PageType.CollectionPage];
 
@@ -32,9 +20,7 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 		const response = {
 			...seoMetaData,
 			alternates: {
-				canonical: `${ReWriteRule[PageType.CollectionPage]}${
-					slug === ReWriteRule[PageType.CollectionPage] ? '' : slug
-				}`,
+				canonical: `${ReWriteRule[PageType.CollectionPage]}${slug === ReWriteRule[PageType.CollectionPage] ? '' : slug}`,
 			},
 		};
 		return response;
@@ -82,9 +68,7 @@ export default async function CollectionPage({ params, searchParams }: PageParam
 			<div className="container">
 				<div className="collection-page page">
 					<PageHeader title={collectionPage.title} path={path} subtitle={collectionPage.subtitle} />
-					{collectionPage.description && (
-						<div className="rich-text-block">{processRichText(collectionPage.description.json)}</div>
-					)}
+					{collectionPage.description && <div className="rich-text-block">{processRichText(collectionPage.description.json)}</div>}
 					{collectionPage.sortingEnabled || collectionPage.filteringEnabled ? (
 						<CollectionControls
 							path={path}

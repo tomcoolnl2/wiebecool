@@ -173,8 +173,8 @@ export interface DetailCollectionItem extends SysID, BasePage {
 	imageCollection: ImageCollection;
 }
 
-export interface DetailPage extends BasePage, SysID {
-	type: PageType.DetailPage;
+export interface DetailPageContent extends Omit<BasePage, 'type'>, SysID {
+	seoMetaData: SeoMetaData;
 	material: string | null;
 	dimensions: string | null;
 	status: string | null;
@@ -186,6 +186,14 @@ export interface DetailPage extends BasePage, SysID {
 	contentfulMetadata: ContentfulMetaData;
 	relatedItemsTags: string[];
 	cards: DetailCollectionItem[];
+}
+
+export interface DetailPage {
+	type: PageType.DetailPage;
+	seoMetaData: SeoMetaData;
+	content: DetailPageContent;
+	artist: Artist;
+	address: Address;
 }
 
 export interface ContactPageContent extends Omit<BasePage, 'type'> {
@@ -201,7 +209,7 @@ export interface ContactPage {
 	address: Address;
 }
 
-export type PageData = HomePageContent | AboutPageContent | CollectionPage | DetailPage | ContactPageContent;
+export type PageData = HomePageContent | AboutPageContent | CollectionPage | DetailPageContent | ContactPageContent;
 
 export type ContentData = Artist | Address | Breadcrumbs;
 

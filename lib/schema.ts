@@ -11,7 +11,7 @@ import {
 	ContactPageContent,
 	ContactPageSchema,
 	ContentData,
-	DetailPage,
+	DetailPageContent,
 	HomePageSchema,
 	ItemImage,
 	PageData,
@@ -132,7 +132,7 @@ export function generateSchema(
 			return schema as BreadcrumbSchema;
 		}
 		case SchemaType.SCULPTURE: {
-			const detailPageData = content as DetailPage;
+			const detailPageData = content as DetailPageContent;
 			const dateCreated = detailPageData.creationDate ?? null;
 			const material = detailPageData.material ?? null;
 			const dimensions = detailPageData.dimensions ?? null;

@@ -45,7 +45,7 @@ import {
 	PageType,
 } from '@/model';
 import { ContentfulError } from './error';
-import { ContentfulSysID as CFSysID } from './sysid';
+import { ContentfulIDs as cfids } from './contentful';
 
 /**
  * Preloads data by fetching from Contentful.
@@ -183,7 +183,7 @@ export async function fetchContactDetails(): Promise<ContactDetails> {
  * @returns {Promise<SeoMetaData>} A promise resolving to the fetched seo meta data for the Home Page.
  */
 export async function fetchHomePageSeoMetaData(): Promise<SeoMetaData> {
-	const { seoMetaData } = await fetchSeoMetaData(CFSysID.homePage.seoMetaData);
+	const { seoMetaData } = await fetchSeoMetaData(cfids.homePage.seoMetaData);
 	return seoMetaData;
 }
 
@@ -193,10 +193,10 @@ export async function fetchHomePageSeoMetaData(): Promise<SeoMetaData> {
  */
 export async function fetchHomePage(): Promise<HomePage> {
 	const { homePage, ...pageComponents } = await fetchContentfulData<HomePageResponse>(HomePageQuery, {
-		seoMetaDataSysID: CFSysID.homePage.seoMetaData,
-		homePageSysID: CFSysID.homePage.id,
-		artistSysID: CFSysID.artist.id,
-		addressSysID: CFSysID.address.id,
+		seoMetaDataSysID: cfids.homePage.seoMetaData,
+		homePageSysID: cfids.homePage.id,
+		artistSysID: cfids.artist.id,
+		addressSysID: cfids.address.id,
 	});
 	return { type: PageType.HomePage, content: homePage, ...pageComponents };
 }
@@ -207,10 +207,10 @@ export async function fetchHomePage(): Promise<HomePage> {
  */
 export async function fetchAboutPage(): Promise<AboutPage> {
 	const { aboutPage, ...pageComponents } = await fetchContentfulData<AboutPageResponse>(AboutPageQuery, {
-		seoMetaDataSysID: CFSysID.aboutPage.seoMetaData,
-		aboutPageSysID: CFSysID.aboutPage.id,
-		artistSysID: CFSysID.artist.id,
-		addressSysID: CFSysID.address.id,
+		seoMetaDataSysID: cfids.aboutPage.seoMetaData,
+		aboutPageSysID: cfids.aboutPage.id,
+		artistSysID: cfids.artist.id,
+		addressSysID: cfids.address.id,
 	});
 	return { type: PageType.AboutPage, content: aboutPage, ...pageComponents };
 }
@@ -275,7 +275,12 @@ export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
 		detailPageCollection: {
 			items: [detailPage],
 		},
-	} = await fetchContentfulData<DetailPageBySlugResponse>(DetailPageBySlugQuery, { slug });
+		...pageComponents
+	} = await fetchContentfulData<DetailPageBySlugResponse>(DetailPageBySlugQuery, {
+		slug,
+		artistSysID: cfids.artist.id,
+		addressSysID: cfids.address.id,
+	});
 
 	let tags: string[] = [];
 	if (detailPage.relatedItemsTags?.length) {
@@ -284,8 +289,9 @@ export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
 
 	const skipId = detailPage.sys.id;
 	const cards = await fetchDetailPagesByTagIDs(tags, OrderType.PUBLISHED_FIRST_ASC, 4, skipId);
-
-	return { ...detailPage, cards };
+	const content = { ...detailPage, cards };
+	const seoMetaData = detailPage.seoMetaData;
+	return { type: PageType.DetailPage, seoMetaData, content, ...pageComponents };
 }
 
 /**
@@ -294,10 +300,10 @@ export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
  */
 export async function fetchContactPage(): Promise<ContactPage> {
 	const { contactPage, ...pageComponents } = await fetchContentfulData<ContactPageResponse>(ContactPageQuery, {
-		seoMetaDataSysID: CFSysID.contactPage.seoMetaData,
-		contactPageSysID: CFSysID.contactPage.id,
-		artistSysID: CFSysID.artist.id,
-		addressSysID: CFSysID.address.id,
+		seoMetaDataSysID: cfids.contactPage.seoMetaData,
+		contactPageSysID: cfids.contactPage.id,
+		artistSysID: cfids.artist.id,
+		addressSysID: cfids.address.id,
 	});
 	return { type: PageType.ContactPage, content: contactPage, ...pageComponents };
 }

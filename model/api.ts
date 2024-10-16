@@ -8,7 +8,7 @@ import {
 	AboutPageContent,
 	CollectionPage,
 	DetailCollectionItem,
-	DetailPage,
+	DetailPageContent,
 	Slug,
 	PortfolioCard,
 } from './';
@@ -107,8 +107,10 @@ export interface DetailPageCollectionResponse {
 
 export interface DetailPageBySlugResponse {
 	detailPageCollection: {
-		items: [DetailPage];
+		items: [DetailPageContent];
 	};
+	artist: Artist;
+	address: Address;
 }
 
 export interface ContactPageResponse {

@@ -1,5 +1,5 @@
 //
-export const ContentfulSysID = {
+export const ContentfulIDs = {
 	homePage: {
 		id: '7bjsm9rIwR5janeyF5XK2n',
 		seoMetaData: 'CPkjAJlRTW3qlGNp8CqJm',
