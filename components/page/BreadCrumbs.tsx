@@ -8,7 +8,8 @@ import { SchemaTag } from '@/components';
 export const BreadCrumbs: React.FC<{ path: string }> = ({ path }) => {
 	const crumbs = path.split('/').filter(Boolean);
 	const current = crumbs.pop();
-	const jsonLd = generateSchema({ content: { parents: crumbs, current: current! }, schemaType: SchemaType.BREADCRUMBS });
+	const content = { parents: crumbs, current: current! };
+	const jsonLd = generateSchema({ content, schemaType: SchemaType.BREADCRUMBS });
 	return (
 		<nav aria-label="breadcrumbs">
 			<SchemaTag schema={jsonLd} />
