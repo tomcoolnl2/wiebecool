@@ -8,9 +8,8 @@ const meta = {
 	parameters: {
 		layout: 'centered',
 	},
-	tags: ['autodocs'],
 	argTypes: {
-		type: { control: { type: 'select', options: Object.values(AlertMessageType) } },
+		type: { control: { type: 'select', options: ['success', 'error'] } },
 		message: { control: 'text' },
 	},
 } satisfies Meta<typeof Alert>;
@@ -23,6 +22,11 @@ export const Success: Story = {
 		type: AlertMessageType.SUCCESS,
 		message: 'This is a success message',
 	},
+	render: ({ type, message }) => (
+		<div style={{ width: '50vw' }}>
+			<Alert type={type} message={message} />
+		</div>
+	),
 };
 
 export const Error: Story = {
@@ -30,4 +34,9 @@ export const Error: Story = {
 		type: AlertMessageType.ERROR,
 		message: 'This is a error message',
 	},
+	render: ({ type, message }) => (
+		<div style={{ width: '50vw' }}>
+			<Alert type={type} message={message} />
+		</div>
+	),
 };

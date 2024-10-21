@@ -13,7 +13,9 @@ const meta = {
 		centered: { control: 'boolean' },
 		children: { control: 'text' },
 	},
-	args: { onClick: fn() },
+	args: {
+		onClick: fn(),
+	},
 } satisfies Meta<typeof Button>;
 
 export default meta;

@@ -1,4 +1,3 @@
-// Typography.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta = {
@@ -17,7 +16,9 @@ export const Headings: Story = {
 		<div>
 			<h1 className="page-header-title">This is a Page Title</h1>
 			<h2>This is an H2 heading</h2>
+			<br />
 			<h3>This is an H3 heading</h3>
+			<br />
 			<h4>This is an H4 heading</h4>
 			<h5>This is an H5 heading</h5>
 			<h6>This is an H6 heading</h6>

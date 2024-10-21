@@ -5,11 +5,7 @@ import { generateGoogleMapsAddress } from '@/lib';
 import { ShareInstagram } from '@/components';
 import { Address, Artist } from '@/model';
 
-<<<<<<< HEAD
 interface ContactDetailsContent {
-=======
-interface ContactDetailsCOntent {
->>>>>>> develop
 	artist: Artist;
 	address: Address;
 }
@@ -19,16 +15,13 @@ interface Props {
 	showAddress?: boolean;
 	showCTAs?: boolean;
 	subject?: string;
-<<<<<<< HEAD
 	content: ContactDetailsContent;
-=======
-	content: ContactDetailsCOntent;
->>>>>>> develop
 }
 
-export const ContactDetails: React.FC<Props> = async ({ showInsta = false, showAddress = true, showCTAs = true, subject, content }) => {
+export const ContactDetails: React.FC<Props> = ({ showInsta = false, showAddress = true, showCTAs = true, subject, content }) => {
 	const { artist, address } = content;
 	const subjectParams = subject ? `?subject=${encodeURIComponent(subject)}` : '';
+
 	return (
 		<aside className="contact-details">
 			{showInsta && (
