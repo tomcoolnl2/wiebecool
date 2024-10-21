@@ -2,20 +2,20 @@ import * as React from 'react';
 import { faPhoneSquare, faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { generateGoogleMapsAddress } from '@/lib';
-import { ShareInstagram } from '@/components';
 import { Address, Artist } from '@/model';
 
-interface ContactDetailsContent {
-	artist: Artist;
-	address: Address;
-}
+// to prevent circular deps, storybook will not work with thi
+const ShareInstagram = React.lazy(() => import('@/components/ShareInstagram'));
 
-interface Props {
+export interface Props {
 	showInsta?: boolean;
 	showAddress?: boolean;
 	showCTAs?: boolean;
 	subject?: string;
-	content: ContactDetailsContent;
+	content: {
+		artist: Artist;
+		address: Address;
+	};
 }
 
 export const ContactDetails: React.FC<Props> = ({ showInsta = false, showAddress = true, showCTAs = true, subject, content }) => {
@@ -24,11 +24,7 @@ export const ContactDetails: React.FC<Props> = ({ showInsta = false, showAddress
 
 	return (
 		<aside className="contact-details">
-			{showInsta && (
-				<div className="insta">
-					<ShareInstagram size="2xl" />
-				</div>
-			)}
+			{showInsta && <div className="insta">{<ShareInstagram size="2xl" />}</div>}
 			{showCTAs && (
 				<div className="contact-details-ctas">
 					<h3>Meer weten?</h3>

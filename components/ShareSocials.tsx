@@ -26,34 +26,26 @@ interface Props {
 	showPinterest?: boolean;
 }
 
-export const ShareSocials: React.FC<Props> = ({
-	title,
-	url,
-	media,
-	tags = [],
-	showFacebook = true,
-	showTwitter = true,
-	showPinterest = true,
-}) => {
+export const ShareSocials: React.FC<Props> = ({ title, url, media, tags = [], showFacebook = true, showTwitter = true, showPinterest = true }) => {
 	const hashtags = prepareHashTags([artist.name, artist.occupation, ...tags]);
 	return (
 		<aside className="share-socials">
 			<h3>Delen:</h3>
-			{showFacebook && (
+			{showFacebook ? (
 				<FacebookShareButton url={url} quote={title} hashtag={hashtags.join(' #') || undefined}>
 					<FontAwesomeIcon icon={faFacebookSquare} size={'lg'} />
 				</FacebookShareButton>
-			)}
-			{showTwitter && (
+			) : null}
+			{showTwitter ? (
 				<TwitterShareButton url={url} title={title} hashtags={hashtags}>
 					<FontAwesomeIcon icon={faSquareXTwitter} size={'lg'} />
 				</TwitterShareButton>
-			)}
-			{showPinterest && (
+			) : null}
+			{showPinterest ? (
 				<PinterestShareButton url={url} description={title} media={media}>
 					<FontAwesomeIcon icon={faPinterestSquare} size={'lg'} />
 				</PinterestShareButton>
-			)}
+			) : null}
 		</aside>
 	);
 };
