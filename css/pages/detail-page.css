@@ -27,10 +27,6 @@
 	@apply inline-block w-full sm:w-24 mr-3 font-bold text-white;
 }
 
-.contact-details {
-	@apply text-left;
-}
-
 .related-items {
 	@apply mt-8;
 }

@@ -11,7 +11,7 @@ export const mockArtist: Artist = {
 	name: 'Alice Johnson',
 	occupation: 'Painter',
 	description: 'Specializes in abstract art using mixed media.',
-	telephone: '+1-555-1234',
+	telephone: '0031612345678',
 	email: 'alice.johnson@example.com',
 	mentions: ["Featured in the Modern Art Museum's 2023 collection.", 'Recipient of the Art Innovator Award 2022.', 'Interviewed by Art Daily.'],
 };

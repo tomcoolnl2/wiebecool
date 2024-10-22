@@ -41,7 +41,7 @@ export const WithInstagram: Story = {
 	},
 };
 
-export const WithoutAddress: Story = {
+export const CallToActions: Story = {
 	args: {
 		showInsta: false,
 		showAddress: false,
@@ -51,12 +51,23 @@ export const WithoutAddress: Story = {
 	},
 };
 
-export const WithoutCTAs: Story = {
+export const Address: Story = {
 	args: {
 		showInsta: false,
 		showAddress: true,
 		showCTAs: false,
 		subject: 'No Contact Methods Example',
 		content,
+	},
+};
+
+export const Centered: Story = {
+	args: {
+		showInsta: true,
+		showAddress: true,
+		showCTAs: false,
+		subject: 'Centerer Example',
+		content,
+		className: 'text-center',
 	},
 };

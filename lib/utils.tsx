@@ -41,8 +41,18 @@ export function buildUrl(slug: Slug, path: Slug | '' = ''): URL {
  * @param {string} address The address to format.
  * @returns {string} The formatted Google Maps address string.
  */
-export function generateGoogleMapsAddress(address: Address): string {
+export function formatGoogleMapsAddress(address: Address): string {
 	return `${address.streetAddress}+${address.zipCode}+${address.city}+,${address.country}`;
+}
+
+/**
+ * Formats a phone number by adding spaces in a 2-3-3-2 pattern.
+ *
+ * @param {string} phone - The phone number to format (e.g., '0628979316').
+ * @returns {string} - The formatted phone number (e.g., '06 289 793 16').
+ */
+export function formatPhoneNumber(phone: string): string {
+	return phone.replace('0316', '6').replace(/(\d{2})(\d{3})(\d{3})(\d{2})/, '$1 $2 $3 $4');
 }
 
 /**

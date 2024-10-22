@@ -257,7 +257,7 @@
 	}
 
 	.contact-details {
-		@apply font-montserrat font-medium mb-6 leading-7 text-center;
+		@apply font-montserrat font-medium mb-6 leading-7 text-left;
 	}
 
 	.contact-details .insta {

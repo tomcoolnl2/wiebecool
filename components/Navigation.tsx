@@ -30,18 +30,10 @@ const NavigationLink: React.FC<NavigationLinkProps> = ({ useHrefBuilder, item, s
 	//
 	const href = useHrefBuilder ? hrefBuilder(item.page.__typename, slug) : `/${slug}`;
 
-	const currentPage = React.useMemo(
-		() => (!path.length && href === '/') || path.slice(-1)[0] === slug,
-		[path, href, slug]
-	);
+	const currentPage = React.useMemo(() => (!path.length && href === '/') || path.slice(-1)[0] === slug, [path, href, slug]);
 
 	return (
-		<Link
-			className={`navigation-link${currentPage ? ' active' : ''}`}
-			href={href}
-			role="link"
-			onClick={(e) => onClick?.(e as unknown as Event)}
-		>
+		<Link className={`navigation-link${currentPage ? ' active' : ''}`} href={href} role="link" onClick={(e) => onClick?.(e as unknown as Event)}>
 			{item.name}
 		</Link>
 	);
