@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { BreadCrumbs } from '@/components/page/BreadCrumbs';
 
-export const PageHeader: React.FC<{ title: string; path: string; subtitle?: string }> = ({ title, path, subtitle }) => {
+interface Props {
+	title: string;
+	path: string;
+	subtitle?: string;
+}
+
+export const PageHeader: React.FC<Props> = ({ title, path, subtitle }) => {
 	return (
 		<div className="page-header">
 			<BreadCrumbs path={path} />

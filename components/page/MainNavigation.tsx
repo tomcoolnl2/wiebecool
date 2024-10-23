@@ -11,7 +11,7 @@ import { useClickOutside } from '@/hooks';
 // to prevent circular deps, storybook will not work with this
 const ShareInstagram = React.lazy(() => import('@/components/ShareInstagram'));
 
-interface MainNavigation {
+export interface MainNavigation {
 	title: string;
 	navigation: NavigationPageEntry[];
 }

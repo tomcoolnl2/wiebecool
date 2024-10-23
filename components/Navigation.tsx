@@ -2,21 +2,9 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { PageType, ReWriteRule, NavigationPageEntry, Slug } from '@/model';
-import { ensureLeadingSlash } from '@/lib';
+import { NavigationPageEntry } from '@/model';
+import { hrefBuilder } from '@/lib';
 import React from 'react';
-
-function hrefBuilder(typename: PageType, slug: string): Slug {
-	const formattedSlug: Slug = ensureLeadingSlash(slug);
-	switch (typename) {
-		case PageType.CollectionPage:
-			return (ReWriteRule[PageType.CollectionPage] + formattedSlug) as Slug;
-		case PageType.DetailPage:
-			return (ReWriteRule[PageType.DetailPage] + formattedSlug) as Slug;
-		default:
-			return formattedSlug;
-	}
-}
 
 interface NavigationLinkProps {
 	item: NavigationPageEntry;
@@ -46,7 +34,8 @@ interface NavigationItemProps {
 }
 
 const NavigationItem: React.FC<NavigationItemProps> = ({ item, onClick, useHrefBuilder }) => {
-	const path = usePathname().split('/').filter(Boolean);
+	const pathname = usePathname();
+	const path = pathname ? pathname.split('/').filter(Boolean) : [];
 	const slug = item.page.slug.replace('/', '');
 	return (
 		<li className="navigation-item">

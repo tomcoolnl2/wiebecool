@@ -2,7 +2,7 @@ import * as React from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { Document, INLINES } from '@contentful/rich-text-types';
-import { Address, AlertMessage, AlertMessageType, Slug } from '@/model';
+import { Address, AlertMessage, AlertMessageType, OrderType, PageType, ReWriteRule, Slug } from '@/model';
 
 /** The locale of the website */
 export const locale = 'nl-NL';
@@ -16,6 +16,42 @@ export const artist = {
 	occupation: 'Beeldhouwer',
 	description: 'Wiebe Cool | Beeldhouwer',
 };
+
+/**
+ * Builds a link for the href attribute of a Navigation link.
+ * @param {PageType} pageType - The type of page as a string.
+ * @param {slug} slug - The name for the page to navigate to.
+ * @returns {Slug} The formatted slug representing the path to a page.
+ */
+export function hrefBuilder(pageType: PageType, slug: string): Slug {
+	const formattedSlug: Slug = ensureLeadingSlash(slug);
+	switch (pageType) {
+		case PageType.CollectionPage:
+			return (ReWriteRule[PageType.CollectionPage] + formattedSlug) as Slug;
+		case PageType.DetailPage:
+			return (ReWriteRule[PageType.DetailPage] + formattedSlug) as Slug;
+		default:
+			return formattedSlug;
+	}
+}
+
+/**
+ * Formats search parameters based on the provided order and filter values.
+ * @param {OrderType | null} order - The order parameter value.
+ * @param {string | null} filter - The filter parameter value.
+ * @returns {string} The formatted search parameters string.
+ */
+export function formatSearchParams(order: OrderType | null, filter: string | null): string {
+	const params = new URLSearchParams();
+	if (order) {
+		params.set('order', order);
+	}
+	if (filter) {
+		params.set('filter', filter);
+	}
+	const searchParams = params.toString();
+	return searchParams ? '?' + searchParams : '';
+}
 
 /**
  * Constructs a string with the first char to capitalize

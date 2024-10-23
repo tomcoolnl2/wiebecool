@@ -62,7 +62,7 @@ export default async function CollectionPage({ params, searchParams }: PageParam
 							sortOrder={sortOrder}
 							filter={filter as string}
 							sortingEnabled={content.sortingEnabled}
-							sortingDisabled={cards.length < 2}
+							allowSorting={cards.length >= 2}
 							filteringEnabled={content.filteringEnabled}
 						/>
 					) : null}

@@ -1,36 +1,40 @@
 import Link from 'next/link';
 import { faHome, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { PageType, ReWriteRule, SchemaType } from '@/model';
+import { SchemaType } from '@/model';
 import { artist, generateSchema } from '@/lib';
 import { SchemaTag } from '@/components';
 
-export const BreadCrumbs: React.FC<{ path: string }> = ({ path }) => {
+interface Props {
+	path: string;
+}
+
+export const BreadCrumbs: React.FC<Props> = ({ path }) => {
+	//
 	const crumbs = path.split('/').filter(Boolean);
-	const current = crumbs.pop();
+	const current = crumbs.pop(); // Last breadcrumb is the current page
 	const content = { parents: crumbs, current: current! };
 	const jsonLd = generateSchema({ content, schemaType: SchemaType.BREADCRUMBS });
+
 	return (
 		<nav aria-label="breadcrumbs">
 			<SchemaTag schema={jsonLd} />
-			<ol className="list-none">
+			<ol className="list-none flex space-x-2">
 				<li className="breadcrumb-item">
 					<Link href="/" title={`Home - ${artist.description}`}>
 						<FontAwesomeIcon icon={faHome} size="xs" />
 					</Link>
 				</li>
-				{crumbs.map((crumb) => (
-					<li key={crumb} className="breadcrumb-item">
-						<FontAwesomeIcon icon={faChevronRight} size="2xs" className="arrow" />
-						<Link href={ReWriteRule[PageType.CollectionPage]}>{crumb.replace(/-/g, ' ')}</Link>
+				{crumbs.map((crumb, index) => (
+					<li key={crumb} className="breadcrumb-item flex items-center">
+						<FontAwesomeIcon icon={faChevronRight} size="2xs" className="mx-1 arrow" />
+						<Link href={`/${crumbs.slice(0, index + 1).join('/')}`}>{crumb.replace(/-/g, ' ')}</Link>
 					</li>
 				))}
 				{current && (
-					<li className="breadcrumb-item current">
-						<FontAwesomeIcon icon={faChevronRight} size="2xs" className="arrow" />
-						<a href={`/${current}`} aria-current="location">
-							{current.replace(/-/g, ' ')}
-						</a>
+					<li className="breadcrumb-item current flex items-center">
+						<FontAwesomeIcon icon={faChevronRight} size="2xs" className="mx-1 arrow" />
+						<span aria-current="location">{current.replace(/-/g, ' ')}</span>
 					</li>
 				)}
 			</ol>
