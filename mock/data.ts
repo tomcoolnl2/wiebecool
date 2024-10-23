@@ -1,4 +1,5 @@
-import { Address, Artist, ItemImage, NavigationPageEntry, PageType } from '@/model';
+import { BLOCKS } from '@contentful/rich-text-types';
+import { Address, Artist, ItemImage, NavigationPageEntry, PageCarousel, PageType, RichText } from '@/model';
 
 export const mockAddress: Address = {
 	streetAddress: '123 Maple Street',
@@ -23,6 +24,60 @@ export const mockImage: ItemImage = {
 	width: 300,
 	height: 300,
 	sys: { id: '1' },
+};
+
+export const mockRichText = {
+	json: {
+		nodeType: BLOCKS.DOCUMENT,
+		data: {},
+		content: [
+			{
+				nodeType: BLOCKS.PARAGRAPH,
+				data: {},
+				content: [
+					{
+						nodeType: 'text',
+						value: 'This is a sample carousel description.',
+						marks: [],
+						data: {},
+					},
+				],
+			},
+		],
+	},
+} as RichText;
+
+export const mockCarouselData: PageCarousel = {
+	description: mockRichText,
+	showDescription: true,
+	imageCollection: {
+		items: [
+			{
+				sys: { id: '1' },
+				url: 'https://via.placeholder.com/500',
+				title: 'Sample Image 1',
+				description: 'This is the first sample image.',
+				width: 500,
+				height: 500,
+			},
+			{
+				sys: { id: '2' },
+				url: 'https://via.placeholder.com/500',
+				title: 'Sample Image 2',
+				description: 'This is the second sample image.',
+				width: 500,
+				height: 500,
+			},
+			{
+				sys: { id: '3' },
+				url: 'https://via.placeholder.com/500',
+				title: 'Sample Image 3',
+				description: 'This is the third sample image.',
+				width: 500,
+				height: 500,
+			},
+		],
+	},
 };
 
 export const mockMainNavigation: NavigationPageEntry[] = [
