@@ -12,7 +12,8 @@
 		"e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
 		"format": "prettier --write './**/*.{js,jsx,ts,tsx,html,css,scss,json,md}'",
 		"analyze": "ANALYZE=true npm run build",
-		"storybook": "storybook dev -p 6006",
+		"ui": "storybook dev -p 6006",
+		"ui:debug": "npm run storybook -- --debug-webpack",
 		"build-storybook": "storybook build"
 	},
 	"dependencies": {
@@ -55,6 +56,7 @@
 		"eslint-config-next": "14.2.13",
 		"eslint-plugin-storybook": "0.9.0",
 		"graphql-tag": "2.12.6",
+		"ignore-loader": "^0.1.2",
 		"postcss": "8.4.33",
 		"rimraf": "6.0.1",
 		"start-server-and-test": "2.0.8",

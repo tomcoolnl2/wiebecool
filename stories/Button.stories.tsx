@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 import { Button } from '../components/Button';
 
-// Meta configuration for the Button component
 const meta = {
 	title: 'Components/Button',
 	component: Button,
@@ -14,7 +13,9 @@ const meta = {
 		centered: { control: 'boolean' },
 		children: { control: 'text' },
 	},
-	args: { onClick: fn() },
+	args: {
+		onClick: fn(),
+	},
 } satisfies Meta<typeof Button>;
 
 export default meta;

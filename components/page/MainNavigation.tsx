@@ -5,10 +5,13 @@ import { faSitemap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavigationPageEntry } from '@/model';
 import { artist } from '@/lib';
-import { Navigation, ShareInstagram } from '@/components';
+import { Navigation } from '@/components';
 import { useClickOutside } from '@/hooks';
 
-interface MainNavigation {
+// to prevent circular deps, storybook will not work with this
+const ShareInstagram = React.lazy(() => import('@/components/ShareInstagram'));
+
+export interface MainNavigation {
 	title: string;
 	navigation: NavigationPageEntry[];
 }

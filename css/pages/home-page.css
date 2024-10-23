@@ -24,10 +24,6 @@
 	@apply font-bold mb-2;
 }
 
-.home-page .contact-details {
-	@apply text-left;
-}
-
 .home-page .portfolio-cards {
 	@apply mt-6;
 }

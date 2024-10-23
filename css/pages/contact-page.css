@@ -36,7 +36,3 @@
 .contact-page textarea:focus {
 	outline: none;
 }
-
-.contact-details {
-	@apply text-left;
-}

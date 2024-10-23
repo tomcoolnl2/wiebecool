@@ -2,7 +2,7 @@ import * as React from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { Document, INLINES } from '@contentful/rich-text-types';
-import { Address, AlertMessage, Slug, Tag } from '@/model';
+import { Address, AlertMessage, AlertMessageType, OrderType, PageType, ReWriteRule, Slug } from '@/model';
 
 /** The locale of the website */
 export const locale = 'nl-NL';
@@ -16,6 +16,42 @@ export const artist = {
 	occupation: 'Beeldhouwer',
 	description: 'Wiebe Cool | Beeldhouwer',
 };
+
+/**
+ * Builds a link for the href attribute of a Navigation link.
+ * @param {PageType} pageType - The type of page as a string.
+ * @param {slug} slug - The name for the page to navigate to.
+ * @returns {Slug} The formatted slug representing the path to a page.
+ */
+export function hrefBuilder(pageType: PageType, slug: string): Slug {
+	const formattedSlug: Slug = ensureLeadingSlash(slug);
+	switch (pageType) {
+		case PageType.CollectionPage:
+			return (ReWriteRule[PageType.CollectionPage] + formattedSlug) as Slug;
+		case PageType.DetailPage:
+			return (ReWriteRule[PageType.DetailPage] + formattedSlug) as Slug;
+		default:
+			return formattedSlug;
+	}
+}
+
+/**
+ * Formats search parameters based on the provided order and filter values.
+ * @param {OrderType | null} order - The order parameter value.
+ * @param {string | null} filter - The filter parameter value.
+ * @returns {string} The formatted search parameters string.
+ */
+export function formatSearchParams(order: OrderType | null, filter: string | null): string {
+	const params = new URLSearchParams();
+	if (order) {
+		params.set('order', order);
+	}
+	if (filter) {
+		params.set('filter', filter);
+	}
+	const searchParams = params.toString();
+	return searchParams ? '?' + searchParams : '';
+}
 
 /**
  * Constructs a string with the first char to capitalize
@@ -41,8 +77,18 @@ export function buildUrl(slug: Slug, path: Slug | '' = ''): URL {
  * @param {string} address The address to format.
  * @returns {string} The formatted Google Maps address string.
  */
-export function generateGoogleMapsAddress(address: Address): string {
+export function formatGoogleMapsAddress(address: Address): string {
 	return `${address.streetAddress}+${address.zipCode}+${address.city}+,${address.country}`;
+}
+
+/**
+ * Formats a phone number by adding spaces in a 2-3-3-2 pattern.
+ *
+ * @param {string} phone - The phone number to format (e.g., '0628979316').
+ * @returns {string} - The formatted phone number (e.g., '06 289 793 16').
+ */
+export function formatPhoneNumber(phone: string): string {
+	return phone.replace('0316', '6').replace(/(\d{2})(\d{3})(\d{3})(\d{2})/, '$1 $2 $3 $4');
 }
 
 /**
@@ -133,17 +179,17 @@ export function validateContactForm(formData: FormData): AlertMessage {
 	const message = formData.get('message');
 
 	if (!name) {
-		return { type: 'error', message: 'Vul een naam in.' };
+		return { type: AlertMessageType.ERROR, message: 'Vul een naam in.' };
 	}
 
 	const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 	if (!email || typeof email !== 'string' || !emailRegex.test(email)) {
-		return { type: 'error', message: 'Verkeerd email adres.' };
+		return { type: AlertMessageType.ERROR, message: 'Verkeerd email adres.' };
 	}
 
 	if (!message || typeof message !== 'string') {
-		return { type: 'error', message: 'Vul een vraag in.' };
+		return { type: AlertMessageType.ERROR, message: 'Vul een vraag in.' };
 	}
 
-	return { type: 'success', message: 'Passed.' };
+	return { type: AlertMessageType.SUCCESS, message: 'Passed.' };
 }
