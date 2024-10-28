@@ -1,8 +1,9 @@
+import emailjs from 'emailjs-com';
 import * as React from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { Document, INLINES } from '@contentful/rich-text-types';
-import { Address, AlertMessage, AlertMessageType, OrderType, PageType, ReWriteRule, Slug } from '@/model';
+import { Address, AlertMessage, AlertMessageType, ContactFormInput, OrderType, PageType, ReWriteRule, Slug } from '@/model';
 
 /** The locale of the website */
 export const locale = 'nl-NL';
@@ -172,24 +173,25 @@ export function toLocaleDateString(dateString: string): string {
  * @param {FormData} formData - The form data containing the email, name, and message.
  * @returns {AlertMessage} An alert message indicating the validation result.
  */
-export function validateContactForm(formData: FormData): AlertMessage {
-	//
-	const email = formData.get('email');
-	const name = formData.get('name');
-	const message = formData.get('message');
+export async function sendEmail(data: ContactFormInput): Promise<AlertMessage> {
+	const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
+	const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
+	const userID = process.env.NEXT_PUBLIC_EMAILJS_USER_ID || '';
 
-	if (!name) {
-		return { type: AlertMessageType.ERROR, message: 'Vul een naam in.' };
+	try {
+		await emailjs.send(
+			serviceID,
+			templateID,
+			{
+				from_name: data.name,
+				from_email: data.email,
+				message: data.message,
+			},
+			userID
+		);
+		return { type: AlertMessageType.SUCCESS, message: 'Bericht verstuurd. Bedankt!' };
+	} catch (error) {
+		console.error('Error sending email:', error);
+		return { type: AlertMessageType.ERROR, message: 'Er ging iets mis!' };
 	}
-
-	const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	if (!email || typeof email !== 'string' || !emailRegex.test(email)) {
-		return { type: AlertMessageType.ERROR, message: 'Verkeerd email adres.' };
-	}
-
-	if (!message || typeof message !== 'string') {
-		return { type: AlertMessageType.ERROR, message: 'Vul een vraag in.' };
-	}
-
-	return { type: AlertMessageType.SUCCESS, message: 'Passed.' };
 }
