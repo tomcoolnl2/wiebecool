@@ -16,7 +16,7 @@ export const Checkbox: React.FC<Props> = ({ size = 'small', checked, disabled, o
 			setState(event.target.checked);
 			onChange?.(event);
 		},
-		[state]
+		[onChange]
 	);
 
 	return (
