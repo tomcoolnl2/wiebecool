@@ -115,33 +115,53 @@ export interface ContactDetails {
 interface BasePage {
 	type: PageType;
 	slug: Slug;
+	seoMetaData: SeoMetaData;
 	name: string;
 	title: string;
 	description: RichText;
 }
 
-export interface HomePage extends BasePage {
-	type: PageType.HomePage;
+export interface HomePageContent extends BasePage {
 	title: string;
 	subtitle: string;
 	mugshot: ItemImage;
 	buildingBlocksCollection: {
 		items: Array<PortfolioCardResponse>;
 	};
-	artist: Artist;
 }
 
-export interface AboutPage extends BasePage {
-	type: PageType.AboutPage;
+export interface HomePage {
+	seoMetaData: SeoMetaData;
+	content: HomePageContent;
+	artist: Artist;
+	address: Address;
+}
+
+export interface AboutPageContent extends BasePage {
 	bannerImage: ItemImage;
 	buildingBlocksCollection: {
 		items: Array<TextBlockResponse | PortfolioCardResponse>;
 	};
-	artist: Artist;
 }
 
-export interface CollectionPage extends BasePage {
-	type: PageType.CollectionPage;
+export interface AboutPage {
+	seoMetaData: SeoMetaData;
+	content: AboutPageContent;
+	artist: Artist;
+	address: Address;
+}
+
+export interface CollectionPage {
+	seoMetaData: SeoMetaData;
+	content: CollectionPageContent;
+}
+
+export interface CollectionPageContent extends BasePage {
+	seoMetaData: SeoMetaData;
+	bannerImage: ItemImage;
+	buildingBlocksCollection: {
+		items: Array<TextBlockResponse | PortfolioCardResponse>;
+	};
 	subtitle: string;
 	sortingEnabled: boolean;
 	filteringEnabled: boolean;
@@ -151,7 +171,7 @@ export interface CollectionPage extends BasePage {
 
 export interface CollectionPageCollection {
 	collectionPageCollection: {
-		items: CollectionPage[];
+		items: CollectionPageContent[];
 	};
 }
 
@@ -161,8 +181,8 @@ export interface DetailCollectionItem extends SysID, BasePage {
 	imageCollection: ImageCollection;
 }
 
-export interface DetailPage extends BasePage, SysID {
-	type: PageType.DetailPage;
+export interface DetailPageContent extends BasePage, SysID {
+	seoMetaData: SeoMetaData;
 	material: string | null;
 	dimensions: string | null;
 	status: string | null;
@@ -176,17 +196,28 @@ export interface DetailPage extends BasePage, SysID {
 	cards: DetailCollectionItem[];
 }
 
-export interface ContactPage extends BasePage {
-	type: PageType.ContactPage;
+export interface DetailPage {
+	seoMetaData: SeoMetaData;
+	content: DetailPageContent;
 	artist: Artist;
 	address: Address;
+}
+
+export interface ContactPageContent extends BasePage {
 	formIntro: string;
 	submitButtonText: string;
 }
 
-export type PageData = HomePage | AboutPage | CollectionPage | DetailPage | ContactPage;
+export interface ContactPage {
+	seoMetaData: SeoMetaData;
+	content: ContactPageContent;
+	artist: Artist;
+	address: Address;
+}
 
-export type ContentData = Address | Breadcrumbs;
+export type PageContent = HomePageContent | AboutPageContent | CollectionPageContent | DetailPageContent | ContactPageContent;
+
+export type ComponentContent = Artist | Address | Breadcrumbs;
 
 export interface SitemapItem {
 	url: string;

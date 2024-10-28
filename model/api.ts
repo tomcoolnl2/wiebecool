@@ -1,14 +1,13 @@
 import {
-	SeoMetaData,
 	Address,
-	ContactPage,
+	ContactPageContent,
 	NavigationPageEntry,
 	Artist,
-	HomePage,
-	AboutPage,
-	CollectionPage,
+	HomePageContent,
+	AboutPageContent,
+	CollectionPageContent,
 	DetailCollectionItem,
-	DetailPage,
+	DetailPageContent,
 	Slug,
 	PortfolioCard,
 } from './';
@@ -17,8 +16,13 @@ export interface SysID {
 	sys: { id: string };
 }
 
+export enum AlertMessageType {
+	SUCCESS = 'success',
+	ERROR = 'error',
+}
+
 export interface AlertMessage {
-	type: 'success' | 'error';
+	type: AlertMessageType;
 	message: string;
 }
 
@@ -35,19 +39,6 @@ export const OrderTypeMap: { [key in OrderType]: string } = {
 	[OrderType.PAGE_TITLE_DESC]: 'title_DESC',
 	[OrderType.PAGE_TITLE_ASC]: 'title_ASC',
 };
-
-export interface MetaDataResponse {
-	seoMetaData: SeoMetaData;
-}
-
-export interface MetaDataBySlugResponse {
-	collectionPageCollection: {
-		items: MetaDataResponse[];
-	};
-	detailPageCollection: {
-		items: MetaDataResponse[];
-	};
-}
 
 export interface NavigationResponse {
 	navigation: {
@@ -80,16 +71,20 @@ export interface PortfolioCardResponse {
 }
 
 export interface HomePageResponse {
-	homePage: HomePage;
+	homePage: HomePageContent;
+	artist: Artist;
+	address: Address;
 }
 
 export interface AboutPageResponse {
-	aboutPage: AboutPage;
+	aboutPage: AboutPageContent;
+	artist: Artist;
+	address: Address;
 }
 
 export interface CollectionPageResponse {
 	collectionPageCollection: {
-		items: CollectionPage[];
+		items: [CollectionPageContent];
 	};
 }
 
@@ -101,12 +96,16 @@ export interface DetailPageCollectionResponse {
 
 export interface DetailPageBySlugResponse {
 	detailPageCollection: {
-		items: [DetailPage];
+		items: [DetailPageContent];
 	};
+	artist: Artist;
+	address: Address;
 }
 
 export interface ContactPageResponse {
-	contactPage: ContactPage;
+	contactPage: ContactPageContent;
+	artist: Artist;
+	address: Address;
 }
 
 export interface SitemapItemResponse {

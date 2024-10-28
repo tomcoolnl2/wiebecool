@@ -3,9 +3,10 @@ import emailjs from 'emailjs-com';
 import dynamic from 'next/dynamic';
 import { useFormStatus } from 'react-dom';
 import * as React from 'react';
-import { AlertMessage } from '@/model';
+import { AlertMessage, AlertMessageType } from '@/model';
 import { validateContactForm } from '@/lib';
 import { useSearchParams } from 'next/navigation';
+import { Button } from './Button';
 
 const Alert = dynamic(() => import('@/components/Alert'), { ssr: false });
 
@@ -78,14 +79,14 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 		const formData = new FormData(formRef.current ?? undefined);
 
 		let alertMessage = validateContactForm(formData);
-		if (alertMessage.type === 'error') {
+		if (alertMessage.type === AlertMessageType.ERROR) {
 			setAlert(alertMessage);
 			return null;
 		}
 
 		if (formData.get('email') === 'test@email.com') {
 			// cypress test
-			setAlert({ type: 'success', message: 'Bericht verstuurd. Bedankt!' });
+			setAlert({ type: AlertMessageType.SUCCESS, message: 'Bericht verstuurd. Bedankt!' });
 			return null;
 		}
 
@@ -101,10 +102,10 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 				userID
 			)
 			.then(() => {
-				setAlert({ type: 'success', message: 'Bericht verstuurd. Bedankt!' });
+				setAlert({ type: AlertMessageType.SUCCESS, message: 'Bericht verstuurd. Bedankt!' });
 			})
 			.catch((error) => {
-				setAlert({ type: 'success', message: 'Er ging iets mis!' });
+				setAlert({ type: AlertMessageType.ERROR, message: 'Er ging iets mis!' });
 				console.error('Error sending email:', error);
 			});
 	}, []);
@@ -134,9 +135,9 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 				/>
 			</div>
 			{alert && <Alert {...alert} />}
-			<button className="button" type="submit" disabled={pending || !!alert}>
+			<Button type="submit" disabled={pending || !!alert}>
 				{buttonText}
-			</button>
+			</Button>
 		</form>
 	);
 };

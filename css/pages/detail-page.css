@@ -20,15 +20,11 @@
 }
 
 .detail-page-details .detail-page-detail-list {
-	@apply list-none border-solid border-[rgba(255,255,255,0.1)] border-y py-5 md:py-7 mb-7;
+	@apply list-none border-solid border-white border-opacity-10 border-y py-5 md:py-7 mb-7;
 }
 
 .detail-page-details .label {
 	@apply inline-block w-full sm:w-24 mr-3 font-bold text-white;
-}
-
-.contact-details {
-	@apply text-left;
 }
 
 .related-items {

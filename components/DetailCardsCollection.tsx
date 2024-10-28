@@ -9,7 +9,7 @@ interface Props {
 	omitWhen?: number | null;
 }
 
-export const DetailCardsCollection: React.FC<Props> = async ({ cards, omitWhen = null }) => {
+export const DetailCardsCollection: React.FC<Props> = ({ cards, omitWhen = null }) => {
 	if (!cards.length || (omitWhen !== null && cards.length < omitWhen)) {
 		return null;
 	}

@@ -1,6 +1,11 @@
 #
-query AboutPageQuery($sysID: String!) {
-	aboutPage(id: $sysID) {
+query AboutPageQuery($aboutPageSysID: String!, $artistSysID: String!, $addressSysID: String!) {
+	aboutPage(id: $aboutPageSysID) {
+		seoMetaData {
+			title
+			description
+			keywords
+		}
 		slug
 		title
 		name
@@ -41,5 +46,19 @@ query AboutPageQuery($sysID: String!) {
 				}
 			}
 		}
+	}
+	artist(id: $artistSysID) {
+		name
+		occupation
+		description
+		telephone
+		email
+		mentions
+	}
+	address(id: $addressSysID) {
+		streetAddress
+		zipCode
+		city
+		country
 	}
 }

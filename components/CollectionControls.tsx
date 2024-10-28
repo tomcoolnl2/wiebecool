@@ -2,24 +2,7 @@ import Link from 'next/link';
 import { faSortAlphaAsc, faSortAlphaDesc, faFilterCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { OrderType, type Tag } from '@/model';
-
-/**
- * Formats search parameters based on the provided order and filter values.
- * @param {OrderType | null} order - The order parameter value.
- * @param {string | null} filter - The filter parameter value.
- * @returns {string} The formatted search parameters string.
- */
-function formatSearchParams(order: OrderType | null, filter: string | null): string {
-	const params = new URLSearchParams();
-	if (order) {
-		params.set('order', order);
-	}
-	if (filter) {
-		params.set('filter', filter);
-	}
-	const searchParams = params.toString();
-	return searchParams ? '?' + searchParams : '';
-}
+import { formatSearchParams } from '@/lib';
 
 interface Props {
 	path: string;
@@ -27,38 +10,22 @@ interface Props {
 	sortOrder: OrderType | null;
 	filter: string | null;
 	sortingEnabled: boolean;
-	sortingDisabled: boolean;
 	filteringEnabled: boolean;
+	allowSorting: boolean;
 }
 
-export const CollectionControls: React.FC<Props> = ({
-	path,
-	tags,
-	sortOrder,
-	filter,
-	sortingEnabled,
-	sortingDisabled,
-	filteringEnabled,
-}) => (
+export const CollectionControls: React.FC<Props> = ({ path, tags, sortOrder, filter, sortingEnabled, allowSorting, filteringEnabled }) => (
 	<nav role="navigation" className={`collection-controls${sortingEnabled ? ' with-sorting' : ''}`}>
 		{filteringEnabled ? (
 			<ul>
 				<li className="collection-filter-item">
-					<Link
-						href={path + formatSearchParams(sortOrder, null)}
-						className={filter === null ? ' active' : ''}
-						scroll={false}
-					>
+					<Link href={path + formatSearchParams(sortOrder, null)} className={filter === null ? ' active' : ''} scroll={false}>
 						Alles
 					</Link>
 				</li>
 				{tags.map((tag) => (
 					<li key={tag.id} className="collection-filter-item">
-						<Link
-							href={formatSearchParams(sortOrder, tag.id)}
-							className={tag.id === filter ? ' active' : ''}
-							scroll={false}
-						>
+						<Link href={formatSearchParams(sortOrder, tag.id)} className={tag.id === filter ? ' active' : ''} scroll={false}>
 							{tag.name}
 						</Link>
 					</li>
@@ -67,7 +34,7 @@ export const CollectionControls: React.FC<Props> = ({
 		) : null}
 		{sortingEnabled ? (
 			<>
-				<div className={`collection-order-item${sortingDisabled ? ' disabled' : ''}`}>
+				<div className={`collection-order-item${allowSorting ? '' : ' disabled'}`}>
 					{sortOrder === OrderType.PAGE_TITLE_ASC ? (
 						<Link href={formatSearchParams(OrderType.PAGE_TITLE_DESC, filter)} scroll={false}>
 							<FontAwesomeIcon icon={faSortAlphaDesc} />

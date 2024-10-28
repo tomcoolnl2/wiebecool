@@ -1,13 +1,10 @@
+import { notFound } from 'next/navigation';
 import { cache } from 'react';
 import { DocumentNode as GraphQLDocumentNode } from 'graphql';
-import MetaDataQuery from '@/graphql/MetaData.gql';
 import MainNavigationQuery from '@/graphql/MainNavigation.gql';
 import HomePageQuery from '@/graphql/HomePage.gql';
 import ContactPageQuery from '@/graphql/ContactPage.gql';
-import AddressQuery from '@/graphql/Address.gql';
-import ArtistQuery from '@/graphql/Artist.gql';
 import AboutPageQuery from '@/graphql/AboutPage.gql';
-import MetaDataBySlugQuery from '@/graphql/MetaDataBySlug.gql';
 import CollectionPageBySlugQuery from '@/graphql/CollectionPageBySlug.gql';
 import DetailPagesByTagIDs from '@/graphql/DetailPagesByTagIDs.gql';
 import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
@@ -15,14 +12,9 @@ import SiteMapQuery from '@/graphql/Sitemap.gql';
 import {
 	type AboutPage,
 	type AboutPageResponse,
-	type Address,
-	type AddressResponse,
-	type Artist,
-	type ArtistResponse,
 	type DetailCollectionItem,
 	type CollectionPage,
 	type CollectionPageResponse,
-	type ContactDetails,
 	type ContactPage,
 	type ContactPageResponse,
 	type DetailPage,
@@ -30,12 +22,9 @@ import {
 	type DetailPageCollectionResponse,
 	type HomePage,
 	type HomePageResponse,
-	type MetaDataBySlugResponse,
-	type MetaDataResponse,
 	type Navigation,
 	type NavigationPageEntry,
 	type NavigationResponse,
-	type SeoMetaData,
 	type Sitemap,
 	type SitemapResponse,
 	type Slug,
@@ -44,25 +33,8 @@ import {
 	OrderTypeMap,
 	PageType,
 } from '@/model';
-
-/**
- * Represents an error specific to Contentful-related operations.
- * @class
- * @extends Error
- */
-export class ContentfulError extends Error {
-	/**
-	 * Creates an instance of ContentfulError.
-	 * @param {string} message - The error message.
-	 * @param {number} status - The status code associated with the error. Default is 500.
-	 */
-	constructor(message: string, public status: number = 500) {
-		super(message);
-		this.name = this.constructor.name;
-		this.message = `Contentful: ${this.status}: ${message}`;
-		Object.setPrototypeOf(this, ContentfulError.prototype);
-	}
-}
+import { ContentfulError } from './error';
+import { ContentfulIDs as cfids } from './contentful';
 
 /**
  * Preloads data by fetching from Contentful.
@@ -71,6 +43,23 @@ export class ContentfulError extends Error {
  */
 export const preload = (query: string | GraphQLDocumentNode, variables = {}) => {
 	void fetchContentfulData(query, variables);
+};
+
+/**
+ * Fetches data using the provided fetcher function and handles errors.
+ * If an error occurs, it will trigger the `notFound()` function to handle 404 scenarios.
+ * @template T - The type of the data expected to be returned by the fetcher.
+ * @param {() => Promise<T>} fetcher - A function that returns a promise resolving to the data.
+ * @returns {Promise<T>} The fetched data if successful.
+ * @throws Will trigger `notFound()` in case of an error.
+ */
+export const fetchData = async <T>(fetcher: () => Promise<T>): Promise<T> => {
+	try {
+		const data = await fetcher();
+		return data;
+	} catch (error) {
+		notFound();
+	}
 };
 
 /**
@@ -115,32 +104,6 @@ export const fetchContentfulData = cache(async <T>(query: string | GraphQLDocume
 	}
 });
 
-/**
- * Fetches SEO Meta data from Contentful based on a sys ID.
- * @param {string} sysID The Contentful identifier
- * @returns {Promise<MetaDataResponse>} A promise resolving to the fetched seo meta data.
- */
-export async function fetchSeoMetaData(sysID: string): Promise<MetaDataResponse> {
-	return await fetchContentfulData<MetaDataResponse>(MetaDataQuery, { sysID });
-}
-
-/**
- * Fetches SEO Meta data from Contentful based on a slug.
- * @param {Slug} slug The Contentful identifier
- * @returns {Promise<SeoMetaData>} A promise resolving to the fetched seo meta data.
- */
-export async function fetchSeoMetaDataBySlug(slug: Slug): Promise<SeoMetaData> {
-	const { collectionPageCollection, detailPageCollection } = await fetchContentfulData<MetaDataBySlugResponse>(
-		MetaDataBySlugQuery,
-		{ slug }
-	);
-	const result = [collectionPageCollection, detailPageCollection].filter((collection) => {
-		return collection.items.length;
-	});
-	const { seoMetaData } = result[0].items[0];
-	return seoMetaData;
-}
-
 export const fetchNavigation = async (sysID: string): Promise<Navigation> => {
 	//
 	const {
@@ -168,71 +131,37 @@ export const fetchNavigation = async (sysID: string): Promise<Navigation> => {
  * @returns {Promise<Navigation>} A promise resolving to the fetched navigation data.
  */
 export async function fetchMainNavigation(): Promise<Navigation> {
-	return await fetchNavigation('5bRsPaSUeUrD7QB5m868iu');
+	return await fetchNavigation(cfids.nav.id);
 }
 
 /**
- * Fetches address data from Contentful based on a sys ID.
- * @returns {Promise<Artist>} A promise resolving to the fetched address data.
- */
-export async function fetchArtist(): Promise<Artist> {
-	const { artist } = await fetchContentfulData<ArtistResponse>(ArtistQuery, { sysID: '42dyv6PaMYHTxIQvt5k1BR' });
-	return artist;
-}
-
-/**
- * Fetches address data from Contentful based on a sys ID.
- * @returns {Promise<Address>} A promise resolving to the fetched address data.
- */
-export async function fetchAddress(): Promise<Address> {
-	const { address } = await fetchContentfulData<AddressResponse>(AddressQuery, { sysID: 'VYrkgFK6dR1V81lIJqez2' });
-	return address;
-}
-
-/**
- * Fetches home page data from Contentful based on a sys ID.
- * @returns {Promise<ContactDetails>} A promise resolving to the fetched contact details.
- */
-export async function fetchContactDetails(): Promise<ContactDetails> {
-	const [artist, address] = await Promise.all([fetchArtist(), fetchAddress()]);
-	return { artist, address };
-}
-
-/**
- * Fetches SEO Meta data from Contentful for the Home Page.
- * @returns {Promise<SeoMetaData>} A promise resolving to the fetched seo meta data for the Home Page.
- */
-export async function fetchHomePageSeoMetaData(): Promise<SeoMetaData> {
-	const { seoMetaData } = await fetchSeoMetaData('CPkjAJlRTW3qlGNp8CqJm');
-	return seoMetaData;
-}
-
-/**
- * Fetches home page data from Contentful based on a sys ID.
- * @returns {Promise<HomePage>} A promise resolving to the fetched home page data.
+ * Fetches home page data from Contentful.
+ * @returns {Promise<HomePage>} A promise resolving to the fetched Home page Data.
  */
 export async function fetchHomePage(): Promise<HomePage> {
-	const [{ homePage }, artist] = await Promise.all([
-		await fetchContentfulData<HomePageResponse>(HomePageQuery, {
-			sysID: '7bjsm9rIwR5janeyF5XK2n',
-		}),
-		fetchArtist(),
-	]);
-	return { ...homePage, type: PageType.HomePage, artist };
+	const { homePage, ...pageComponents } = await fetchContentfulData<HomePageResponse>(HomePageQuery, {
+		homePageSysID: cfids.homePage.id,
+		artistSysID: cfids.artist.id,
+		addressSysID: cfids.address.id,
+	});
+	const seoMetaData = homePage.seoMetaData;
+	const content = { ...homePage, type: PageType.HomePage };
+	return { content, ...pageComponents, seoMetaData };
 }
 
 /**
- * Fetches about page data from Contentful based on a sys ID.
- * @returns {Promise<AboutPage>} A promise resolving to the fetched about page data.
+ * Fetches about page data from Contentful.
+ * @returns {Promise<AboutPage>} A promise resolving to the fetched About Page data.
  */
 export async function fetchAboutPage(): Promise<AboutPage> {
-	const [{ aboutPage }, artist] = await Promise.all([
-		await fetchContentfulData<AboutPageResponse>(AboutPageQuery, {
-			sysID: '3LaYVXJtqbtQYH38PqSkeQ',
-		}),
-		fetchArtist(),
-	]);
-	return { ...aboutPage, type: PageType.AboutPage, artist };
+	const { aboutPage, ...pageComponents } = await fetchContentfulData<AboutPageResponse>(AboutPageQuery, {
+		aboutPageSysID: cfids.aboutPage.id,
+		artistSysID: cfids.artist.id,
+		addressSysID: cfids.address.id,
+	});
+	const seoMetaData = aboutPage.seoMetaData;
+	const content = { ...aboutPage, type: PageType.AboutPage };
+	return { content, ...pageComponents, seoMetaData };
 }
 
 /**
@@ -243,19 +172,17 @@ export async function fetchAboutPage(): Promise<AboutPage> {
  */
 export async function fetchCollectionPage(slug: Slug, sortOrder: OrderType | null): Promise<CollectionPage> {
 	//
-	const { collectionPageCollection } = await fetchContentfulData<CollectionPageResponse>(CollectionPageBySlugQuery, {
-		slug,
-	});
-
-	const collectionPage: CollectionPage = {
-		...collectionPageCollection.items[0],
-		type: PageType.CollectionPage,
-	};
+	const {
+		collectionPageCollection: {
+			items: [collectionPage],
+		},
+	} = await fetchContentfulData<CollectionPageResponse>(CollectionPageBySlugQuery, { slug });
 
 	const tags = collectionPage.contentfulMetadata.tags.map((tag) => tag.id);
 	const cards = await fetchDetailPagesByTagIDs(tags, sortOrder ?? OrderType.PUBLISHED_FIRST_DESC);
-
-	return { ...collectionPage, type: PageType.CollectionPage, cards };
+	const content = { ...collectionPage, type: PageType.CollectionPage, cards };
+	const seoMetaData = collectionPage.seoMetaData;
+	return { content, seoMetaData };
 }
 
 /**
@@ -295,7 +222,12 @@ export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
 		detailPageCollection: {
 			items: [detailPage],
 		},
-	} = await fetchContentfulData<DetailPageBySlugResponse>(DetailPageBySlugQuery, { slug });
+		...pageComponents
+	} = await fetchContentfulData<DetailPageBySlugResponse>(DetailPageBySlugQuery, {
+		slug,
+		artistSysID: cfids.artist.id,
+		addressSysID: cfids.address.id,
+	});
 
 	let tags: string[] = [];
 	if (detailPage.relatedItemsTags?.length) {
@@ -304,8 +236,9 @@ export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
 
 	const skipId = detailPage.sys.id;
 	const cards = await fetchDetailPagesByTagIDs(tags, OrderType.PUBLISHED_FIRST_ASC, 4, skipId);
-
-	return { ...detailPage, cards };
+	const content = { ...detailPage, type: PageType.DetailPage, cards };
+	const seoMetaData = detailPage.seoMetaData;
+	return { seoMetaData, content, ...pageComponents };
 }
 
 /**
@@ -313,14 +246,14 @@ export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
  * @returns {Promise<ContactPage>} A promise resolving to the fetched contact page data.
  */
 export async function fetchContactPage(): Promise<ContactPage> {
-	const [{ contactPage }, artist, address] = await Promise.all([
-		await fetchContentfulData<ContactPageResponse>(ContactPageQuery, {
-			sysID: '68BbqtKbBhg4PwwWHNOB2',
-		}),
-		fetchArtist(),
-		fetchAddress(),
-	]);
-	return { ...contactPage, type: PageType.ContactPage, artist, address };
+	const { contactPage, ...pageComponents } = await fetchContentfulData<ContactPageResponse>(ContactPageQuery, {
+		contactPageSysID: cfids.contactPage.id,
+		artistSysID: cfids.artist.id,
+		addressSysID: cfids.address.id,
+	});
+	const seoMetaData = contactPage.seoMetaData;
+	const content = { ...contactPage, type: PageType.ContactPage };
+	return { content, ...pageComponents, seoMetaData };
 }
 
 /**

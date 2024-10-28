@@ -5,7 +5,7 @@
 @import '@/css/components/cursor.css';
 @import '@/css/components/preloader.css';
 @import '@/css/components/navigation.css';
-
+@import '@/css/components/checkbox.css';
 
 @layer base {
 	* {
@@ -27,6 +27,36 @@
 	h5,
 	h6 {
 		@apply text-white;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+		font-weight: 700;
+	}
+	
+	h2 {
+		font-size: 1.5rem;
+		font-weight: 600;
+	}
+	
+	h3 {
+		font-size: 1.25rem;
+		font-weight: 600;
+	}
+	
+	h4 {
+		font-size: 1.1rem;
+		font-weight: 500;
+	}
+	
+	h5 {
+		font-size: 1rem;
+		font-weight: 500;
+	}
+	
+	h6 {
+		font-size: 1rem;
+		font-weight: 400;
 	}
 
 	a {
@@ -58,13 +88,9 @@
 	}
 
 	hr {
-		@apply border-[rgba(255,255,255,0.1)];
+		@apply border-primary-color;
 	}
 }
-
-/* @layer utilities {
-
-} */
 
 @layer components {
 
@@ -105,7 +131,7 @@
 	}
 
 	.page-header-title {
-		@apply font-extrabold font-montserrat text-4xl mt-4 mb-8 text-shadow shadow-slate-900;
+		@apply font-extrabold font-montserrat text-4xl mt-4 mb-8 text-shadow shadow-slate-800;
 	}
 
 	.page-header-subtitle {
@@ -137,7 +163,7 @@
 	}
 
 	.rich-text-block-border {
-		@apply rich-text-block border-[rgba(255,255,255,0.1)] border-b pb-8;
+		@apply rich-text-block border-primary-color border-b pb-8;
 	}
 
 	.text-block h3,
@@ -151,7 +177,7 @@
 	}
 
 	.text-block h4 {
-		@apply text-lg text-[lightgray];
+		@apply text-lg;
 	}
 
 	.image-container {
@@ -231,7 +257,7 @@
 	}
 
 	.contact-details {
-		@apply font-montserrat font-medium mb-6 leading-7 text-center;
+		@apply font-montserrat font-medium mb-6 leading-7 text-left;
 	}
 
 	.contact-details .insta {
@@ -256,5 +282,11 @@
 
 	.contact-details .contact-details-ctas svg {
 		@apply absolute top-1/2 left-0 -translate-y-1/2;
+	}
+}
+
+@layer utilities {
+	.border-primary-color {
+		border-color: rgba(255,255,255,0.1);
 	}
 }

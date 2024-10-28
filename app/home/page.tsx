@@ -1,31 +1,18 @@
-import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import React from 'react';
-import { HomePage, SchemaType } from '@/model';
-import { fetchHomePage, fetchHomePageSeoMetaData, generateSchema, processRichText } from '@/lib';
-import { SectionContainer, ContactDetails, SchemaTag, type RenderComponentItem, RenderComponent } from '@/components';
+import { SchemaType } from '@/model';
+import { fetchData, fetchHomePage, generateSchema, processRichText } from '@/lib';
+import { type RenderComponentItem, SectionContainer, ContactDetails, SchemaTag, RenderComponent } from '@/components';
 import '@/css/pages/home-page.css';
 
-export async function generateMetadata(): Promise<Metadata> {
-	try {
-		return await fetchHomePageSeoMetaData();
-	} catch (error) {
-		notFound();
-	}
+export async function generateMetadata() {
+	return (await fetchData(fetchHomePage)).seoMetaData;
 }
 
 export default async function Home() {
-	//
-	let homePage: HomePage;
-	try {
-		homePage = await fetchHomePage();
-	} catch (error) {
-		notFound();
-	}
-
-	const jsonLd = generateSchema(homePage, SchemaType.HOME_PAGE);
-	const blocks = homePage.buildingBlocksCollection?.items || [];
+	const { content, artist, address } = await fetchData(fetchHomePage);
+	const jsonLd = generateSchema({ content, artist, schemaType: SchemaType.HOME_PAGE });
+	const blocks = content.buildingBlocksCollection?.items || [];
 	return (
 		<SectionContainer>
 			<SchemaTag schema={jsonLd} />
@@ -33,19 +20,17 @@ export default async function Home() {
 				<div className="home-page page">
 					<div className="home-content">
 						<Image
-							src={homePage.mugshot.url + '?w=256&h=256'}
-							alt={homePage.mugshot.description}
-							width={homePage.mugshot.width}
-							height={homePage.mugshot.height}
+							src={content.mugshot.url + '?w=256&h=256'}
+							alt={content.mugshot.description}
+							width={content.mugshot.width}
+							height={content.mugshot.height}
 							className="avatar"
 						/>
 						<div className="content">
-							<h1 className="name">{homePage.title}</h1>
-							{homePage.subtitle && <h2 className="subtitle">{homePage.subtitle}</h2>}
-							<div className="rich-text-block-border max-w-[450px]">
-								{processRichText(homePage.description.json)}
-							</div>
-							<ContactDetails showInsta={false} showAddress={false} />
+							<h1 className="name">{content.title}</h1>
+							{content.subtitle && <h2 className="subtitle">{content.subtitle}</h2>}
+							<div className="rich-text-block-border max-w-[450px]">{processRichText(content.description.json)}</div>
+							<ContactDetails showInsta={false} showAddress={false} content={{ artist, address }} />
 							<hr />
 							<br />
 							<h3>Nieuwste werk:</h3>

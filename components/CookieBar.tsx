@@ -1,18 +1,21 @@
 'use client';
 import React from 'react';
 import { hasCookie, setCookie } from 'cookies-next';
+import { Button } from './Button';
+
+export const cookieKey = 'localConsent';
 
 export const CookieBar: React.FC = () => {
 	//
-	const [showConsent, setShowConsent] = React.useState(true);
+	const [showConsent, setShowConsent] = React.useState<boolean>(true);
 
 	React.useEffect(() => {
-		setShowConsent(hasCookie('localConsent'));
+		setShowConsent(hasCookie(cookieKey));
 	}, []);
 
 	const acceptCookie = React.useCallback(() => {
 		setShowConsent(true);
-		setCookie('localConsent', 'true', {});
+		setCookie(cookieKey, 'true', {});
 	}, []);
 
 	if (showConsent) {
@@ -21,9 +24,9 @@ export const CookieBar: React.FC = () => {
 
 	return (
 		<div className="cookie-bar">
-			<button className="button mx-auto" onClick={acceptCookie}>
+			<Button onClick={acceptCookie} centered>
 				Accepteer Cookies
-			</button>
+			</Button>
 		</div>
 	);
 };

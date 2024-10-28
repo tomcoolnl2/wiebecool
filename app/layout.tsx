@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
 import { Montserrat, Mulish, Poppins } from 'next/font/google';
 import { artist, baseUrl, fetchMainNavigation, locale } from '@/lib';
@@ -51,6 +52,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children })
 				</div>
 				<CookieBar />
 				<Cursor />
+				<Analytics />
 			</body>
 		</html>
 	);

@@ -1,5 +1,4 @@
 //
-
 export enum SchemaType {
 	HOME_PAGE = 'WebPage',
 	ABOUT_PAGE = 'WebPage',

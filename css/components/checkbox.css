@@ -1,0 +1,54 @@
+
+
+.checkbox {
+    @apply relative inline-block;
+}
+
+.checkbox.small {
+    @apply w-7 h-4;
+}
+
+.checkbox.medium {
+    @apply w-9 h-5;
+}
+
+.checkbox.large {
+    @apply w-11 h-6;
+}
+
+.checkbox input {
+    @apply opacity-0 w-0 h-0;
+}
+
+.checkbox-control {
+    @apply 
+        absolute 
+        cursor-pointer 
+        bg-[#ccc] 
+        transition-[0.4s] 
+        rounded-2xl
+        inset-0 
+
+        before:absolute 
+        before:content-[""] 
+        before:h-[calc(100%-4px)]
+        before:aspect-square
+        before:bg-white
+        before:transition-[0.4s] 
+        before:rounded-[50%] 
+        before:left-[2px] 
+        before:top-[2px];
+    -webkit-transition: 0.4s;
+}
+
+.checkbox-control:before {
+    -webkit-transition: 0.4s;
+}
+
+.checkbox input:checked + .checkbox-control {
+    @apply bg-buddha-gold-700;
+}
+
+.checkbox input:checked + .checkbox-control:before {
+    @apply translate-x-[100%];
+}
