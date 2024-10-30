@@ -13,16 +13,16 @@
 .contact-page input,
 .contact-page textarea {
 	@apply w-full 
-        text-white 
-        rounded
-        border 
-        bg-transparent 
-        border-solid 
-        border-white 
-        border-opacity-20
-        focus:border 
-        focus:border-solid 
-        focus:border-white;
+	text-white 
+	rounded
+	border 
+	bg-transparent 
+	border-solid 
+	border-white 
+	border-opacity-20
+	focus:border 
+	focus:border-solid 
+	focus:border-white;
 }
 
 .contact-page input:focus {
@@ -35,4 +35,13 @@
 
 .contact-page textarea:focus {
 	outline: none;
+}
+
+.contact-page .has-form-error input,
+.contact-page .has-form-error textarea {
+	@apply text-red-400 border-red-400;
+}
+
+.contact-page .form-error {
+	@apply text-red-400 text-sm;
 }

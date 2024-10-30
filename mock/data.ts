@@ -1,6 +1,8 @@
 import { BLOCKS } from '@contentful/rich-text-types';
 import { Address, Artist, ItemImage, NavigationPageEntry, PageCarousel, PageType, RichText } from '@/model';
 
+export const mockEmail = 'test@email.com';
+
 export const mockAddress: Address = {
 	streetAddress: '123 Maple Street',
 	zipCode: '10001',
@@ -113,3 +115,17 @@ export const mockMainNavigation: NavigationPageEntry[] = [
 		subNavigation: [],
 	},
 ];
+
+export const mockSiteContent = {
+	page: {
+		contact: {
+			success: 'Bericht verstuurd. Bedankt!',
+			error: {
+				required: 'Dit veld is verplicht.',
+				minLength: 'Vul een naam in met minimaal 2 karakters.',
+				email: 'Vul een geldig email adres in.',
+				sendingFailed: 'Er ging iets mis!',
+			},
+		},
+	},
+};
