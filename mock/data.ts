@@ -113,3 +113,9 @@ export const mockMainNavigation: NavigationPageEntry[] = [
 		subNavigation: [],
 	},
 ];
+
+export const mockErrorMessages = {
+	required: 'Dit veld is verplicht.',
+	minLength: 'Vul een naam in met minimaal 2 karakters.',
+	email: 'Vul een geldig email adres in.',
+};

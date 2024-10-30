@@ -1,13 +1,15 @@
 'use client';
-import { useForm, SubmitHandler, set } from 'react-hook-form';
+import classNames from 'classnames';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { useFormStatus } from 'react-dom';
 import { useSearchParams } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import * as React from 'react';
-import { AlertMessage, AlertMessageType, ContactFormInput } from '@/model';
+import { AlertMessage, ContactFormInput } from '@/model';
 import { sendEmail } from '@/lib';
 import { Button } from './Button';
-import { send } from 'emailjs-com';
+// ! TODO: Import proper errorMessages from Contentful: https://app.shortcut.com/wiebecoolnl/story/2625/contenful-config-type-for-hardcoded-values
+import { mockErrorMessages as errorMessages } from '@/mock/data';
 
 const Alert = dynamic(() => import('@/components/Alert'), { ssr: false });
 
@@ -26,17 +28,14 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 	const {
 		register,
 		handleSubmit,
-		watch,
 		formState: { errors },
-	} = useForm<ContactFormInput>();
-	//
+	} = useForm<ContactFormInput>({ mode: 'onBlur' });
+
 	const formRef = React.useRef<HTMLFormElement>(null);
 	const [message, setMessage] = React.useState<string>('');
 	const [alert, setAlert] = React.useState<AlertMessage | null>(null);
 	const { pending } = useFormStatus();
 	const searchParams = useSearchParams();
-
-	console.log(watch('email'));
 
 	React.useEffect(() => {
 		console.log(errors);
@@ -82,42 +81,62 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 	const handleOnSubmit: SubmitHandler<ContactFormInput> = async (data) => {
 		const alert = await sendEmail(data);
 		setAlert(alert);
+		if (alert.type === 'success') {
+			formRef.current?.reset();
+		}
 	};
 
 	return (
 		<form id="form" ref={formRef} onSubmit={handleSubmit(handleOnSubmit)} noValidate>
 			<div className="rich-text-block">{formIntro}</div>
-			<div className="field">
+
+			<div className={classNames('field', { 'has-form-error': errors.name })}>
 				<label htmlFor="name">Naam:</label>
-				<input {...register('name', { required: true })} placeholder="Naam" type="text" />
-				{errors.name && <span>This field is required</span>}
+				<input id="name" {...register('name', { required: true, minLength: 2 })} placeholder="Naam" />
+				{errors.name && errors.name.type === 'required' && (
+					<span role="alert" className="form-error">
+						{errorMessages.required}
+					</span>
+				)}
+				{errors.name && errors.name.type === 'minLength' && (
+					<span role="alert" className="form-error">
+						{errorMessages.minLength}
+					</span>
+				)}
 			</div>
-			<div className="field">
+
+			<div className={classNames('field', { 'has-form-error': errors.email })}>
 				<label htmlFor="email">Email:</label>
 				<input
 					{...register('email', {
 						required: true,
-						pattern: { value: /^[^@]+@[^@]+\.[^@]+$/, message: 'invalid email address' },
+						pattern: { value: /^[^@]+@[^@]+\.[^@]+$/, message: errorMessages.email },
 					})}
 					placeholder="Email"
 					type="email"
 				/>
-				{errors.email && <span>This field is required</span>}
+				{errors.email && (
+					<span role="alert" className="form-error">
+						{errors.email.message}
+					</span>
+				)}
 			</div>
-			<div className="field">
+
+			<div className={classNames('field', { 'has-form-error': errors.message })}>
 				<label htmlFor="message">Bericht:</label>
 				<textarea
 					placeholder="Bericht"
 					value={message}
 					{...register('message', {
+						required: errorMessages.required,
 						onChange: (e) => setMessage(e.target.value),
-						validate: {
-							pattern: (value: string) => !/[!]/.test(value),
-						},
 					})}
 				/>
+				{errors.message && <span>{errors.message.message}</span>}
 			</div>
+
 			{alert && <Alert {...alert} />}
+
 			<Button type="submit" disabled={pending || !!alert}>
 				{buttonText}
 			</Button>

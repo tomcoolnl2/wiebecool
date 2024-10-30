@@ -174,6 +174,7 @@ export function toLocaleDateString(dateString: string): string {
  * @returns {AlertMessage} An alert message indicating the validation result.
  */
 export async function sendEmail(data: ContactFormInput): Promise<AlertMessage> {
+	//
 	const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
 	const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
 	const userID = process.env.NEXT_PUBLIC_EMAILJS_USER_ID || '';
