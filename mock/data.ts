@@ -1,6 +1,8 @@
 import { BLOCKS } from '@contentful/rich-text-types';
 import { Address, Artist, ItemImage, NavigationPageEntry, PageCarousel, PageType, RichText } from '@/model';
 
+export const mockEmail = 'test@email.com';
+
 export const mockAddress: Address = {
 	streetAddress: '123 Maple Street',
 	zipCode: '10001',
