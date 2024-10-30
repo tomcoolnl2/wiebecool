@@ -4,7 +4,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { Document, INLINES } from '@contentful/rich-text-types';
 import { Address, AlertMessage, AlertMessageType, ContactFormInput, OrderType, PageType, ReWriteRule, Slug } from '@/model';
-import { mockEmail } from '@/mock/data';
+import { mockEmail, mockSiteContent as siteContent } from '@/mock/data';
 
 /** The locale of the website */
 export const locale = 'nl-NL';
@@ -182,7 +182,7 @@ export async function sendEmail(data: ContactFormInput): Promise<AlertMessage> {
 
 	// ! TODO: Import proper Success message content from Contentful:
 	// https://app.shortcut.com/wiebecoolnl/story/2625/contenful-config-type-for-hardcoded-values
-	const successAlert = { type: AlertMessageType.SUCCESS, message: 'Bericht verstuurd. Bedankt!' };
+	const successAlert = { type: AlertMessageType.SUCCESS, message: siteContent.page.contact.success };
 
 	// Cypress e2e success
 	if (data.email === mockEmail) {
@@ -205,6 +205,6 @@ export async function sendEmail(data: ContactFormInput): Promise<AlertMessage> {
 		console.error('Error sending email:', error);
 		// ! TODO: Import proper Error message content from Contentful:
 		// https://app.shortcut.com/wiebecoolnl/story/2625/contenful-config-type-for-hardcoded-values
-		return { type: AlertMessageType.ERROR, message: 'Er ging iets mis!' };
+		return { type: AlertMessageType.ERROR, message: siteContent.page.contact.error.sendingFailed };
 	}
 }

@@ -8,8 +8,8 @@ import * as React from 'react';
 import { AlertMessage, ContactFormInput } from '@/model';
 import { sendEmail } from '@/lib';
 import { Button } from './Button';
-// ! TODO: Import proper errorMessages from Contentful: https://app.shortcut.com/wiebecoolnl/story/2625/contenful-config-type-for-hardcoded-values
-import { mockErrorMessages as errorMessages } from '@/mock/data';
+// ! TODO: Import proper mockSiteContent from Contentful: https://app.shortcut.com/wiebecoolnl/story/2625/contenful-config-type-for-hardcoded-values
+import { mockSiteContent as siteContent } from '@/mock/data';
 
 const Alert = dynamic(() => import('@/components/Alert'), { ssr: false });
 
@@ -95,12 +95,12 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 				<input id="name" {...register('name', { required: true, minLength: 2 })} placeholder="Naam" />
 				{errors.name && errors.name.type === 'required' && (
 					<span role="alert" className="form-error">
-						{errorMessages.required}
+						{siteContent.page.contact.error.required}
 					</span>
 				)}
 				{errors.name && errors.name.type === 'minLength' && (
 					<span role="alert" className="form-error">
-						{errorMessages.minLength}
+						{siteContent.page.contact.error.minLength}
 					</span>
 				)}
 			</div>
@@ -110,7 +110,7 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 				<input
 					{...register('email', {
 						required: true,
-						pattern: { value: /^[^@]+@[^@]+\.[^@]+$/, message: errorMessages.email },
+						pattern: { value: /^[^@]+@[^@]+\.[^@]+$/, message: siteContent.page.contact.error.email },
 					})}
 					placeholder="Email"
 					type="email"
@@ -128,7 +128,7 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 					placeholder="Bericht"
 					value={message}
 					{...register('message', {
-						required: errorMessages.required,
+						required: siteContent.page.contact.error.required,
 						onChange: (e) => setMessage(e.target.value),
 					})}
 				/>
