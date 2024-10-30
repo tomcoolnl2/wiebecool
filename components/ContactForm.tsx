@@ -38,10 +38,6 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 	const searchParams = useSearchParams();
 
 	React.useEffect(() => {
-		console.log(errors);
-	}, [errors]);
-
-	React.useEffect(() => {
 		if (searchParams.has('subject')) {
 			const subject = searchParams.get('subject');
 			subject && setMessage(prefabMessage(subject));
