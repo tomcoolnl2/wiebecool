@@ -1,6 +1,6 @@
 #
-query HomePageData($homePageSysID: String!, $artistSysID: String!, $addressSysID: String!) {
-	homePage(id: $homePageSysID) {
+query HomePageData($sysID: String!) {
+	homePage(id: $sysID) {
 		seoMetaData {
 			title
 			description
@@ -40,19 +40,5 @@ query HomePageData($homePageSysID: String!, $artistSysID: String!, $addressSysID
 				}
 			}
 		}
-	}
-	artist(id: $artistSysID) {
-		name
-		occupation
-		description
-		telephone
-		email
-		mentions
-	}
-	address(id: $addressSysID) {
-		streetAddress
-		zipCode
-		city
-		country
 	}
 }

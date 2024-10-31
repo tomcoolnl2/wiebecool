@@ -1,4 +1,4 @@
-import { baseUrl, buildUrl, locale, processPlainText } from '@/lib';
+import { buildUrl, fetchGlobalConfig, processPlainText } from '@/lib';
 import {
 	AboutPageSchema,
 	Address,
@@ -34,8 +34,10 @@ type SchemaGenerator = {
 	img?: ItemImage | null;
 };
 
-export function generateSchema({ schemaType, content, artist = null, img = null }: SchemaGenerator): Schema {
+export async function generateSchema({ schemaType, content, artist = null, img = null }: SchemaGenerator): Promise<Schema> {
 	//
+	const { locale, baseUrl } = await fetchGlobalConfig();
+
 	const baseSchema: BaseSchema = {
 		'@context': 'https://schema.org',
 		'@type': schemaType,
@@ -47,7 +49,7 @@ export function generateSchema({ schemaType, content, artist = null, img = null 
 		basePageSchema = {
 			name: content.title || 'Untitled',
 			description: processPlainText(content.description),
-			url: buildUrl(content.slug).href,
+			url: buildUrl(baseUrl, content.slug).href,
 		};
 	}
 
@@ -74,7 +76,7 @@ export function generateSchema({ schemaType, content, artist = null, img = null 
 			const schema = {
 				...baseSchema,
 				...basePageSchema,
-				url: buildUrl(collectionPageData.slug, path).href,
+				url: buildUrl(baseUrl, collectionPageData.slug, path).href,
 				mainEntity: collectionPageData.cards.map(
 					(detailPage) =>
 						({
@@ -82,7 +84,7 @@ export function generateSchema({ schemaType, content, artist = null, img = null 
 							name: detailPage.title,
 							description: processPlainText(detailPage.description),
 							image: detailPage.imageCollection.items[0].url,
-							url: buildUrl(detailPage.slug, ReWriteRule[PageType.DetailPage]).href,
+							url: buildUrl(baseUrl, detailPage.slug, ReWriteRule[PageType.DetailPage]).href,
 						} as SculptureListItemSchema)
 				),
 			};
@@ -133,7 +135,7 @@ export function generateSchema({ schemaType, content, artist = null, img = null 
 			const schema = {
 				...baseSchema,
 				...basePageSchema,
-				url: buildUrl(detailPageData.slug, ReWriteRule[PageType.DetailPage]).href,
+				url: buildUrl(baseUrl, detailPageData.slug, ReWriteRule[PageType.DetailPage]).href,
 				image,
 				creator: {
 					'@type': SchemaType.PERSON,
@@ -150,7 +152,7 @@ export function generateSchema({ schemaType, content, artist = null, img = null 
 			const schema = {
 				...baseSchema,
 				...basePageSchema,
-				url: buildUrl(contactPageData.slug).href,
+				url: buildUrl(baseUrl, contactPageData.slug).href,
 				contactPoint: {
 					'@type': SchemaType.CONTACT_POINT,
 					telephone: artist!.telephone,

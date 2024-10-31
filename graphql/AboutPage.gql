@@ -1,6 +1,6 @@
 #
-query AboutPageQuery($aboutPageSysID: String!, $artistSysID: String!, $addressSysID: String!) {
-	aboutPage(id: $aboutPageSysID) {
+query AboutPageQuery($sysID: String!) {
+	aboutPage(id: $sysID) {
 		seoMetaData {
 			title
 			description
@@ -46,19 +46,5 @@ query AboutPageQuery($aboutPageSysID: String!, $artistSysID: String!, $addressSy
 				}
 			}
 		}
-	}
-	artist(id: $artistSysID) {
-		name
-		occupation
-		description
-		telephone
-		email
-		mentions
-	}
-	address(id: $addressSysID) {
-		streetAddress
-		zipCode
-		city
-		country
 	}
 }

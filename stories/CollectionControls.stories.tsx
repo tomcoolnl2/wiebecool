@@ -64,15 +64,3 @@ export const NoFiltering: Story = {
 		filteringEnabled: false,
 	},
 };
-
-export const NoSortingNoFiltering: Story = {
-	args: {
-		path: '/collection',
-		tags: tags,
-		sortOrder: null,
-		filter: null,
-		sortingEnabled: false,
-		allowSorting: true,
-		filteringEnabled: false,
-	},
-};

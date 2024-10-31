@@ -1,8 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { ContactDetails, Props } from '../components/ContactDetails';
-import { mockAddress as address, mockArtist as artist } from '@/mock/data';
-
-const content = { artist, address };
+import { mockArtist } from '@/mock/data';
 
 const meta = {
 	title: 'Components/ContactDetails',
@@ -27,7 +25,7 @@ export const Default: Story = {
 		showAddress: true,
 		showCTAs: true,
 		subject: 'Inquiry about Artworks',
-		content,
+		artist: mockArtist,
 	},
 };
 
@@ -37,7 +35,7 @@ export const WithInstagram: Story = {
 		showAddress: true,
 		showCTAs: true,
 		subject: 'Contact Regarding Collaboration',
-		content,
+		artist: mockArtist,
 	},
 };
 
@@ -47,7 +45,7 @@ export const CallToActions: Story = {
 		showAddress: false,
 		showCTAs: true,
 		subject: 'No Address Example',
-		content,
+		artist: mockArtist,
 	},
 };
 
@@ -57,7 +55,7 @@ export const Address: Story = {
 		showAddress: true,
 		showCTAs: false,
 		subject: 'No Contact Methods Example',
-		content,
+		artist: mockArtist,
 	},
 };
 
@@ -67,7 +65,7 @@ export const Centered: Story = {
 		showAddress: true,
 		showCTAs: false,
 		subject: 'Centerer Example',
-		content,
+		artist: mockArtist,
 		className: 'text-center',
 	},
 };

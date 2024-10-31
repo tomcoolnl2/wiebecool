@@ -1,6 +1,6 @@
 #
-query ContactPage($contactPageSysID: String!, $artistSysID: String!, $addressSysID: String!) {
-	contactPage(id: $contactPageSysID) {
+query ContactPage($sysID: String!) {
+	contactPage(id: $sysID) {
 		seoMetaData {
 			title
 			description
@@ -14,19 +14,5 @@ query ContactPage($contactPageSysID: String!, $artistSysID: String!, $addressSys
 		}
 		formIntro
 		submitButtonText
-	}
-	artist(id: $artistSysID) {
-		name
-		occupation
-		description
-		telephone
-		email
-		mentions
-	}
-	address(id: $addressSysID) {
-		streetAddress
-		zipCode
-		city
-		country
 	}
 }

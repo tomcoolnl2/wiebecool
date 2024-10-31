@@ -13,21 +13,17 @@ export interface Props {
 	showAddress?: boolean;
 	showCTAs?: boolean;
 	subject?: string;
-	content: {
-		artist: Artist;
-		address: Address;
-	};
+	artist: Artist;
 	className?: string | string[] | { [key: string]: boolean };
 }
 
-export const ContactDetails: React.FC<Props> = ({ showInsta = false, showAddress = true, showCTAs = true, subject, content, className }) => {
+export const ContactDetails: React.FC<Props> = ({ showInsta = false, showAddress = true, showCTAs = true, subject, artist, className }) => {
 	//
-	const { artist, address } = content;
 	const subjectParams = subject ? `?subject=${encodeURIComponent(subject)}` : '';
 
 	return (
 		<aside className={classNames('contact-details', className)}>
-			{showInsta && <div className="insta">{<ShareInstagram size="2xl" />}</div>}
+			{showInsta && <div className="insta">{<ShareInstagram title={artist.description} size="2xl" />}</div>}
 			{showCTAs && (
 				<div className="contact-details-ctas">
 					<h3>Meer weten?</h3>
@@ -47,8 +43,12 @@ export const ContactDetails: React.FC<Props> = ({ showInsta = false, showAddress
 				<>
 					{'Bezoekadres:'}
 					<br />
-					<a href={`https://www.google.com/maps/place/${formatGoogleMapsAddress(address)}/`} target="_blank" rel="noopener noreferrer">
-						{address.streetAddress}, {address.zipCode} {address.city}
+					<a
+						href={`https://www.google.com/maps/place/${formatGoogleMapsAddress(artist.address)}/`}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						{artist.address.streetAddress}, {artist.address.zipCode} {artist.address.city}
 					</a>
 				</>
 			)}
