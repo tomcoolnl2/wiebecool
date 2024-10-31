@@ -4,6 +4,7 @@ query GlobalConfiguration {
 		items {
 			locale
 			baseUrl
+			sysIDs
 		}
 	}
 }

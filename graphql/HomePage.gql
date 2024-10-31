@@ -1,6 +1,6 @@
 #
-query HomePageData($homePageSysID: String!) {
-	homePage(id: $homePageSysID) {
+query HomePageData($sysID: String!) {
+	homePage(id: $sysID) {
 		seoMetaData {
 			title
 			description

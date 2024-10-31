@@ -33,6 +33,7 @@ export type Slug = `/${string}`;
 export interface GlobalConfig {
 	locale: string;
 	baseUrl: string;
+	sysIDs: Record<string, string>;
 }
 
 export interface SeoMetaData {

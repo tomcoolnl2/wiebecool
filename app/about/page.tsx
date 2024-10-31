@@ -7,7 +7,8 @@ import { type RenderComponentItem, RenderComponent, SectionContainer, PageHeader
 import '@/css/pages/about-page.css';
 
 export async function generateMetadata() {
-	return (await fetchData(fetchAboutPage)).seoMetaData;
+	const { seoMetaData } = await fetchData(fetchAboutPage);
+	return seoMetaData;
 }
 
 export default async function About() {

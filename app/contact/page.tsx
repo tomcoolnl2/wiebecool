@@ -6,7 +6,8 @@ import { ContactForm, SchemaTag, SectionContainer, PageHeader, ContactDetails } 
 import '@/css/pages/contact-page.css';
 
 export async function generateMetadata() {
-	return (await fetchData(fetchContactPage)).seoMetaData;
+	const { seoMetaData } = await fetchData(fetchContactPage);
+	return seoMetaData;
 }
 
 export default async function Contact() {

@@ -6,7 +6,8 @@ import { type RenderComponentItem, SectionContainer, ContactDetails, SchemaTag, 
 import '@/css/pages/home-page.css';
 
 export async function generateMetadata() {
-	return (await fetchData(fetchHomePage)).seoMetaData;
+	const { seoMetaData } = await fetchData(fetchHomePage);
+	return seoMetaData;
 }
 
 export default async function Home() {

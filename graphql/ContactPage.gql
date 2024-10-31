@@ -1,6 +1,6 @@
 #
-query ContactPage($contactPageSysID: String!) {
-	contactPage(id: $contactPageSysID) {
+query ContactPage($sysID: String!) {
+	contactPage(id: $sysID) {
 		seoMetaData {
 			title
 			description

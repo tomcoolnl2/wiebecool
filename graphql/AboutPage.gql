@@ -1,6 +1,6 @@
 #
-query AboutPageQuery($aboutPageSysID: String!) {
-	aboutPage(id: $aboutPageSysID) {
+query AboutPageQuery($sysID: String!) {
+	aboutPage(id: $sysID) {
 		seoMetaData {
 			title
 			description

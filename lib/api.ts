@@ -42,7 +42,6 @@ import {
 	ArtistResponse,
 } from '@/model';
 import { ContentfulError } from './error';
-import { ContentfulIDs as cfids } from './contentful';
 
 /**
  * Preloads data by fetching from Contentful.
@@ -161,7 +160,8 @@ export async function fetchNavigation(sysID: string): Promise<Navigation> {
  * @returns {Promise<Navigation>} A promise resolving to the fetched navigation data.
  */
 export async function fetchMainNavigation(): Promise<Navigation> {
-	return await fetchNavigation(cfids.nav.id);
+	const { sysIDs } = await fetchGlobalConfig();
+	return await fetchNavigation(sysIDs.nav);
 }
 
 /**
@@ -169,9 +169,8 @@ export async function fetchMainNavigation(): Promise<Navigation> {
  * @returns {Promise<HomePage>} A promise resolving to the fetched Home page Data.
  */
 export async function fetchHomePage(): Promise<HomePage> {
-	const { homePage } = await fetchContentfulData<HomePageResponse>(HomePageQuery, {
-		homePageSysID: cfids.homePage.id,
-	});
+	const { sysIDs } = await fetchGlobalConfig();
+	const { homePage } = await fetchContentfulData<HomePageResponse>(HomePageQuery, { sysID: sysIDs.homePage });
 	const seoMetaData = homePage.seoMetaData;
 	const content = { ...homePage, type: PageType.HomePage };
 	return { content, seoMetaData };
@@ -182,9 +181,8 @@ export async function fetchHomePage(): Promise<HomePage> {
  * @returns {Promise<AboutPage>} A promise resolving to the fetched About Page data.
  */
 export async function fetchAboutPage(): Promise<AboutPage> {
-	const { aboutPage } = await fetchContentfulData<AboutPageResponse>(AboutPageQuery, {
-		aboutPageSysID: cfids.aboutPage.id,
-	});
+	const { sysIDs } = await fetchGlobalConfig();
+	const { aboutPage } = await fetchContentfulData<AboutPageResponse>(AboutPageQuery, { sysID: sysIDs.aboutPage });
 	const seoMetaData = aboutPage.seoMetaData;
 	const content = { ...aboutPage, type: PageType.AboutPage };
 	return { content, seoMetaData };
@@ -267,9 +265,8 @@ export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
  * @returns {Promise<ContactPage>} A promise resolving to the fetched contact page data.
  */
 export async function fetchContactPage(): Promise<ContactPage> {
-	const { contactPage } = await fetchContentfulData<ContactPageResponse>(ContactPageQuery, {
-		contactPageSysID: cfids.contactPage.id,
-	});
+	const { sysIDs } = await fetchGlobalConfig();
+	const { contactPage } = await fetchContentfulData<ContactPageResponse>(ContactPageQuery, { sysID: sysIDs.contactPage });
 	const seoMetaData = contactPage.seoMetaData;
 	const content = { ...contactPage, type: PageType.ContactPage };
 	return { content, seoMetaData };
