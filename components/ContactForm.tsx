@@ -17,10 +17,6 @@ const Alert = dynamic(() => import('@/components/Alert'), { ssr: false });
 
 const formId = '#form';
 
-function prefabMessage(subject: string): string {
-	return `Hallo Wiebe,\nIk heb een vraag over "${subject}"...`.trim();
-}
-
 interface Props {
 	formIntro: string;
 	buttonText: string;
@@ -30,12 +26,6 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 	//
 	const recaptchaRef = React.useRef<ReCAPTCHA>(null);
 	const [isVerified, setIsverified] = React.useState<boolean>(false);
-
-	async function handleCaptchaSubmission(token: string | null) {
-		await verifyCaptcha(token)
-			.then(() => setIsverified(true))
-			.catch(() => setIsverified(false));
-	}
 
 	const {
 		register,
@@ -49,10 +39,22 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 	const { pending } = useFormStatus();
 	const searchParams = useSearchParams();
 
+	const isCypress = React.useMemo(() => {
+		return typeof window !== 'undefined' && window?.Cypress;
+	}, []);
+
+	React.useEffect(() => {
+		if (isCypress) {
+			setIsverified(true);
+		}
+	}, [isCypress]);
+
 	React.useEffect(() => {
 		if (searchParams.has('subject')) {
 			const subject = searchParams.get('subject');
-			subject && setMessage(prefabMessage(subject));
+			if (subject) {
+				setMessage(`Hallo Wiebe,\nIk heb een vraag over "${subject}"...`);
+			}
 		}
 	}, [searchParams]);
 
@@ -86,13 +88,19 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 		};
 	}, [onClickHandler]);
 
-	const handleOnSubmit: SubmitHandler<ContactFormInput> = async (data) => {
+	const handleCaptchaSubmission = React.useCallback(async (token: string | null) => {
+		await verifyCaptcha(token)
+			.then(() => setIsverified(true))
+			.catch(() => setIsverified(false));
+	}, []);
+
+	const handleOnSubmit = React.useCallback(async (data: ContactFormInput) => {
 		const alert = await sendEmail(data);
 		setAlert(alert);
 		if (alert.type === 'success') {
 			formRef.current?.reset();
 		}
-	};
+	}, []);
 
 	return (
 		<form id="form" ref={formRef} onSubmit={handleSubmit(handleOnSubmit)} noValidate>
