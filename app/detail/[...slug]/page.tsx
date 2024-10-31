@@ -98,6 +98,7 @@ export default async function DetailPage({ params }: PageParams) {
 								url={`${baseUrl}${path}`}
 								media={detailPageImg.url}
 								tags={[content.material || '', ...hashtags]}
+								artist={artist}
 							/>
 						</div>
 					</div>

@@ -7,13 +7,6 @@ import { Address, AlertMessage, AlertMessageType, ContactFormInput, OrderType, P
 import { mockEmail, mockSiteContent as siteContent } from '@/mock/data';
 import { fetchGlobalConfig } from './api';
 
-/** Hardcoded. */
-export const artist = {
-	name: 'Wiebe Cool',
-	occupation: 'Beeldhouwer',
-	description: 'Wiebe Cool | Beeldhouwer',
-};
-
 /**
  * Builds a link for the href attribute of a Navigation link.
  * @param {PageType} pageType - The type of page as a string.

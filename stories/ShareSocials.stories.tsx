@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { ShareSocials } from '../components/ShareSocials';
+import { mockArtist } from '@/mock/data';
 
 const meta = {
 	title: 'Components/ShareSocials',
@@ -21,6 +22,7 @@ export const Default: Story = {
 		showFacebook: true,
 		showTwitter: true,
 		showPinterest: true,
+		artist: mockArtist,
 	},
 };
 

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { faHome, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SchemaType } from '@/model';
-import { artist, generateSchema } from '@/lib';
+import { generateSchema } from '@/lib';
 import { SchemaTag } from '@/components';
 
 interface Props {
@@ -21,16 +21,21 @@ export const BreadCrumbs: React.FC<Props> = async ({ path }) => {
 			<SchemaTag schema={jsonLd} />
 			<ol className="list-none flex space-x-2">
 				<li className="breadcrumb-item">
-					<Link href="/" title={`Home - ${artist.description}`}>
+					<Link href="/" title="Home">
 						<FontAwesomeIcon icon={faHome} size="xs" />
 					</Link>
 				</li>
-				{crumbs.map((crumb, index) => (
-					<li key={crumb} className="breadcrumb-item flex items-center">
-						<FontAwesomeIcon icon={faChevronRight} size="2xs" className="mx-1 arrow" />
-						<Link href={`/${crumbs.slice(0, index + 1).join('/')}`}>{crumb.replace(/-/g, ' ')}</Link>
-					</li>
-				))}
+				{crumbs.map((crumb, index) => {
+					const name = crumb.replace(/-/g, ' ');
+					return (
+						<li key={crumb} className="breadcrumb-item flex items-center">
+							<FontAwesomeIcon icon={faChevronRight} size="2xs" className="mx-1 arrow" />
+							<Link href={`/${crumbs.slice(0, index + 1).join('/')}`} title={name}>
+								{name}
+							</Link>
+						</li>
+					);
+				})}
 				{current && (
 					<li className="breadcrumb-item current flex items-center">
 						<FontAwesomeIcon icon={faChevronRight} size="2xs" className="mx-1 arrow" />

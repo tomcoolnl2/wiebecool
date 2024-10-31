@@ -79,7 +79,6 @@ export const fetchData = async <T>(fetcher: () => Promise<T>): Promise<T> => {
 export const fetchContentfulData = cache(async <T>(query: string | GraphQLDocumentNode, variables = {}): Promise<T> => {
 	try {
 		const url = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
-
 		const body =
 			typeof query === 'string'
 				? JSON.stringify({ query, variables })

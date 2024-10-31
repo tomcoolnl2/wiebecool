@@ -42,13 +42,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children }) => {
-	const [{ locale }, { title, navigation }] = await Promise.all([fetchGlobalConfig(), fetchMainNavigation()]);
+	const [{ locale }, { title, navigation }, artist] = await Promise.all([fetchGlobalConfig(), fetchMainNavigation(), fetchArtist()]);
 	return (
 		<html lang={locale}>
 			<body className={`${montserrat.variable} ${mulish.variable} ${poppins.variable}`}>
 				<PreLoader />
 				<div className="site-wrapper">
-					<MainNavigation title={title} navigation={navigation} />
+					<MainNavigation title={title} navigation={navigation} artist={artist} />
 					<div className="main-content">
 						<Background />
 						<main className="main-content-inner">{children}</main>

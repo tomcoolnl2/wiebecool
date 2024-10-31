@@ -23,7 +23,7 @@ export const ContactDetails: React.FC<Props> = ({ showInsta = false, showAddress
 
 	return (
 		<aside className={classNames('contact-details', className)}>
-			{showInsta && <div className="insta">{<ShareInstagram size="2xl" />}</div>}
+			{showInsta && <div className="insta">{<ShareInstagram title={artist.description} size="2xl" />}</div>}
 			{showCTAs && (
 				<div className="contact-details-ctas">
 					<h3>Meer weten?</h3>

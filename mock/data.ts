@@ -17,6 +17,7 @@ export const mockArtist: Artist = {
 	telephone: '0031612345678',
 	email: 'alice.johnson@example.com',
 	mentions: ["Featured in the Modern Art Museum's 2023 collection.", 'Recipient of the Art Innovator Award 2022.', 'Interviewed by Art Daily.'],
+	address: mockAddress,
 };
 
 export const mockImage: ItemImage = {
