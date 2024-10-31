@@ -1,8 +1,10 @@
+import emailjs from 'emailjs-com';
 import * as React from 'react';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { documentToPlainTextString } from '@contentful/rich-text-plain-text-renderer';
 import { Document, INLINES } from '@contentful/rich-text-types';
-import { Address, AlertMessage, AlertMessageType, OrderType, PageType, ReWriteRule, Slug } from '@/model';
+import { Address, AlertMessage, AlertMessageType, ContactFormInput, OrderType, PageType, ReWriteRule, Slug } from '@/model';
+import { mockEmail, mockSiteContent as siteContent } from '@/mock/data';
 
 /** The locale of the website */
 export const locale = 'nl-NL';
@@ -172,24 +174,37 @@ export function toLocaleDateString(dateString: string): string {
  * @param {FormData} formData - The form data containing the email, name, and message.
  * @returns {AlertMessage} An alert message indicating the validation result.
  */
-export function validateContactForm(formData: FormData): AlertMessage {
+export async function sendEmail(data: ContactFormInput): Promise<AlertMessage> {
 	//
-	const email = formData.get('email');
-	const name = formData.get('name');
-	const message = formData.get('message');
+	const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
+	const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
+	const userID = process.env.NEXT_PUBLIC_EMAILJS_USER_ID || '';
 
-	if (!name) {
-		return { type: AlertMessageType.ERROR, message: 'Vul een naam in.' };
+	// ! TODO: Import proper Success message content from Contentful:
+	// https://app.shortcut.com/wiebecoolnl/story/2625/contenful-config-type-for-hardcoded-values
+	const successAlert = { type: AlertMessageType.SUCCESS, message: siteContent.page.contact.success };
+
+	// Cypress e2e success
+	if (data.email === mockEmail) {
+		return successAlert;
 	}
 
-	const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	if (!email || typeof email !== 'string' || !emailRegex.test(email)) {
-		return { type: AlertMessageType.ERROR, message: 'Verkeerd email adres.' };
+	try {
+		await emailjs.send(
+			serviceID,
+			templateID,
+			{
+				from_name: data.name,
+				from_email: data.email,
+				message: data.message,
+			},
+			userID
+		);
+		return successAlert;
+	} catch (error) {
+		console.error('Error sending email:', error);
+		// ! TODO: Import proper Error message content from Contentful:
+		// https://app.shortcut.com/wiebecoolnl/story/2625/contenful-config-type-for-hardcoded-values
+		return { type: AlertMessageType.ERROR, message: siteContent.page.contact.error.sendingFailed };
 	}
-
-	if (!message || typeof message !== 'string') {
-		return { type: AlertMessageType.ERROR, message: 'Vul een vraag in.' };
-	}
-
-	return { type: AlertMessageType.SUCCESS, message: 'Passed.' };
 }

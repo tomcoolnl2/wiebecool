@@ -1,5 +1,6 @@
 {
 	"typescript.tsdk": "node_modules/typescript/lib",
 	"editor.formatOnSave": true,
-	"css.customData": [".vscode/tailwind.json"]
+	"css.customData": [".vscode/tailwind.json"],
+	"eslint.validate": ["markdown", "mdx"]
 }

@@ -1,10 +1,7 @@
 import type { StorybookConfig } from '@storybook/nextjs';
 
 const config: StorybookConfig = {
-	// core: {
-	// 	builder: 'webpack5',
-	// },
-	stories: ['../**/*.stories.@(js|jsx|ts|tsx)'],
+	stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 	addons: [
 		'@storybook/addon-onboarding',
 		'@storybook/addon-links',
@@ -16,23 +13,28 @@ const config: StorybookConfig = {
 		name: '@storybook/nextjs',
 		options: {},
 	},
-	// typescript: {
-	// 	check: false,
-	// 	checkOptions: {},
-	// 	reactDocgen: false,
-	// 	reactDocgenTypescriptOptions: {
-	// 		shouldExtractLiteralValuesFromEnum: true,
-	// 		propFilter: (prop) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
-	// 	},
-	// },
 	webpackFinal: async (config) => {
-		// Exclude .gql and .graphql files from being processed
+		// Ignore .gql and .graphql files
 		config.module?.rules?.push({
 			test: /\.(graphql|gql)$/,
-			loader: 'ignore-loader', // This will ignore these files
+			loader: 'ignore-loader',
+		});
+
+		// Add MDX loader
+		config.module?.rules?.push({
+			test: /\.mdx$/,
+			use: [
+				{
+					loader: '@mdx-js/loader',
+					options: {
+						providerImportSource: '@mdx-js/react',
+					},
+				},
+			],
 		});
 
 		return config;
 	},
 };
+
 export default config;
