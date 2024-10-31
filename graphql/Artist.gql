@@ -10,4 +10,12 @@ query Artist {
 			mentions
 		}
 	}
+	addressCollection(limit: 1) {
+		items {
+			streetAddress
+			zipCode
+			city
+			country
+		}
+	}
 }

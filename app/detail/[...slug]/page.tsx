@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { type DetailPage, type PageParams, PageType, ReWriteRule, SchemaType } from '@/model';
-import { fetchData, capitalize, fetchDetailPage, formatPrice, generateSchema, toLocaleDateString, fetchGlobalConfig } from '@/lib';
+import { fetchData, capitalize, fetchDetailPage, formatPrice, generateSchema, toLocaleDateString, fetchGlobalConfig, fetchArtist } from '@/lib';
 import { ensureLeadingSlash, processRichText } from '@/lib';
 import { ContactDetails, SchemaTag, SectionContainer, PageHeader, ShareSocials, DetailCardsCollection } from '@/components';
 import '@/css/pages/detail-page.css';
@@ -24,7 +24,7 @@ export default async function DetailPage({ params }: PageParams) {
 	//
 	const slug = ensureLeadingSlash(params.slug[0]);
 	const fetchDetailPageBySlug = () => fetchDetailPage(slug);
-	const [{ baseUrl }, { content, artist, address }] = await Promise.all([fetchGlobalConfig(), fetchData(fetchDetailPageBySlug)]);
+	const [{ baseUrl }, { content }, artist] = await Promise.all([fetchGlobalConfig(), fetchData(fetchDetailPageBySlug), fetchArtist()]);
 
 	const detailPageImg = content.imageCollection.items[0];
 	const jsonLd = await generateSchema({ content, artist, schemaType: SchemaType.SCULPTURE, img: detailPageImg });
@@ -92,7 +92,7 @@ export default async function DetailPage({ params }: PageParams) {
 									</li>
 								)}
 							</ul>
-							<ContactDetails subject={content.title} showAddress={false} content={{ artist, address }} />
+							<ContactDetails subject={content.title} showAddress={false} artist={artist} />
 							<ShareSocials
 								title={content.title}
 								url={`${baseUrl}${path}`}

@@ -60,6 +60,9 @@ export interface ArtistResponse {
 	artistCollection: {
 		items: [Artist];
 	};
+	addressCollection: {
+		items: [Address];
+	};
 }
 
 export interface AddressResponse {
@@ -81,14 +84,10 @@ export interface PortfolioCardResponse {
 
 export interface HomePageResponse {
 	homePage: HomePageContent;
-	artist: Artist;
-	address: Address;
 }
 
 export interface AboutPageResponse {
 	aboutPage: AboutPageContent;
-	artist: Artist;
-	address: Address;
 }
 
 export interface CollectionPageResponse {
@@ -107,14 +106,10 @@ export interface DetailPageBySlugResponse {
 	detailPageCollection: {
 		items: [DetailPageContent];
 	};
-	artist: Artist;
-	address: Address;
 }
 
 export interface ContactPageResponse {
 	contactPage: ContactPageContent;
-	artist: Artist;
-	address: Address;
 }
 
 export interface SitemapItemResponse {

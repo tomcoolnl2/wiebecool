@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { PageType, ReWriteRule, Sitemap, SitemapItem, SitemapItemResponse, Slug } from '@/model';
+import { PageType, ReWriteRule, SitemapItem, SitemapItemResponse, Slug } from '@/model';
 import { buildUrl, fetchGlobalConfig, fetchSitemap } from '@/lib';
 
 class SiteMapEntry implements SitemapItem {

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { headers } from 'next/headers';
 import * as React from 'react';
 import { PageType, ReWriteRule, SchemaType } from '@/model';
-import { fetchData, fetchAboutPage, generateSchema } from '@/lib';
+import { fetchData, fetchAboutPage, generateSchema, fetchArtist } from '@/lib';
 import { type RenderComponentItem, RenderComponent, SectionContainer, PageHeader, SchemaTag, ContactDetails } from '@/components';
 import '@/css/pages/about-page.css';
 
@@ -11,7 +11,7 @@ export async function generateMetadata() {
 }
 
 export default async function About() {
-	const { content, artist, address } = await fetchData(fetchAboutPage);
+	const [{ content }, artist] = await Promise.all([fetchData(fetchAboutPage), fetchArtist()]);
 	const path = headers().get('next-url') || ReWriteRule[PageType.AboutPage];
 	const jsonLd = await generateSchema({ content, artist, schemaType: SchemaType.ABOUT_PAGE });
 	const hero = content.bannerImage;
@@ -28,7 +28,7 @@ export default async function About() {
 					{blocks.map((item: RenderComponentItem, i: number) => (
 						<RenderComponent key={i} item={item} />
 					))}
-					<ContactDetails showInsta showAddress={false} content={{ artist, address }} className="text-center" />
+					<ContactDetails showInsta showAddress={false} artist={artist} className="text-center" />
 				</div>
 			</div>
 		</SectionContainer>
