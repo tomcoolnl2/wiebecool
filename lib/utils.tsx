@@ -5,12 +5,7 @@ import { documentToPlainTextString } from '@contentful/rich-text-plain-text-rend
 import { Document, INLINES } from '@contentful/rich-text-types';
 import { Address, AlertMessage, AlertMessageType, ContactFormInput, OrderType, PageType, ReWriteRule, Slug } from '@/model';
 import { mockEmail, mockSiteContent as siteContent } from '@/mock/data';
-
-/** The locale of the website */
-export const locale = 'nl-NL';
-
-/** The base URL of the website. */
-export const baseUrl = 'https://wiebecool.nl';
+import { fetchGlobalConfig } from './api';
 
 /** Hardcoded. */
 export const artist = {
@@ -70,7 +65,7 @@ export function capitalize(str: string): string {
  * @param {Slug} [path=''] The optional path to prepend to the slug.
  * @returns {URL} The constructed URL.
  */
-export function buildUrl(slug: Slug, path: Slug | '' = ''): URL {
+export function buildUrl(baseUrl: string, slug: Slug, path: Slug | '' = ''): URL {
 	return new URL(path + slug, baseUrl);
 }
 
@@ -134,7 +129,8 @@ export function processPlainText(rawRichText: Document): string {
  * @param {string} input The input string to format.
  * @returns {string} The formatted price string.
  */
-export function formatPrice(input: string): string {
+export async function formatPrice(input: string): Promise<string> {
+	const { locale } = await fetchGlobalConfig();
 	const price = parseFloat(input);
 	if (!isNaN(price)) {
 		const formattedPrice = price.toLocaleString(locale, { style: 'currency', currency: 'EUR' });
@@ -161,7 +157,8 @@ export function ensureLeadingSlash(str: string): Slug {
  * @param {string} dateString - The input date string in ISO 8601 format.
  * @returns {string} The localized date string.
  */
-export function toLocaleDateString(dateString: string): string {
+export async function toLocaleDateString(dateString: string): Promise<string> {
+	const { locale } = await fetchGlobalConfig();
 	const date = new Date(dateString);
 	const formattedDate = date.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' });
 	const parts = formattedDate.split(' ');

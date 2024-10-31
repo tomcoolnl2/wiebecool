@@ -30,6 +30,11 @@ export const ReWriteRule: ReWriteRule = {
 
 export type Slug = `/${string}`;
 
+export interface GlobalConfig {
+	locale: string;
+	baseUrl: string;
+}
+
 export interface SeoMetaData {
 	title: string;
 	description: string;

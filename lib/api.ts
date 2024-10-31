@@ -1,6 +1,9 @@
 import { notFound } from 'next/navigation';
 import { cache } from 'react';
 import { DocumentNode as GraphQLDocumentNode } from 'graphql';
+
+import ArtistQuery from '@/graphql/Artist.gql';
+import GlobalConfigurationQuery from '@/graphql/GlobalConfiguration.gql';
 import MainNavigationQuery from '@/graphql/MainNavigation.gql';
 import HomePageQuery from '@/graphql/HomePage.gql';
 import ContactPageQuery from '@/graphql/ContactPage.gql';
@@ -9,6 +12,7 @@ import CollectionPageBySlugQuery from '@/graphql/CollectionPageBySlug.gql';
 import DetailPagesByTagIDs from '@/graphql/DetailPagesByTagIDs.gql';
 import DetailPageBySlugQuery from '@/graphql/DetailPageBySlug.gql';
 import SiteMapQuery from '@/graphql/Sitemap.gql';
+
 import {
 	type AboutPage,
 	type AboutPageResponse,
@@ -20,6 +24,7 @@ import {
 	type DetailPage,
 	type DetailPageBySlugResponse,
 	type DetailPageCollectionResponse,
+	type GlobalConfigResponse,
 	type HomePage,
 	type HomePageResponse,
 	type Navigation,
@@ -32,6 +37,9 @@ import {
 	OrderType,
 	OrderTypeMap,
 	PageType,
+	GlobalConfig,
+	Artist,
+	ArtistResponse,
 } from '@/model';
 import { ContentfulError } from './error';
 import { ContentfulIDs as cfids } from './contentful';
@@ -41,7 +49,7 @@ import { ContentfulIDs as cfids } from './contentful';
  * @param {string | DocumentNode} query - The GraphQL query or document node.
  * @param {Object} [variables={}] - The variables to be passed with the query.
  */
-export const preload = (query: string | GraphQLDocumentNode, variables = {}) => {
+export const preload = (query: string | GraphQLDocumentNode, variables: object = {}) => {
 	void fetchContentfulData(query, variables);
 };
 
@@ -104,7 +112,25 @@ export const fetchContentfulData = cache(async <T>(query: string | GraphQLDocume
 	}
 });
 
-export const fetchNavigation = async (sysID: string): Promise<Navigation> => {
+export async function fetchGlobalConfig(): Promise<GlobalConfig> {
+	const {
+		globalConfigurationCollection: {
+			items: [globalConfig],
+		},
+	} = await fetchContentfulData<GlobalConfigResponse>(GlobalConfigurationQuery);
+	return globalConfig;
+}
+
+export async function fetchArtist(): Promise<Artist> {
+	const {
+		artistCollection: {
+			items: [artist],
+		},
+	} = await fetchContentfulData<ArtistResponse>(ArtistQuery);
+	return artist;
+}
+
+export async function fetchNavigation(sysID: string): Promise<Navigation> {
 	//
 	const {
 		navigation: {
@@ -124,7 +150,7 @@ export const fetchNavigation = async (sysID: string): Promise<Navigation> => {
 	await Promise.all(promises);
 
 	return { title, navigation };
-};
+}
 
 /**
  * Fetches navigation data from Contentful based on a sys ID.

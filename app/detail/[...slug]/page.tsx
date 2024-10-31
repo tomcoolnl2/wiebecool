@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { type DetailPage, type PageParams, PageType, ReWriteRule, SchemaType } from '@/model';
-import { fetchData, capitalize, fetchDetailPage, formatPrice, generateSchema, toLocaleDateString } from '@/lib';
-import { baseUrl, ensureLeadingSlash, processRichText } from '@/lib';
+import { fetchData, capitalize, fetchDetailPage, formatPrice, generateSchema, toLocaleDateString, fetchGlobalConfig } from '@/lib';
+import { ensureLeadingSlash, processRichText } from '@/lib';
 import { ContactDetails, SchemaTag, SectionContainer, PageHeader, ShareSocials, DetailCardsCollection } from '@/components';
 import '@/css/pages/detail-page.css';
 
@@ -11,7 +11,7 @@ const Carousel = dynamic(() => import('@/components/Carousel'), { ssr: false });
 
 export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
 	const slug = ensureLeadingSlash(params.slug[0]);
-	const { seoMetaData } = await fetchData(() => fetchDetailPage(slug));
+	const [{ baseUrl }, { seoMetaData }] = await Promise.all([fetchGlobalConfig(), fetchData(() => fetchDetailPage(slug))]);
 	return {
 		...seoMetaData,
 		alternates: {
@@ -23,13 +23,15 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 export default async function DetailPage({ params }: PageParams) {
 	//
 	const slug = ensureLeadingSlash(params.slug[0]);
-	const { content, artist, address } = await fetchData(() => fetchDetailPage(slug));
+	const fetchDetailPageBySlug = () => fetchDetailPage(slug);
+	const [{ baseUrl }, { content, artist, address }] = await Promise.all([fetchGlobalConfig(), fetchData(fetchDetailPageBySlug)]);
 
 	const detailPageImg = content.imageCollection.items[0];
-	const jsonLd = generateSchema({ content, artist, schemaType: SchemaType.SCULPTURE, img: detailPageImg });
+	const jsonLd = await generateSchema({ content, artist, schemaType: SchemaType.SCULPTURE, img: detailPageImg });
 	const path = ReWriteRule[PageType.DetailPage] + slug;
 	const tags = content.contentfulMetadata.tags;
 	const hashtags = tags.map((tag) => capitalize(tag.name));
+	const price = (await formatPrice(content.price)) ?? '-';
 
 	return (
 		<SectionContainer>
@@ -70,7 +72,7 @@ export default async function DetailPage({ params }: PageParams) {
 								{content.price && (
 									<li>
 										<span className="label">Prijs:</span>
-										<span>{(content.price && formatPrice(content.price)) ?? '-'}</span>
+										<span>{price}</span>
 									</li>
 								)}
 								{content.creationDate && (

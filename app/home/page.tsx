@@ -11,7 +11,7 @@ export async function generateMetadata() {
 
 export default async function Home() {
 	const { content, artist, address } = await fetchData(fetchHomePage);
-	const jsonLd = generateSchema({ content, artist, schemaType: SchemaType.HOME_PAGE });
+	const jsonLd = await generateSchema({ content, artist, schemaType: SchemaType.HOME_PAGE });
 	const blocks = content.buildingBlocksCollection?.items || [];
 	return (
 		<SectionContainer>
@@ -21,7 +21,7 @@ export default async function Home() {
 					<div className="home-content">
 						<Image
 							src={content.mugshot.url + '?w=256&h=256'}
-							alt={content.mugshot.description}
+							alt={content.mugshot.description || artist.name}
 							width={content.mugshot.width}
 							height={content.mugshot.height}
 							className="avatar"

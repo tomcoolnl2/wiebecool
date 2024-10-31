@@ -2,12 +2,13 @@ import * as React from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
 import { Montserrat, Mulish, Poppins } from 'next/font/google';
-import { artist, baseUrl, fetchMainNavigation, locale } from '@/lib';
+import { fetchArtist, fetchGlobalConfig, fetchMainNavigation } from '@/lib';
 import { PreLoader, MainNavigation, Cursor, Background, CookieBar } from '@/components';
 
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import '@/css/globals.css';
+
 config.autoAddCss = false;
 
 const montserrat = Montserrat({
@@ -26,19 +27,22 @@ const poppins = Poppins({
 	variable: '--font-poppins',
 });
 
-export const metadata: Metadata = {
-	metadataBase: new URL(baseUrl),
-	title: artist.description,
-	description: artist.description,
-	applicationName: artist.description,
-	referrer: 'origin',
-	openGraph: {
-		images: '/opengraph-image.jpg',
-	},
-};
+export async function generateMetadata(): Promise<Metadata> {
+	const [{ baseUrl }, artist] = await Promise.all([fetchGlobalConfig(), fetchArtist()]);
+	return {
+		metadataBase: new URL(baseUrl),
+		title: artist.description,
+		description: artist.description,
+		applicationName: artist.description,
+		referrer: 'origin',
+		openGraph: {
+			images: '/opengraph-image.jpg',
+		},
+	};
+}
 
 const RootLayout: React.FC<{ children: React.ReactNode }> = async ({ children }) => {
-	const { title, navigation } = await fetchMainNavigation();
+	const [{ locale }, { title, navigation }] = await Promise.all([fetchGlobalConfig(), fetchMainNavigation()]);
 	return (
 		<html lang={locale}>
 			<body className={`${montserrat.variable} ${mulish.variable} ${poppins.variable}`}>

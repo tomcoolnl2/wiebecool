@@ -1,0 +1,13 @@
+#
+query Artist {
+	artistCollection(limit: 1) {
+		items {
+			name
+			occupation
+			description
+			telephone
+			email
+			mentions
+		}
+	}
+}

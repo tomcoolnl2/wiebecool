@@ -9,12 +9,12 @@ interface Props {
 	path: string;
 }
 
-export const BreadCrumbs: React.FC<Props> = ({ path }) => {
+export const BreadCrumbs: React.FC<Props> = async ({ path }) => {
 	//
 	const crumbs = path.split('/').filter(Boolean);
 	const current = crumbs.pop(); // Last breadcrumb is the current page
 	const content = { parents: crumbs, current: current! };
-	const jsonLd = generateSchema({ content, schemaType: SchemaType.BREADCRUMBS });
+	const jsonLd = await generateSchema({ content, schemaType: SchemaType.BREADCRUMBS });
 
 	return (
 		<nav aria-label="breadcrumbs">
