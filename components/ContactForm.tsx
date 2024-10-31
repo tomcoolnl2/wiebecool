@@ -1,13 +1,15 @@
 'use client';
+import * as React from 'react';
 import classNames from 'classnames';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { useFormStatus } from 'react-dom';
 import { useSearchParams } from 'next/navigation';
 import dynamic from 'next/dynamic';
-import * as React from 'react';
 import { AlertMessage, ContactFormInput } from '@/model';
 import { sendEmail } from '@/lib';
 import { Button } from './Button';
+import { verifyCaptcha } from '../actions/recaptcha';
 // ! TODO: Import proper mockSiteContent from Contentful: https://app.shortcut.com/wiebecoolnl/story/2625/contenful-config-type-for-hardcoded-values
 import { mockSiteContent as siteContent } from '@/mock/data';
 
@@ -18,6 +20,7 @@ const formId = '#form';
 function prefabMessage(subject: string): string {
 	return `Hallo Wiebe,\nIk heb een vraag over "${subject}"...`.trim();
 }
+
 interface Props {
 	formIntro: string;
 	buttonText: string;
@@ -25,6 +28,15 @@ interface Props {
 
 export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 	//
+	const recaptchaRef = React.useRef<ReCAPTCHA>(null);
+	const [isVerified, setIsverified] = React.useState<boolean>(false);
+
+	async function handleCaptchaSubmission(token: string | null) {
+		await verifyCaptcha(token)
+			.then(() => setIsverified(true))
+			.catch(() => setIsverified(false));
+	}
+
 	const {
 		register,
 		handleSubmit,
@@ -133,9 +145,13 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 
 			{alert && <Alert {...alert} />}
 
-			<Button type="submit" disabled={pending || !!alert}>
-				{buttonText}
-			</Button>
+			<div className="field">
+				<ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!} ref={recaptchaRef} onChange={handleCaptchaSubmission} theme="dark" />
+				<br />
+				<Button type="submit" disabled={!isVerified || pending || !!alert}>
+					{buttonText}
+				</Button>
+			</div>
 		</form>
 	);
 };
