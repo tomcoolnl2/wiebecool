@@ -4,7 +4,6 @@ on:
     push:
         branches:
             - main
-            - build/3187-conventional-commits
 
 jobs:
     release:

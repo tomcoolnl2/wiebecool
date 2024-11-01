@@ -1,7 +1,6 @@
 {
     "branches": [
-        "main",
-        "build/3187-conventional-commits"
+        "main"
     ],
     "plugins": [
         [
