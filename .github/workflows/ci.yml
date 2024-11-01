@@ -32,6 +32,7 @@ jobs:
 
     cypress-run:
         name: Run Cypress E2E Tests
+        needs: eslint
         runs-on: ubuntu-22.04
         strategy:
             # when one test fails, DO NOT cancel the other
