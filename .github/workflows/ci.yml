@@ -1,9 +1,10 @@
-name: Run Tests
+name: CI
 
 on:
     push:
         branches-ignore:
             - main
+
 concurrency:
     group: main-workflow
     cancel-in-progress: true
@@ -30,9 +31,8 @@ jobs:
               run: npm run lint
 
     cypress-run:
-        name: Run Cypress Tests
+        name: Run Cypress E2E Tests
         runs-on: ubuntu-22.04
-        needs: eslint
         strategy:
             # when one test fails, DO NOT cancel the other
             # containers, because this will kill Cypress processes
