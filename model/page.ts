@@ -30,6 +30,12 @@ export const ReWriteRule: ReWriteRule = {
 
 export type Slug = `/${string}`;
 
+export interface GlobalConfig {
+	locale: string;
+	baseUrl: string;
+	sysIDs: Record<string, string>;
+}
+
 export interface SeoMetaData {
 	title: string;
 	description: string;
@@ -93,6 +99,7 @@ export interface Artist {
 	telephone: string;
 	email: string;
 	mentions: string[];
+	address: Address;
 }
 
 export interface Address {
@@ -105,11 +112,6 @@ export interface Address {
 export interface Breadcrumbs {
 	parents: string[];
 	current: string;
-}
-
-export interface ContactDetails {
-	artist: Artist;
-	address: Address;
 }
 
 interface BasePage {
@@ -133,8 +135,6 @@ export interface HomePageContent extends BasePage {
 export interface HomePage {
 	seoMetaData: SeoMetaData;
 	content: HomePageContent;
-	artist: Artist;
-	address: Address;
 }
 
 export interface AboutPageContent extends BasePage {
@@ -147,8 +147,6 @@ export interface AboutPageContent extends BasePage {
 export interface AboutPage {
 	seoMetaData: SeoMetaData;
 	content: AboutPageContent;
-	artist: Artist;
-	address: Address;
 }
 
 export interface CollectionPage {
@@ -199,8 +197,6 @@ export interface DetailPageContent extends BasePage, SysID {
 export interface DetailPage {
 	seoMetaData: SeoMetaData;
 	content: DetailPageContent;
-	artist: Artist;
-	address: Address;
 }
 
 export interface ContactPageContent extends BasePage {
@@ -211,8 +207,6 @@ export interface ContactPageContent extends BasePage {
 export interface ContactPage {
 	seoMetaData: SeoMetaData;
 	content: ContactPageContent;
-	artist: Artist;
-	address: Address;
 }
 
 export type PageContent = HomePageContent | AboutPageContent | CollectionPageContent | DetailPageContent | ContactPageContent;

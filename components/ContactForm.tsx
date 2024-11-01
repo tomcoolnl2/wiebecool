@@ -2,7 +2,7 @@
 import * as React from 'react';
 import classNames from 'classnames';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useFormStatus } from 'react-dom';
 import { useSearchParams } from 'next/navigation';
 import dynamic from 'next/dynamic';

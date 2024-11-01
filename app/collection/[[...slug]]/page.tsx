@@ -28,7 +28,7 @@ export default async function CollectionPage({ params, searchParams }: PageParam
 	const path = slug === collectionBaseUrl ? collectionBaseUrl : collectionBaseUrl + slug;
 	const sortOrder = (searchParams?.order as OrderType) ?? null;
 	const { content } = await fetchData(() => fetchCollectionPage(slug, OrderType.PAGE_TITLE_ASC));
-	const jsonLd = generateSchema({ content, schemaType: SchemaType.COLLECTION });
+	const jsonLd = await generateSchema({ content, schemaType: SchemaType.COLLECTION });
 
 	const filter = searchParams?.filter ?? null;
 	let cards = content.cards.filter((card) => card.contentfulMetadata.tags.find((tag) => tag.id === filter));

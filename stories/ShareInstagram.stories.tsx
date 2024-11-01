@@ -14,6 +14,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Small: Story = {
 	args: {
+		title: 'Share on Instagram',
 		size: 'sm',
 	},
 };
@@ -21,6 +22,7 @@ export const Small: Story = {
 // Large size variant
 export const Large: Story = {
 	args: {
+		title: 'Share on Instagram',
 		size: 'lg',
 	},
 };
@@ -28,6 +30,7 @@ export const Large: Story = {
 // Extra large size variant
 export const ExtraLarge: Story = {
 	args: {
+		title: 'Share on Instagram',
 		size: '2xl',
 	},
 };

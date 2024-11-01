@@ -3,8 +3,7 @@ import Link from 'next/link';
 import * as React from 'react';
 import { faSitemap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { NavigationPageEntry } from '@/model';
-import { artist } from '@/lib';
+import { Artist, NavigationPageEntry } from '@/model';
 import { Navigation } from '@/components';
 import { useClickOutside } from '@/hooks';
 
@@ -14,9 +13,10 @@ const ShareInstagram = React.lazy(() => import('@/components/ShareInstagram'));
 export interface MainNavigation {
 	title: string;
 	navigation: NavigationPageEntry[];
+	artist: Artist;
 }
 
-export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) => {
+export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation, artist }) => {
 	//
 	const [isMobileOpen, toggleMobile] = React.useState<boolean>(false);
 
@@ -37,7 +37,7 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation }) 
 					<h1>{artist.name}</h1>
 					<h2>{artist.occupation}</h2>
 				</Link>
-				<ShareInstagram size="2xl" />
+				<ShareInstagram size="2xl" title={artist.description} />
 				<div
 					className={`cursor-pointer hamburger--slider hamburger${isMobileOpen ? ' is-active' : ''}`}
 					onClick={() => toggleMobile(!isMobileOpen)}

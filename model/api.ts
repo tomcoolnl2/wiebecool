@@ -10,6 +10,7 @@ import {
 	DetailPageContent,
 	Slug,
 	PortfolioCard,
+	GlobalConfig,
 } from './';
 
 export interface SysID {
@@ -40,6 +41,12 @@ export const OrderTypeMap: { [key in OrderType]: string } = {
 	[OrderType.PAGE_TITLE_ASC]: 'title_ASC',
 };
 
+export interface GlobalConfigResponse {
+	globalConfigurationCollection: {
+		items: [GlobalConfig];
+	};
+}
+
 export interface NavigationResponse {
 	navigation: {
 		title: string;
@@ -50,7 +57,12 @@ export interface NavigationResponse {
 	};
 }
 export interface ArtistResponse {
-	artist: Artist;
+	artistCollection: {
+		items: [Artist];
+	};
+	addressCollection: {
+		items: [Address];
+	};
 }
 
 export interface AddressResponse {
@@ -72,14 +84,10 @@ export interface PortfolioCardResponse {
 
 export interface HomePageResponse {
 	homePage: HomePageContent;
-	artist: Artist;
-	address: Address;
 }
 
 export interface AboutPageResponse {
 	aboutPage: AboutPageContent;
-	artist: Artist;
-	address: Address;
 }
 
 export interface CollectionPageResponse {
@@ -98,14 +106,10 @@ export interface DetailPageBySlugResponse {
 	detailPageCollection: {
 		items: [DetailPageContent];
 	};
-	artist: Artist;
-	address: Address;
 }
 
 export interface ContactPageResponse {
 	contactPage: ContactPageContent;
-	artist: Artist;
-	address: Address;
 }
 
 export interface SitemapItemResponse {

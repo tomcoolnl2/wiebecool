@@ -1,0 +1,21 @@
+#
+query Artist {
+	artistCollection(limit: 1) {
+		items {
+			name
+			occupation
+			description
+			telephone
+			email
+			mentions
+		}
+	}
+	addressCollection(limit: 1) {
+		items {
+			streetAddress
+			zipCode
+			city
+			country
+		}
+	}
+}

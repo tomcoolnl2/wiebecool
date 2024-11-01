@@ -2,13 +2,12 @@
 describe('Sitemap Test', () => {
 	//
 	it('loads and validates the sitemap XML file', () => {
-		// Visit the sitemap URL
+		//
 		cy.request({
 			url: '/sitemap.xml',
 			headers: {
 				'Content-Type': 'text/xml; charset=utf-8',
-				'user-agent':
-					'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36',
+				'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36',
 			},
 		}).then((response) => {
 			// Parse XML response
@@ -20,7 +19,6 @@ describe('Sitemap Test', () => {
 				})
 				.get();
 
-			// Check if expected URLs are present
 			expect(urls).to.include.members([
 				'https://wiebecool.nl/',
 				'https://wiebecool.nl/over-mij',

@@ -1,4 +1,4 @@
-query DetailPageBySlug($slug: String!, $artistSysID: String!, $addressSysID: String!) {
+query DetailPageBySlug($slug: String!) {
 	detailPageCollection(where: { slug: $slug }, limit: 1) {
 		items {
 			sys {
@@ -59,19 +59,5 @@ query DetailPageBySlug($slug: String!, $artistSysID: String!, $addressSysID: Str
 				}
 			}
 		}
-	}
-	artist(id: $artistSysID) {
-		name
-		occupation
-		description
-		telephone
-		email
-		mentions
-	}
-	address(id: $addressSysID) {
-		streetAddress
-		zipCode
-		city
-		country
 	}
 }

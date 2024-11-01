@@ -3,7 +3,8 @@ import * as React from 'react';
 import { faFacebookSquare, faPinterestSquare, faSquareXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FacebookShareButton, TwitterShareButton, PinterestShareButton } from 'next-share';
-import { artist, capitalize } from '@/lib';
+import { Artist } from '@/model';
+import { capitalize } from '@/lib';
 import '@/css/components/share-socials.css';
 
 function prepareHashTags(tags: string[]): string[] {
@@ -24,9 +25,19 @@ interface Props {
 	showFacebook?: boolean;
 	showTwitter?: boolean;
 	showPinterest?: boolean;
+	artist: Artist;
 }
 
-export const ShareSocials: React.FC<Props> = ({ title, url, media, tags = [], showFacebook = true, showTwitter = true, showPinterest = true }) => {
+export const ShareSocials: React.FC<Props> = ({
+	title,
+	url,
+	media,
+	tags = [],
+	showFacebook = true,
+	showTwitter = true,
+	showPinterest = true,
+	artist,
+}) => {
 	const hashtags = prepareHashTags([artist.name, artist.occupation, ...tags]);
 	return (
 		<aside className="share-socials">
