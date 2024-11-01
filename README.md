@@ -86,16 +86,9 @@ git merge develop
 ```
 (Optional) Resolve any merge conflicts if necessary.
 
-6. Create a tag for the release (replace v1.0.0 with the version number or tag you want):
-```bash
-git tag -a v1.0.0 -m "Release v1.0.0"
-```
-Also update the version in the `package.json`.
-
-7. Push the main branch and the tag to the remote repository:
+1. Push the main branch and the tag to the remote repository:
 ```bash
 git push origin main
-git push origin v1.0.0
 ```
 
 ## Environment variables
