@@ -2,7 +2,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-The project uses Node 20.17.0:
+The project uses Node LTS 20.17.0. Use NVM to manage the version. 
+Committing to the repo also uses NVM to monitor commit messages:
 
 ```bash
 nvm install v20.17.0
@@ -27,6 +28,29 @@ npm run storybook
 ```
 
 Open [http://localhost:6006](http://localhost:6006) with your browser to see the interactive design system.
+
+## Setup Overview
+
+This project leverages **Husky** and **semantic-release** to enhance our development workflow, maintain code quality, and automate version management.
+
+### Husky
+
+**Husky** is a Git hooks manager that helps enforce code quality and best practices in our development process. By integrating Husky, we can run specific scripts at different stages of the Git lifecycle. In this project, Husky is configured to run tests before each commit to ensure that only code that passes all tests is committed. This helps prevent introducing bugs into the codebase.
+
+### Semantic Versioning
+
+We follow **Semantic Versioning (SemVer)**, a versioning scheme that reflects the nature of changes in the software. According to SemVer, version numbers take the form of `MAJOR.MINOR.PATCH`. Changes in the MAJOR version indicate breaking changes, MINOR version changes are for backward-compatible functionality, and PATCH version changes are for backward-compatible bug fixes. For more details, refer to the [Semantic Versioning Specification](https://semver.org/).
+
+### Running Tests on Pre-Commit
+
+With Husky set up, the command `npm test` is automatically executed on every pre-commit hook. This ensures that any failing tests will prevent the commit from proceeding, thus helping maintain a stable and functional codebase.
+
+### Automatic Tag Creation
+
+**semantic-release** automates the versioning and package publishing process based on commit messages. When changes are pushed to the repository, semantic-release analyzes the commit history to determine the next version number according to Semantic Versioning rules. Importantly, **tag creation is handled by semantic-release by default**, which creates a Git tag for each new version. This allows for easy tracking of releases and facilitates the deployment process.
+
+For more information on how to configure and use semantic-release, please refer to the [semantic-release documentation](https://semantic-release.gitbook.io/semantic-release/).
+
 
 ## Deploy on Vercel
 
