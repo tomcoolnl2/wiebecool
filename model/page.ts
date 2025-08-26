@@ -127,6 +127,7 @@ export interface HomePageContent extends BasePage {
 	title: string;
 	subtitle: string;
 	mugshot: ItemImage;
+	extraImage: ItemImage | null;
 	buildingBlocksCollection: {
 		items: Array<PortfolioCardResponse>;
 	};

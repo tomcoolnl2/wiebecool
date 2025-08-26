@@ -18,6 +18,12 @@ query HomePageData($sysID: String!) {
 		description {
 			json
 		}
+		extraImage {
+			url
+			description
+			width
+			height
+		}
 		buildingBlocksCollection {
 			items {
 				__typename
