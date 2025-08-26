@@ -30,7 +30,22 @@ export default async function Home() {
 						<div className="content">
 							<h1 className="name">{content.title}</h1>
 							{content.subtitle && <h2 className="subtitle">{content.subtitle}</h2>}
-							<div className="rich-text-block-border max-w-[450px]">{processRichText(content.description.json)}</div>
+							<div className="rich-text-block-border max-w-[450px]">
+								{processRichText(content.description.json)}
+								{content.extraImage && (
+									<>
+										<br />
+										<br />
+										<Image
+											src={content.extraImage.url + '?w=600'}
+											alt={content.extraImage.description || 'Extra afbeelding'}
+											width={content.extraImage.width}
+											height={content.extraImage.height}
+											style={{ width: '100%', height: 'auto' }}
+										/>
+									</>
+								)}
+							</div>
 							<ContactDetails showInsta={false} showAddress={false} artist={artist} />
 							<hr />
 							<br />
