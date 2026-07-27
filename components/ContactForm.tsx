@@ -44,7 +44,13 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 	}, []);
 
 	React.useEffect(() => {
+		// Deferred to an effect rather than a lazy useState initializer: this
+		// component is server-rendered on first paint (`'use client'` doesn't
+		// exempt it), where `window` is undefined - computing this during
+		// render would produce a different result on the client's hydration
+		// pass than what the server sent, causing a hydration mismatch.
 		if (isCypress) {
+			// eslint-disable-next-line react-hooks/set-state-in-effect
 			setIsverified(true);
 		}
 	}, [isCypress]);
@@ -53,6 +59,7 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 		if (searchParams.has('subject')) {
 			const subject = searchParams.get('subject');
 			if (subject) {
+				// eslint-disable-next-line react-hooks/set-state-in-effect -- syncing form state from a URL param read post-mount, not derivable during render
 				setMessage(`Hallo Wiebe,\nIk heb een vraag over "${subject}"...`);
 			}
 		}
@@ -103,6 +110,7 @@ export const ContactForm: React.FC<Props> = ({ formIntro, buttonText }) => {
 	}, []);
 
 	return (
+		// eslint-disable-next-line react-hooks/refs -- react-hook-form's handleSubmit() returns a submit handler, it doesn't read formRef synchronously during render
 		<form id="form" ref={formRef} onSubmit={handleSubmit(handleOnSubmit)} noValidate>
 			<div className="rich-text-block">{formIntro}</div>
 
