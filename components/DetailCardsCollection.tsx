@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ReWriteRule, PageType, DetailCollectionItem } from '@/model';
 import { Card, CardMotion } from '@/components';
 import { ensureLeadingSlash } from '@/lib';
-import { randomUUID } from 'crypto';
 
 interface Props {
 	cards: DetailCollectionItem[];
@@ -21,7 +20,7 @@ export const DetailCardsCollection: React.FC<Props> = ({ cards, omitWhen = null 
 				const href = ReWriteRule[PageType.DetailPage] + ensureLeadingSlash(card.slug);
 				const img = card.imageCollection.items[0];
 				return (
-					<li key={randomUUID()}>
+					<li key={crypto.randomUUID()}>
 						{/* randomUUID key on re-render makes sure animations will work on all items when a collection updates */}
 						<CardMotion delay={delay} card={<Card id={id} href={href} title={card.title} img={img} />} />
 					</li>
