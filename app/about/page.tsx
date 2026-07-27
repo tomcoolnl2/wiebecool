@@ -13,7 +13,7 @@ export async function generateMetadata() {
 
 export default async function About() {
 	const [{ content }, artist] = await Promise.all([fetchData(fetchAboutPage), fetchArtist()]);
-	const path = headers().get('next-url') || ReWriteRule[PageType.AboutPage];
+	const path = (await headers()).get('next-url') || ReWriteRule[PageType.AboutPage];
 	const jsonLd = await generateSchema({ content, artist, schemaType: SchemaType.ABOUT_PAGE });
 	const hero = content.bannerImage;
 	const blocks = content.buildingBlocksCollection?.items || [];

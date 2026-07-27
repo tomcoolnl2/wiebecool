@@ -12,7 +12,7 @@ export async function generateMetadata() {
 
 export default async function Contact() {
 	const [{ content }, artist] = await Promise.all([fetchData(fetchContactPage), fetchArtist()]);
-	const path = headers().get('next-url') || ReWriteRule[PageType.ContactPage];
+	const path = (await headers()).get('next-url') || ReWriteRule[PageType.ContactPage];
 	const jsonLd = await generateSchema({ content, artist, schemaType: SchemaType.CONTACT_PAGE });
 	return (
 		<SectionContainer>

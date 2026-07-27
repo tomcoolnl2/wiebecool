@@ -1,38 +1,31 @@
-import type { StorybookConfig } from '@storybook/nextjs';
+import type { StorybookConfig } from '@storybook/nextjs-vite';
 
 const config: StorybookConfig = {
 	stories: ['../stories/**/*.mdx', '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 	addons: [
-		'@storybook/addon-onboarding',
-		'@storybook/addon-links',
-		'@storybook/addon-essentials',
-		'@chromatic-com/storybook',
-		'@storybook/addon-interactions',
-	],
+        '@storybook/addon-onboarding',
+        '@storybook/addon-links',
+        '@chromatic-com/storybook',
+        '@storybook/addon-docs',
+        '@storybook/addon-mcp'
+    ],
 	framework: {
-		name: '@storybook/nextjs',
+		name: '@storybook/nextjs-vite',
 		options: {},
 	},
-	webpackFinal: async (config) => {
-		// Ignore .gql and .graphql files
-		config.module?.rules?.push({
-			test: /\.(graphql|gql)$/,
-			loader: 'ignore-loader',
+	viteFinal: async (config) => {
+		// .gql/.graphql files are transitively imported via lib/api.ts but never
+		// executed in Storybook - stub them out instead of letting Vite/Rollup
+		// try (and fail) to parse GraphQL syntax as JavaScript.
+		config.plugins ??= [];
+		config.plugins.push({
+			name: 'ignore-gql',
+			transform(_code, id) {
+				if (/\.(gql|graphql)$/.test(id)) {
+					return { code: 'export default {};', map: null };
+				}
+			},
 		});
-
-		// Add MDX loader
-		config.module?.rules?.push({
-			test: /\.mdx$/,
-			use: [
-				{
-					loader: '@mdx-js/loader',
-					options: {
-						providerImportSource: '@mdx-js/react',
-					},
-				},
-			],
-		});
-
 		return config;
 	},
 };

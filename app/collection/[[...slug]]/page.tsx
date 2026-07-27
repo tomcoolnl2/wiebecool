@@ -12,7 +12,8 @@ import '@/css/pages/collection-page.css';
 const collectionBaseUrl = ReWriteRule[PageType.CollectionPage];
 
 export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
-	const slug = ensureLeadingSlash(params?.slug?.[0] || collectionBaseUrl);
+	const resolvedParams = await params;
+	const slug = ensureLeadingSlash(resolvedParams?.slug?.[0] || collectionBaseUrl);
 	const { seoMetaData } = await fetchData(() => fetchCollectionPage(slug, OrderType.PUBLISHED_FIRST_DESC));
 	return {
 		...seoMetaData,
@@ -24,13 +25,14 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 
 export default async function CollectionPage({ params, searchParams }: PageParams) {
 	//
-	const slug = ensureLeadingSlash(params?.slug?.[0] || collectionBaseUrl);
+	const [resolvedParams, resolvedSearchParams] = await Promise.all([params, searchParams]);
+	const slug = ensureLeadingSlash(resolvedParams?.slug?.[0] || collectionBaseUrl);
 	const path = slug === collectionBaseUrl ? collectionBaseUrl : collectionBaseUrl + slug;
-	const sortOrder = (searchParams?.order as OrderType) ?? null;
+	const sortOrder = (resolvedSearchParams?.order as OrderType) ?? null;
 	const { content } = await fetchData(() => fetchCollectionPage(slug, OrderType.PAGE_TITLE_ASC));
 	const jsonLd = await generateSchema({ content, schemaType: SchemaType.COLLECTION });
 
-	const filter = searchParams?.filter ?? null;
+	const filter = resolvedSearchParams?.filter ?? null;
 	let cards = content.cards.filter((card) => card.contentfulMetadata.tags.find((tag) => tag.id === filter));
 	if (!cards.length) {
 		cards = content.cards;

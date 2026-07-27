@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { CookieBar, cookieKey } from '../components/CookieBar';
 import { deleteCookie } from 'cookies-next';
 
