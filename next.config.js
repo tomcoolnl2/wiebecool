@@ -6,7 +6,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
 	reactStrictMode: true,
-	swcMinify: true,
 	experimental: {
 		webVitalsAttribution: ['CLS', 'LCP'],
 	},
@@ -19,6 +18,7 @@ const nextConfig = {
 				pathname: '/**',
 			},
 		],
+		qualities: [75, 80],
 	},
 	async rewrites() {
 		return [

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { MainNavigation } from '@/components';
 import { mockMainNavigation } from '@/mock/data';
 

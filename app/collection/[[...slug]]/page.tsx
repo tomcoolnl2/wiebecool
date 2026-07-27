@@ -21,7 +21,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
-	const slug = ensureLeadingSlash(params?.slug?.[0] || collectionBaseUrl);
+	const resolvedParams = await params;
+	const slug = ensureLeadingSlash(resolvedParams?.slug?.[0] || collectionBaseUrl);
 	const { seoMetaData } = await fetchData(() => fetchCollectionPage(slug, OrderType.PUBLISHED_FIRST_DESC));
 	return {
 		...seoMetaData,
@@ -33,7 +34,8 @@ export async function generateMetadata({ params }: PageParams): Promise<Metadata
 
 export default async function CollectionPage({ params }: PageParams) {
 	//
-	const slug = ensureLeadingSlash(params?.slug?.[0] || collectionBaseUrl);
+	const resolvedParams = await params;
+	const slug = ensureLeadingSlash(resolvedParams?.slug?.[0] || collectionBaseUrl);
 	const path = slug === collectionBaseUrl ? collectionBaseUrl : collectionBaseUrl + slug;
 	const { content } = await fetchData(() => fetchCollectionPage(slug, OrderType.PAGE_TITLE_ASC));
 	const jsonLd = await generateSchema({ content, schemaType: SchemaType.COLLECTION });
