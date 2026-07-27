@@ -2,6 +2,9 @@
 	"name": "wiebecool",
 	"version": "1.2.0",
 	"private": true,
+	"engines": {
+		"node": ">=24.18.0"
+	},
 	"scripts": {
 		"prepare": "husky",
 		"dev": "next dev",
@@ -35,7 +38,7 @@
 		"emailjs-com": "3.2.0",
 		"framer-motion": "11.9.0",
 		"graphql": "16.9.0",
-		"next": "14.2.13",
+		"next": "14.2.35",
 		"next-share": "0.27.0",
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
