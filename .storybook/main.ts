@@ -6,8 +6,7 @@ const config: StorybookConfig = {
         '@storybook/addon-onboarding',
         '@storybook/addon-links',
         '@chromatic-com/storybook',
-        '@storybook/addon-docs',
-        '@storybook/addon-mcp'
+        '@storybook/addon-docs'
     ],
 	framework: {
 		name: '@storybook/nextjs-vite',
