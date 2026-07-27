@@ -48,6 +48,12 @@ jobs:
               uses: actions/checkout@v4
               with:
                   fetch-depth: 0
+
+            - name: Use Node 24.18.0
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 24.18.0
+
             - name: Run Cypress Tests
               uses: cypress-io/github-action@v6
               with:
