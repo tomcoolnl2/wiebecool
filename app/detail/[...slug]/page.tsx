@@ -1,11 +1,20 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 import { type DetailPage, type PageParams, PageType, ReWriteRule, SchemaType } from '@/model';
-import { fetchData, capitalize, fetchDetailPage, formatPrice, generateSchema, toLocaleDateString, fetchGlobalConfig, fetchArtist } from '@/lib';
+import { fetchData, capitalize, fetchDetailPage, formatPrice, generateSchema, toLocaleDateString, fetchGlobalConfig, fetchArtist, fetchSitemap } from '@/lib';
 import { ensureLeadingSlash, processRichText } from '@/lib';
 import { ContactDetails, SchemaTag, SectionContainer, PageHeader, ShareSocials, DetailCardsCollection } from '@/components';
 import Carousel from '@/components/CarouselDynamic';
 import '@/css/pages/detail-page.css';
+
+// Revalidate periodically since this is a statically-generated route but the
+// underlying Contentful content (new/edited artwork) can change between builds.
+export const revalidate = 3600; // 1hr
+
+export async function generateStaticParams() {
+	const { detailPages } = await fetchSitemap();
+	return detailPages.map((page) => ({ slug: [page.slug.replace(/^\//, '')] }));
+}
 
 export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
 	const resolvedParams = await params;
