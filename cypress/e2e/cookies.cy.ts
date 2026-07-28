@@ -20,4 +20,14 @@ describe('CookieBar', () => {
 		cy.contains('Accepteer Cookies').click();
 		cy.getCookie('localConsent').should('have.property', 'value', 'true');
 	});
+
+	it('should persist the consent cookie beyond the browser session', () => {
+		// a session cookie (no maxAge/expires) is wiped when the browser closes,
+		// silently undoing an already-accepted consent - assert it's long-lived
+		cy.contains('Accepteer Cookies').click();
+		cy.getCookie('localConsent').then((cookie) => {
+			const oneWeekFromNow = Date.now() / 1000 + 60 * 60 * 24 * 7;
+			expect(cookie?.expiry).to.be.a('number').and.be.greaterThan(oneWeekFromNow);
+		});
+	});
 });

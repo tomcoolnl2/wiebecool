@@ -19,7 +19,9 @@ export const CookieBar: React.FC = () => {
 
 	const acceptCookie = React.useCallback(() => {
 		setShowConsent(true);
-		setCookie(cookieKey, 'true', {});
+		// without an explicit maxAge this becomes a session cookie, wiped when
+		// the browser closes, so the accepted consent wasn't actually remembered
+		setCookie(cookieKey, 'true', { maxAge: 60 * 60 * 24 * 365 });
 	}, []);
 
 	if (showConsent) {
