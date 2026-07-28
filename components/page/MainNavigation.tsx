@@ -1,14 +1,11 @@
 'use client';
 import Link from 'next/link';
 import * as React from 'react';
-import { faSitemap } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faSitemap } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Artist, NavigationPageEntry } from '@/model';
+import { Artist, NavigationPageEntry, PageType } from '@/model';
 import { Navigation } from '@/components';
 import { useClickOutside } from '@/hooks';
-
-// to prevent circular deps, storybook will not work with this
-const ShareInstagram = React.lazy(() => import('@/components/ShareInstagram'));
 
 export interface MainNavigation {
 	title: string;
@@ -30,14 +27,19 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation, ar
 	const navRef = React.useRef<HTMLElement>(null);
 	const navElement = useClickOutside<HTMLElement>(navRef, closeOnOutsideClick);
 
+	// the header's home icon already covers this destination
+	const navigationWithoutHome = React.useMemo(() => navigation.filter((item) => item.page.__typename !== PageType.HomePage), [navigation]);
+
 	return (
 		<>
 			<header className="top-bar">
-				<Link href="/" className="sr-only">
-					<h1>{artist.name}</h1>
-					<h2>{artist.occupation}</h2>
+				<Link href="/" title="Home" className="group">
+					<span className="sr-only">
+						<h1>{artist.name}</h1>
+						<h2>{artist.occupation}</h2>
+					</span>
+					<FontAwesomeIcon icon={faHouse} size="lg" className="text-gray-300 group-hover:text-white" />
 				</Link>
-				<ShareInstagram size="2xl" title={artist.description} />
 				<div
 					className={`cursor-pointer hamburger--slider hamburger${isMobileOpen ? ' is-active' : ''}`}
 					onClick={() => toggleMobile(!isMobileOpen)}
@@ -49,7 +51,7 @@ export const MainNavigation: React.FC<MainNavigation> = ({ title, navigation, ar
 			</header>
 			<nav ref={navRef} className={`main-navigation${isMobileOpen ? ' mobile-open' : ''}`}>
 				<h1 className="sr-only">{title}</h1>
-				<Navigation items={navigation} className="navigation" onClick={closeOnOutsideClick} />
+				<Navigation items={navigationWithoutHome} className="navigation" onClick={closeOnOutsideClick} />
 				<div className="page-footer">
 					<div className="copyright">© {new Date().getFullYear()}</div>
 					<a href="/sitemap.xml" title="Sitemap">

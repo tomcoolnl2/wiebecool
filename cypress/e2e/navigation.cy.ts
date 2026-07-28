@@ -6,7 +6,7 @@ describe('Navigation Test', () => {
 		cy.visit('/');
 
 		// Test navigation links in the header
-		cy.get('.navigation-link').contains('Home').click({ force: true });
+		cy.get('.top-bar a[title="Home"]').click({ force: true });
 		cy.url().should('include', '/');
 
 		cy.get('.navigation-link').contains('Missie').click({ force: true });
@@ -25,8 +25,8 @@ describe('Navigation Test', () => {
 		cy.get('.sub-navigation').contains('Beelden van Steen').click({ force: true });
 		cy.url().should('include', '/collectie/steen');
 
-		// Test navigation back to homepage from footer
-		cy.get('.navigation-link').contains('Home').click({ force: true });
+		// Test navigation back to homepage via the header's home icon
+		cy.get('.top-bar a[title="Home"]').click({ force: true });
 		cy.url().should('include', '/');
 	});
 

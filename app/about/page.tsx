@@ -28,7 +28,7 @@ export default async function About() {
 					{blocks.map((item: RenderComponentItem, i: number) => (
 						<RenderComponent key={i} item={item} />
 					))}
-					<ContactDetails showInsta showAddress={false} artist={artist} className="text-center" />
+					<ContactDetails showAddress={false} artist={artist} className="text-center" />
 				</div>
 			</div>
 		</SectionContainer>
