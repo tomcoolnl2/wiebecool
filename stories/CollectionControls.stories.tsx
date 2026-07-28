@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { CollectionControls } from '@/components/CollectionControls';
 import { OrderType } from '@/model';
 import '@/css/pages/collection-page.css';

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { Carousel } from '@/components/Carousel';
 import '@/css/components/carousel.css';
 import { mockCarouselData } from '@/mock/data';

@@ -2,11 +2,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-The project uses Node LTS 20.17.0. Use NVM to manage the version. 
+The project uses Node LTS 24.18.0. Use NVM to manage the version. 
 Committing to the repo also uses NVM to monitor commit messages:
 
 ```bash
-nvm install v20.17.0
+nvm install v24.18.0
 nvm use
 ```
 

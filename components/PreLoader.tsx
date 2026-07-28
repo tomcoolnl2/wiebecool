@@ -4,25 +4,26 @@ import { useDetectMobile } from '@/hooks';
 
 export const PreLoader = () => {
 	//
-	const preloaderRef = React.useRef<HTMLDivElement | null>(null);
 	const isMobile = useDetectMobile();
+	const [isPreloaded, setIsPreloaded] = React.useState(false);
+	const [isVisible, setIsVisible] = React.useState(true);
+
 	React.useEffect(() => {
-		const preloader = preloaderRef.current;
-		if (preloader) {
-			if (!isMobile) {
-				setTimeout(() => {
-					preloader.classList.add('preloaded');
-				}, 800);
-				setTimeout(function () {
-					preloader.remove();
-				}, 2000);
-			}
+		if (isMobile) {
+			return;
 		}
-	}, [preloaderRef, isMobile]);
+		const preloadedTimeout = setTimeout(() => setIsPreloaded(true), 800);
+		const removeTimeout = setTimeout(() => setIsVisible(false), 2000);
+		return () => {
+			clearTimeout(preloadedTimeout);
+			clearTimeout(removeTimeout);
+		};
+	}, [isMobile]);
 
 	return (
-		!isMobile && (
-			<div className="preloader" ref={preloaderRef}>
+		!isMobile &&
+		isVisible && (
+			<div className={`preloader${isPreloaded ? ' preloaded' : ''}`}>
 				<div className="preloader-line"></div>
 			</div>
 		)

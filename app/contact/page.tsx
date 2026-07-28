@@ -1,4 +1,3 @@
-import { headers } from 'next/headers';
 import * as React from 'react';
 import { PageType, ReWriteRule, SchemaType } from '@/model';
 import { fetchData, processRichText, generateSchema, fetchContactPage, fetchArtist } from '@/lib';
@@ -12,7 +11,7 @@ export async function generateMetadata() {
 
 export default async function Contact() {
 	const [{ content }, artist] = await Promise.all([fetchData(fetchContactPage), fetchArtist()]);
-	const path = headers().get('next-url') || ReWriteRule[PageType.ContactPage];
+	const path = ReWriteRule[PageType.ContactPage];
 	const jsonLd = await generateSchema({ content, artist, schemaType: SchemaType.CONTACT_PAGE });
 	return (
 		<SectionContainer>
@@ -22,7 +21,7 @@ export default async function Contact() {
 					<PageHeader title={content.title} path={path} />
 					<div className="rich-text-block">{processRichText(content.description.json)}</div>
 					<div className="rich-text-block-border">
-						<ContactDetails showCTAs={false} showInsta artist={artist} />
+						<ContactDetails showCTAs={false} artist={artist} />
 					</div>
 					<ContactForm formIntro={content.formIntro} buttonText={content.submitButtonText} />
 				</div>

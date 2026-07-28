@@ -7,6 +7,7 @@ export * from './Button';
 export * from './Card';
 export * from './CardMotion';
 export * from './Checkbox';
+export * from './CollectionCards';
 export * from './CollectionControls';
 export * from './CookieBar';
 export * from './DetailCardsCollection';

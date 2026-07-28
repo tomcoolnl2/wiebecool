@@ -60,6 +60,8 @@ describe('Collection Page Tests', () => {
 	it('should update the "filter" and "order" URL params', () => {
 		//
 		cy.get('.collection-order-item a[href="?order=a-z"]').click({ force: true });
+		cy.location('search').should('contain', 'order=a-z');
+
 		// filter links should be updated with the order in the params
 		cy.get('.collection-filter-item a[href="?order=a-z&filter=steen"]').click({ force: true });
 
@@ -79,7 +81,12 @@ describe('Collection Page Tests', () => {
 	it("should remove 'filter' URL param when selecting 'Alles' from the filter", () => {
 		//
 		cy.get('.collection-order-item a[href="?order=a-z"]').click({ force: true });
+		cy.location('search').should('contain', 'order=a-z');
+
 		cy.get('.collection-filter-item a[href="?order=a-z&filter=steen"]').click({ force: true });
+		cy.location('search').should('contain', 'filter=steen');
+		// small buffer so the previous client-side nav settles before firing the next click - back-to-back Link clicks can race the App Router
+		cy.wait(1000);
 
 		cy.get('.collection-filter-item a').contains('Alles').click({ force: true });
 
@@ -92,7 +99,12 @@ describe('Collection Page Tests', () => {
 	it("should remove 'order' and 'filter' URL params when selecting 'Alles' from the filter", () => {
 		//
 		cy.get('.collection-order-item a[href="?order=a-z"]').click({ force: true });
+		cy.location('search').should('contain', 'order=a-z');
+
 		cy.get('.collection-filter-item a[href="?order=a-z&filter=steen"]').click({ force: true });
+		cy.location('search').should('contain', 'filter=steen');
+		// small buffer so the previous client-side nav settles before firing the next click - back-to-back Link clicks can race the App Router
+		cy.wait(1000);
 
 		cy.get('.collection-order-reset a[href="/collectie"]').click({ force: true });
 
