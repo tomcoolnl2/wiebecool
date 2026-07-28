@@ -66,7 +66,7 @@ jobs:
                   wait-on: 'http://localhost:3000'
               env:
                   NEXT_PUBLIC_EMAILJS_SERVICE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_SERVICE_ID }}
-                  NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+                  NEXT_PUBLIC_EMAILJS_TEMPLATE_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID }}
                   NEXT_PUBLIC_EMAILJS_USER_ID: ${{ secrets.NEXT_PUBLIC_EMAILJS_USER_ID }}
                   CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
                   CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
