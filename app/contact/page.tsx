@@ -21,7 +21,7 @@ export default async function Contact() {
 					<PageHeader title={content.title} path={path} />
 					<div className="rich-text-block">{processRichText(content.description.json)}</div>
 					<div className="rich-text-block-border">
-						<ContactDetails showCTAs={false} showInsta artist={artist} />
+						<ContactDetails showCTAs={false} artist={artist} />
 					</div>
 					<ContactForm formIntro={content.formIntro} buttonText={content.submitButtonText} />
 				</div>
