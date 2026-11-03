@@ -39,6 +39,7 @@ describe('Redirects', () => {
 		cy.request('/Werk/Portret-van-Sarah').then((response) => {
 			expect(response.status).to.eq(200);
 			expect(response.isOkStatusCode).to.be.true;
+			expect(response.redirects![0]).to.eq(`308: ${baseUrl}/werk/portret-van-sarah`);
 		});
 	});
 

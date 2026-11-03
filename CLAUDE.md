@@ -42,6 +42,7 @@ Contentful and EmailJS/reCAPTCHA keys are required (`CONTENTFUL_SPACE_ID`, `CONT
 
 **Routing:**
 - App Router pages live under `app/` (`home`, `about`, `collection/[[...slug]]`, `detail/[...slug]`, `contact`) but the public-facing Dutch URLs are produced by `rewrites()`/`redirects()` in [next.config.js](next.config.js) — e.g. `/werk/:slug*` rewrites to `/detail/:slug*` internally, while `/werk` itself redirects to `/collectie`. When changing a route, check both the folder under `app/` and the rewrite/redirect table; they're independent.
+- Rewrites and redirects in `next.config.js` match case-insensitively, but Contentful slug lookups don't. [proxy.ts](proxy.ts) 308-redirects capitalized `/werk` and `/collectie` URLs to lowercase before rendering. It runs after the `next.config.js` redirects, so explicit legacy rules (e.g. `/Werk/Hout`) still take precedence.
 - `PageType` and `ReWriteRule` in [model/page.ts](model/page.ts) map page types to their canonical Dutch slug prefixes and are used for cross-linking (e.g. building detail-card hrefs from a `PageType`).
 
 **Rendering shell:**
