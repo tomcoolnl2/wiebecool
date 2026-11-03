@@ -1,3 +1,23 @@
+# [3.0.0](https://github.com/tomcoolnl2/wiebecool/compare/v2.0.1...v3.0.0) (2026-11-03)
+
+
+### Bug Fixes
+
+* redirect capitalized /werk and /collectie URLs to lowercase ([afbb50e](https://github.com/tomcoolnl2/wiebecool/commit/afbb50ea6cda7384929cd2be000f1619d9ba0bb3))
+* serve Dutch URLs from route folders instead of rewrites ([2399674](https://github.com/tomcoolnl2/wiebecool/commit/239967427cbf42397c6f2bb8df33204388bbd87d))
+
+
+### Continuous Integration
+
+* upgrade cypress-io/github-action to v7 ([c997372](https://github.com/tomcoolnl2/wiebecool/commit/c9973724949c539ac4056de9fe50a224390155fb))
+
+
+### BREAKING CHANGES
+
+* is running on node24.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
 ## [2.0.1](https://github.com/tomcoolnl2/wiebecool/compare/v2.0.0...v2.0.1) (2026-11-03)
 
 
