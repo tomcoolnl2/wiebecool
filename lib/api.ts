@@ -54,18 +54,23 @@ export const preload = (query: string | GraphQLDocumentNode, variables: object =
 
 /**
  * Fetches data using the provided fetcher function and handles errors.
- * If an error occurs, it will trigger the `notFound()` function to handle 404 scenarios.
+ * Only a missing Contentful entry (a `ContentfulError` with status 404) triggers `notFound()`.
+ * Any other failure is rethrown: during ISR revalidation Next.js caches a `notFound()` result as the page
+ * for the whole revalidate window, whereas a thrown error keeps serving the last good version.
  * @template T - The type of the data expected to be returned by the fetcher.
  * @param {() => Promise<T>} fetcher - A function that returns a promise resolving to the data.
  * @returns {Promise<T>} The fetched data if successful.
- * @throws Will trigger `notFound()` in case of an error.
+ * @throws Will trigger `notFound()` when the entry does not exist, rethrows any other error.
  */
 export const fetchData = async <T>(fetcher: () => Promise<T>): Promise<T> => {
 	try {
 		const data = await fetcher();
 		return data;
 	} catch (error) {
-		notFound();
+		if (error instanceof ContentfulError && error.status === 404) {
+			notFound();
+		}
+		throw error;
 	}
 };
 
@@ -97,11 +102,14 @@ export const fetchContentfulData = cache(async <T>(query: string | GraphQLDocume
 		});
 
 		if (!response.ok) {
-			const msg = 'Network response was not ok.';
+			const msg = `Network response was not ok: ${response.status} ${response.statusText}`;
 			throw new Error(msg);
 		}
 
 		const json = await response.json();
+		if (!json.data) {
+			throw new Error(`No data in response: ${JSON.stringify(json.errors)}`);
+		}
 		return json.data;
 		//
 	} catch (error) {
@@ -202,6 +210,10 @@ export async function fetchCollectionPage(slug: Slug, sortOrder: OrderType | nul
 		},
 	} = await fetchContentfulData<CollectionPageResponse>(CollectionPageBySlugQuery, { slug });
 
+	if (!collectionPage) {
+		throw new ContentfulError(`Collection page not found: ${slug}`, 404);
+	}
+
 	const tags = collectionPage.contentfulMetadata.tags.map((tag) => tag.id);
 	const cards = await fetchDetailPagesByTagIDs(tags, sortOrder ?? OrderType.PUBLISHED_FIRST_DESC);
 	const content = { ...collectionPage, type: PageType.CollectionPage, cards };
@@ -247,6 +259,10 @@ export async function fetchDetailPage(slug: Slug): Promise<DetailPage> {
 			items: [detailPage],
 		},
 	} = await fetchContentfulData<DetailPageBySlugResponse>(DetailPageBySlugQuery, { slug });
+
+	if (!detailPage) {
+		throw new ContentfulError(`Detail page not found: ${slug}`, 404);
+	}
 
 	let tags: string[] = [];
 	if (detailPage.relatedItemsTags?.length) {
