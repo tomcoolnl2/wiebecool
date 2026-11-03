@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-A Next.js 14 (App Router) portfolio/artist site for "Wiebe Cool", deployed on Vercel. Content is authored in Contentful and fetched via GraphQL; there is no local database. Dutch is the primary locale — routes and copy are Dutch-first with English fallbacks handled through Next.js rewrites/redirects (e.g. `/` ↔ `/home`, `/over-mij` ↔ `/about`).
+A Next.js 16 (App Router) portfolio/artist site for "Wiebe Cool", deployed on Vercel. Content is authored in Contentful and fetched via GraphQL; there is no local database. Dutch is the primary locale — routes and copy are Dutch-first, with old English URLs redirected to the Dutch ones (e.g. `/home` → `/`, `/about` → `/over-mij`).
 
 ## Commands
 
@@ -41,9 +41,9 @@ Contentful and EmailJS/reCAPTCHA keys are required (`CONTENTFUL_SPACE_ID`, `CONT
 - Errors from Contentful fetches are normalized to `ContentfulError` ([lib/error.ts](lib/error.ts)); `fetchData()` in `lib/api.ts` funnels failures into Next's `notFound()`.
 
 **Routing:**
-- App Router pages live under `app/` (`home`, `about`, `collection/[[...slug]]`, `detail/[...slug]`, `contact`) but the public-facing Dutch URLs are produced by `rewrites()`/`redirects()` in [next.config.js](next.config.js) — e.g. `/werk/:slug*` rewrites to `/detail/:slug*` internally, while `/werk` itself redirects to `/collectie`. When changing a route, check both the folder under `app/` and the rewrite/redirect table; they're independent.
-- Rewrites and redirects in `next.config.js` match case-insensitively, but Contentful slug lookups don't. [proxy.ts](proxy.ts) 308-redirects capitalized `/werk` and `/collectie` URLs to lowercase before rendering. It runs after the `next.config.js` redirects, so explicit legacy rules (e.g. `/Werk/Hout`) still take precedence.
-- `PageType` and `ReWriteRule` in [model/page.ts](model/page.ts) map page types to their canonical Dutch slug prefixes and are used for cross-linking (e.g. building detail-card hrefs from a `PageType`).
+- Route folders under `app/` are named after the public Dutch URLs: `page.tsx` (home), `over-mij`, `collectie/[[...slug]]`, `werk/[...slug]`, `contact`. Don't map Dutch URLs onto differently named folders with `rewrites()`: on Vercel, rewrites onto an index path (`/` → `/home`, or `/collectie` → an empty optional catch-all) break Next 16's client navigation and segment prefetch requests, and the router then shows a 404. [next.config.js](next.config.js) only holds `redirects()` for legacy URLs (e.g. `/werk` → `/collectie`, `/about` → `/over-mij`, and the old internal `/collection`/`/detail` paths).
+- Redirects in `next.config.js` match case-insensitively, but Contentful slug lookups don't. [proxy.ts](proxy.ts) 308-redirects capitalized `/werk` and `/collectie` URLs to lowercase before rendering. It runs after the `next.config.js` redirects, so explicit legacy rules (e.g. `/Werk/Hout`) still take precedence.
+- `PageType` and `ReWriteRule` in [model/page.ts](model/page.ts) map page types to their public Dutch URL prefixes and are used for cross-linking (e.g. building detail-card hrefs from a `PageType`). The name is historical; there are no rewrites anymore.
 
 **Rendering shell:**
 - [app/layout.tsx](app/layout.tsx) fetches global config, navigation and artist data once per request (in parallel) and renders the persistent chrome (`MainNavigation`, `Background`, `CookieBar`, `Cursor`, `PreLoader`) around `children`.

@@ -20,26 +20,6 @@ const nextConfig = {
 		],
 		qualities: [75, 80],
 	},
-	async rewrites() {
-		return [
-			{
-				source: '/',
-				destination: '/home',
-			},
-			{
-				source: '/over-mij',
-				destination: '/about',
-			},
-			{
-				source: '/werk/:slug*',
-				destination: '/detail/:slug*',
-			},
-			{
-				source: '/collectie/:slug*',
-				destination: '/collection/:slug*',
-			},
-		];
-	},
 	async redirects() {
 		return [
 			{
@@ -50,6 +30,16 @@ const nextConfig = {
 			{
 				source: '/about',
 				destination: '/over-mij',
+				permanent: true,
+			},
+			{
+				source: '/collection/:slug*',
+				destination: '/collectie/:slug*',
+				permanent: true,
+			},
+			{
+				source: '/detail/:slug*',
+				destination: '/werk/:slug*',
 				permanent: true,
 			},
 			{
