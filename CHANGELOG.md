@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/tomcoolnl2/wiebecool/compare/v3.0.0...v3.0.1) (2026-11-03)
+
+
+### Bug Fixes
+
+* stop proxy redirect loop on lowercase /werk and /collectie URLs ([c0c5a51](https://github.com/tomcoolnl2/wiebecool/commit/c0c5a517ca02f910bbc9d171a80e5a22edf03958))
+
 # [3.0.0](https://github.com/tomcoolnl2/wiebecool/compare/v2.0.1...v3.0.0) (2026-11-03)
 
 
