@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/tomcoolnl2/wiebecool/compare/v2.0.0...v2.0.1) (2026-11-03)
+
+
+### Bug Fixes
+
+* stop caching 404s when Contentful fetches fail during ISR ([6980999](https://github.com/tomcoolnl2/wiebecool/commit/69809995319e60812c3a81d6d1737f8ba5eb9678)), closes [#113](https://github.com/tomcoolnl2/wiebecool/issues/113)
+
 # [2.0.0](https://github.com/tomcoolnl2/wiebecool/compare/v1.1.2...v2.0.0) (2026-07-28)
 
 
