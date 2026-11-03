@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/tomcoolnl2/wiebecool/compare/v3.0.1...v3.0.2) (2026-11-03)
+
+
+### Bug Fixes
+
+* **deps:** apply pending security updates ([6af7bbf](https://github.com/tomcoolnl2/wiebecool/commit/6af7bbf223f7d267ca18e1017d601551a006cdd6)), closes [#119](https://github.com/tomcoolnl2/wiebecool/issues/119) [#124](https://github.com/tomcoolnl2/wiebecool/issues/124) [#128](https://github.com/tomcoolnl2/wiebecool/issues/128) [#129](https://github.com/tomcoolnl2/wiebecool/issues/129) [#131](https://github.com/tomcoolnl2/wiebecool/issues/131) [#133](https://github.com/tomcoolnl2/wiebecool/issues/133) [#143](https://github.com/tomcoolnl2/wiebecool/issues/143)
+
 ## [3.0.1](https://github.com/tomcoolnl2/wiebecool/compare/v3.0.0...v3.0.1) (2026-11-03)
 
 
